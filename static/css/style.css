@@ -1,0 +1,17 @@
+
+
+/* Materialize components */
+.modal {
+    padding: 60px;
+    width: 40%;
+    max-height: 80%;
+}
+
+.switch-label {
+    font-size: 16px;
+}
+
+/* Utils */
+.m-top-40 {
+    margin-top: 40px;
+}
