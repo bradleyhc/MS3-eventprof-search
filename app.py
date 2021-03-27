@@ -63,17 +63,51 @@ def register():
     return render_template("home.html")
 
 
+@app.route("/edit_profile/<name>", methods=["GET", "POST"])
+def edit_profile(name):
+
+    # create full name string for profile page
+    names = mongo.db.users.find_one({"email": session["user"]})
+
+    full_name = names[
+        "first_name"].lower() + "_" + names["last_name"].lower()
+
+    profile_data = list(
+        mongo.db.users.find({"email": session["user"]}))
+
+    if request.method == "POST":
+        update = {
+            "first_name": request.form.get("first_name"),
+            "last_name": request.form.get("last_name"),
+            "email": request.form.get("email"),
+            "password": generate_password_hash(request.form.get("password")),
+            "skills": request.form.getlist("skills[]")
+        }
+
+        mongo.db.users.update({"email": session["user"]}, update)
+
+        return render_template(
+            "edit_profile.html", name=full_name, data=profile_data)
+
+    return render_template(
+        "edit_profile.html", name=full_name, data=profile_data)
+
+
 @app.route("/profile/<name>", methods=["GET", "POST"])
 def profile(name):
 
-    name = mongo.db.users.find_one(
-        {"email": session["user"]})["first_name"]
+    # create full name string for profile page
+    names = mongo.db.users.find_one({"email": session["user"]})
+
+    full_name = names[
+        "first_name"].lower() + "_" + names["last_name"].lower()
 
     profile_data = list(
         mongo.db.users.find({"email": session["user"]}))
 
     if session["user"]:
-        return render_template("profile.html", name=name, data=profile_data)
+        return render_template(
+            "profile.html", name=full_name, data=profile_data)
 
 
 @app.route("/freelancers")
