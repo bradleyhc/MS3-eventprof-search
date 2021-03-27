@@ -48,11 +48,33 @@ def register():
             "user_type": user_type
         }
 
+        # create full name string for profile page
+        full_name = request.form.get(
+            "first_name").lower() + "_" + request.form.get("last_name").lower()
+
+        
         mongo.db.users.insert_one(register)
 
+        # put user info into session
+        session['user'] = request.form.get("email")
+        print(session["user"])
         flash("Reg successful")
+        return render_template("profile.html", name=full_name, data=register)
 
     return render_template("home.html")
+
+
+@app.route("/profile/<name>", methods=["GET", "POST"])
+def profile(name):
+
+    name = mongo.db.users.find_one(
+        {"email": session["user"]})["first_name"]
+
+    profile_data = list(
+        mongo.db.users.find({"email": session["user"]}))
+
+    if session["user"]:
+        return render_template("profile.html", name=name, data=profile_data)
 
 
 @app.route("/freelancers")
