@@ -15,22 +15,72 @@
         <div class="row s12">
             {% for info in data %}
             <div class="col s8 d-flex">
-                <form class="" action="{{ url_for('edit_profile', name=info.first_name+'_'+info.last_name) }}" method="POST">
-                <div class="profile-img-wrapper">
-                    <img class="profile-image"
-                        src="/static/user_uploads/{{ info.profile_image or 'default_avatar.png'}}" alt="">
-                </div>
-                <div class="profile-content-wrapper">
-                    <input type="text" id="first_name" name="first_name" value="{{ info.first_name }}" class="validation" required>
-                    <label for="first_name">First Name</label>
-                    <input type="text" id="last_name" name="last_name" value="{{ info.last_name }}" class="validation" required>
-                    <label for="last_name">Last Name</label>
-                     
-                    <p>{{ info.location or "update location"}}</p>
-                </div>
-                <div class="profile-about-wrapper">
-<p>{{ info.about}}</p>
-                </div>
+                <form class="" action="{{ url_for('edit_profile', name=info.first_name+'_'+info.last_name) }}"
+                    method="POST">
+                    <div class="profile-img-wrapper">
+                        <img class="profile-image"
+                            src="/static/user_uploads/{{ info.profile_image or 'default_avatar.png'}}" alt="">
+                    </div>
+                    <div class="profile-content-wrapper">
+                        <div class="row">
+                            <!-- First name input -->
+                            <div class="input-field col s6">
+                                <label for="first_name">First Name</label>
+                                <input type="text" id="first_name" name="first_name" value="{{ info.first_name }}"
+                                    class="validation" required>
+                            </div>
+
+                            <!-- Last name input -->
+                            <div class="input-field col s6">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" id="last_name" name="last_name" value="{{ info.last_name }}"
+                                    class="validation" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Rate input -->
+                            <div class="input-field col s6">
+                                <label for="rate">Rate</label>
+                                <input type="text" id="rate" name="rate" value="{{ info.rate }}" class="validation"
+                                    required>
+                            </div>
+
+                            <!-- Location input -->
+                            <div class="input-field col s6">
+                                <label for="location">Location</label>
+                                <input type="text" id="location" name="location" value="{{ info.location }}"
+                                    class="validation" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Role input -->
+                            <div class="input-field col s6">
+                                <label for="role">Role</label>
+                                <input type="text" id="role" name="role" value="{{ info.role }}" class="validation"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Skills input -->
+                            <div class="input-field col s12">
+                                <select id="skills" name="skills[]" multiple>
+                                    {% for skill in skills %}
+                                        {%if skill.skill_name in info.skills %}
+                                            <option value="{{ skill.skill_name }}" selected>{{ skill.skill_name }}</option>
+                                        {% else %}
+                                            <option value="{{ skill.skill_name }}">{{ skill.skill_name }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                                <label>Materialize Multiple Select</label>
+                            </div>
+                        </div>
+                        <p>{{ info.location or "update location"}}</p>
+                    </div>
+                    <div class="profile-about-wrapper">
+                        <p>{{ info.about}}</p>
+                    </div>
+                    <button type="submit">Update Profile</button>
                 </form>
             </div>
             {% endfor %}
