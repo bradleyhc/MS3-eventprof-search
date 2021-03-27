@@ -69,28 +69,32 @@ def edit_profile(name):
     # create full name string for profile page
     names = mongo.db.users.find_one({"email": session["user"]})
 
-    full_name = names[
-        "first_name"].lower() + "_" + names["last_name"].lower()
+    full_name = names["first_name"].lower() + "_" + names["last_name"].lower()
 
     profile_data = list(
         mongo.db.users.find({"email": session["user"]}))
+
+    skills = list(mongo.db.skills.find())
 
     if request.method == "POST":
         update = {
             "first_name": request.form.get("first_name"),
             "last_name": request.form.get("last_name"),
-            "email": request.form.get("email"),
-            "password": generate_password_hash(request.form.get("password")),
+            "rate": request.form.get("rate"),
+            "location": request.form.get("location"),
+            "role": request.form.get("role"),
             "skills": request.form.getlist("skills[]")
         }
 
-        mongo.db.users.update({"email": session["user"]}, update)
+        mongo.db.users.update_one(
+            {"email": session["user"]}, {"$set": update})
 
         return render_template(
-            "edit_profile.html", name=full_name, data=profile_data)
+            "edit_profile.html", name=full_name,
+            data=profile_data, skills=skills)
 
     return render_template(
-        "edit_profile.html", name=full_name, data=profile_data)
+        "edit_profile.html", name=full_name, data=profile_data, skills=skills)
 
 
 @app.route("/profile/<name>", methods=["GET", "POST"])
