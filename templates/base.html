@@ -47,7 +47,7 @@
     <div id="modal-register" class="modal">
         <div class="modal-content">
             <h4 class="center-align">Register Account</h4>
-            <form id="register_form_modal" action="" method="POST" class="col s12">
+            <form id="register_form_modal" action="{{ url_for('register') }}" method="POST" class="col s12">
                 <!-- Name inputs -->
                 <div class="row">
                     <div class="input-field col s6">
@@ -81,7 +81,7 @@
                 <div class="switch center-align">
                     <label class="switch-label">
                         Freelancer
-                        <input type="checkbox">
+                        <input type="checkbox" id="user_type" name="user_type">
                         <span class="lever"></span>
                         Project Owner
                     </label>
