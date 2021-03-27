@@ -2,8 +2,39 @@
 {% block title %}Profile{% endblock %}
 {% block content %}
 
-<h1>Hello {{name}}</h1>
-{% for info in data %}
-<p>{{ info.first_name}}</p>
-{% endfor %}
+<header>
+    <div class="container">
+        <h1>My Profile</h1>
+    </div>
+</header>
+
+
+
+<section class="main-body">
+    <div class="container">
+        <div class="row s12">
+            {% for info in data %}
+            <div class="col s8 d-flex">
+                <div class="profile-img-wrapper">
+                    <img class="profile-image"
+                        src="/static/user_uploads/{{ info.profile_image or 'default_avatar.png'}}" alt="">
+                </div>
+                <div class="profile-content-wrapper">
+                    <h6>{{ info.first_name }} {{ info.last_name }}</h6>
+                    <p>{{ info.location or "update location"}}</p>
+                </div>
+                <div class="profile-about-wrapper">
+<p>{{ info.about}}</p>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- Nearby projects widget -->
+            <div class="col s4">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
 {% endblock %}

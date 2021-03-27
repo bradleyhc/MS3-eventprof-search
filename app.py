@@ -52,7 +52,6 @@ def register():
         full_name = request.form.get(
             "first_name").lower() + "_" + request.form.get("last_name").lower()
 
-        
         mongo.db.users.insert_one(register)
 
         # put user info into session
