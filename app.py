@@ -10,6 +10,7 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)    
 
+app.secret_key = os.environ.get("SECRET_KEY")
 
 @app.route("/")
 @app.route("/home")
@@ -20,3 +21,9 @@ def homepage():
 @app.route("/freelancers")
 def get_freelancers():
     return render_template("freelancers.html")
+
+
+if __name__ == "__main__":
+    app.run(host=os.environ.get("IP"),
+            port=os.environ.get("PORT"),
+            debug=True)
