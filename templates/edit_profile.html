@@ -22,10 +22,10 @@
                         <div class="profile-img-wrapper">
                             <label for="profile_img" id="edit_profile_img_overlay">
                                 <i class="fas fa-camera"></i>
-                                <input type="file" id="profile_img" name="profile_img" value="{{ info.profile_image }}" onchange="previewImg(this);">
+                                <input type="file" id="profile_img" name="profile_img" value="{{ info.profile_image }}" onchange="previewImg(this);" accept="image/*">
                             </label>
                             <img class="profile-image"
-                                src="/static/images/user_uploads/{{ info.profile_image }}"
+                                src="/static/images/user_uploads/{{ info.profile_image or 'default_avatar.png'}}"
                                 alt="">
                         </div>
                         <div class="profile-content-wrapper gutter-l">
@@ -104,7 +104,7 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <textarea id="about_textarea" name="about_textarea" class="materialize-textarea"
-                                    value="{{ info.about }}" required>{{ info.about }}</textarea>
+                                    required>{{ info.about }}</textarea>
                                 <label for="about_textarea">About Me</label>
                                 <span class="helper-text">Tell others a little about yourself.</span>
                             </div>
