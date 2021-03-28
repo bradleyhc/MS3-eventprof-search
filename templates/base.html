@@ -94,12 +94,12 @@
 
     </div>
 
-     <!-- Login modal -->
+    <!-- Login modal -->
     <div id="modal-login" class="modal">
         <div class="modal-content">
             <h4 class="center-align">Login</h4>
-            <form id="login_form_modal" action="" method="POST" class="col s12">
-                
+            <form id="login_form_modal" action="{{ url_for('login') }}" method="POST" class="col s12">
+
                 <!-- Email input -->
                 <div class="row">
                     <div class="input-field col s12">
@@ -123,10 +123,24 @@
         </div>
     </div>
 
+    <!-- Flash messages -->
+    <div class="flashes">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages%}
+        <div class="row flashes">
+            <h4 class="light-blue lighten-4 center-align">{{message}}</h4>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
 
-
-    {% block content %}
-    {% endblock %}
+    <!-- Main content -->
+    <div class="main">
+        {% block content %}
+        {% endblock %}
+    </div>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
