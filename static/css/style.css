@@ -28,6 +28,15 @@ button.close-flash{
     cursor: pointer;
 }
 
+.row, input{
+    margin: 0;
+}
+
+.input-field {
+    margin-top: 0.5rem;
+}
+
+
 /* Materialize components */
 .modal {
     padding: 60px;
@@ -44,6 +53,25 @@ button.close-flash{
     margin-top: 40px;
 }
 
+.p-top-50 {
+    padding-top: 50px;
+}
+
+.py-50 {
+    padding: 50px 0px;
+}
+.px-50 {
+    padding: 0px 50px;
+}
+
+.gutter-l {
+    margin-left: 20px;
+}
+
+.gutter-r {
+    margin-right: 20px;
+}
+
 .d-flex {
     display: flex;
 }
@@ -51,8 +79,8 @@ button.close-flash{
 /* Profile page */
 
 .profile-img-wrapper {
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 220px;
+    max-height: 220px;
     position: relative;
     overflow: hidden;
 }
@@ -60,4 +88,35 @@ button.close-flash{
 .profile-image {
     width: 100%;
     height: auto;
+}
+
+.profile-content-wrapper {
+    width: 100%;
+    margin-left: ;
+}
+
+/* Edit Profile Page */
+
+#edit_profile_img_overlay {
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #afafaf85;
+}
+
+#edit_profile_img_overlay > i {
+    font-size: 60px;
+    margin: auto;
+    display: flex;
+    color: #2d2d2d;
+}
+
+input#profile_img {
+    display: none;
+}
+
+.helper-text-error {
+    color: #bf0000;
 }

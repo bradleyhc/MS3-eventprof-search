@@ -75,7 +75,7 @@ def register():
         # put user info into session
         session['user'] = request.form.get("email")
         flash("Reg successful", name_slug_exists)
-        return redirect(url_for("profile", name=full_name))
+        return redirect(url_for("edit_profile", name=full_name))
 
     return render_template("home.html")
 
