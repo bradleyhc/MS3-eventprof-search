@@ -101,6 +101,13 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/logout")
+def logout():
+    flash("You've been successfully logged out!")
+    session.pop("user")
+    return redirect("/")
+
+
 @app.route("/edit_profile/<name>", methods=["GET", "POST"])
 def edit_profile(name):
     # create full name string for profile page
