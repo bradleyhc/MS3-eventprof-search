@@ -122,6 +122,7 @@ def logout():
 def edit_profile(name):
     # create full name string for profile page
     names = mongo.db.users.find_one({"email": session["user"]})
+    slug = names["name_slug"]
 
     profile_data = list(
         mongo.db.users.find({"email": session["user"]}))
@@ -132,6 +133,13 @@ def edit_profile(name):
     if request.method == "POST":
         image = request.files["profile_img"]
         filename = secure_filename(image.filename)
+
+        if filename == "":
+            filename = names["profile_image"]
+        else:
+            image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            mongo.save_file(image.filename, image)
+
         update = {
             "first_name": request.form.get("first_name"),
             "last_name": request.form.get("last_name"),
@@ -140,19 +148,17 @@ def edit_profile(name):
             "role": request.form.get("role"),
             "skills": request.form.getlist("skills[]"),
             "profile_image": filename,
+            "about": request.form.get("about_textarea"),
         }
 
-        image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        mongo.save_file(image.filename, image)
         mongo.db.users.update_one(
             {"email": session["user"]}, {"$set": update})
 
-        return render_template(
-            "edit_profile.html", name=names["name_slug"],
-            data=profile_data, skills=skills, roles=roles)
+        return redirect(url_for(
+            "profile", name=slug))
 
     return render_template(
-        "edit_profile.html", name=names["name_slug"],
+        "edit_profile.html", name=slug,
         data=profile_data, skills=skills, roles=roles)
 
 
