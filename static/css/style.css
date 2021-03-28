@@ -1,6 +1,37 @@
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700;800&display=swap');
 
 
-/* All pages */
+/* Global Properties */
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: "Lexend", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 3.1rem;
+}
+
+h2 {
+    font-size: 2.2rem;
+}
+
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h4 {
+    font-size: 1.4rem;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+
+/* All page components */
 section.main-body {
     box-shadow: 0px -5px 13px -2px #afafaf;
 }
@@ -32,6 +63,10 @@ button.close-flash{
     margin: 0;
 }
 
+.stacked-item {
+    padding-bottom: 15px;
+}
+
 .input-field {
     margin-top: 0.5rem;
 }
@@ -46,6 +81,10 @@ button.close-flash{
 
 .switch-label {
     font-size: 16px;
+}
+
+.header-bg {
+    background-image: url('../images/brand/ms3-bg-1920x540.png');
 }
 
 /* Utils */
@@ -74,6 +113,10 @@ button.close-flash{
 
 .d-flex {
     display: flex;
+}
+
+span.divide-pipe {
+    margin: auto 15px;
 }
 
 /* Profile page */
