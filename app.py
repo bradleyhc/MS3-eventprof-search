@@ -12,9 +12,14 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
+# Set user image upload config
+UPLOAD_FOLDER = './static/images/user_uploads'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
 app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 mongo = PyMongo(app)
 
@@ -68,6 +73,8 @@ def register():
 @app.route("/edit_profile/<name>", methods=["GET", "POST"])
 def edit_profile(name):
 
+    
+
     # create full name string for profile page
     names = mongo.db.users.find_one({"email": session["user"]})
 
@@ -80,15 +87,20 @@ def edit_profile(name):
     roles = list(mongo.db.roles.find())
 
     if request.method == "POST":
+        image = request.files["profile_img"]
+        filename = secure_filename(image.filename)
         update = {
             "first_name": request.form.get("first_name"),
             "last_name": request.form.get("last_name"),
             "rate": request.form.get("rate"),
             "location": request.form.get("location"),
             "role": request.form.get("role"),
-            "skills": request.form.getlist("skills[]")
+            "skills": request.form.getlist("skills[]"),
+            "profile_image": filename,
         }
 
+        image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        mongo.save_file(image.filename, image)
         mongo.db.users.update_one(
             {"email": session["user"]}, {"$set": update})
 

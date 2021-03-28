@@ -16,10 +16,11 @@
             {% for info in data %}
             <div class="col s8 d-flex">
                 <form class="" action="{{ url_for('edit_profile', name=info.first_name+'_'+info.last_name) }}"
-                    method="POST">
+                    method="POST" enctype="multipart/form-data">
                     <div class="profile-img-wrapper">
+                        <input type="file" id="profile_img" name="profile_img" onchange="previewImg(this);">
                         <img class="profile-image"
-                            src="/static/user_uploads/{{ info.profile_image or 'default_avatar.png'}}" alt="">
+                            src="/static/images/user_uploads/{{ info.profile_image or 'default_avatar.png'}}" alt="">
                     </div>
                     <div class="profile-content-wrapper">
                         <div class="row">
@@ -55,8 +56,8 @@
                         <div class="row">
                             <!-- Role input -->
                             <div class="input-field col s12">
-                                <select id="role" name="role" multiple>
-                                    <option value="" disabled selected>Choose your role</option>
+                                <select id="role" name="role">
+                                    <option value="" disabled>Choose your role</option>
                                     {% for role in roles %}
                                         {%if role.role_name in info.role %}
                                             <option value="{{ role.role_name }}" selected>{{ role.role_name }}</option>
@@ -73,7 +74,7 @@
                             <!-- Skills input -->
                             <div class="input-field col s12">
                                 <select id="skills" name="skills[]" multiple>
-                                    <option value="" disabled selected>Select your skills</option>
+                                    <option value="" disabled>Select your skills</option>
                                     {% for skill in skills %}
                                         {%if skill.skill_name in info.skills %}
                                             <option value="{{ skill.skill_name }}" selected>{{ skill.skill_name }}</option>
