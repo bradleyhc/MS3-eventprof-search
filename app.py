@@ -13,7 +13,7 @@ if os.path.exists("env.py"):
 app = Flask(__name__)
 
 # Set user image upload config
-UPLOAD_FOLDER = './static/images/user_uploads'
+UPLOAD_FOLDER = './static/images/user_uploads/'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -51,21 +51,31 @@ def register():
         full_name = request.form.get(
             "first_name").lower() + "_" + request.form.get("last_name").lower()
 
+        # check if user name slug exists, if yes append incrementing int to end
+        name_slug_exists = mongo.db.users.count_documents(
+            {"first_name": request.form.get("first_name"),
+                "last_name": request.form.get("last_name")})
+
+        print(name_slug_exists)
+        if name_slug_exists:
+            full_name += str(name_slug_exists+1)
+
         register = {
             "first_name": request.form.get("first_name"),
             "last_name": request.form.get("last_name"),
             "name_slug": full_name,
             "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password")),
-            "user_type": user_type
+            "user_type": user_type,
+            "profile_image": "default_avatar.png"
         }
 
         mongo.db.users.insert_one(register)
 
         # put user info into session
         session['user'] = request.form.get("email")
-        flash("Reg successful")
-        return render_template("profile.html", name=full_name, data=register)
+        flash("Reg successful", name_slug_exists)
+        return redirect(url_for("profile", name=full_name))
 
     return render_template("home.html")
 
@@ -113,8 +123,6 @@ def edit_profile(name):
     # create full name string for profile page
     names = mongo.db.users.find_one({"email": session["user"]})
 
-    full_name = names["first_name"].lower() + "_" + names["last_name"].lower()
-
     profile_data = list(
         mongo.db.users.find({"email": session["user"]}))
 
@@ -140,11 +148,11 @@ def edit_profile(name):
             {"email": session["user"]}, {"$set": update})
 
         return render_template(
-            "edit_profile.html", name=full_name,
+            "edit_profile.html", name=names["name_slug"],
             data=profile_data, skills=skills, roles=roles)
 
     return render_template(
-        "edit_profile.html", name=full_name,
+        "edit_profile.html", name=names["name_slug"],
         data=profile_data, skills=skills, roles=roles)
 
 
