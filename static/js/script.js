@@ -3,6 +3,10 @@ $(document).ready(function () {
     $('.sidenav').sidenav({ edge: "right" });
     $('.modal').modal();
     $('select').formSelect();
+    // Hide flash messages on button click
+    $("button.close-flash").click(function () {
+        $("div.flash-msg").fadeOut();
+    })
 });
 
 // Preview profile image before upload without page reload
