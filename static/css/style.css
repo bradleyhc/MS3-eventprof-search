@@ -10,6 +10,24 @@ section.main-body {
     padding: 20px 50px;
 }
 
+.flash-msg {
+    width: 50%;
+    background: #dedede;
+    box-shadow: 2px 3px 16px #afafaf;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 3px;
+    position: absolute;
+    left: 25%;
+}
+
+button.close-flash{
+    border: 0px;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
 /* Materialize components */
 .modal {
     padding: 60px;
