@@ -14,12 +14,13 @@ app = Flask(__name__)
 
 # Set user image upload config
 UPLOAD_FOLDER = './static/images/user_uploads/'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024
 
 mongo = PyMongo(app)
 
