@@ -34,12 +34,12 @@
             </ul>
             <!-- Mobile -->
             <ul id="mobile-nav" class="sidenav">
-                <li><a href="#">Home</a></li>
+                <li><a href="{{ url_for('homepage') }}">Home</a></li>
                 <li><a href="#">Freelancers</a></li>
                 <li><a href="#">Project Opportunities</a></li>
                 <li><a class="modal-trigger" href="#modal-register">Register</a></li>
                 <li><a class="modal-trigger" href="#modal-login">Login</a></li>
-                <li><a href="#">My Profile</a></li>
+                <li><a href="{{ url_for('profile', name=session['user']) }}">My Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             </ul>
         </div>
