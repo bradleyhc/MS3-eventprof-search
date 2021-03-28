@@ -122,11 +122,10 @@ def logout():
 @app.route("/edit_profile/<name>", methods=["GET", "POST"])
 def edit_profile(name):
     # create full name string for profile page
-    names = mongo.db.users.find_one({"email": session["user"]})
-    slug = names["name_slug"]
+    names = mongo.db.users.find_one({"name_slug": session["user"]})
 
     profile_data = list(
-        mongo.db.users.find({"email": session["user"]}))
+        mongo.db.users.find({"name_slug": session["user"]}))
 
     skills = list(mongo.db.skills.find())
     roles = list(mongo.db.roles.find())
@@ -153,13 +152,13 @@ def edit_profile(name):
         }
 
         mongo.db.users.update_one(
-            {"email": session["user"]}, {"$set": update})
+            {"name_slug": session["user"]}, {"$set": update})
 
         return redirect(url_for(
-            "profile", name=slug))
+            "profile", name=names))
 
     return render_template(
-        "edit_profile.html", name=slug,
+        "edit_profile.html", name=names,
         data=profile_data, skills=skills, roles=roles)
 
 
