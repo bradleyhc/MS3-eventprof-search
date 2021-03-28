@@ -14,17 +14,22 @@
     <div class="container">
         <div class="row s12">
             {% for info in data %}
-            <div class="col s8 d-flex">
-                <div class="profile-img-wrapper">
-                    <img class="profile-image"
-                        src="/static/user_uploads/{{ info.profile_image or 'default_avatar.png'}}" alt="">
-                </div>
-                <div class="profile-content-wrapper">
-                    <h6>{{ info.first_name }} {{ info.last_name }}</h6>
-                    <p>{{ info.location or "update location"}}</p>
+            <div class="col s8">
+                <div class="d-flex">
+                    <div class="profile-img-wrapper">
+                        <img class="profile-image"
+                            src="/static/images/user_uploads/{{ info.profile_image or 'default_avatar.png'}}" alt="">
+                    </div>
+                    <div class="profile-content-wrapper">
+                        <h6>{{ info.first_name }} {{ info.last_name }}</h6>
+                        <p>{{ info.location or "update location"}}</p>
+                    </div>
                 </div>
                 <div class="profile-about-wrapper">
-<p>{{ info.about}}</p>
+                    <p>{{ info.about }}</p>
+                </div>
+                <div class="row">
+                    <a class="btn" type="button" href="{{ url_for('edit_profile', name=info.name_slug)}}">Edit Profile</a>
                 </div>
             </div>
             {% endfor %}

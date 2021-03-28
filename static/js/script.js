@@ -23,3 +23,23 @@ function previewImg() {
     }
 
 }
+
+
+validateDropdown();
+function validateDropdown() {
+    let role = $('#role_dropdown > div > .dropdown-trigger').val()
+    let skill = $('#skills_dropdown > div > .dropdown-trigger').val()
+    $("#update_profile_button_init").click(function () {
+        if (role == "Choose your role") {
+            $('#helper_error_role').removeClass("hide");
+            $('#update_profile_button_init').removeClass("modal-trigger")
+        }
+        if (skill == "Select your skills") {
+            $('#helper_error_skill').removeClass("hide");
+            $('#update_profile_button_init').removeClass("modal-trigger")
+        }
+        else {
+            $('#update_profile_button_init').addClass("modal-trigger")
+        }
+    })
+}
