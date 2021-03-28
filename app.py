@@ -74,7 +74,7 @@ def register():
         mongo.db.users.insert_one(register)
 
         # put user info into session
-        session['user'] = request.form.get("email")
+        session['user'] = full_name
         flash("Reg successful", name_slug_exists)
         return redirect(url_for("edit_profile", name=full_name))
 
@@ -93,7 +93,7 @@ def login():
             if check_password_hash(
                 existing_user["password"],
                     request.form.get("password_lg")):
-                session["user"] = request.form.get("email_lg")
+                session["user"] = existing_user["name_slug"]
 
                 # if valid, redirect to profile page
                 return redirect(url_for(
@@ -167,10 +167,10 @@ def edit_profile(name):
 def profile(name):
 
     # create full name string for profile page
-    names = mongo.db.users.find_one({"email": session["user"]})["name_slug"]
+    names = mongo.db.users.find_one({"name_slug": session["user"]})
 
     profile_data = list(
-        mongo.db.users.find({"email": session["user"]}))
+        mongo.db.users.find({"name_slug": session["user"]}))
 
     if session["user"]:
         return render_template(

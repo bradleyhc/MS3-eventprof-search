@@ -24,12 +24,12 @@
             <a href="#" data-target="mobile-nav" class="sidenav-trigger hide-on-large-and-up right"><i
                     class="fas fa-bars"></i></a>
             <ul id="nav-desktop" class="right hide-on-med-and-down">
-                <li><a href="#">Home</a></li>
+                <li><a href="{{ url_for('homepage') }}">Home</a></li>
                 <li><a href="#">Freelancers</a></li>
                 <li><a href="#">Project Opportunities</a></li>
                 <li><a class="modal-trigger" href="#modal-register">Register</a></li>
                 <li><a class="modal-trigger" href="#modal-login">Login</a></li>
-                <li><a href="#">My Profile</a></li>
+                <li><a href="{{ url_for('profile', name=session['user']) }}">My Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             </ul>
             <!-- Mobile -->
