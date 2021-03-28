@@ -11,93 +11,114 @@
 
 
 <section class="main-body">
-    <div class="container">
+    <div class="container p-top-50">
         <div class="row s12">
             {% for info in data %}
-            <div class="col s8 d-flex">
-                <form class="" action="{{ url_for('edit_profile', name=info.first_name+'_'+info.last_name) }}"
-                    method="POST" enctype="multipart/form-data">
-                    <div class="profile-img-wrapper">
-                        <input type="file" id="profile_img" name="profile_img" onchange="previewImg(this);">
-                        <img class="profile-image"
-                            src="/static/images/user_uploads/{{ info.profile_image or 'default_avatar.png'}}" alt="">
-                    </div>
-                    <div class="profile-content-wrapper">
-                        <div class="row">
-                            <!-- First name input -->
-                            <div class="input-field col s6">
-                                <label for="first_name">First Name</label>
-                                <input type="text" id="first_name" name="first_name" value="{{ info.first_name }}"
-                                    class="validation" required>
-                            </div>
+            <div class="col s8">
 
-                            <!-- Last name input -->
-                            <div class="input-field col s6">
-                                <label for="last_name">Last Name</label>
-                                <input type="text" id="last_name" name="last_name" value="{{ info.last_name }}"
-                                    class="validation" required>
-                            </div>
+                <form class="" action="{{ url_for('edit_profile', name=info.name_slug) }}" method="POST"
+                    enctype="multipart/form-data">
+                    <div class="d-flex s12">
+                        <div class="profile-img-wrapper">
+                            <label for="profile_img" id="edit_profile_img_overlay">
+                                <i class="fas fa-camera"></i>
+                                <input type="file" id="profile_img" name="profile_img" onchange="previewImg(this);">
+                            </label>
+                            <img class="profile-image"
+                                src="/static/images/user_uploads/{{ info.profile_image or 'default_avatar.png'}}"
+                                alt="">
                         </div>
-                        <div class="row">
-                            <!-- Rate input -->
-                            <div class="input-field col s6">
-                                <label for="rate">Rate</label>
-                                <input type="text" id="rate" name="rate" value="{{ info.rate }}" class="validation"
-                                    required>
-                            </div>
+                        <div class="profile-content-wrapper gutter-l">
+                            <div class="row">
+                                <!-- First name input -->
+                                <div class="input-field col s6">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" id="first_name" name="first_name" value="{{ info.first_name }}"
+                                        class="validation" required>
+                                </div>
 
-                            <!-- Location input -->
-                            <div class="input-field col s6">
-                                <label for="location">Location</label>
-                                <input type="text" id="location" name="location" value="{{ info.location }}"
-                                    class="validation" required>
+                                <!-- Last name input -->
+                                <div class="input-field col s6">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" id="last_name" name="last_name" value="{{ info.last_name }}"
+                                        class="validation" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <!-- Role input -->
-                            <div class="input-field col s12" id="role_dropdown">
-                                <select id="role" name="role">
-                                    <option value="" disabled>Choose your role</option>
-                                    {% for role in roles %}
+                            <div class="row">
+                                <!-- Rate input -->
+                                <div class="input-field col s6">
+                                    <label for="rate">Day Rate</label>
+                                    <input type="text" id="rate" name="rate" value="{{ info.rate }}" class="validation"
+                                        required>
+                                </div>
+
+                                <!-- Location input -->
+                                <div class="input-field col s6">
+                                    <label for="location">Location</label>
+                                    <input type="text" id="location" name="location" value="{{ info.location }}"
+                                        class="validation" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- Role input -->
+                                <div class="input-field col s12" id="role_dropdown">
+                                    <select id="role" name="role">
+                                        <option value="" disabled selected>Choose your role</option>
+                                        {% for role in roles %}
                                         {%if role.role_name in info.role %}
-                                            <option value="{{ role.role_name }}" selected>{{ role.role_name }}</option>
+                                        <option value="{{ role.role_name }}" selected>{{ role.role_name }}</option>
                                         {% else %}
-                                            <option value="{{ role.role_name }}">{{ role.role_name }}</option>
+                                        <option value="{{ role.role_name }}">{{ role.role_name }}</option>
                                         {% endif %}
-                                    {% endfor %}
-                                </select>
-                                <label>My Role</label>
-                                <span class="helper-text">Which title best describes your day to day work?</span>
-                                <span class="helper-text-error hide" id="helper_error_role">Please select a role before continuing!</span>
+                                        {% endfor %}
+                                    </select>
+                                    <label>My Role</label>
+                                    <span class="helper-text">Which title best describes your day to day work?</span>
+                                    <span class="helper-text-error hide" id="helper_error_role">Please select a role
+                                        before continuing!</span>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="profile-about-wrapper">
                         <div class="row">
                             <!-- Skills input -->
                             <div class="input-field col s12" id="skills_dropdown">
                                 <select id="skills" name="skills[]" multiple required>
                                     <option value="" disabled>Select your skills</option>
                                     {% for skill in skills %}
-                                        {%if skill.skill_name in info.skills %}
-                                            <option value="{{ skill.skill_name }}" selected>{{ skill.skill_name }}</option>
-                                        {% else %}
-                                            <option value="{{ skill.skill_name }}">{{ skill.skill_name }}</option>
-                                        {% endif %}
+                                    {%if skill.skill_name in info.skills %}
+                                    <option value="{{ skill.skill_name }}" selected>{{ skill.skill_name }}</option>
+                                    {% else %}
+                                    <option value="{{ skill.skill_name }}">{{ skill.skill_name }}</option>
+                                    {% endif %}
                                     {% endfor %}
                                 </select>
                                 <label>My Skills</label>
-                                <span class="helper-text-error hide" id="helper_error_skill">Please select at least one skill before continuing!</span>
-
+                                <span class="helper-text-error hide" id="helper_error_skill">Please select at least one
+                                    skill before continuing!</span>
                             </div>
                         </div>
-                        <p>{{ info.location or "update location"}}</p>
+
+                        <!-- About input -->
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="about_textarea" name="about_textarea" class="materialize-textarea"
+                                    value="{{ info.about }}" required></textarea>
+                                <label for="about_textarea">About Me</label>
+                                <span class="helper-text">Tell others a little about yourself.</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="profile-about-wrapper">
-                        <p>{{ info.about}}</p>
-                    </div>
-                    <button id="update_profile_button_init" href="#confirm_update" class="modal-trigger" onclick="validateDropdown();">Update Profile</button>
-                    <!-- <button id="update_profile_button_init" type="submit">Update Profile</button> -->
+
+                    <!-- Initial update button (inits modal for second confirmation) -->
+                    <button id="update_profile_button_init" href="#confirm_update" class="btn modal-trigger"
+                        onclick="validateDropdown();">Update Profile</button>
+                    
                     <div class="modal" id="confirm_update">
                         <div class="modal-content">
+                            <h4>Are you sure?</h4>
+                            <p>Clicking update below will overwrite any existing profile data with the new information you have provided.</p>
                             <button class="btn confirm-update-btn" type="submit">Update Profile</button>
                             <a class="btn cancel-btn modal-close">Cancel</a>
                         </div>
