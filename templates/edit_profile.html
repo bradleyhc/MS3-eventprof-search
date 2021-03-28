@@ -54,16 +54,26 @@
                         </div>
                         <div class="row">
                             <!-- Role input -->
-                            <div class="input-field col s6">
-                                <label for="role">Role</label>
-                                <input type="text" id="role" name="role" value="{{ info.role }}" class="validation"
-                                    required>
+                            <div class="input-field col s12">
+                                <select id="role" name="role" multiple>
+                                    <option value="" disabled selected>Choose your role</option>
+                                    {% for role in roles %}
+                                        {%if role.role_name in info.role %}
+                                            <option value="{{ role.role_name }}" selected>{{ role.role_name }}</option>
+                                        {% else %}
+                                            <option value="{{ role.role_name }}">{{ role.role_name }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                                <label>My Role</label>
+                                <span class="helper-text">Which title best describes your day to day work?</span>
                             </div>
                         </div>
                         <div class="row">
                             <!-- Skills input -->
                             <div class="input-field col s12">
                                 <select id="skills" name="skills[]" multiple>
+                                    <option value="" disabled selected>Select your skills</option>
                                     {% for skill in skills %}
                                         {%if skill.skill_name in info.skills %}
                                             <option value="{{ skill.skill_name }}" selected>{{ skill.skill_name }}</option>
@@ -72,7 +82,7 @@
                                         {% endif %}
                                     {% endfor %}
                                 </select>
-                                <label>Materialize Multiple Select</label>
+                                <label>My Skills</label>
                             </div>
                         </div>
                         <p>{{ info.location or "update location"}}</p>
