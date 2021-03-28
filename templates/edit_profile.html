@@ -25,10 +25,9 @@
                                 <input type="file" id="profile_img" name="profile_img" value="{{ info.profile_image }}" onchange="previewImg(this);">
                             </label>
                             <img class="profile-image"
-                                src="/static/images/user_uploads/{{ info.profile_image or 'default_avatar.png'}}"
+                                src="/static/images/user_uploads/{{ info.profile_image }}"
                                 alt="">
                         </div>
-                       <p>my image file name  {{ info.profile_image }}</p>
                         <div class="profile-content-wrapper gutter-l">
                             <div class="row">
                                 <!-- First name input -->
@@ -105,7 +104,7 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <textarea id="about_textarea" name="about_textarea" class="materialize-textarea"
-                                    value="{{ info.about }}" required></textarea>
+                                    value="{{ info.about }}" required>{{ info.about }}</textarea>
                                 <label for="about_textarea">About Me</label>
                                 <span class="helper-text">Tell others a little about yourself.</span>
                             </div>
