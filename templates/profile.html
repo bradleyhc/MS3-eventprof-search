@@ -18,10 +18,10 @@
                 <div class="d-flex">
                     <div class="profile-img-wrapper">
                         <img class="profile-image"
-                            src="/static/images/user_uploads/{{ info.profile_image or 'default_avatar.png'}}" alt="">
+                            src="/static/images/user_uploads/{{ info.profile_image }}" alt="">
                     </div>
                     <div class="profile-content-wrapper">
-                        <h6>{{ info.first_name }} {{ info.last_name }}</h6>
+                        <h6>{{ info.profile_image }}{{ info.first_name }} {{ info.last_name }}</h6>
                         <p>{{ info.location or "update location"}}</p>
                     </div>
                 </div>

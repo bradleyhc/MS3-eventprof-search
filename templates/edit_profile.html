@@ -22,12 +22,13 @@
                         <div class="profile-img-wrapper">
                             <label for="profile_img" id="edit_profile_img_overlay">
                                 <i class="fas fa-camera"></i>
-                                <input type="file" id="profile_img" name="profile_img" onchange="previewImg(this);">
+                                <input type="file" id="profile_img" name="profile_img" value="{{ info.profile_image }}" onchange="previewImg(this);">
                             </label>
                             <img class="profile-image"
                                 src="/static/images/user_uploads/{{ info.profile_image or 'default_avatar.png'}}"
                                 alt="">
                         </div>
+                       <p>my image file name  {{ info.profile_image }}</p>
                         <div class="profile-content-wrapper gutter-l">
                             <div class="row">
                                 <!-- First name input -->
