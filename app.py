@@ -1,9 +1,11 @@
 import os
+import json
 from flask import (Flask, flash, redirect,
-                   render_template, request, url_for, session)
+                   render_template, request, url_for, session, jsonify)
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from bson.objectid import ObjectId
+from bson import json_util
 from flask_pymongo import PyMongo
 if os.path.exists("env.py"):
     import env
@@ -75,6 +77,7 @@ def edit_profile(name):
         mongo.db.users.find({"email": session["user"]}))
 
     skills = list(mongo.db.skills.find())
+    roles = list(mongo.db.roles.find())
 
     if request.method == "POST":
         update = {
@@ -91,10 +94,11 @@ def edit_profile(name):
 
         return render_template(
             "edit_profile.html", name=full_name,
-            data=profile_data, skills=skills)
+            data=profile_data, skills=skills, roles=roles)
 
     return render_template(
-        "edit_profile.html", name=full_name, data=profile_data, skills=skills)
+        "edit_profile.html", name=full_name,
+        data=profile_data, skills=skills, roles=roles)
 
 
 @app.route("/profile/<name>", methods=["GET", "POST"])
