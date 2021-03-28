@@ -47,34 +47,62 @@ def register():
         u_type_input = request.form.get("user_type")
         user_type = "freelancer" if u_type_input is None else "employer"
 
+        # create full name string for profile page
+        full_name = request.form.get(
+            "first_name").lower() + "_" + request.form.get("last_name").lower()
+
         register = {
             "first_name": request.form.get("first_name"),
             "last_name": request.form.get("last_name"),
+            "name_slug": full_name,
             "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password")),
             "user_type": user_type
         }
 
-        # create full name string for profile page
-        full_name = request.form.get(
-            "first_name").lower() + "_" + request.form.get("last_name").lower()
-
         mongo.db.users.insert_one(register)
 
         # put user info into session
         session['user'] = request.form.get("email")
-        print(session["user"])
         flash("Reg successful")
         return render_template("profile.html", name=full_name, data=register)
 
     return render_template("home.html")
 
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+
+        # check if user exists
+        existing_user = mongo.db.users.find_one(
+            {"email": request.form.get("email_lg")})
+
+        if existing_user:
+            if check_password_hash(
+                existing_user["password"],
+                    request.form.get("password_lg")):
+                session["user"] = request.form.get("email_lg")
+
+                # if valid, redirect to profile page
+                return redirect(url_for(
+                    "profile", name=existing_user["name_slug"]))
+
+            # invalid password
+            else:
+                flash("Incorrect user details, please try again")
+                return redirect(url_for("login"))
+
+        # user does not exist
+        else:
+            flash("Incorrect user details, please try again")
+            return redirect(url_for("login"))
+
+    return render_template("login.html")
+
+
 @app.route("/edit_profile/<name>", methods=["GET", "POST"])
 def edit_profile(name):
-
-    
-
     # create full name string for profile page
     names = mongo.db.users.find_one({"email": session["user"]})
 
@@ -117,17 +145,16 @@ def edit_profile(name):
 def profile(name):
 
     # create full name string for profile page
-    names = mongo.db.users.find_one({"email": session["user"]})
-
-    full_name = names[
-        "first_name"].lower() + "_" + names["last_name"].lower()
+    names = mongo.db.users.find_one({"email": session["user"]})["name_slug"]
 
     profile_data = list(
         mongo.db.users.find({"email": session["user"]}))
 
     if session["user"]:
         return render_template(
-            "profile.html", name=full_name, data=profile_data)
+            "profile.html", name=names, data=profile_data)
+    else:
+        return render_template("home.html")
 
 
 @app.route("/freelancers")
