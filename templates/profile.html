@@ -11,7 +11,7 @@
 
 
 <section class="main-body">
-    <div class="container">
+    <div class="container p-top-50">
         <div class="row s12">
             {% for info in data %}
             <div class="col s8">
@@ -21,7 +21,7 @@
                             src="/static/images/user_uploads/{{ info.profile_image }}" alt="">
                     </div>
                     <div class="profile-content-wrapper">
-                        <h6>{{ info.profile_image }}{{ info.first_name }} {{ info.last_name }}</h6>
+                        <h6>{{ info.first_name }} {{ info.last_name }}</h6>
                         <p>{{ info.location or "update location"}}</p>
                     </div>
                 </div>
