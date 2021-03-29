@@ -121,6 +121,11 @@ nav {
     margin: 0;
 }
 
+.datepicker-modal { 
+    padding: 0;
+    width: auto;
+}
+
 /* Utils */
 .m-top-40 {
     margin-top: 40px;
