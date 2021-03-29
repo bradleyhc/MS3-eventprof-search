@@ -58,7 +58,6 @@ def register():
             {"first_name": request.form.get("first_name"),
                 "last_name": request.form.get("last_name")})
 
-        print(name_slug_exists)
         if name_slug_exists:
             full_name += str(name_slug_exists+1)
 
@@ -181,12 +180,17 @@ def profile(name):
 
 """ Project CRUD functions """
 
+
 @app.route("/add_project", methods=["GET", "POST"])
 def add_project():
+
+    skills = list(mongo.db.skills.find())
+    roles = list(mongo.db.roles.find())
+
     if request.method == "POST":
         print("oops")
 
-        created_by = mongo.db.users.find({"name_slug": session["user"]})
+        created_by = session["user"]
 
         project = {
             "title": request.form.get("title"),
@@ -205,7 +209,7 @@ def add_project():
         flash("Project successfully added!")
         return redirect(url_for("profile", name=created_by))
 
-    return render_template("add_project.html")
+    return render_template("add_project.html", skills=skills, roles=roles)
 
 
 @app.route("/freelancers")

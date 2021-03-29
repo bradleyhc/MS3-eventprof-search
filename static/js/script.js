@@ -3,6 +3,7 @@ $(document).ready(function () {
     $('.sidenav').sidenav({ edge: "right" });
     $('.modal').modal();
     $('select').formSelect();
+    $('.datepicker').datepicker();
     // Hide flash messages on button click
     $("button.close-flash").click(function () {
         $("div.flash-msg").fadeOut();
@@ -30,11 +31,11 @@ function validateDropdown() {
     let role = $('#role_dropdown > div > .dropdown-trigger').val()
     let skill = $('#skills_dropdown > div > .dropdown-trigger').val()
     $("#update_profile_button_init").click(function () {
-        if (role == "Choose your role") {
+        if (role == ("Choose your role" || "Select required role")) {
             $('#helper_error_role').removeClass("hide");
             $('#update_profile_button_init').removeClass("modal-trigger")
         }
-        if (skill == "Select your skills") {
+        if (skill == ("Select your skills" || "Select required skills")) {
             $('#helper_error_skill').removeClass("hide");
             $('#update_profile_button_init').removeClass("modal-trigger")
         }
