@@ -28,7 +28,9 @@ h4 {
 
 p {
     font-size: 1.2rem;
-    white-space: normal;
+    white-space: pre-wrap;
+    margin: auto 0;
+    word-break: break-word;
 }
 
 
@@ -152,6 +154,10 @@ nav {
     margin:auto;
 }
 
+.ml-auto {
+    margin-left: auto;
+}
+
 .p-top-50 {
     padding-top: 50px;
 }
@@ -161,6 +167,10 @@ nav {
 }
 .px-50 {
     padding: 0px 50px;
+}
+
+.pl-0 {
+    padding-left: 0px;
 }
 
 .pr-5 {
@@ -189,6 +199,10 @@ nav {
 
 span.divide-pipe {
     margin: auto 15px;
+}
+
+.space-between {
+    justify-content: space-between;
 }
 
 /* Profile page */
@@ -248,4 +262,9 @@ input#profile_img {
     border-radius: 0px 0px 10px 10px;
     display: flex;
     justify-content: flex-end;
+}
+
+p.created-by {
+    color: #777777;
+    font-size: 1.1rem;
 }
