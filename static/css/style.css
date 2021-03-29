@@ -71,6 +71,16 @@ button.close-flash{
     padding-bottom: 10px;
 }
 
+.card-stacked-item * {
+    margin: auto;
+}
+
+.card-stacked-item {
+    padding-bottom: 10px;
+    justify-content: center;
+    margin: auto;
+}
+
 .input-field {
     margin-top: 0.5rem;
 }
@@ -106,6 +116,10 @@ nav {
     border-bottom: 5px solid #52f2d4;
     width: max-content;
 }
+h4.title-feat {
+    padding-bottom: 7px;
+    border-bottom: 3px solid #52f2d4;
+}
 
 .primary-btn {
     background-color: #516fef;
@@ -125,6 +139,7 @@ nav {
 .flex-grid-thirds .col {
     flex: 1;
     margin: 10px;
+    min-width: 30%;
 }
 
 
@@ -226,6 +241,17 @@ span.divide-pipe {
     box-shadow: 1px 1px 20px -5px #777777;
 }
 
+.card-img-wrapper {
+    max-width: 150px;
+    max-height: 150px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 1px 1px 20px -5px #777777;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
 .profile-image {
     width: 100%;
     height: auto;
@@ -277,4 +303,12 @@ input#profile_img {
 p.created-by {
     color: #777777;
     font-size: 1.1rem;
+}
+
+/* Freelancer pages */
+
+.freelancer-card > .card-action:last-child {
+    border-radius: 0px 0px 10px 10px;
+    display: flex;
+    justify-content: center;
 }

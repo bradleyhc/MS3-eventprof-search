@@ -14,33 +14,35 @@
 <section class="main-body">
     <div class="container p-top-50">
         <div class="row s12 flex-grid-thirds">
-            {% for project in freelancers %}
-            
-
-                <div class="card project-card col">
+            {% for freelancer in freelancers %}
+            <!-- Freelancer card -->
+                <div class="card freelancer-card col">
                     <div class="card-content">
-                        <div class="stacked-item">
-                            <h3 class="title-feat">{{ project.title }}</h3>
+                        <div class="card-img-wrapper">
+                        <img class="profile-image" src="/static/images/user_uploads/{{ freelancer.profile_image }}" alt="">
+                    </div>
+                        <div class="card-stacked-item">
+                            <h4 class="title-feat">{{ freelancer.first_name }} {{ freelancer.last_name }}</h4>
                         </div>
-                        <div class="row d-flex stacked-item">
-                            <p><i class="fas fa-user pr-5"></i> {{ project.role }}</p><span class="divide-pipe"> |
+                        <div class="row d-flex card-stacked-item">
+                            <p><i class="fas fa-user pr-5"></i> {{ freelancer.role }}</p><span class="divide-pipe"> |
                             </span>
-                            <p><i class="fas fa-map-marker-alt pr-5"></i> {{ project.location }}</p><span
-                                class="divide-pipe"> | </span>
-                            <p><i class="fas fa-calendar-alt pr-5"></i> {{ project.start_date }} -
-                                {{ project.end_date }}</p>
+                            <p><i class="fas fa-map-marker-alt pr-5"></i> {{ freelancer.location }}</p>
+                            
                         </div>
                         <!-- Skills -->
-                        <div class="row d-flex stacked-item">
-                            {% for skill in project.skills %}
+                        <div class="row d-flex card-stacked-item">
+                            {% for skill in freelancer.skills %}
                             <div class="chip">{{skill}}</div>
                             {% endfor %}
                         </div>
-                        <p>{{ project.description|truncate(200, False, '...') }}</p>
+                        <p>{{ freelancer.about|truncate(50, False, '...') }}</p>
                     </div>
                     <div class="card-action">
-                        <a href="{{ url_for('view_project', project_id=project.slug) }}" class="btn primary-btn">View More</a>
-                        <a href="#" class="gutter-l btn secondary-btn">Edit this Project</a>
+                        <a href="{{ url_for('profile', name=freelancer.name_slug) }}" class="btn primary-btn">View More</a>
+                        {% if freelancer.name_slug != session['user']%}
+                        <a href="#" class="gutter-l btn secondary-btn">Send Email</a>
+                        {% endif %}
                     </div>
                 </div>
 
