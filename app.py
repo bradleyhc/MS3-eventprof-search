@@ -188,9 +188,14 @@ def add_project():
     roles = list(mongo.db.roles.find())
 
     if request.method == "POST":
-        print("oops")
 
-        created_by = session["user"]
+        submitter_slug = session["user"]
+        submitter = mongo.db.users.find_one(
+            {"name_slug": submitter_slug})
+        submitter_name = submitter["first_name"] + " " + submitter["last_name"]
+        inc_slug = 0
+        inc_slug += (mongo.db.projects.count() + 1)
+        next_slug = str(inc_slug)
 
         project = {
             "title": request.form.get("title"),
@@ -201,13 +206,15 @@ def add_project():
             "skills": request.form.getlist("skills[]"),
             "location": request.form.get("location"),
             "posted_date": datetime.datetime.now(),
-            "created_by": created_by,
+            "submitter_slug": submitter_slug,
+            "submitted_name": submitter_name,
+            "slug": str(next_slug)
         }
 
         mongo.db.projects.insert_one(project)
 
         flash("Project successfully added!")
-        return redirect(url_for("profile", name=created_by))
+        return redirect(url_for("profile", name=submitter_slug))
 
     return render_template("add_project.html", skills=skills, roles=roles)
 
@@ -226,8 +233,7 @@ def view_project(project_id):
     project_data = list(mongo.db.projects.find({"slug": project_id}))
 
     return render_template(
-        "view_project.html", project_id=project_id,
-        data=project_data, posted_by=posted_by)
+        "view_project.html", project_id=project_id, data=project_data)
 
 
 @app.route("/freelancers")

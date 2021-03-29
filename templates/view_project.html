@@ -2,7 +2,7 @@
 {% block title %}View Project{% endblock %}
 {% block content %}
 
-<p>{{ posted_by }}</p>
+
 
 {% for project in data %}
 <header class="header-title-section">
@@ -23,7 +23,7 @@
                     
                     <div class="profile-content-wrapper">
                         <div class="stacked-item">
-                            <p class="created-by">Posted by: {{ project.created_by}} on {{ project.posted_date.strftime('%b %d, %Y') }}</p>
+                            <p class="created-by">Posted by: {{ project.submitted_name}} on {{ project.posted_date.strftime('%b %d, %Y') }}</p>
                         </div>
                         <div class="row d-flex stacked-item">
                             <p><i class="fas fa-user pr-5"></i> {{ project.role }}</p><span class="divide-pipe"> |
