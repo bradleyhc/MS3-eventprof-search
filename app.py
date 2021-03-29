@@ -171,12 +171,19 @@ def profile(name):
     # create full name string for profile page
     names = mongo.db.users.find_one({"name_slug": session["user"]})
 
+    # get single user profile data
     profile_data = list(
         mongo.db.users.find({"name_slug": session["user"]}))
 
+    # get all freelancers and projects for sidebar widget
+    all_freelancers = mongo.db.users.find(
+        {"user_type": "freelancer", "is_hidden": False})
+    all_projects = mongo.db.projects.find()
+
     if session["user"]:
         return render_template(
-            "profile.html", name=names, data=profile_data)
+            "profile.html", name=names, data=profile_data,
+            projects=all_projects, freelancers=all_freelancers)
     else:
         return render_template("home.html")
 
@@ -233,10 +240,17 @@ def get_projects():
 @app.route("/view_project/<project_id>", methods=["GET", "POST"])
 def view_project(project_id):
 
+    # get single project information
     project_data = list(mongo.db.projects.find({"slug": project_id}))
 
+    # get all freelancers and projects for sidebar widget
+    all_freelancers = mongo.db.users.find(
+        {"user_type": "freelancer", "is_hidden": False})
+    all_projects = mongo.db.projects.find()
+
     return render_template(
-        "view_project.html", project_id=project_id, data=project_data)
+        "view_project.html", project_id=project_id,
+        data=project_data, freelancers=all_freelancers, projects=all_projects)
 
 
 @app.route("/edit_project/<project_id>", methods=["GET", "POST"])
@@ -285,6 +299,22 @@ def get_freelancers():
         {"user_type": "freelancer", "is_hidden": False})
 
     return render_template("all_freelancers.html", freelancers=freelancers)
+
+
+""" Sidebar widget for similar items """
+
+
+@app.route("/sidebar_widget", methods=["GET", "POST"])
+def sidebar_widget():
+
+    get_freelancers = mongo.db.users.find(
+        {"user_type": "freelancer", "is_hidden": False})
+
+    get_projects = mongo.db.projects.find()
+
+    return render_template(
+        "similar_widget.html", w_projects=get_projects,
+        w_freelancers=get_freelancers)
 
 
 if __name__ == "__main__":

@@ -60,7 +60,9 @@
                     </div>
                 </div>
                 <div class="col s4">
-                    the widget
+                    {% include "similar_widget.html" %}
+                    {% block widget %}
+                    {% endblock %}
                 </div>
             
         </div>
