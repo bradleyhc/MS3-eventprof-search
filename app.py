@@ -236,6 +236,42 @@ def view_project(project_id):
         "view_project.html", project_id=project_id, data=project_data)
 
 
+@app.route("/edit_project/<project_id>", methods=["GET", "POST"])
+def edit_project(project_id):
+
+    # get all skills and roles from DB
+    skills = list(mongo.db.skills.find())
+    roles = list(mongo.db.roles.find())
+
+    # get existing project data
+    project_data = list(mongo.db.projects.find({"slug": project_id}))
+
+    if request.method == "POST":
+
+        # add form data to dict
+        project = {
+            "title": request.form.get("title"),
+            "description": request.form.get("description"),
+            "start_date": request.form.get("start_date"),
+            "end_date": request.form.get("end_date"),
+            "role": request.form.get("role"),
+            "skills": request.form.getlist("skills[]"),
+            "location": request.form.get("location"),
+            "posted_date": datetime.datetime.now()
+        }
+
+        mongo.db.projects.update_one(
+            {"slug": project_id}, {"$set": project})
+
+        flash("Your project has been updated!")
+        return redirect(url_for(
+            "view_project", project_id=project_id))
+
+    return render_template(
+        "edit_project.html", project_id=project_id,
+        data=project_data, skills=skills, roles=roles)
+
+
 @app.route("/freelancers")
 def get_freelancers():
     return render_template("freelancers.html")

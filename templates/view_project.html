@@ -33,7 +33,7 @@
                             {% if project.submitter_slug != session['user'] %}
                             <a href="#" class="btn primary-btn">Email Project Owner</a>
                             {% else %}
-                            <a href="{{ url_for('edit_project') }}" class="btn primary-btn gutter-l">Edit this Project</a>
+                            <a href="{{ url_for('edit_project', project_id=project.slug) }}" class="btn primary-btn gutter-l">Edit this Project</a>
                             {% endif %}
                         </div>
                     </div>
