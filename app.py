@@ -272,9 +272,15 @@ def edit_project(project_id):
         data=project_data, skills=skills, roles=roles)
 
 
-@app.route("/freelancers")
+""" Freelancer Loop """
+
+
+@app.route("/freelancers", methods=["GET", "POST"])
 def get_freelancers():
-    return render_template("freelancers.html")
+
+    freelancers = mongo.db.users.find({"user_type": "freelancer"})
+
+    return render_template("all_freelancers.html", freelancers=freelancers)
 
 
 if __name__ == "__main__":

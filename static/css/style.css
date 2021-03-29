@@ -47,8 +47,8 @@ section.main-body {
 
 .flash-msg {
     width: 50%;
-    background: #dedede;
-    box-shadow: 2px 3px 16px #afafaf;
+    background: #51efd1;
+    box-shadow: 2px 3px 16px -3px #5f5f5f;
     padding: 20px;
     margin: 20px auto;
     border-radius: 3px;
@@ -115,6 +115,16 @@ nav {
 .secondary-btn {
     background-color: #ef516f;
     border-radius: 5px;
+}
+
+.flex-grid-thirds {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.flex-grid-thirds .col {
+    flex: 1;
+    margin: 10px;
 }
 
 
