@@ -76,7 +76,7 @@ def register():
         mongo.db.users.insert_one(register)
 
         # put user info into session
-        session['user'] = full_name
+        session['user'] = {"slug": full_name, "u_type": user_type}
         flash("Reg successful", name_slug_exists)
         return redirect(url_for("edit_profile", name=full_name))
 
@@ -95,7 +95,9 @@ def login():
             if check_password_hash(
                 existing_user["password"],
                     request.form.get("password_lg")):
-                session["user"] = existing_user["name_slug"]
+                session["user"] = {
+                    "slug": existing_user["name_slug"],
+                    "u-type": existing_user["user_type"]}
 
                 # if valid, redirect to profile page
                 return redirect(url_for(
@@ -124,10 +126,10 @@ def logout():
 @app.route("/edit_profile/<name>", methods=["GET", "POST"])
 def edit_profile(name):
     # create full name string for profile page
-    names = mongo.db.users.find_one({"name_slug": session["user"]})
+    names = mongo.db.users.find_one({"name_slug": session["user"]["slug"]})
 
     profile_data = list(
-        mongo.db.users.find({"name_slug": session["user"]}))
+        mongo.db.users.find({"name_slug": session["user"]["slug"]}))
 
     skills = list(mongo.db.skills.find())
     roles = list(mongo.db.roles.find())
@@ -155,7 +157,7 @@ def edit_profile(name):
         }
 
         mongo.db.users.update_one(
-            {"name_slug": session["user"]}, {"$set": update})
+            {"name_slug": session["user"]["slug"]}, {"$set": update})
 
         return render_template(
             "profile.html", name=names, data=profile_data)
@@ -169,11 +171,11 @@ def edit_profile(name):
 def profile(name):
 
     # create full name string for profile page
-    names = mongo.db.users.find_one({"name_slug": session["user"]})
+    names = mongo.db.users.find_one({"name_slug": session["user"]["slug"]})
 
     # get single user profile data
     profile_data = list(
-        mongo.db.users.find({"name_slug": session["user"]}))
+        mongo.db.users.find({"name_slug": session["user"]["slug"]}))
 
     # get all freelancers and projects for sidebar widget
     all_freelancers = mongo.db.users.find(
@@ -199,7 +201,7 @@ def add_project():
 
     if request.method == "POST":
 
-        submitter_slug = session["user"]
+        submitter_slug = session["user"]["slug"]
         submitter = mongo.db.users.find_one(
             {"name_slug": submitter_slug})
         submitter_name = submitter["first_name"] + " " + submitter["last_name"]

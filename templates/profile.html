@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="row d-flex stacked-item">
-                        <a class="btn" type="button" href="{{ url_for('edit_profile', name=session['user'])}}">Edit
+                        <a class="btn" type="button" href="{{ url_for('edit_profile', name=session['user']['slug'])}}">Edit
                             Profile</a>
                     </div>
                 </div>
