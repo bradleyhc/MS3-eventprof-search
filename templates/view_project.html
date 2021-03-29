@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}View Project{% endblock %}
+{% block content %}
+
+<header class="header-title-section">
+    <div class="header-bg"></div>
+    <div class="container m-auto">
+        <h1>View Project</h1>
+    </div>
+</header>
+
+
+
+<section class="main-body">
+    <div class="container p-top-50">
+        <div class="row s12">
+            {% for info in data %}
+            <div class="col s8 ">
+                <div class="d-flex s12">
+                    
+                    <div class="profile-content-wrapper gutter-l">
+                        <div class="col">
+                            <!-- Name -->
+                            <div class="row stacked-item">
+                                <h3 class="title-feat">{{ info.title }}</h3>
+                            </div>
+                            <!-- Rate & Location -->
+                            <div class="row d-flex stacked-item">
+                                <p>{{ info.rate }}</p><span class="divide-pipe"> | </span>
+                                <p>{{ info.location }}</p>
+                            </div>
+                            <!-- Role -->
+                            <div class="row d-flex stacked-item">
+                                <p>{{ info.role }}</p>
+                            </div>
+                            <!-- Skills -->
+                            <div class="row d-flex stacked-item">
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                    <div class="profile-about-wrapper d-flex s12">
+                        <div class="row d-flex stacked-item">
+                            <p>{{ info.about }}</p>
+                        </div>
+                    </div>
+                    <div class="row d-flex stacked-item">
+                        <a class="btn" type="button" href="{{ url_for('edit_profile', name=session['user'])}}">Edit
+                            Profile</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- Nearby projects widget -->
+            <div class="col s4">
+
+            </div>
+        </div>
+    
+
+</section>
+
+{% endblock %}

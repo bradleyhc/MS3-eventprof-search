@@ -220,6 +220,15 @@ def get_projects():
     return render_template("all_projects.html", projects=projects)
 
 
+@app.route("/view_project/<project_id>", methods=["GET", "POST"])
+def view_project(project_id):
+
+    project_data = list(mongo.db.projects.find({"slug": project_id}))
+
+    return render_template(
+        "view_project.html", project_id=project_id, data=project_data)
+
+
 @app.route("/freelancers")
 def get_freelancers():
     return render_template("freelancers.html")

@@ -39,7 +39,7 @@
                         <p>{{ project.description|truncate(200, False, '...') }}</p>
                     </div>
                     <div class="card-action">
-                        <a href="#" class="btn primary-btn">View More</a>
+                        <a href="{{ url_for('view_project', project_id=project.slug) }}" class="btn primary-btn">View More</a>
                         <a href="#" class="gutter-l btn secondary-btn">Edit this Project</a>
                     </div>
                 </div>
