@@ -239,6 +239,19 @@ span.divide-pipe {
     justify-content: space-between;
 }
 
+/* Home page */
+
+.home-bg {
+    background-image: url('../images/brand/ms3-bg-1920x1080.png');
+    position: fixed;
+    display: flex;
+    min-width: 100vw;
+    top: 0;
+    height: 100vh;
+    min-height: 100vh;
+    z-index: -1;
+}
+
 /* Profile page */
 
 .profile-img-wrapper {
