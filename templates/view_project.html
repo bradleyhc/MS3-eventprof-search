@@ -15,35 +15,41 @@
 
 
 <section class="main-body">
-    <div class="container p-top-50">
+    <div class="container">
         <div class="row s12">
-            
-            <div class="col s8 ">
-                <div class="d-flex s12">
-                    
-                    <div class="profile-content-wrapper">
-                        <div class="stacked-item">
-                            <p class="created-by">Posted by: {{ project.submitted_name}} on {{ project.posted_date.strftime('%b %d, %Y') }}</p>
-                        </div>
-                        <div class="row d-flex stacked-item">
+            <div class="profile-content-wrapper col s12">
+                    <div class="stacked-item">
+                        <p class="created-by">Posted by: {{ project.submitted_name}} on {{ project.posted_date.strftime('%b %d, %Y') }}</p>
+                    </div>
+                    <div class="row d-flex space-between stacked-item">
+                        <div class="d-flex">
                             <p><i class="fas fa-user pr-5"></i> {{ project.role }}</p><span class="divide-pipe"> |
                             </span>
                             <p><i class="fas fa-map-marker-alt pr-5"></i> {{ project.location }}</p><span
                                 class="divide-pipe"> | </span>
-                            <p><i class="fas fa-calendar-alt pr-5"></i> {{ project.start_date }} -
-                                {{ project.end_date }}</p>
+                            <p><i class="fas fa-calendar-alt pr-5"></i> {{ project.start_date}} - {{project.end_date }}</p>
                         </div>
-                        <!-- Skills -->
-                        <div class="row d-flex stacked-item">
-                            {% for skill in project.skills %}
-                            <div class="chip">{{skill}}</div>
-                            {% endfor %}
+                        <div class="col ml-auto">
+                            {% if project.submitter_slug != session['user'] %}
+                            <a href="#" class="btn primary-btn">Email Project Owner</a>
+                            {% else %}
+                            <a href="{{ url_for('edit_project') }}" class="btn primary-btn gutter-l">Edit this Project</a>
+                            {% endif %}
                         </div>
-                        <p>{{ project.description|truncate(200, False, '...') }}</p>
                     </div>
                 </div>
-                
-                    <div class="profile-about-wrapper d-flex s12">
+                <div class="col s8">
+                    <!-- Skills -->
+                    <div class="row d-flex stacked-item">
+                        {% for skill in project.skills %}
+                        <div class="chip">{{skill}}</div>
+                        {% endfor %}
+                    </div>
+
+
+
+
+                    <div class="profile-about-wrapper">
                         <div class="row d-flex stacked-item">
                             <p>{{ project.description }}</p>
                         </div>
@@ -53,14 +59,18 @@
                             Profile</a>
                     </div>
                 </div>
-            </div>
-            {% endfor %}
-            <!-- Nearby projects widget -->
-            <div class="col s4">
-
-            </div>
+                <div class="col s4">
+                    the widget
+                </div>
+            
         </div>
-    
+        {% endfor %}
+        <!-- Nearby projects widget -->
+        <div class="col s4">
+
+        </div>
+    </div>
+
 
 </section>
 
