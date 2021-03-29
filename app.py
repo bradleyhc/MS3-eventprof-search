@@ -125,11 +125,13 @@ def logout():
 
 @app.route("/edit_profile/<name>", methods=["GET", "POST"])
 def edit_profile(name):
-    # create full name string for profile page
-    names = mongo.db.users.find_one({"name_slug": session["user"]["slug"]})
 
+    # get user slug
+    u_slug = session["user"]["slug"]
+
+    # get user profile from DB
     profile_data = list(
-        mongo.db.users.find({"name_slug": session["user"]["slug"]}))
+        mongo.db.users.find({"name_slug": u_slug}))
 
     skills = list(mongo.db.skills.find())
     roles = list(mongo.db.roles.find())
@@ -139,7 +141,7 @@ def edit_profile(name):
         filename = secure_filename(image.filename)
 
         if filename == "":
-            filename = names["profile_image"]
+            filename = profile_data[0]["profile_image"]
         else:
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             mongo.save_file(image.filename, image)
@@ -157,13 +159,13 @@ def edit_profile(name):
         }
 
         mongo.db.users.update_one(
-            {"name_slug": session["user"]["slug"]}, {"$set": update})
+            {"name_slug": u_slug}, {"$set": update})
 
-        return render_template(
-            "profile.html", name=names, data=profile_data)
+        return redirect(url_for(
+            "profile", name=u_slug))
 
     return render_template(
-        "edit_profile.html", name=names,
+        "edit_profile.html", name=u_slug,
         data=profile_data, skills=skills, roles=roles)
 
 
