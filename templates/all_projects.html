@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+
+<header class="header-title-section">
+    <div class="header-bg"></div>
+    <div class="container m-auto">
+        <h1>Project Opportunities</h1>
+    </div>
+</header>
+
+
+
+<section class="main-body">
+    <div class="container p-top-50">
+        <div class="row s12">
+            {% for project in projects %}
+            <div class="row">
+
+                <div class="card project-card">
+                    <div class="card-content">
+                        <div class="stacked-item">
+                            <h3 class="title-feat">{{ project.title }}</h3>
+                        </div>
+                        <div class="row d-flex stacked-item">
+                            <p><i class="fas fa-user pr-5"></i> {{ project.role }}</p><span class="divide-pipe"> |
+                            </span>
+                            <p><i class="fas fa-map-marker-alt pr-5"></i> {{ project.location }}</p><span
+                                class="divide-pipe"> | </span>
+                            <p><i class="fas fa-calendar-alt pr-5"></i> {{ project.start_date }} -
+                                {{ project.end_date }}</p>
+                        </div>
+                        <!-- Skills -->
+                        <div class="row d-flex stacked-item">
+                            {% for skill in project.skills %}
+                            <div class="chip">{{skill}}</div>
+                            {% endfor %}
+                        </div>
+                        <p>{{ project.description|truncate(200, False, '...') }}</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="btn primary-btn">View More</a>
+                        <a href="#" class="gutter-l btn secondary-btn">Edit this Project</a>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+
+</section>
+
+{% endblock %}
