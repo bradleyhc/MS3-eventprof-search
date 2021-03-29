@@ -68,7 +68,9 @@ def register():
             "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password")),
             "user_type": user_type,
-            "profile_image": "default_avatar.png"
+            "profile_image": "default_avatar.png",
+            "is_hidden": True,
+            "is_admin": False
         }
 
         mongo.db.users.insert_one(register)
@@ -149,13 +151,14 @@ def edit_profile(name):
             "skills": request.form.getlist("skills[]"),
             "profile_image": filename,
             "about": request.form.get("about_textarea"),
+            "is_hidden": False
         }
 
         mongo.db.users.update_one(
             {"name_slug": session["user"]}, {"$set": update})
 
-        return redirect(url_for(
-            "profile", name=names))
+        return render_template(
+            "profile.html", name=names, data=profile_data)
 
     return render_template(
         "edit_profile.html", name=names,
@@ -278,7 +281,8 @@ def edit_project(project_id):
 @app.route("/freelancers", methods=["GET", "POST"])
 def get_freelancers():
 
-    freelancers = mongo.db.users.find({"user_type": "freelancer"})
+    freelancers = mongo.db.users.find(
+        {"user_type": "freelancer", "is_hidden": False})
 
     return render_template("all_freelancers.html", freelancers=freelancers)
 
