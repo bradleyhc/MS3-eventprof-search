@@ -1,5 +1,6 @@
 import os
 import json
+import datetime
 from flask import (Flask, flash, redirect,
                    render_template, request, url_for, session, jsonify)
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -176,6 +177,35 @@ def profile(name):
             "profile.html", name=names, data=profile_data)
     else:
         return render_template("home.html")
+
+
+""" Project CRUD functions """
+
+@app.route("/add_project", methods=["GET", "POST"])
+def add_project():
+    if request.method == "POST":
+        print("oops")
+
+        created_by = mongo.db.users.find({"name_slug": session["user"]})
+
+        project = {
+            "title": request.form.get("title"),
+            "description": request.form.get("description"),
+            "start_date": request.form.get("start_date"),
+            "end_date": request.form.get("end_date"),
+            "role": request.form.get("role"),
+            "skills": request.form.getlist("skills[]"),
+            "location": request.form.get("location"),
+            "posted_date": datetime.datetime.now(),
+            "created_by": created_by,
+        }
+
+        mongo.db.projects.insert_one(project)
+
+        flash("Project successfully added!")
+        return redirect(url_for("profile", name=created_by))
+
+    return render_template("add_project.html")
 
 
 @app.route("/freelancers")
