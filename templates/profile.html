@@ -15,8 +15,8 @@
     <div class="container p-top-50">
         <div class="row s12">
             {% for info in data %}
-            <div class="col s8">
-                <div class="d-flex s12">
+            <div class="col s8 ">
+                <div class="d-flex s12 gutter-b">
                     <div class="profile-img-wrapper">
                         <img class="profile-image" src="/static/images/user_uploads/{{ info.profile_image }}" alt="">
                     </div>
@@ -24,7 +24,7 @@
                         <div class="col">
                             <!-- Name -->
                             <div class="row stacked-item">
-                                <h3>{{ info.first_name }} {{ info.last_name }}</h3>
+                                <h3 class="title-feat">{{ info.first_name }} {{ info.last_name }}</h3>
                             </div>
                             <!-- Rate & Location -->
                             <div class="row d-flex stacked-item">
@@ -38,20 +38,22 @@
                             <!-- Skills -->
                             <div class="row d-flex stacked-item">
                                 {% for skill in info.skills %}
-                                    <div class="chip">{{skill}}</div>
+                                <div class="chip">{{skill}}</div>
                                 {% endfor %}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="profile-about-wrapper">
-                    <div class="row">
-                        <p>{{ info.about }}</p>
+                
+                    <div class="profile-about-wrapper d-flex s12">
+                        <div class="row d-flex stacked-item">
+                            <p>{{ info.about }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <a class="btn" type="button" href="{{ url_for('edit_profile', name=session['user'])}}">Edit
-                        Profile</a>
+                    <div class="row d-flex stacked-item">
+                        <a class="btn" type="button" href="{{ url_for('edit_profile', name=session['user'])}}">Edit
+                            Profile</a>
+                    </div>
                 </div>
             </div>
             {% endfor %}
@@ -60,7 +62,7 @@
 
             </div>
         </div>
-    </div>
+    
 
 </section>
 
