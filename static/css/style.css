@@ -69,6 +69,7 @@ button.close-flash{
 
 .stacked-item {
     padding-bottom: 10px;
+    flex-wrap: wrap;
 }
 
 .card-stacked-item * {
@@ -115,6 +116,7 @@ nav {
     padding-bottom: 10px;
     border-bottom: 5px solid #52f2d4;
     width: max-content;
+    max-width: 100%;
 }
 h4.title-feat {
     padding-bottom: 7px;
@@ -140,6 +142,13 @@ h4.title-feat {
     flex: 1;
     margin: 10px;
     min-width: 30%;
+}
+
+.sidebar-widget-title {
+    padding: 10px 0px;
+    border-bottom: 5px solid #516fef;
+    margin-bottom: 15px;
+    max-width: max-content;
 }
 
 
@@ -207,7 +216,7 @@ h4.title-feat {
 }
 
 .gutter-r {
-    margin-right: 20px;
+    margin-right: 20px!important;
 }
 
 .gutter-t {

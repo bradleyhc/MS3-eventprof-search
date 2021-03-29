@@ -1,7 +1,38 @@
 {% block widget %}
-<h1>here we go</h1>
-{% for w_project in projects %}
-<h1>what about me{{ w_project.title}}</h1>
-{% endfor %}
+
+<h3 class="sidebar-widget-title">Similar Projects</h3>
+
+{% for w_project in projects if w_project.slug != project.slug %}
+{% if loop.index > 3 %}
+<!-- Do nothing -->
+{% else %}
+<div class="card sidebar">
+    <div class="card-content">
+        <!-- Title -->
+        <div class="stacked-item">
+            <h4 class="title-feat">{{ w_project.title }}</h4>
+        </div>
+        <!-- Role & Location -->
+        <div class="row d-flex stacked-item">
+            <p class="gutter-r"><i class="fas fa-user pr-5"></i> {{ w_project.role }}</p>
+            <p><i class="fas fa-map-marker-alt pr-5"></i> {{ w_project.location }}</p>
+        </div>
+        <!-- Skills -->
+        <div class="row d-flex stacked-item">
+            {% for skill in w_project.skills %}
+            <div class="chip">{{skill}}</div>
+            {% endfor %}
+        </div>
+        <!-- Card footer -->
+        <a href="{{url_for('view_project', project_id=w_project.slug)}}" class="btn primary-btn">View Project</a>
+
+
+
+    </div>
+</div>
+
+{% endif %}
+{%endfor %}
+
 
 {% endblock %}
