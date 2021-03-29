@@ -212,6 +212,14 @@ def add_project():
     return render_template("add_project.html", skills=skills, roles=roles)
 
 
+@app.route("/opportunities", methods=["GET"])
+def get_projects():
+
+    projects = mongo.db.projects.find()
+
+    return render_template("all_projects.html", projects=projects)
+
+
 @app.route("/freelancers")
 def get_freelancers():
     return render_template("freelancers.html")
