@@ -2,10 +2,13 @@
 {% block title %}View Project{% endblock %}
 {% block content %}
 
+<p>{{ posted_by }}</p>
+
+{% for project in data %}
 <header class="header-title-section">
     <div class="header-bg"></div>
     <div class="container m-auto">
-        <h1>View Project</h1>
+        <h1>{{ project.title }}</h1>
     </div>
 </header>
 
@@ -14,36 +17,35 @@
 <section class="main-body">
     <div class="container p-top-50">
         <div class="row s12">
-            {% for info in data %}
+            
             <div class="col s8 ">
                 <div class="d-flex s12">
                     
-                    <div class="profile-content-wrapper gutter-l">
-                        <div class="col">
-                            <!-- Name -->
-                            <div class="row stacked-item">
-                                <h3 class="title-feat">{{ info.title }}</h3>
-                            </div>
-                            <!-- Rate & Location -->
-                            <div class="row d-flex stacked-item">
-                                <p>{{ info.rate }}</p><span class="divide-pipe"> | </span>
-                                <p>{{ info.location }}</p>
-                            </div>
-                            <!-- Role -->
-                            <div class="row d-flex stacked-item">
-                                <p>{{ info.role }}</p>
-                            </div>
-                            <!-- Skills -->
-                            <div class="row d-flex stacked-item">
-                              
-                            </div>
+                    <div class="profile-content-wrapper">
+                        <div class="stacked-item">
+                            <p class="created-by">Posted by: {{ project.created_by}} on {{ project.posted_date.strftime('%b %d, %Y') }}</p>
                         </div>
+                        <div class="row d-flex stacked-item">
+                            <p><i class="fas fa-user pr-5"></i> {{ project.role }}</p><span class="divide-pipe"> |
+                            </span>
+                            <p><i class="fas fa-map-marker-alt pr-5"></i> {{ project.location }}</p><span
+                                class="divide-pipe"> | </span>
+                            <p><i class="fas fa-calendar-alt pr-5"></i> {{ project.start_date }} -
+                                {{ project.end_date }}</p>
+                        </div>
+                        <!-- Skills -->
+                        <div class="row d-flex stacked-item">
+                            {% for skill in project.skills %}
+                            <div class="chip">{{skill}}</div>
+                            {% endfor %}
+                        </div>
+                        <p>{{ project.description|truncate(200, False, '...') }}</p>
                     </div>
                 </div>
                 
                     <div class="profile-about-wrapper d-flex s12">
                         <div class="row d-flex stacked-item">
-                            <p>{{ info.about }}</p>
+                            <p>{{ project.description }}</p>
                         </div>
                     </div>
                     <div class="row d-flex stacked-item">

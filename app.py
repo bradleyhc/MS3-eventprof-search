@@ -226,7 +226,8 @@ def view_project(project_id):
     project_data = list(mongo.db.projects.find({"slug": project_id}))
 
     return render_template(
-        "view_project.html", project_id=project_id, data=project_data)
+        "view_project.html", project_id=project_id,
+        data=project_data, posted_by=posted_by)
 
 
 @app.route("/freelancers")
