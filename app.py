@@ -299,10 +299,15 @@ def edit_project(project_id):
 @app.route("/freelancers", methods=["GET", "POST"])
 def get_freelancers():
 
+    current_user = session["user"]["slug"]
+
     freelancers = mongo.db.users.find(
         {"user_type": "freelancer", "is_hidden": False})
 
-    return render_template("all_freelancers.html", freelancers=freelancers)
+    user = mongo.db.users.find_one({"name_slug": current_user})["email"]
+
+    return render_template("all_freelancers.html",
+                           freelancers=freelancers, sender=user)
 
 
 """ Sidebar widget for similar items """

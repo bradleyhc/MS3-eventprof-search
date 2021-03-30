@@ -75,9 +75,21 @@
                 <div class="card-action">
                     <a href="{{ url_for('profile', name=freelancer.name_slug) }}" class="btn primary-btn">View More</a>
                     {% if freelancer.name_slug != session['user']%}
-                    <a href="#" class="gutter-l btn secondary-btn">Send Email</a>
+                    <a href="#contact_modal" class="gutter-l btn secondary-btn modal-trigger">Send Email</a>
                     {% endif %}
                 </div>
+
+                <div class="modal" id="contact_modal">
+                    <div class="modal-content">
+                    <form id="contact_form" onsubmit="return sendContactEmail(this);" method="POST">
+                        <input type="hidden" name="reply_to" id="reply_to" value="{{ sender }}">
+                        <textarea name="body" id="body" cols="30" rows="10"></textarea>
+                        <input type="hidden" name="email" id="email" value="bradleyh.cooney@gmail.com">
+                        <input type="submit" value="Submit">
+                    </form>
+                    </div>
+                </div>
+
             </div>
 
 
@@ -87,5 +99,18 @@
     </div>
 
 </section>
+
+{% endblock %}
+
+{% block scripts%}
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("user_kzLXPsKeCx1gBgjDlfL4H");
+   })();
+</script>
+<script src="{{ url_for('static', filename='js/email_js.js')}}" type="text/javascript"></script>
 
 {% endblock %}
