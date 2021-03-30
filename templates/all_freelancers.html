@@ -31,18 +31,19 @@
             </div>
         </form>
 
-        <div class="row s12 flex-grid-thirds">
+        
             <!-- Show no results if search returns 0 -->
             {% if results == 0 %}
             <div class="card no-results-card col">
                 <div class="card-content">
-                    <p>Looks like we couldn't find any suitable Freelancers. Reset your search and try again!
+                    <i class="fas fa-search"></i>
+                    <p>Looks like we couldn't find any suitable Freelancers. <br>Reset your search and try again!
                     </p>
                     <a href="{{url_for('get_freelancers')}}" class="btn primary-btn">Search Freelancers</a>
                 </div>
             </div>
             {% else %}
-
+<div class="row s12 flex-grid-thirds">
             <!-- Show freelancer loop if search > 0 or no search query  -->
             {% for freelancer in freelancers %}
 
