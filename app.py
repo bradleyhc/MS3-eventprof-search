@@ -330,8 +330,11 @@ def search_freelancers():
     freelancers = list(mongo.db.users.find({"$text": {"$search": query},
                        "user_type": "freelancer", "is_hidden": False}))
 
+    results = len(freelancers)
+
     return render_template("all_freelancers.html",
-                           freelancers=freelancers, query=query)
+                           freelancers=freelancers, query=query,
+                           results=results)
 
 
 @app.route("/search_projects", methods=["GET", "POST"])
@@ -339,7 +342,10 @@ def search_projects():
     query = request.form.get("query")
     projects = list(mongo.db.projects.find({"$text": {"$search": query}}))
 
-    return render_template("all_projects.html", projects=projects, query=query)
+    results = len(projects)
+
+    return render_template("all_projects.html", projects=projects,
+                           query=query, results=results)
 
 
 if __name__ == "__main__":

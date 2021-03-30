@@ -11,61 +11,79 @@
 
 
 
+
 <section class="main-body">
     <div class="container p-top-50">
-<form method="POST" class="col s12" action="{{ url_for('search_freelancers')}}">
-        <div class="row valign-wrapper center-align">
-            <div class="input-field col s12 m8">
-                <i class="fas fa-search prefix light-blue-text text-darken-4"></i>
-                <input type="text" name="query" id="query" minlength="3" class="validate" value="{{ query }}" required>
-                <label for="query">Search Tasks</label>
+        <form method="POST" class="col s12" action="{{ url_for('search_freelancers')}}">
+            <div class="row valign-wrapper center-align">
+                <div class="input-field col s12 m8">
+                    <i class="fas fa-search prefix light-blue-text text-darken-4"></i>
+                    <input type="text" name="query" id="query" minlength="3" class="validate" value="{{ query }}"
+                        required>
+                    <label for="query">Search Tasks</label>
+                </div>
+                <div class="col s12 m4">
+                    <a href="{{ url_for('get_freelancers')}}" class="red btn text-shadow">Reset</a>
+                    <button class="light-blue darken-1 btn text-shadow">
+                        <i class="fas fa-search left"></i> Search
+                    </button>
+                </div>
             </div>
-            <div class="col s12 m4">
-                <a href="{{ url_for('get_freelancers')}}" class="red btn text-shadow">Reset</a>
-                <button class="light-blue darken-1 btn text-shadow">
-                    <i class="fas fa-search left"></i> Search
-                </button>
-            </div>
-        </div>
-    </form>
+        </form>
 
         <div class="row s12 flex-grid-thirds">
-            {% for freelancer in freelancers %}
-            <!-- Freelancer card -->
-                <div class="card freelancer-card col">
-                    <div class="card-content">
-                        <div class="card-img-wrapper">
-                        <img class="profile-image" src="/static/images/user_uploads/{{ freelancer.profile_image }}" alt="">
-                    </div>
-                        <div class="card-stacked-item">
-                            <h4 class="title-feat">{{ freelancer.first_name }} {{ freelancer.last_name }}</h4>
-                        </div>
-                        <div class="row d-flex card-stacked-item">
-                            <p><i class="fas fa-user pr-5"></i> {{ freelancer.role }}</p><span class="divide-pipe"> |
-                            </span>
-                            <p><i class="fas fa-map-marker-alt pr-5"></i> {{ freelancer.location|capitalize }}</p>
-                            
-                        </div>
-                        <!-- Skills -->
-                        <div class="row d-flex card-stacked-item">
-                            {% for skill in freelancer.skills %}
-                            <div class="chip">{{skill}}</div>
-                            {% endfor %}
-                        </div>
-                        <p>{{ freelancer.about|truncate(50, False, '...') }}</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="{{ url_for('profile', name=freelancer.name_slug) }}" class="btn primary-btn">View More</a>
-                        {% if freelancer.name_slug != session['user']%}
-                        <a href="#" class="gutter-l btn secondary-btn">Send Email</a>
-                        {% endif %}
-                    </div>
+            <!-- Show no results if search returns 0 -->
+            {% if results == 0 %}
+            <div class="card no-results-card col">
+                <div class="card-content">
+                    <p>Looks like we couldn't find any suitable Freelancers. Reset your search and try again!
+                    </p>
+                    <a href="{{url_for('get_freelancers')}}" class="btn primary-btn">Search Freelancers</a>
                 </div>
+            </div>
+            {% else %}
 
-            
+            <!-- Show freelancer loop if search > 0 or no search query  -->
+            {% for freelancer in freelancers %}
+
+
+            <!-- Freelancer card -->
+            <div class="card freelancer-card col">
+                <div class="card-content">
+                    <div class="card-img-wrapper">
+                        <img class="profile-image" src="/static/images/user_uploads/{{ freelancer.profile_image }}"
+                            alt="">
+                    </div>
+                    <div class="card-stacked-item">
+                        <h4 class="title-feat">{{ freelancer.first_name }} {{ freelancer.last_name }}</h4>
+                    </div>
+                    <div class="row d-flex card-stacked-item">
+                        <p><i class="fas fa-user pr-5"></i> {{ freelancer.role }}</p><span class="divide-pipe"> |
+                        </span>
+                        <p><i class="fas fa-map-marker-alt pr-5"></i> {{ freelancer.location|capitalize }}</p>
+
+                    </div>
+                    <!-- Skills -->
+                    <div class="row d-flex card-stacked-item">
+                        {% for skill in freelancer.skills %}
+                        <div class="chip">{{skill}}</div>
+                        {% endfor %}
+                    </div>
+                    <p>{{ freelancer.about|truncate(50, False, '...') }}</p>
+                </div>
+                <div class="card-action">
+                    <a href="{{ url_for('profile', name=freelancer.name_slug) }}" class="btn primary-btn">View More</a>
+                    {% if freelancer.name_slug != session['user']%}
+                    <a href="#" class="gutter-l btn secondary-btn">Send Email</a>
+                    {% endif %}
+                </div>
+            </div>
+
+
             {% endfor %}
+            {% endif %}
         </div>
-
+    </div>
 
 </section>
 

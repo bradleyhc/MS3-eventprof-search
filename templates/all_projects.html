@@ -29,6 +29,16 @@
         </div>
     </form>
         <div class="row s12">
+            <!-- Show no results if search returns 0 -->
+            {% if results == 0 %}
+            <div class="card no-results-card col">
+                <div class="card-content">
+                    <p>Looks like we couldn't find any Opportunities for that search! Click below to try another flavour!
+                    </p>
+                    <a href="{{url_for('get_projects')}}" class="btn primary-btn">Search all Opportunities</a>
+                </div>
+            </div>
+            {% else %}
             {% for project in projects %}
             <div class="row">
 
@@ -61,7 +71,8 @@
 
             </div>
             {% endfor %}
-        </div>
+        {% endif %}
+        </div></div>
 
 
 </section>
