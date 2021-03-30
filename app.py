@@ -321,6 +321,27 @@ def sidebar_widget():
         w_freelancers=get_freelancers)
 
 
+""" Search & Query handling """
+
+
+@app.route("/search_freelancers", methods=["GET", "POST"])
+def search_freelancers():
+    query = request.form.get("query")
+    freelancers = list(mongo.db.users.find({"$text": {"$search": query},
+                       "user_type": "freelancer", "is_hidden": False}))
+
+    return render_template("all_freelancers.html",
+                           freelancers=freelancers, query=query)
+
+
+@app.route("/search_projects", methods=["GET", "POST"])
+def search_projects():
+    query = request.form.get("query")
+    projects = list(mongo.db.projects.find({"$text": {"$search": query}}))
+
+    return render_template("all_projects.html", projects=projects, query=query)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
