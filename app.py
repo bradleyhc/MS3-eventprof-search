@@ -6,12 +6,14 @@ from flask import (Flask, flash, redirect,
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from bson.objectid import ObjectId
+from flask_mail import Mail, Message
 from bson import json_util
 from flask_pymongo import PyMongo
 if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
+
 
 # Set user image upload config
 UPLOAD_FOLDER = './static/images/user_uploads/'
@@ -23,6 +25,17 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024
 
+
+# Mail config credits http://pythonbasics.org/flask-mail/
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USERNAME'] = 'eventprofsearch@gmail.com'
+app.config['MAIL_PASSWORD'] = 'sycej66D!'
+app.config['DEFAULT_SENDER'] = 'bradleyh.cooney@gmail.com'
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+
+mail = Mail(app)
 mongo = PyMongo(app)
 
 
@@ -304,10 +317,13 @@ def get_freelancers():
     freelancers = mongo.db.users.find(
         {"user_type": "freelancer", "is_hidden": False})
 
-    user = mongo.db.users.find_one({"name_slug": current_user})["email"]
+    # get current user for email form data  
+    user = mongo.db.users.find_one({"name_slug": current_user})
+    sender_email = user["email"]
+    sender_name = user["first_name"]
 
-    return render_template("all_freelancers.html",
-                           freelancers=freelancers, sender=user)
+    return render_template("all_freelancers.html", freelancers=freelancers,
+                           s_email=sender_email, s_name=sender_name)
 
 
 """ Sidebar widget for similar items """
@@ -351,6 +367,16 @@ def search_projects():
 
     return render_template("all_projects.html", projects=projects,
                            query=query, results=results)
+
+
+@app.route("/send_email", methods=["GET", "POST"])
+def send_mail():
+    msg = Message(
+        'Hello', sender='bradleyh.cooney@gmail.com',
+        recipients = ['bradleyh.cooney@gmail.com'])
+    msg.body = "This is the email body"
+    mail.send(msg)
+    return "Sent"
 
 
 if __name__ == "__main__":
