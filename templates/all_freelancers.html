@@ -31,19 +31,19 @@
             </div>
         </form>
 
-        
-            <!-- Show no results if search returns 0 -->
-            {% if results == 0 %}
-            <div class="card no-results-card col">
-                <div class="card-content">
-                    <i class="fas fa-search"></i>
-                    <p>Looks like we couldn't find any suitable Freelancers. <br>Reset your search and try again!
-                    </p>
-                    <a href="{{url_for('get_freelancers')}}" class="btn primary-btn">Search Freelancers</a>
-                </div>
+
+        <!-- Show no results if search returns 0 -->
+        {% if results == 0 %}
+        <div class="card no-results-card col">
+            <div class="card-content">
+                <i class="fas fa-search"></i>
+                <p>Looks like we couldn't find any suitable Freelancers. <br>Reset your search and try again!
+                </p>
+                <a href="{{url_for('get_freelancers')}}" class="btn primary-btn">Search Freelancers</a>
             </div>
-            {% else %}
-<div class="row s12 flex-grid-thirds">
+        </div>
+        {% else %}
+        <div class="row s12 flex-grid-thirds">
             <!-- Show freelancer loop if search > 0 or no search query  -->
             {% for freelancer in freelancers %}
 
@@ -74,20 +74,47 @@
                 </div>
                 <div class="card-action">
                     <a href="{{ url_for('profile', name=freelancer.name_slug) }}" class="btn primary-btn">View More</a>
-                    {% if freelancer.name_slug != session['user']%}
+                    {% if freelancer.name_slug != session['user']['name_slug']%}
                     <a href="#contact_modal" class="gutter-l btn secondary-btn modal-trigger">Send Email</a>
                     {% endif %}
                 </div>
 
                 <div class="modal" id="contact_modal">
+
                     <div class="modal-content">
-                    <form id="contact_form" onsubmit="return sendContactEmail(this);" method="POST">
-                        <input type="hidden" name="reply_to" id="reply_to" value="{{ sender }}">
-                        <textarea name="body" id="body" cols="30" rows="10"></textarea>
-                        <input type="hidden" name="email" id="email" value="bradleyh.cooney@gmail.com">
-                        <input type="submit" value="Submit">
-                    </form>
+                        <form id="contact_form" onsubmit="sendContactEmail(this);" method="POST" action="{{ url_for('send_mail')}}">
+<!-- Hidden sender fields  -->
+                            <input type="hidden" name="reply_to" id="reply_to" value="{{ s_email }}">
+                            <input type="hidden" name="from_name" id="from_name" value="{{ s_name }}">
+                            <input type="hidden" name="to_name" id="to_name" value="{{freelancer.first_name}}">
+                            <input type="hidden" name="email" id="email" value="bradleyh.cooney@gmail.com">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea name="message" id="message"
+                                        class="materialize-textarea validate"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <label>
+                                    <div class="input-field col s12">
+                                        <input type="checkbox" name="confirm_data" id="confirm_data" class="validate"
+                                            required>
+                                        <span>words</span>
+
+                                    </div>
+                                </label>
+
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <button type="submit" class="btn btn-large primary-btn">Click here to send
+                                        email</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
+
                 </div>
 
             </div>
@@ -103,13 +130,12 @@
 {% endblock %}
 
 {% block scripts%}
-<script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
 </script>
 <script type="text/javascript">
-   (function(){
-      emailjs.init("user_kzLXPsKeCx1gBgjDlfL4H");
-   })();
+    (function () {
+        emailjs.init("user_kzLXPsKeCx1gBgjDlfL4H");
+    })();
 </script>
 <script src="{{ url_for('static', filename='js/email_js.js')}}" type="text/javascript"></script>
 
