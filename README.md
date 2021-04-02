@@ -90,3 +90,4 @@ ssssss
 
 - Flexbox - https://css-tricks.com/dont-overthink-flexbox-grids/
 - Submit on change of input for user hidden fields
+- Get all values from specific key in PyMongo - https://stackoverflow.com/questions/40282812/get-all-the-values-of-a-particular-key

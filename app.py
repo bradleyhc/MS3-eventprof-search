@@ -424,7 +424,34 @@ def admin_skills_roles():
     projects = mongo.db.projects.find()
     skills = mongo.db.skills.find()
     roles = mongo.db.roles.find()
-    return render_template("admin/admin_dashboard.html")
+
+    return render_template("admin/admin_dashboard.html", skills=skills, roles=roles)
+
+
+# Update skills from admin view
+@app.route("/admin/update_skills", methods=["GET", "POST"])
+def admin_update_skills():
+
+    skill_count = mongo.db.skills.count()
+    skills = mongo.db.skills.distinct("skill_name")
+    submitted_skills = request.form.getlist("add_skill[]")
+
+    if request.method == "POST":
+        for skill in submitted_skills:
+            skill_exists = mongo.db.skills.find_one({"skill_name": skill})
+
+            if not skill_exists:
+                mongo.db.skills.insert_one({"skill_name": skill})
+
+    new_skill_count = mongo.db.skills.count()
+
+    if skill_count != new_skill_count:
+        flash("Skills updated!")
+    else:
+        flash("There are no skills to update!")
+
+    return redirect(url_for('admin_skills_roles', skills=skills))
+
 
 
 @app.route("/admin/users_update/<uid>", methods=["GET", "POST"])
@@ -448,6 +475,14 @@ def admin_update_user(uid):
 
     flash("User updated successfully")
     return render_template("admin/admin_dashboard.html", users=all_users)
+
+
+@app.route("/admin/clear_skills")
+def clear_skills():
+    mongo.db.skills.delete_many({ "skill_name":  })
+    return "done"
+    
+
 
 
 if __name__ == "__main__":
