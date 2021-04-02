@@ -9,14 +9,16 @@
 
         {% for skill in skills%}
         <div class="d-flex space-between">
-            <input type="text" name="add_skill[]" value="{{skill.skill_name}}" class="add-skill-input">
+            <input type="text" name="add_skill[]" value="{{skill.skill_name}}" class="add-skill-input" required>
             <div><a href="{{ url_for('delete_skill', id=skill.skill_name) }}" class="btn delete-item"><i class="fas fa-times"></i></a></div>
         </div>
         {%endfor %}
-        <div class="d-flex space-between">
-            <input type="text" name="add_skill[]" class="add-skill-input">
-            <button type="submit">submit</button>
+        <div id="empty_skill_inputs" class="col">
+            <input type="text" name="add_skill[]" class="add-skill-input" required>
+            
         </div>
+        <button type="button" id="add_input"><i class="fas fa-plus"></i></button>
+        <button type="submit">submit</button>
     </form>
 </div>
 

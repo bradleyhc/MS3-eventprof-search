@@ -377,3 +377,11 @@ p.created-by {
     border: 1px solid #000;
     border-bottom: 1px solid #000;
 }
+
+.input-missing-error {
+    border: 2px solid #ff0000!important;
+}
+
+.input-missing-error:focus {
+    border: 1px solid #000!important;
+}

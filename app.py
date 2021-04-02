@@ -450,7 +450,7 @@ def admin_update_skills():
     else:
         flash("There are no skills to update!")
 
-    return redirect(url_for('admin_skills_roles'))
+    return redirect(url_for('admin_skills_roles', _anchor='add_input'))
 
 
 @app.route("/admin/delete_skill/<id>", methods=["GET", "POST"])
