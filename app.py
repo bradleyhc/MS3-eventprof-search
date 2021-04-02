@@ -440,7 +440,7 @@ def admin_update_skills():
         for skill in submitted_skills:
             skill_exists = mongo.db.skills.find_one({"skill_name": skill})
 
-            if not skill_exists:
+            if not skill_exists and skill != "":
                 mongo.db.skills.insert_one({"skill_name": skill})
 
     new_skill_count = mongo.db.skills.count()
