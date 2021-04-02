@@ -30,6 +30,7 @@
                 <li><a href="{{ url_for('add_project') }}">Add a Project</a></li>
                 <li><a class="modal-trigger" href="#modal-register">Register</a></li>
                 <li><a class="modal-trigger" href="#modal-login">Login</a></li>
+                <li><a href="{{ url_for('admin_home') }}">Admin</a></li>
                 <li><a href="{{ url_for('profile', name=session['user']) }}">My Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             </ul>
@@ -41,6 +42,7 @@
                 <li><a href="{{ url_for('add_project') }}">Add a Project</a></li>
                 <li><a class="modal-trigger" href="#modal-register">Register</a></li>
                 <li><a class="modal-trigger" href="#modal-login">Login</a></li>
+                <li><a href="{{ url_for('admin_home') }}">Admin</a></li>
                 <li><a href="{{ url_for('profile', name=session['user']) }}">My Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             </ul>

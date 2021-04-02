@@ -89,3 +89,4 @@ ssssss
 ### Guides 
 
 - Flexbox - https://css-tricks.com/dont-overthink-flexbox-grids/
+- Submit on change of input for user hidden fields

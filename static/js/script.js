@@ -44,3 +44,9 @@ function validateDropdown() {
         }
     })
 }
+
+
+// Submit form on change of input -Rory McCrossan https://stackoverflow.com/questions/38738034/submit-form-on-change-of-input-field 
+$('.admin-hide-switch').change(function () {
+    $(this).closest('form').submit()
+})

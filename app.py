@@ -384,12 +384,70 @@ def send_mail(slug):
                            name=sender_name, to_name=recipient['first_name'],
                            message=user_msg, u_link=session['user']['slug'])
     msg = Message(subject, reply_to=testing_email, recipients=[testing_email])
-
     msg.html = body
 
     mail.send(msg)
     flash("You're message has been sent!")
     return redirect(url_for('get_freelancers'))
+
+
+""" Admin functions """
+
+# Admin dashboard
+@app.route("/admin", methods=["GET", "POST"])
+def admin_home():
+
+    users = mongo.db.users.find()
+    projects = mongo.db.projects.find()
+    skills = mongo.db.skills.find()
+    roles = mongo.db.roles.find()
+
+    return render_template("admin/admin_dashboard.html")
+
+
+# Get all users in admin view
+@app.route("/admin/users", methods=["GET", "POST"])
+def admin_users():
+
+    users = mongo.db.users.find()
+    projects = mongo.db.projects.find()
+    skills = mongo.db.skills.find()
+    roles = mongo.db.roles.find()
+    return render_template("admin/admin_dashboard.html", users=users, uid=None)
+
+
+# Get all skills & roles in admin view
+@app.route("/admin/skills", methods=["GET", "POST"])
+def admin_skills_roles():
+
+    users = mongo.db.users.find()
+    projects = mongo.db.projects.find()
+    skills = mongo.db.skills.find()
+    roles = mongo.db.roles.find()
+    return render_template("admin/admin_dashboard.html")
+
+
+@app.route("/admin/users_update/<uid>", methods=["GET", "POST"])
+def admin_update_user(uid):
+
+    user = mongo.db.users.find_one({"name_slug": uid})
+    all_users = mongo.db.users.find()
+
+    # Check current 'hidden' status of user
+    if user["is_hidden"] is True:
+        switch = False
+    else:
+        switch = True
+
+    update = {
+        "is_hidden": switch,
+    }
+
+    mongo.db.users.update_one(
+            {"name_slug": uid}, {"$set": update})    
+
+    flash("User updated successfully")
+    return render_template("admin/admin_dashboard.html", users=all_users)
 
 
 if __name__ == "__main__":

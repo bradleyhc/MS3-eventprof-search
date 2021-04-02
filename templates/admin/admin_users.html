@@ -1,0 +1,49 @@
+{% block admin_users %}
+
+
+
+<h3 class="sidebar-widget-title">Similar Projects</h3>
+
+
+{% for user in users%}
+
+<div class="admin-row">
+    <!-- First column -->
+    <div>
+        <!-- Title -->
+        <div class="stacked-item">
+            <h4 class="title-feat">{{ user.first_name }} {{ user.last_name }}</h4>
+        </div>
+        <!-- Role & Location -->
+        <div class="row d-flex stacked-item">
+            <p class="gutter-r"><i class="fas fa-user pr-5"></i> {{ user.role }}</p>
+            <p><i class="fas fa-map-marker-alt pr-5"></i> {{ user.location }}</p>
+        </div>
+        <!-- Skills -->
+        <div class="row d-flex stacked-item">
+            {% for skill in user.skills %}
+            <div class="chip">{{skill}}</div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Second column -->
+    <div class="user-hidden-switch">
+        <form action="{{url_for('admin_update_user', uid=user.name_slug)}}" method="POST">
+        <div class="switch">
+            <label>
+                Hidden
+                {% if user.is_hidden == True %}
+                <input type="checkbox" class="admin-hide-switch">
+                {% else %}
+                <input type="checkbox" checked="checked" class="admin-hide-switch">
+                {% endif %}
+                <span class="lever"></span>
+                Visible
+            </label>
+        </div>
+        </form>
+    </div>
+</div>
+{%endfor %}
+
+{% endblock %}
