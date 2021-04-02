@@ -201,6 +201,10 @@ input[type=text]:not(.browser-default):focus:not([readonly]){
     margin-top: 40px;
 }
 
+.m-top-20 {
+    margin-top: 20px;
+}
+
 .m-auto {
     margin:auto;
 }
@@ -384,4 +388,22 @@ p.created-by {
 
 .input-missing-error:focus {
     border: 1px solid #000!important;
+}
+
+#empty_skill_inputs{
+    display: flex;
+    width: -webkit-fill-available;
+}
+
+.add-to-list, .delete-from-list {
+    margin: 8px 0px auto 25px;
+    min-width: 49px;
+}
+
+.delete-from-list, .delete-from-list:focus {
+    background-color: #ef516f;
+}
+
+.add-to-list, .add-to-list:focus {
+    background-color: #516fef;
 }
