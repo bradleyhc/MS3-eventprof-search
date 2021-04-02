@@ -51,6 +51,7 @@ zz
 
 ## Features
 sssssss
+- Send email message to another user via Flask-mail
 
 ### Features to add in future releases
 ssssss 
@@ -67,7 +68,15 @@ ssssss
 
 ### User Story Testing
 
+### Defensive Programming
+- Email validation
+
+### Security
+- Hash passwords
+- Emails not shown in DOM - all managed in back-end via Python / Flask-mail
+
 ### Bugs
+- Logged out users shown variable error - can't find session dict
 
 
 
