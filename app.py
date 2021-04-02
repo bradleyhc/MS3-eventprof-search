@@ -18,7 +18,6 @@ app = Flask(__name__)
 # Set user image upload config
 UPLOAD_FOLDER = './static/images/user_uploads/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-
 app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
@@ -31,7 +30,7 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USERNAME'] = 'eventprofsearch@gmail.com'
 app.config['MAIL_PASSWORD'] = 'sycej66D!'
-app.config['DEFAULT_SENDER'] = 'bradleyh.cooney@gmail.com'
+app.config['MAIL_DEFAULT_SENDER'] = 'bradleyh.cooney@gmail.com'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
@@ -369,14 +368,30 @@ def search_projects():
                            query=query, results=results)
 
 
-@app.route("/send_email", methods=["GET", "POST"])
-def send_mail():
+@app.route("/send_email/<slug>", methods=["GET", "POST"])
+def send_mail(slug):
+
+    recipient = mongo.db.users.find_one({"name_slug": slug})
+    sender = mongo.db.users.find_one({"name_slug": session['user']['slug']})
+    to_email = recipient["email"]
+    reply_to = sender["email"]
+    testing_email = "bradleyh.cooney@gmail.com"
+    sender_name = sender["first_name"] + " " + sender["last_name"]
+    from_email = "eventprofsearch@gmail.com"
+    subject = f"You have a message from {sender_name}"
+    user_msg = request.form.get("body")
+    body = render_template("contact_email.html",
+                           name=sender_name, to_name=recipient['first_name'],
+                           message=user_msg, u_link=session['user']['slug'])
     msg = Message(
-        'Hello', sender='bradleyh.cooney@gmail.com',
-        recipients = ['bradleyh.cooney@gmail.com'])
-    msg.body = "This is the email body"
+        "subject",
+        reply_to=testing_email, recipients=[testing_email])
+
+    msg.html = body
+
     mail.send(msg)
-    return "Sent"
+    flash("You're message has been sent!")
+    return redirect(url_for('get_freelancers'))
 
 
 if __name__ == "__main__":

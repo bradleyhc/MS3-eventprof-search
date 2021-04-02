@@ -82,7 +82,7 @@
                 <div class="modal" id="contact_modal">
 
                     <div class="modal-content">
-                        <form id="contact_form" onsubmit="sendContactEmail(this);" method="POST" action="{{ url_for('send_mail')}}">
+                        <form id="contact_form" onsubmit="sendContactEmail(this);" method="POST" action="{{ url_for('send_mail', slug=freelancer.name_slug) }}">
 <!-- Hidden sender fields  -->
                             <input type="hidden" name="reply_to" id="reply_to" value="{{ s_email }}">
                             <input type="hidden" name="from_name" id="from_name" value="{{ s_name }}">
@@ -90,7 +90,7 @@
                             <input type="hidden" name="email" id="email" value="bradleyh.cooney@gmail.com">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea name="message" id="message"
+                                    <textarea name="body" id="body"
                                         class="materialize-textarea validate"></textarea>
                                 </div>
                             </div>
