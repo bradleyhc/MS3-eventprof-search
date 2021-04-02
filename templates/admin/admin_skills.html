@@ -3,28 +3,27 @@
 
 
 
-<div class="admin-row-skills">
+<div id="admin_skills" class="tab">
 
     <form action="{{ url_for('admin_update_skills') }}" method="POST" class="update-skill-form">
-
         {% for skill in skills|sort(attribute="skill_name")%}
         <div class="d-flex space-between">
             <input type="text" name="add_skill[]" value="{{skill.skill_name}}" class="add-skill-input" required>
-            <a href="{{ url_for('delete_skill', id=skill.skill_name) }}" class="btn delete-from-list"><i class="fas fa-times"></i></a>
+            <a href="{{ url_for('delete_skill', id=skill.skill_name) }}" class="btn delete-from-list"><i
+                    class="fas fa-times"></i></a>
         </div>
         {%endfor %}
+        {% if skills is defined %}
         <div class="d-flex space-between">
-        <div id="empty_skill_inputs">
-            <input type="text" name="add_skill[]" class="add-skill-input" required>
-            
-        
-        <button type="button" id="add_input" class="btn add-to-list"><i class="fas fa-plus"></i></button>
+            <div id="empty_skill_inputs">
+                <input type="text" name="add_skill[]" class="add-skill-input" required>
+                <button type="button" id="add_input" class="btn add-to-list"><i class="fas fa-plus"></i></button>
+            </div>
         </div>
-      
-</div>
-  <div class="m-top-20">
-        <button type="submit" class="btn btn-large primary-btn">Save Skills</button>
-</div>
+        <div class="m-top-20">
+            <button type="submit" class="btn btn-large primary-btn">Save Skills</button>
+        </div>
+        {% endif %}
     </form>
 </div>
 

@@ -14,50 +14,55 @@
 <section class="main-body">
     <div class="container p-top-50">
         <form method="POST" class="col s12" action="{{ url_for('search_projects')}}">
-        <div class="row valign-wrapper center-align">
-            <div class="input-field col s12 m8">
-                <i class="fas fa-search prefix light-blue-text text-darken-4"></i>
-                <input type="text" name="query" id="query" minlength="3" class="validate" value="{{ query }}" required>
-                <label for="query">Search Tasks</label>
-            </div>
-            <div class="col s12 m4">
-                <a href="{{ url_for('get_projects')}}" class="red btn text-shadow">Reset</a>
-                <button class="light-blue darken-1 btn text-shadow">
-                    <i class="fas fa-search left"></i> Search
-                </button>
-            </div>
-        </div>
-    </form>
-        
-
-    <form action="{{url_for('admin_users')}}" method="GET">
-                
-            
-                <button type="submit">Click me</button>
-                </form>
-                {% include "admin/admin_users.html" %}
-
-                <form action="{{url_for('admin_skills_roles')}}" method="GET">
-                
-            
-                <button type="submit">Skills</button>
-                </form>
-                {% include "admin/admin_skills.html" %}
-            <!-- Show no results if search returns 0 -->
-            {% if results == 0 %}
-            <div class="card no-results-card col">
-                <div class="card-content">
-                    <i class="fas fa-search"></i>
-                    <p>Looks like we couldn't find any Opportunities for that search! <br>Click below to try another flavour!
-                    </p>
-                    <a href="{{url_for('get_projects')}}" class="btn primary-btn">Search all Opportunities</a>
+            <div class="row valign-wrapper center-align">
+                <div class="input-field col s12 m8">
+                    <i class="fas fa-search prefix light-blue-text text-darken-4"></i>
+                    <input type="text" name="query" id="query" minlength="3" class="validate" value="{{ query }}"
+                        required>
+                    <label for="query">Search Tasks</label>
+                </div>
+                <div class="col s12 m4">
+                    <a href="{{ url_for('get_projects')}}" class="red btn text-shadow">Reset</a>
+                    <button class="light-blue darken-1 btn text-shadow">
+                        <i class="fas fa-search left"></i> Search
+                    </button>
                 </div>
             </div>
-            {% else %}
-            <div class="row s12">
+        </form>
+
+
+        <form action="{{url_for('admin_users')}}" method="GET">
+
+
+            <button type="submit">Click me</button>
+            {% include "admin/admin_users.html" %}
+        </form>
+        {% include "admin/admin_users.html" %}
+
+        <form action="{{url_for('admin_skills')}}" method="GET">
+            <button type="submit">Skills</button>
+        </form>
+        {% include "admin/admin_skills.html" %}
+        <form action="{{url_for('admin_roles')}}" method="GET">
+            <button type="submit">Roles</button>
+        </form>
+        {% include "admin/admin_roles.html" %}
+        <!-- Show no results if search returns 0 -->
+        {% if results == 0 %}
+        <div class="card no-results-card col">
+            <div class="card-content">
+                <i class="fas fa-search"></i>
+                <p>Looks like we couldn't find any Opportunities for that search! <br>Click below to try another
+                    flavour!
+                </p>
+                <a href="{{url_for('get_projects')}}" class="btn primary-btn">Search all Opportunities</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="row s12">
             {% for project in projects %}
             <div class="row">
-            
+
 
                 <div class="card project-card">
                     <div class="card-content">
@@ -81,15 +86,17 @@
                         <p>{{ project.description|truncate(200, False, '...') }}</p>
                     </div>
                     <div class="card-action">
-                        <a href="{{ url_for('view_project', project_id=project.slug) }}" class="btn primary-btn">View More</a>
+                        <a href="{{ url_for('view_project', project_id=project.slug) }}" class="btn primary-btn">View
+                            More</a>
                         <a href="#" class="gutter-l btn secondary-btn">Edit this Project</a>
                     </div>
                 </div>
 
             </div>
             {% endfor %}
-        {% endif %}
-        </div></div>
+            {% endif %}
+        </div>
+    </div>
 
 
 </section>

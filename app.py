@@ -397,11 +397,6 @@ def send_mail(slug):
 @app.route("/admin", methods=["GET", "POST"])
 def admin_home():
 
-    users = mongo.db.users.find()
-    projects = mongo.db.projects.find()
-    skills = mongo.db.skills.find()
-    roles = mongo.db.roles.find()
-
     return render_template("admin/admin_dashboard.html")
 
 
@@ -410,22 +405,17 @@ def admin_home():
 def admin_users():
 
     users = mongo.db.users.find()
-    projects = mongo.db.projects.find()
-    skills = mongo.db.skills.find()
-    roles = mongo.db.roles.find()
+
     return render_template("admin/admin_dashboard.html", users=users, uid=None)
 
 
 # Get all skills & roles in admin view
 @app.route("/admin/skills", methods=["GET", "POST"])
-def admin_skills_roles():
+def admin_skills():
 
-    users = mongo.db.users.find()
-    projects = mongo.db.projects.find()
     skills = mongo.db.skills.find()
-    roles = mongo.db.roles.find()
 
-    return render_template("admin/admin_dashboard.html", skills=skills, roles=roles)
+    return render_template("admin/admin_dashboard.html", skills=skills)
 
 
 # Update skills from admin view
@@ -450,14 +440,55 @@ def admin_update_skills():
     else:
         flash("There are no skills to update!")
 
-    return redirect(url_for('admin_skills_roles', _anchor='add_input'))
+    return redirect(url_for('admin_skills', _anchor='add_input'))
 
 
 @app.route("/admin/delete_skill/<id>", methods=["GET", "POST"])
 def delete_skill(id):
     mongo.db.skills.delete_one({"skill_name": id})
     flash("The skill was deleted successfully!")
-    return redirect(url_for('admin_skills_roles'))
+    return redirect(url_for('admin_skills'))
+
+
+# Get all roles in admin view
+@app.route("/admin/roles", methods=["GET", "POST"])
+def admin_roles():
+
+    roles = mongo.db.roles.find()
+
+    return render_template("admin/admin_dashboard.html", roles=roles)
+
+
+# Update skills from admin view
+@app.route("/admin/update_roles", methods=["GET", "POST"])
+def admin_update_roles():
+
+    role_count = mongo.db.roles.count()
+    #skills = mongo.db.skills.distinct("skill_name")
+    submitted_roles = request.form.getlist("add_role[]")
+
+    if request.method == "POST":
+        for role in submitted_roles:
+            role_exists = mongo.db.roles.find_one({"role_name": role})
+
+            if not role_exists and role != "":
+                mongo.db.roles.insert_one({"role_name": role})
+
+    new_role_count = mongo.db.roles.count()
+
+    if role_count != new_role_count:
+        flash("Roles updated!")
+    else:
+        flash("There are no roles to update!")
+
+    return redirect(url_for('admin_roles', _anchor='add_input'))
+
+
+@app.route("/admin/delete_role/<id>", methods=["GET", "POST"])
+def delete_role(id):
+    mongo.db.roles.delete_one({"role_name": id})
+    flash("The role was deleted successfully!")
+    return redirect(url_for('admin_roles'))
 
 
 @app.route("/admin/users_update/<uid>", methods=["GET", "POST"])
