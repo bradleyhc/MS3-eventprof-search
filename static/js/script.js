@@ -50,3 +50,24 @@ function validateDropdown() {
 $('.admin-hide-switch').change(function () {
     $(this).closest('form').submit()
 })
+
+$('.add-skill-input').change(function () {
+    $(this).closest('form').submit()
+})
+
+$('#add_input').click(function () {
+    var prevInput = $('.add-skill-input:last-child');
+    if (prevInput.val() == "") {
+        prevInput.addClass('input-missing-error')
+    } else {
+        prevInput.removeClass('input-missing-error')
+        $('#empty_skill_inputs').append(
+            '<input type="text" name="add_skill[]" class="add-skill-input"></input>'
+        )
+        // Credit to Y. Joy Ch. Singha -  https://stackoverflow.com/questions/19012495/smooth-scroll-to-div-id-jquery
+        $('html, body').animate({
+            scrollTop: $('#add_input').offset().top
+        }, 'slow');
+    }
+})
+
