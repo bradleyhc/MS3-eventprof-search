@@ -513,6 +513,18 @@ def admin_update_user(uid):
     return render_template("admin/admin_dashboard.html")
 
 
+# Debug delete user script
+@app.route("/delete_user", methods=["GET", "POST"])
+def delete_users():
+
+    delete = {"skill_name": "sss"}
+    delete_also = {"skill_name": "AutoCAD"}
+    and_this = {"skill_name": "Adobe Illustrator"}
+
+    mongo.db.users.delete_many(delete)
+    return "done", delete
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
