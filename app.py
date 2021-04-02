@@ -450,8 +450,14 @@ def admin_update_skills():
     else:
         flash("There are no skills to update!")
 
-    return redirect(url_for('admin_skills_roles', skills=skills))
+    return redirect(url_for('admin_skills_roles'))
 
+
+@app.route("/admin/delete_skill/<id>", methods=["GET", "POST"])
+def delete_skill(id):
+    mongo.db.skills.delete_one({"skill_name": id})
+    flash("The skill was deleted successfully!")
+    return redirect(url_for('admin_skills_roles'))
 
 
 @app.route("/admin/users_update/<uid>", methods=["GET", "POST"])
@@ -470,19 +476,10 @@ def admin_update_user(uid):
         "is_hidden": switch,
     }
 
-    mongo.db.users.update_one(
-            {"name_slug": uid}, {"$set": update})    
+    mongo.db.users.update_one({"name_slug": uid}, {"$set": update})
 
     flash("User updated successfully")
-    return render_template("admin/admin_dashboard.html", users=all_users)
-
-
-@app.route("/admin/clear_skills")
-def clear_skills():
-    mongo.db.skills.delete_many({ "skill_name":  })
-    return "done"
-    
-
+    return render_template("admin/admin_dashboard.html")
 
 
 if __name__ == "__main__":

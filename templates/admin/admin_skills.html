@@ -4,24 +4,22 @@
 
 
 <div class="admin-row-skills">
-    <!-- First column -->
-    
-    <!-- Second column -->
-    <div class="user-hidden-switch">
-        <form action="{{ url_for('admin_update_skills') }}" method="POST">
-            {% for skill in skills%}
-            
-            <input type="text" name="add_skill[]" value="{{skill.skill_name}}">
-                
-                {%endfor %}
-                <input type="text" name="add_skill[]">
-                <input type="text" name="add_skill[]">
-                <input type="text" name="add_skill[]">
-                <button type="submit">submit</button>
-            
-        </form>
-    </div>
+
+    <form action="{{ url_for('admin_update_skills') }}" method="POST" class="update-skill-form">
+
+        {% for skill in skills%}
+        <div class="d-flex space-between">
+            <input type="text" name="add_skill[]" value="{{skill.skill_name}}" class="add-skill-input">
+            <div><a href="{{ url_for('delete_skill', id=skill.skill_name) }}" class="btn delete-item"><i class="fas fa-times"></i></a></div>
+        </div>
+        {%endfor %}
+        <div class="d-flex space-between">
+            <input type="text" name="add_skill[]" class="add-skill-input">
+            <button type="submit">submit</button>
+        </div>
+    </form>
 </div>
+
 
 
 

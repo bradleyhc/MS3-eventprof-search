@@ -191,6 +191,11 @@ h4.title-feat {
     border-radius: 3px;
 }
 
+input[type=text]:not(.browser-default):focus:not([readonly]){
+    box-shadow: 1px 1px 16px -5px #777777;
+    border-bottom: 1px solid #000;
+}
+
 /* Utils */
 .m-top-40 {
     margin-top: 40px;
@@ -353,4 +358,22 @@ p.created-by {
     padding: 10px 0px;
     display: flex;
     justify-content: space-between;
+}
+
+.update-skill-form input.add-skill-input {
+    background-color: #fff;
+    box-shadow: 1px 1px 15px -8px #777777;
+    padding-left: 10px;
+    width: -webkit-fill-available;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    transition: 0.3s ease-in-out;
+}
+
+.update-skill-form input.add-skill-input:focus {
+    background-color: #fff;
+    box-shadow: 1px 1px 16px -5px #777777;
+    padding-left: 15px;
+    border: 1px solid #000;
+    border-bottom: 1px solid #000;
 }
