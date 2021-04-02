@@ -1,13 +1,11 @@
 <html>
-
 <body>
-    <h1>You have a new message!</h1>
-    <p>Hi there {{to_name}},
-        You have a new message from <a href="{{url_for('profile', name=u_link)}}" rel="noreferrer">{{name}}</a>:</p>
-    <blockquote>{{message}}</blockquote>
+    <p>Hi there {{to_name}},<br>
+        You have a new message from {{name}}:</p>
+    <blockquote style="width:max-content; font-style: italic; padding: 10px 20px; background-color: #e8e8e8; margin: 5px;">{{message}}</blockquote>
     <p>Your email has not been shared at this point, but if you wish to keep the conversation going, simply reply to
-        this email to respond directly with {{name}}</p>
-    <p>Until next time, <br>est Wishes <br>EventProf Search
+        this email to respond directly to {{name}}.</p>
+    <p>Until next time, <br><br>Best Wishes<br>EventProf Search
     </p>
 
 </body>

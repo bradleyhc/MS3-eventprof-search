@@ -383,9 +383,7 @@ def send_mail(slug):
     body = render_template("contact_email.html",
                            name=sender_name, to_name=recipient['first_name'],
                            message=user_msg, u_link=session['user']['slug'])
-    msg = Message(
-        "subject",
-        reply_to=testing_email, recipients=[testing_email])
+    msg = Message(subject, reply_to=testing_email, recipients=[testing_email])
 
     msg.html = body
 
