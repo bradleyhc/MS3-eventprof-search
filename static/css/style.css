@@ -346,3 +346,11 @@ p.created-by {
     display: flex;
     justify-content: center;
 }
+
+/* Admin pages */
+.admin-row {
+    border-bottom: 1px solid #777777;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
