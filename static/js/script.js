@@ -56,8 +56,9 @@ $('.add-skill-input').change(function () {
     $(this).closest('form').submit()
 })
 
-$('#add_input').click(function () {
-    var prevInput = $('.add-skill-input:last-child');
+$('#add_input_skill').click(function () {
+    var prevInput = $('#empty_skill_inputs .add-skill-input:last-of-type');
+    console.log("here",prevInput.val())
     if (prevInput.val() == "") {
         prevInput.addClass('input-missing-error')
     } else {
@@ -67,7 +68,7 @@ $('#add_input').click(function () {
         )
         // Credit to Y. Joy Ch. Singha -  https://stackoverflow.com/questions/19012495/smooth-scroll-to-div-id-jquery
         $('html, body').animate({
-            scrollTop: $('#add_input').offset().top
+            scrollTop: $('#add_input_skill').offset().top
         }, 'slow');
     }
 });
