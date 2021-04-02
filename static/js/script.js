@@ -7,7 +7,8 @@ $(document).ready(function () {
     // Hide flash messages on button click
     $("button.close-flash").click(function () {
         $("div.flash-msg").fadeOut();
-    })
+    });
+    $('.tabs').tabs();
 });
 
 // Preview profile image before upload without page reload
@@ -48,7 +49,7 @@ function validateDropdown() {
 
 // Submit form on change of input -Rory McCrossan https://stackoverflow.com/questions/38738034/submit-form-on-change-of-input-field 
 $('.admin-hide-switch').change(function () {
-    $(this).closest('form').submit()
+    $(this).closest('.hide-user-form').submit()
 })
 
 $('.add-skill-input').change(function () {
@@ -69,5 +70,4 @@ $('#add_input').click(function () {
             scrollTop: $('#add_input').offset().top
         }, 'slow');
     }
-})
-
+});

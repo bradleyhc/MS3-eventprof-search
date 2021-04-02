@@ -390,7 +390,7 @@ p.created-by {
     border: 1px solid #000!important;
 }
 
-#empty_skill_inputs{
+#empty_skill_inputs, #empty_role_inputs{
     display: flex;
     width: -webkit-fill-available;
 }
