@@ -31,21 +31,17 @@
         </form>
 
 
-        <form action="{{url_for('admin_users')}}" method="GET">
+        <!-- Get all user data on click -->
+        <a href="{{url_for('admin_users')}}" class="btn btn-large admin-dash-btn">Users</a>
 
+        <!-- Get all skills data on click -->
+        <a href="{{url_for('admin_skills')}}" class="btn btn-large admin-dash-btn">Skills</a>
 
-            <button type="submit">Click me</button>
-            {% include "admin/admin_users.html" %}
-        </form>
+        <!-- Get all roles data on click -->
+        <a href="{{url_for('admin_roles')}}" class="btn btn-large admin-dash-btn">Roles</a>
+
         {% include "admin/admin_users.html" %}
-
-        <form action="{{url_for('admin_skills')}}" method="GET">
-            <button type="submit">Skills</button>
-        </form>
         {% include "admin/admin_skills.html" %}
-        <form action="{{url_for('admin_roles')}}" method="GET">
-            <button type="submit">Roles</button>
-        </form>
         {% include "admin/admin_roles.html" %}
         <!-- Show no results if search returns 0 -->
         {% if results == 0 %}
