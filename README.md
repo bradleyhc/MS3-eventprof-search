@@ -95,3 +95,7 @@ ssssss
 - Flexbox - https://css-tricks.com/dont-overthink-flexbox-grids/
 - Submit on change of input for user hidden fields
 - Get all values from specific key in PyMongo - https://stackoverflow.com/questions/40282812/get-all-the-values-of-a-particular-key
+- Sorting and limited PyMongo - https://stackoverflow.com/questions/4421207/how-to-get-the-last-n-records-in-mongodb 
+
+### Other
+- Random name generator for users - https://www.behindthename.com/ 

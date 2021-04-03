@@ -4,25 +4,59 @@
 
 <div class="home-bg"></div>
 
-<div class="homepage-fs-slide">
-    <div id="homepage_search_section" class="container s12">
-        <div class="d-flex">
-            <div class="col" id="hp_user_search">
-                <h1 class="homepage-header">Discover <span class="emph-text">Freelance Talent</span> for your Event
-                    Projects</h1>
-                <form>
-                    <input type="text" id="homepage_search" class="hp-search-input"
-                        placeholder="Search for freelancers by role, location, skill">
-                    <button type="submit" class="btn btn-large secondary-btn">Search Freelancers</button>
-                </form>
-            </div>
-            <div class="col" id="hp_user_images">
-                <!-- Data imports from JSON -->
+<div class="snap-scroll-container">
+    <section class="snap-scroll-child">
+        <div class="homepage-fs-slide">
+            <div id="homepage_search_section" class="container s12">
+                <div class="d-flex">
+                    <div class="col" id="hp_user_search">
+                        <h1 class="homepage-header">Discover <span class="emph-text">Freelance Talent</span> for your
+                            Event
+                            Projects</h1>
+                        <form>
+                            <input type="text" id="homepage_search" class="hp-search-input"
+                                placeholder="Search for freelancers by role, location, skill">
+                            <button type="submit" class="btn btn-large secondary-btn">Search Freelancers</button>
+                        </form>
+                    </div>
+                    <div class="col" id="hp_user_images">
+                        <!-- Data imports from JSON -->
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="homepage-fs-slide fixed-bottom">
+    </section>
+    <section class="snap-scroll-child">
+        <div class="homepage-fs-slide fixed-bottom flex-col">
+            <h2 class="hp-section-header title-feat">A few of our recent Project Opportunities</h2>
+            <div id="hp_featured_projects" class="col">
+                {% for project in projects %}
+                <div class="card hp-project-row d-flex">
+                    <div class="card-content">
+                        <div class="stacked-item">
+                            <h3 class="title-feat-bold">{{ project.title }}</h3>
+                        </div>
+                        <div class="row d-flex stacked-item">
+                            <p><i class="fas fa-user pr-5"></i> {{ project.role }}</p><span class="divide-pipe"> |
+                            </span>
+                            <p><i class="fas fa-map-marker-alt pr-5"></i> {{ project.location }}</p><span
+                                class="divide-pipe"> | </span>
+                            <p><i class="fas fa-calendar-alt pr-5"></i> {{ project.start_date }} -
+                                {{ project.end_date }}
+                            </p>
+                        </div>
+                        <p>{{ project.description|truncate(200, False, '...') }}</p>
+                    </div>
+                    <div class="card-action d-flex">
+                        <a href="{{ url_for('view_project', project_id=project.slug) }}"
+                            class="btn btn-large primary-btn m-auto">View More</a>
+                    </div>
+                </div>
+                {% endfor %}
 
+            </div>
+        </div>
+</div>
+</section>
 </div>
 {% endblock %}

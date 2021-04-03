@@ -41,7 +41,11 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/home")
 def homepage():
-    return render_template("home.html")
+
+    # Get latest 3 projects for the homepage
+    projects = mongo.db.projects.find().sort("posted_date").limit(3)
+
+    return render_template("home.html", projects=projects)
 
 
 @app.route("/register", methods=["GET", "POST"])
