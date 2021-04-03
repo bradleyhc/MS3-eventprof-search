@@ -43,6 +43,7 @@ section.main-body {
 .container {
     width: 100%;
     padding: 20px 50px;
+    max-width: 1920px;
 }
 
 .flash-msg {
@@ -297,6 +298,7 @@ span.divide-pipe {
 
 #homepage_search_section {
     display: flex;
+    justify-content: space-between;
     margin: auto 0px;
 }
 
@@ -315,14 +317,48 @@ span.divide-pipe {
     font-weight: 900;
 }
 
+#hp_user_images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+#hp_user_search {
+    display: flex;
+    flex-direction: column;
+}
+
 .hp-user-img {
     width: 150px;
-    height: 150px;
+    max-width: 29%;
+    max-height: 150px;
     overflow: hidden;
+    box-shadow: 1px 1px 16px -5px #777777;
+    border-radius: 3px;
+    margin: 5px;
+    position: relative;
 }
 .hp-user-img > img {
+    height: 100%;
+    width: auto;
+}
+
+.hp-user-img-overlay {
+    background-color: #f1d351f2;
+    position: absolute;
+    height: 100%;
     width: 100%;
-    height: auto;
+    top: 150px;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #516ff1;
+    font-weight: 600;
+}
+
+.hp-user-img:hover > .hp-user-img-overlay {
+    top: 0px;
 }
 
 /* Profile page */
