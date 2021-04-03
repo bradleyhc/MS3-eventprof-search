@@ -110,6 +110,7 @@ button.close-flash{
 nav {
     background-color: transparent;
     box-shadow: none;
+    position: fixed;
 }
 
 .title-feat {
@@ -196,6 +197,20 @@ input[type=text]:not(.browser-default):focus:not([readonly]){
     border-bottom: 1px solid #000;
 }
 
+input[type=text]:not(.browser-default).hp-search-input {
+    background-color: #fff;
+    padding: 15px 0px 15px 15px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    font-size: 2rem;
+    box-shadow: 1px 1px 15px -8px #353535;
+    display: flex;
+    position: relative;
+    width: -webkit-fill-available;
+    font-weight: 300;
+    margin: 20px 0px;    
+}
+
 /* Utils */
 .m-top-40 {
     margin-top: 40px;
@@ -271,6 +286,43 @@ span.divide-pipe {
     height: 100vh;
     min-height: 100vh;
     z-index: -1;
+}
+
+.homepage-fs-slide {
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    display: flex;
+}
+
+#homepage_search_section {
+    display: flex;
+    margin: auto 0px;
+}
+
+.homepage-fs-slide.fixed-bottom {
+    bottom: 0!important;
+}
+
+.homepage-header{
+    font-weight: 600;
+    font-size: 3.7rem;
+    color: #fff;
+}
+
+.emph-text {
+    color: #51efd1;
+    font-weight: 900;
+}
+
+.hp-user-img {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+.hp-user-img > img {
+    width: 100%;
+    height: auto;
 }
 
 /* Profile page */

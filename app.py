@@ -517,7 +517,7 @@ def admin_update_user(uid):
 @app.route("/delete_user", methods=["GET", "POST"])
 def delete_users():
 
-    delete = {"skill_name": "sss"}
+    delete = ({"skill_name": { '$exists': 1 }})
     delete_also = {"skill_name": "AutoCAD"}
     and_this = {"skill_name": "Adobe Illustrator"}
 
