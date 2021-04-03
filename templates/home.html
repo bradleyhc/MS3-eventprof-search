@@ -6,56 +6,18 @@
 
 <div class="homepage-fs-slide">
     <div id="homepage_search_section" class="container s12">
-        <div class="row s12">
-            <div class="col s12 l7" id="hp_user_search">
+        <div class="d-flex">
+            <div class="col" id="hp_user_search">
                 <h1 class="homepage-header">Discover <span class="emph-text">Freelance Talent</span> for your Event
                     Projects</h1>
                 <form>
                     <input type="text" id="homepage_search" class="hp-search-input"
                         placeholder="Search for freelancers by role, location, skill">
-                    <button type="submit">Search Freelancers</button>
+                    <button type="submit" class="btn btn-large secondary-btn">Search Freelancers</button>
                 </form>
             </div>
-            <div class="col s12 l5" id="hp_user_images">
-                <div class="hp-user-img">
-                    <img src="{{ url_for('static', filename='images/brand/hp-user-one.png')}}"
-                        alt="Homepage user image five">
-                        <div class="hp-user-img-overlay">
-                            <p>Name One<br>Producer</p>
-                        </div>
-                </div>
-                <div class="hp-user-img">
-                    <img src="{{ url_for('static', filename='images/brand/hp-user-two.png')}}"
-                        alt="Homepage user image five">
-                </div>
-                <div class="hp-user-img">
-                    <img src="{{ url_for('static', filename='images/brand/hp-user-three.png')}}"
-                        alt="Homepage user image five">
-                </div>
-                <div class="hp-user-img">
-                    <img src="{{ url_for('static', filename='images/brand/hp-user-four.png')}}"
-                        alt="Homepage user image five">
-                </div>
-                <div class="hp-user-img">
-                    <img src="{{ url_for('static', filename='images/brand/hp-user-five.png')}}"
-                        alt="Homepage user image five">
-                </div>
-                <div class="hp-user-img">
-                    <img src="{{ url_for('static', filename='images/brand/hp-user-six.png')}}"
-                        alt="Homepage user image five">
-                </div>
-                <div class="hp-user-img">
-                    <img src="{{ url_for('static', filename='images/brand/hp-user-seven.png')}}"
-                        alt="Homepage user image five">
-                </div>
-                <div class="hp-user-img">
-                    <img src="{{ url_for('static', filename='images/brand/hp-user-eight.png')}}"
-                        alt="Homepage user image five">
-                </div>
-                <div class="hp-user-img">
-                    <img src="{{ url_for('static', filename='images/brand/hp-user-nine.png')}}"
-                        alt="Homepage user image five">
-                </div>
+            <div class="col" id="hp_user_images">
+                <!-- Data imports from JSON -->
             </div>
         </div>
     </div>

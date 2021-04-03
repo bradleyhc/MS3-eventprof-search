@@ -72,3 +72,19 @@ $('#add_input_skill').click(function () {
         }, 'slow');
     }
 });
+
+// Credits: https://api.jquery.com/jquery.getjson/ 
+$.getJSON('../static/js/homepage_img.json', function(data){
+    $.each(data, function (key, val) {
+        let item = data[key]
+        $('#hp_user_images').append(
+            `<div class="hp-user-img">
+                    <img src="./static/images/brand/${item.image}"
+                        alt="Homepage user image five">
+                        <div class="hp-user-img-overlay">
+                            <p>${item.name}<br>${item.role}</p>
+                        </div>
+                </div>`
+        )
+    })   
+});
