@@ -113,14 +113,23 @@ button.close-flash{
 nav {
     background-color: transparent;
     box-shadow: none;
-    position: fixed;
-    z-index: 1;
     transition: 0.3s ease-in-out;
+    height: 90px;
 }
 
 nav.scrolled {
     background-color: #ef516f;
     box-shadow: 1px 1px 16px -5px #3e3e3e;
+    height: 70px;
+}
+
+.mobile-nav {
+    background-color: transparent!important;
+    box-shadow: none!important;
+}
+
+.navbar-fixed {
+    position: fixed;
 }
 
 nav ul a {
@@ -275,6 +284,23 @@ input[type=text]:not(.browser-default).hp-search-input:focus {
     transform: translateY(-2px);
     box-shadow: 1px 1px 16px -5px #353535;;
 }
+
+nav .brand-logo {
+    position: relative;
+    height: 100%;
+}
+
+.brand-logo img {
+    height: 100%;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.nav-wrapper {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
 
 /* Utils */
 .m-top-40 {
@@ -615,9 +641,15 @@ p.created-by {
 
 
 /* Custom breakpoints */
+@media screen and (max-width: 540.01px){
+    nav {
+        max-height: 56px;
+    }
+}
 
 @media screen and (max-width:1120px){
     #hp_user_images {
         display: none;
     }
 }
+

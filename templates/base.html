@@ -17,12 +17,13 @@
 </head>
 
 <body>
-    <nav>
+    <div class="navbar-fixed hide-on-med-and-down">
+    <nav class="">
         <!-- Desktop -->
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo left">Logo</a>
-            <a href="#" data-target="mobile-nav" class="sidenav-trigger hide-on-large-and-up right"><i
-                    class="fas fa-bars"></i></a>
+            <a href="#" class="brand-logo left">
+                <img src="{{url_for('static', filename='images/brand/ep-search-white.png')}}" alt="EventProf Search Logo white">
+            </a>
             <ul id="nav-desktop" class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('homepage') }}">Home</a></li>
                 <li><a href="{{ url_for('get_freelancers') }}">Freelancers</a></li>
@@ -34,7 +35,17 @@
                 <li><a href="{{ url_for('profile', name=session['user']) }}">My Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             </ul>
+        </div>
+    </nav>
+</div>
+    <nav class="hide-on-med-and-up mobile-nav">
+        <div class="nav-wrapper">
             <!-- Mobile -->
+            <a href="#" class="brand-logo left">
+                <img src="{{url_for('static', filename='images/brand/ep-search-white.png')}}" alt="EventProf Search Logo white">
+            </a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger hide-on-large-and-up right"><i
+                    class="fas fa-bars"></i></a>
             <ul id="mobile-nav" class="sidenav">
                 <li><a href="{{ url_for('homepage') }}">Home</a></li>
                 <li><a href="{{ url_for('get_freelancers') }}">Freelancers</a></li>
