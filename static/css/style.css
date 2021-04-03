@@ -348,6 +348,7 @@ span.divide-pipe {
     top: 0;
     display: flex;
     scroll-snap-align: start;
+    background-color: #4f6ae1;
 }
 
 #homepage_search_section {
