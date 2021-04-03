@@ -85,6 +85,10 @@ ssssss
 ### Images
 
 - Avatar image - by <a href="https://pixabay.com/users/janjf93-3084263/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1699635">janjf93</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1699635">Pixabay</a>
+- User image homepage - Photo by Joshua Mcknight from Pexels - https://www.pexels.com/photo/woman-sitting-on-a-chair-3290234/
+- User image homepage - Photo by Italo Melo from Pexels - https://www.pexels.com/photo/portrait-photo-of-smiling-man-with-his-arms-crossed-standing-in-front-of-white-wall-2379004/
+- User image homepage - Image by <a href="https://pixabay.com/users/pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1868750">Pexels</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1868750">Pixabay</a>
+- User image homepage - Image by <a href="https://pixabay.com/users/1866946-1866946/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1252995">Mihai Paraschiv</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1252995">Pixabay</a>
 
 ### Guides 
 
