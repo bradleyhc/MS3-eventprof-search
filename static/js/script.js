@@ -82,7 +82,7 @@ $.getJSON('../static/js/homepage_img.json', function(data){
                     <img src="./static/images/brand/${item.image}"
                         alt="Homepage user image five">
                         <div class="hp-user-img-overlay">
-                            <p>${item.name}<br>${item.role}</p>
+                            <p><span class="p-feat">${item.name}</span><br>${item.role}</p>
                         </div>
                 </div>`
         )

@@ -116,13 +116,18 @@ nav {
 
 .title-feat {
     padding-bottom: 10px;
-    border-bottom: 5px solid #52f2d4;
+    border-bottom: 5px solid #51efd1;
     width: max-content;
     max-width: 100%;
 }
 h4.title-feat {
     padding-bottom: 7px;
-    border-bottom: 3px solid #52f2d4;
+    border-bottom: 3px solid #51efd1;
+}
+
+.p-feat {
+    padding-bottom: 0px;
+    border-bottom: 2px solid #ef516f;
 }
 
 .btn {
@@ -378,7 +383,14 @@ span.divide-pipe {
     text-align: center;
     color: #516ff1;
     font-weight: 600;
+    padding: 10px;
+    
 }
+
+.hp-user-img-overlay p {
+    font-size: 1rem;
+}
+
 
 .hp-user-img:hover > .hp-user-img-overlay {
     top: 0px;
