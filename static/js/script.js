@@ -88,3 +88,13 @@ $.getJSON('../static/js/homepage_img.json', function(data){
         )
     })   
 });
+
+// Add 'scroll' class to navbar on scroll
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 50) {
+        $('nav').addClass("scrolled")
+        console.log("we be scrolling")
+    } else {
+        $('nav').removeClass("scrolled")
+    }
+})

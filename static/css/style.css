@@ -109,6 +109,17 @@ nav {
     background-color: transparent;
     box-shadow: none;
     position: fixed;
+    z-index: 1;
+    transition: 0.3s ease-in-out;
+}
+
+nav.scrolled {
+    background-color: #ef516f;
+    box-shadow: 1px 1px 16px -5px #3e3e3e;
+}
+
+nav ul a {
+    font-size: 1.2rem;
 }
 
 .title-feat {
@@ -323,6 +334,7 @@ span.divide-pipe {
     height: 100vh;
     min-height: 100vh;
     z-index: -1;
+    background-color: #4f6ae1;
 }
 
 .homepage-fs-slide {
