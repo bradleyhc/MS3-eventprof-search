@@ -6,6 +6,7 @@
 
 body{
     background-color: #4f6ae1;
+    position: relative;
 }
 
 h1, h2, h3, h4, h5, h6, p, a {
@@ -36,7 +37,25 @@ p {
     margin: auto 0;
 }
 
+footer {
+    padding: 20px 50px;
+    background-color: #2F48B0;
+    color: #fff;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+footer div a {
+    color: #fff;
+}
+
 /* All page components */
+
+.main {
+    padding-bottom: 50px;
+}
+
 section.main-body {
     box-shadow: 0px -5px 12px -4px #3c3c3c;
     background-color: #efefef;
@@ -101,8 +120,9 @@ button.close-flash{
 
 
 .header-title-section {
-    height: 180px;
+    height: 250px;
     display: flex;
+    padding-top: 50px;
 }
 
 .header-title-section h1 {
