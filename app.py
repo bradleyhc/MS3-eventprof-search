@@ -42,10 +42,24 @@ mongo = PyMongo(app)
 @app.route("/home")
 def homepage():
 
+    
+    # Check if user is logged in & user_type
+    
+    if session:
+        logged_in = True
+        u_type = session['user']['u_type']
+
+    else:
+        logged_in = False
+        u_type = None
+        flash("You need to be logged in to view this page!")
+        return redirect(url_for('login'))
+
     # Get latest 3 projects for the homepage
     projects = mongo.db.projects.find().sort("posted_date").limit(3)
 
-    return render_template("home.html", projects=projects)
+    return render_template("home.html", projects=projects,
+                           logged_in=logged_in, u_type=u_type)
 
 
 @app.route("/register", methods=["GET", "POST"])
