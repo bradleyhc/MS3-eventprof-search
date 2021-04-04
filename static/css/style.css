@@ -7,6 +7,7 @@
 body{
     background-color: #4f6ae1;
     position: relative;
+    min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6, p, a {
@@ -54,6 +55,8 @@ footer div a {
 
 .main {
     padding-bottom: 50px;
+    min-height: 100vh;
+    display: flex;
 }
 
 section.main-body {
@@ -335,8 +338,21 @@ nav .brand-logo {
     margin:auto;
 }
 
+.my-auto {
+    margin-top:auto;
+    margin-bottom:auto;
+}
+
 .ml-auto {
     margin-left: auto;
+}
+
+.ml-0 {
+    margin-left: 0;
+}
+
+.mr-0 {
+    margin-right: 0;
 }
 
 .p-top-50 {
@@ -372,6 +388,12 @@ nav .brand-logo {
 
 .gutter-b {
     margin-bottom: 20px;
+}
+
+.v-center-align {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
 }
 
 .d-flex {
@@ -486,7 +508,6 @@ span.divide-pipe {
     font-size: 1rem;
 }
 
-
 .hp-user-img:hover > .hp-user-img-overlay {
     top: 0px;
 }
@@ -494,7 +515,6 @@ span.divide-pipe {
 .snap-scroll-container {
     scroll-snap-type: y proximity;
     scroll-snap-points-y: repeat(100vh);
-
 }
 
 .snap-scroll-child {
@@ -522,6 +542,23 @@ span.divide-pipe {
 .hp-section-header {
     padding: 50px;
     margin: auto;
+}
+
+/* Login Page */
+.login-section {
+    width: 100%;
+    height: fit-content;
+    margin: auto;
+}
+
+.login-form {
+    background-color: #fff;
+    padding: 50px;
+    min-width: 40%;
+    margin-left: auto;
+    margin-right: 0px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 16px -5px #3e3e3e;
 }
 
 /* Profile page */
