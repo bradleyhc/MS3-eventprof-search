@@ -687,10 +687,11 @@ p.created-by {
 #empty_skill_inputs, #empty_role_inputs{
     display: flex;
     width: -webkit-fill-available;
+    flex-wrap: wrap;
 }
 
 .add-to-list, .delete-from-list {
-    margin: 8px 0px auto 25px;
+    margin: auto 0px 15px 25px;
     min-width: 49px;
 }
 
