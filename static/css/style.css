@@ -330,6 +330,11 @@ label {
     z-index: -1;
 }
 
+input[type=text]:not(.browser-default):disabled {
+    border: none;
+    color: #777777;
+}
+
 
 /* Utils */
 .m-top-40 {
@@ -624,6 +629,11 @@ input#profile_img {
     color: #bf0000;
 }
 
+.abs-bottom {
+    position: absolute;
+    bottom: -17px;
+}
+
 /* Project pages */
 
 .project-card {
@@ -688,6 +698,7 @@ p.created-by {
     display: flex;
     width: -webkit-fill-available;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .add-to-list, .delete-from-list {
