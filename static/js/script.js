@@ -57,6 +57,8 @@ $('.add-skill-input').change(function () {
     $(this).closest('form').submit()
 })*/
 
+
+// Provide user with additional form inputs when 'plus' button clicked in Admin 'skills' page
 $('#add_input_skill').click(function () {
     var prevInput = $('#empty_skill_inputs .add-skill-input:last-of-type');
     if (prevInput.val() == "") {
@@ -78,6 +80,29 @@ $('#add_input_skill').click(function () {
         }, 'slow');
     }
 });
+
+// Provide user with additional form inputs when 'plus' button clicked in Admin 'roles' page
+$('#add_input_role').click(function () {
+    var prevInput = $('#empty_role_inputs .add-skill-input:last-of-type');
+    if (prevInput.val() == "") {
+        prevInput.addClass('input-missing-error');
+        $('#empty_role_inputs').append(
+            '<span class="helper-text-error abs-bottom" id="error_msg">Please enter a role to add another!</span>'
+        )
+    } else {
+        prevInput.removeClass('input-missing-error')
+        $('span#error_msg').remove();
+        $('#empty_role_inputs').append(
+            '<input type="text" name="add_skill[]" class="add-skill-input"></input>'
+        )
+        // Credit to Y. Joy Ch. Singha -  https://stackoverflow.com/questions/19012495/smooth-scroll-to-div-id-jquery
+        $('html, body').animate({
+            scrollTop: $('#add_input_skill').offset().top
+        }, 'slow');
+    }
+});
+
+
 
 // Credits: https://api.jquery.com/jquery.getjson/ 
 $.getJSON('../static/js/homepage_img.json', function(data){
