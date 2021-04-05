@@ -60,9 +60,15 @@ $('.add-skill-input').change(function () {
 $('#add_input_skill').click(function () {
     var prevInput = $('#empty_skill_inputs .add-skill-input:last-of-type');
     if (prevInput.val() == "") {
-        prevInput.addClass('input-missing-error')
+        prevInput.addClass('input-missing-error');
+        $('#empty_skill_inputs').append(
+            '<span class="helper-text-error abs-bottom" id="error_msg">Please enter a skill to add another!</span>'
+        )
+        console.log("this one",prevInput)
     } else {
         prevInput.removeClass('input-missing-error')
+        console.log("remove me")
+        $('span#error_msg').remove();
         $('#empty_skill_inputs').append(
             '<input type="text" name="add_skill[]" class="add-skill-input"></input>'
         )
@@ -93,7 +99,6 @@ $.getJSON('../static/js/homepage_img.json', function(data){
 $(window).scroll(function () {
     if ($(this).scrollTop() > 50) {
         $('nav').addClass("scrolled")
-        console.log("we be scrolling")
     } else {
         $('nav').removeClass("scrolled")
     }
