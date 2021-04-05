@@ -400,14 +400,8 @@ def send_mail(slug):
 
 """ Admin functions """
 
-# Admin dashboard
-@app.route("/admin", methods=["GET", "POST"])
-def admin_home():
 
-    return render_template("admin/admin_dashboard.html")
-
-
-# Get all users in admin view
+# Get all users in admin view - default view
 @app.route("/admin/users", methods=["GET", "POST"])
 def admin_users():
 
@@ -517,7 +511,7 @@ def admin_update_user(uid):
     mongo.db.users.update_one({"name_slug": uid}, {"$set": update})
 
     flash("User updated successfully")
-    return render_template("admin/admin_dashboard.html")
+    return redirect(url_for('admin_users'))
 
 
 # Debug delete user script
