@@ -46,8 +46,6 @@
                 <li><a class="modal-trigger" href="#modal-login">Login</a></li>
                 {% endif %}
                 
-                
-                
             </ul>
         </div>
     </nav>
@@ -62,17 +60,25 @@
                     class="fas fa-bars"></i></a>
             <ul id="mobile-nav" class="sidenav">
                 <li><a href="{{ url_for('homepage') }}">Home</a></li>
-                {% if logged_in == True %}
+                {% if session['user'] %}
+                
                 <li><a href="{{ url_for('get_freelancers') }}">Freelancers</a></li>
                 <li><a href="{{ url_for('get_projects') }}">Project Opportunities</a></li>
+
+                {% if session and (session.user.u_type == 'employer') or (session.user.admin == True) %}
                 <li><a href="{{ url_for('add_project') }}">Add a Project</a></li>
-                <li><a href="{{ url_for('admin_home') }}">Admin</a></li>
+                
+                {% endif  %}
+                {% if session.user.admin == True %}
+                <li><a href="{{ url_for('admin_users') }}">Admin</a></li>
+                {% endif %}
+                
                 <li><a href="{{ url_for('profile', name=session['user']) }}">My Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                {% endif %}
+                {% else %}
                 <li><a class="modal-trigger" href="#modal-register">Register</a></li>
                 <li><a class="modal-trigger" href="#modal-login">Login</a></li>
-                
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -80,7 +86,7 @@
     <!-- Register modal -->
     <div id="modal-register" class="modal">
         <div class="modal-content">
-            <h4 class="center-align">Register Account</h4>
+            <h4 class="center-align py-20">Register Account</h4>
             <form id="register_form_modal" action="{{ url_for('register') }}" method="POST" class="col s12">
                 <!-- Name inputs -->
                 <div class="row">
@@ -111,8 +117,8 @@
                 </div>
 
                 <!-- User type input -->
-                <h6 class="center-align">Account Type</h6>
-                <div class="switch center-align">
+                <h6 class="center-align py-20">Account Type</h6>
+                <div class="switch center-align gutter-b">
                     <label class="switch-label">
                         Freelancer
                         <input type="checkbox" id="user_type" name="user_type">
@@ -120,8 +126,8 @@
                         Project Owner
                     </label>
                 </div>
-                <div class="row center-align m-top-40">
-                    <button type="submit" class="btn-large">Create Account</button>
+                <div class="row center-align m-top-40 py-20">
+                    <button type="submit" class="btn-large secondary-btn cta-btn">Create Account</button>
                 </div>
             </form>
         </div>
@@ -131,7 +137,7 @@
     <!-- Login modal -->
     <div id="modal-login" class="modal">
         <div class="modal-content">
-            <h4 class="center-align">Login</h4>
+            <h4 class="center-align py-20">Login</h4>
             <form id="login_form_modal" action="{{ url_for('login') }}" method="POST" class="col s12">
 
                 <!-- Email input -->
@@ -151,7 +157,7 @@
                 </div>
 
                 <div class="row center-align m-top-40">
-                    <button type="submit" class="btn-large">Login</button>
+                    <button type="submit" class="btn-large secondary-btn cta-btn">Login</button>
                 </div>
             </form>
         </div>
