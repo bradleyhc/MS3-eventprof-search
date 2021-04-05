@@ -26,15 +26,28 @@
             </a>
             <ul id="nav-desktop" class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('homepage') }}">Home</a></li>
+                {% if session['user'] %}
+                
                 <li><a href="{{ url_for('get_freelancers') }}">Freelancers</a></li>
                 <li><a href="{{ url_for('get_projects') }}">Project Opportunities</a></li>
-                
+
+                {% if session and (session.user.u_type == 'employer') or (session.user.admin == True) %}
                 <li><a href="{{ url_for('add_project') }}">Add a Project</a></li>
-                <li><a class="modal-trigger" href="#modal-register">Register</a></li>
-                <li><a class="modal-trigger" href="#modal-login">Login</a></li>
+                
+                {% endif  %}
+                {% if session.user.admin == True %}
                 <li><a href="{{ url_for('admin_home') }}">Admin</a></li>
+                {% endif %}
+                
                 <li><a href="{{ url_for('profile', name=session['user']) }}">My Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                <li><a class="modal-trigger" href="#modal-register">Register</a></li>
+                <li><a class="modal-trigger" href="#modal-login">Login</a></li>
+                {% endif %}
+                
+                
+                
             </ul>
         </div>
     </nav>
@@ -49,14 +62,17 @@
                     class="fas fa-bars"></i></a>
             <ul id="mobile-nav" class="sidenav">
                 <li><a href="{{ url_for('homepage') }}">Home</a></li>
+                {% if logged_in == True %}
                 <li><a href="{{ url_for('get_freelancers') }}">Freelancers</a></li>
                 <li><a href="{{ url_for('get_projects') }}">Project Opportunities</a></li>
                 <li><a href="{{ url_for('add_project') }}">Add a Project</a></li>
-                <li><a class="modal-trigger" href="#modal-register">Register</a></li>
-                <li><a class="modal-trigger" href="#modal-login">Login</a></li>
                 <li><a href="{{ url_for('admin_home') }}">Admin</a></li>
                 <li><a href="{{ url_for('profile', name=session['user']) }}">My Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% endif %}
+                <li><a class="modal-trigger" href="#modal-register">Register</a></li>
+                <li><a class="modal-trigger" href="#modal-login">Login</a></li>
+                
             </ul>
         </div>
     </nav>
