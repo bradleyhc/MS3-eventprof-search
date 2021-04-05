@@ -52,13 +52,13 @@ $('.admin-hide-switch').change(function () {
     $(this).closest('.hide-user-form').submit()
 })
 
+/*
 $('.add-skill-input').change(function () {
     $(this).closest('form').submit()
-})
+})*/
 
 $('#add_input_skill').click(function () {
     var prevInput = $('#empty_skill_inputs .add-skill-input:last-of-type');
-    console.log("here",prevInput.val())
     if (prevInput.val() == "") {
         prevInput.addClass('input-missing-error')
     } else {
