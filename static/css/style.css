@@ -57,6 +57,7 @@ footer div a {
     padding-bottom: 50px;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
 }
 
 section.main-body {
@@ -79,6 +80,7 @@ section.main-body {
     border-radius: 3px;
     position: absolute;
     left: 25%;
+    top: 90px;
 }
 
 button.close-flash{
@@ -322,6 +324,10 @@ nav .brand-logo {
 .nav-wrapper {
     padding-left: 50px;
     padding-right: 50px;
+}
+
+label {
+    z-index: -1;
 }
 
 

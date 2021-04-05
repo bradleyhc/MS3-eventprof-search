@@ -42,24 +42,10 @@ mongo = PyMongo(app)
 @app.route("/home")
 def homepage():
 
-    
-    # Check if user is logged in & user_type
-    
-    if session:
-        logged_in = True
-        u_type = session['user']['u_type']
-
-    else:
-        logged_in = False
-        u_type = None
-        flash("You need to be logged in to view this page!")
-        return redirect(url_for('login'))
-
     # Get latest 3 projects for the homepage
     projects = mongo.db.projects.find().sort("posted_date").limit(3)
 
-    return render_template("home.html", projects=projects,
-                           logged_in=logged_in, u_type=u_type)
+    return render_template("home.html", projects=projects)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -106,7 +92,8 @@ def register():
         mongo.db.users.insert_one(register)
 
         # put user info into session
-        session['user'] = {"slug": full_name, "u_type": user_type}
+        session['user'] = {"slug": full_name,
+                           "u_type": user_type, "admin": False}
         flash("Reg successful", name_slug_exists)
         return redirect(url_for("edit_profile", name=full_name))
 
@@ -127,7 +114,8 @@ def login():
                     request.form.get("password_lg")):
                 session["user"] = {
                     "slug": existing_user["name_slug"],
-                    "u-type": existing_user["user_type"]}
+                    "u_type": existing_user["user_type"],
+                    "admin": existing_user["is_admin"]}
 
                 # if valid, redirect to profile page
                 return redirect(url_for(
@@ -148,9 +136,10 @@ def login():
 
 @app.route("/logout")
 def logout():
+    print(session)
     flash("You've been successfully logged out!")
     session.pop("user")
-    return redirect("/")
+    return redirect(url_for('homepage'))
 
 
 @app.route("/edit_profile/<name>", methods=["GET", "POST"])
