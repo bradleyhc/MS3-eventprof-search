@@ -2,10 +2,10 @@
 {% block metatitle %}Edit My Profile{% endblock %}
 {% block content %}
 
-{% block header %}Edit My Profile{% endblock %}
 
-<header class="header-bg">
-    <div class="container">
+<header class="header-title-section">
+    <div class="header-bg"></div>
+    <div class="container m-auto">
         <h1>Edit My Profile</h1>
     </div>
 </header>
@@ -13,14 +13,14 @@
 
 
 <section class="main-body">
-    <div class="container p-top-50">
-        <div class="row s12">
+    <div class="container py-50">
+        <div class="row s12 d-flex">
             {% for info in data %}
-            <div class="col s8">
+            <div class="col s8 m-auto">
 
                 <form class="" action="{{ url_for('edit_profile', name=info.name_slug) }}" method="POST"
                     enctype="multipart/form-data">
-                    <div class="d-flex s12">
+                    <div class="d-flex s12 gutter-b">
                         <div class="profile-img-wrapper">
                             <label for="profile_img" id="edit_profile_img_overlay">
                                 <i class="fas fa-camera"></i>
@@ -82,7 +82,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="profile-about-wrapper">
+                    <div class="profile-about-wrapper gutter-b">
                         <div class="row">
                             <!-- Skills input -->
                             <div class="input-field col s12" id="skills_dropdown">
@@ -114,7 +114,7 @@
                     </div>
 
                     <!-- Initial update button (inits modal for second confirmation) -->
-                    <button id="update_profile_button_init" href="#confirm_update" class="btn modal-trigger"
+                    <button id="update_profile_button_init" href="#confirm_update" class="btn modal-trigger secondary-btn"
                         onclick="validateDropdown();">Update Profile</button>
                     
                     <div class="modal" id="confirm_update">
@@ -128,10 +128,6 @@
                 </form>
             </div>
             {% endfor %}
-            <!-- Nearby projects widget -->
-            <div class="col s4">
-
-            </div>
         </div>
     </div>
 
