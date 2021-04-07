@@ -460,10 +460,42 @@ def admin_users():
     # Redirect to login if user not logged in
     if not session: 
         return check_login()
+    elif session['user']['admin'] == False: 
+        flash('You must be an admin to access this page')
+        return redirect(url_for('get_freelancers'))
 
     users = mongo.db.users.find()
 
     return render_template("admin/admin_dashboard.html", users=users, uid=None)
+
+
+@app.route("/admin/users_update/<uid>", methods=["GET", "POST"])
+def admin_update_user(uid):
+
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
+    elif session['user']['admin'] == False: 
+        flash('You must be an admin to access this page')
+        return redirect(url_for('get_freelancers'))
+
+    user = mongo.db.users.find_one({"name_slug": uid})
+    all_users = mongo.db.users.find()
+
+    # Check current 'hidden' status of user
+    if user["is_hidden"] is True:
+        switch = False
+    else:
+        switch = True
+
+    update = {
+        "is_hidden": switch,
+    }
+
+    mongo.db.users.update_one({"name_slug": uid}, {"$set": update})
+
+    flash("User updated successfully")
+    return redirect(url_for('admin_users'))
 
 
 # Get all skills & roles in admin view
@@ -473,6 +505,9 @@ def admin_skills():
     # Redirect to login if user not logged in
     if not session: 
         return check_login()
+    elif session['user']['admin'] == False: 
+        flash('You must be an admin to access this page')
+        return redirect(url_for('get_freelancers'))
 
     skills = mongo.db.skills.find()
 
@@ -486,6 +521,9 @@ def admin_update_skills():
     # Redirect to login if user not logged in
     if not session: 
         return check_login()
+    elif session['user']['admin'] == False: 
+        flash('You must be an admin to access this page')
+        return redirect(url_for('get_freelancers'))
 
     skill_count = mongo.db.skills.count()
     skills = mongo.db.skills.distinct("skill_name")
@@ -514,6 +552,9 @@ def delete_skill(id):
     # Redirect to login if user not logged in
     if not session: 
         return check_login()
+    elif session['user']['admin'] == False: 
+        flash('You must be an admin to access this page')
+        return redirect(url_for('get_freelancers'))
 
     mongo.db.skills.delete_one({"skill_name": id})
     flash("The skill was deleted successfully!")
@@ -527,6 +568,9 @@ def admin_roles():
     # Redirect to login if user not logged in
     if not session: 
         return check_login()
+    elif session['user']['admin'] == False: 
+        flash('You must be an admin to access this page')
+        return redirect(url_for('get_freelancers'))
 
     roles = mongo.db.roles.find()
 
@@ -536,6 +580,13 @@ def admin_roles():
 # Update skills from admin view
 @app.route("/admin/update_roles", methods=["GET", "POST"])
 def admin_update_roles():
+
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
+    elif session['user']['admin'] == False: 
+        flash('You must be an admin to access this page')
+        return redirect(url_for('get_freelancers'))
 
     role_count = mongo.db.roles.count()
     #skills = mongo.db.skills.distinct("skill_name")
@@ -560,31 +611,19 @@ def admin_update_roles():
 
 @app.route("/admin/delete_role/<id>", methods=["GET", "POST"])
 def delete_role(id):
+
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
+    elif session['user']['admin'] == False: 
+        flash('You must be an admin to access this page')
+        return redirect(url_for('get_freelancers'))
+
     mongo.db.roles.delete_one({"role_name": id})
     flash("The role was deleted successfully!")
     return redirect(url_for('admin_roles'))
 
 
-@app.route("/admin/users_update/<uid>", methods=["GET", "POST"])
-def admin_update_user(uid):
-
-    user = mongo.db.users.find_one({"name_slug": uid})
-    all_users = mongo.db.users.find()
-
-    # Check current 'hidden' status of user
-    if user["is_hidden"] is True:
-        switch = False
-    else:
-        switch = True
-
-    update = {
-        "is_hidden": switch,
-    }
-
-    mongo.db.users.update_one({"name_slug": uid}, {"$set": update})
-
-    flash("User updated successfully")
-    return redirect(url_for('admin_users'))
 
 
 
