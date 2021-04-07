@@ -39,13 +39,21 @@ mail = Mail(app)
 mongo = PyMongo(app)
 
 
+# Global Functions
+def check_login():
+    
+    flash("You need to be logged in to view that page!")
+    return redirect(url_for('login'))
+
+
 @app.route("/")
 @app.route("/home")
 def homepage():
 
     # Get latest 3 projects for the homepage
     projects = mongo.db.projects.find().sort("posted_date").limit(3)
-
+    
+    
     return render_template("home.html", projects=projects)
 
 
@@ -95,6 +103,7 @@ def register():
         # put user info into session
         session['user'] = {"slug": full_name,
                            "u_type": user_type, "admin": False}
+        session['logged_in'] = True                          
         flash("Reg successful", name_slug_exists)
         return redirect(url_for("edit_profile", name=full_name))
 
@@ -117,6 +126,7 @@ def login():
                     "slug": existing_user["name_slug"],
                     "u_type": existing_user["user_type"],
                     "admin": existing_user["is_admin"]}
+                session['logged_in'] = True
 
                 # if valid, redirect to profile page
                 return redirect(url_for(
@@ -145,6 +155,10 @@ def logout():
 
 @app.route("/edit_profile/<name>", methods=["GET", "POST"])
 def edit_profile(name):
+    
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
 
     # get user slug
     u_slug = session["user"]["slug"]
@@ -191,6 +205,10 @@ def edit_profile(name):
 
 @app.route("/profile/<name>", methods=["GET", "POST"])
 def profile(name):
+    
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
 
     # create full name string for profile page
     names = mongo.db.users.find_one({"name_slug": session["user"]["slug"]})
@@ -217,6 +235,10 @@ def profile(name):
 
 @app.route("/add_project", methods=["GET", "POST"])
 def add_project():
+
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
 
     skills = list(mongo.db.skills.find())
     roles = list(mongo.db.roles.find())
@@ -256,6 +278,10 @@ def add_project():
 @app.route("/opportunities", methods=["GET"])
 def get_projects():
 
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
+
     projects = mongo.db.projects.find()
 
     return render_template("all_projects.html", projects=projects)
@@ -263,6 +289,10 @@ def get_projects():
 
 @app.route("/view_project/<project_id>", methods=["GET", "POST"])
 def view_project(project_id):
+
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
 
     # get single project information
     project_data = list(mongo.db.projects.find({"slug": project_id}))
@@ -279,6 +309,10 @@ def view_project(project_id):
 
 @app.route("/edit_project/<project_id>", methods=["GET", "POST"])
 def edit_project(project_id):
+    
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
 
     # get all skills and roles from DB
     skills = list(mongo.db.skills.find())
@@ -319,6 +353,10 @@ def edit_project(project_id):
 @app.route("/freelancers", methods=["GET", "POST"])
 def get_freelancers():
 
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
+
     current_user = session["user"]["slug"]
 
     freelancers = mongo.db.users.find(
@@ -354,19 +392,28 @@ def sidebar_widget():
 
 @app.route("/search_freelancers", methods=["GET", "POST"])
 def search_freelancers():
+
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
+
     query = request.form.get("query")
     freelancers = list(mongo.db.users.find({"$text": {"$search": query},
-                       "user_type": "freelancer", "is_hidden": False}))
+                        "user_type": "freelancer", "is_hidden": False}))
 
     results = len(freelancers)
 
-    return render_template("all_freelancers.html",
-                           freelancers=freelancers, query=query,
-                           results=results)
+    return render_template("all_freelancers.html", freelancers=freelancers, 
+                            query=query, results=results)
 
 
 @app.route("/search_projects", methods=["GET", "POST"])
 def search_projects():
+
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
+
     query = request.form.get("query")
     projects = list(mongo.db.projects.find({"$text": {"$search": query}}))
 
@@ -378,6 +425,10 @@ def search_projects():
 
 @app.route("/send_email/<slug>", methods=["GET", "POST"])
 def send_mail(slug):
+
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
 
     recipient = mongo.db.users.find_one({"name_slug": slug})
     sender = mongo.db.users.find_one({"name_slug": session['user']['slug']})
@@ -406,6 +457,10 @@ def send_mail(slug):
 @app.route("/admin/users", methods=["GET", "POST"])
 def admin_users():
 
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
+
     users = mongo.db.users.find()
 
     return render_template("admin/admin_dashboard.html", users=users, uid=None)
@@ -415,6 +470,10 @@ def admin_users():
 @app.route("/admin/skills", methods=["GET", "POST"])
 def admin_skills():
 
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
+
     skills = mongo.db.skills.find()
 
     return render_template("admin/admin_dashboard.html", skills=skills)
@@ -423,6 +482,10 @@ def admin_skills():
 # Update skills from admin view
 @app.route("/admin/update_skills", methods=["GET", "POST"])
 def admin_update_skills():
+
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
 
     skill_count = mongo.db.skills.count()
     skills = mongo.db.skills.distinct("skill_name")
@@ -447,6 +510,11 @@ def admin_update_skills():
 
 @app.route("/admin/delete_skill/<id>", methods=["GET", "POST"])
 def delete_skill(id):
+    
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
+
     mongo.db.skills.delete_one({"skill_name": id})
     flash("The skill was deleted successfully!")
     return redirect(url_for('admin_skills'))
@@ -455,6 +523,10 @@ def delete_skill(id):
 # Get all roles in admin view
 @app.route("/admin/roles", methods=["GET", "POST"])
 def admin_roles():
+
+    # Redirect to login if user not logged in
+    if not session: 
+        return check_login()
 
     roles = mongo.db.roles.find()
 
@@ -526,6 +598,8 @@ def delete_users():
 
     mongo.db.users.delete_many(delete)
     return "done", delete
+
+
 
 
 if __name__ == "__main__":
