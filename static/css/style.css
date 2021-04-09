@@ -67,7 +67,7 @@ section.main-body {
 
 .container {
     width: 100%;
-    padding: 20px 50px;
+    padding: 50px;
     max-width: 1920px;
 }
 
@@ -193,7 +193,7 @@ h4.title-feat {
     text-transform: capitalize;
     padding: 10px 30px;
     height: min-content;
-    font-weight: 700;
+    font-weight: 500;
     border-radius: 5px;
     background-color: #455FCD;
     color: #fff;
@@ -206,12 +206,25 @@ h4.title-feat {
 }
 .secondary-btn {
     background-color: #455FCD;
+    border: 2px solid #455FCD;
     border-radius: 5px;
     color: #fff;
     text-transform: capitalize;
     height: min-content;
     padding: 5px 15px;
     font-size: 1.1rem;
+}
+
+.btn-line {
+    border: 2px solid #FF3E63;
+    color: #FF3E63;
+    background-color: #fff;
+}
+
+.btn-green-on-hover:hover {
+    background-color: #51EFD1!important;
+    color: #2F48B0!important;
+    border: 2px solid #51EFD1!important;
 }
 
 .cta-btn {
@@ -253,6 +266,39 @@ h4.title-feat {
     white-space: pre-wrap;
     word-break: normal;
 }
+
+input[type=text]:not(.browser-default).search-bar {
+    background-color: #fff;
+    padding: 5px 0px 5px 15px;
+    border: 3px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    box-shadow: 1px 1px 15px -8px #353535;
+    display: flex;
+    width: -webkit-fill-available;
+    font-weight: 300;
+    margin: 20px 0px;    
+    transition: 0.3s ease-in-out;
+}
+
+input[type=text]:not(.browser-default).search-bar:focus {
+    padding-left: 25px;
+    border: 3px solid #51f1d3;
+    border-bottom: 2px solid #51f1d3!important;
+    box-shadow: 1px 1px 15px -5px #353535;
+}
+
+.search-bar-wrap {
+    width: -webkit-fill-available;
+}
+
+.search-bar-btn-wrap {
+    min-width: max-content;
+}
+
+
+
 
 /* Materialize components */
 .modal {
@@ -401,7 +447,7 @@ input[type=text]:not(.browser-default):disabled {
     margin-right: 0;
 }
 
-.p-top-50 {
+.pt-50 {
     padding-top: 50px;
 }
 
@@ -419,6 +465,9 @@ input[type=text]:not(.browser-default):disabled {
 
 .pl-0 {
     padding-left: 0px;
+}
+.pr-0 {
+    padding-right: 0px;
 }
 
 .pr-5 {
@@ -769,3 +818,9 @@ p.created-by {
     }
 }
 
+@media screen and (min-width:1200px){
+    .container {
+        max-width: 75%;
+    }
+
+}
