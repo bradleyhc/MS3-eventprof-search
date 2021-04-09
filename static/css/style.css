@@ -27,6 +27,7 @@ h2 {
 
 h3 {
     font-size: 1.8rem;
+    margin-bottom: 5px;
 }
 
 h4 {
@@ -34,7 +35,7 @@ h4 {
 }
 
 p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: auto 0;
 }
 
@@ -158,7 +159,7 @@ nav.scrolled {
 }
 
 nav ul a {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .title-feat {
@@ -386,6 +387,7 @@ label.active {
 
 .btn:hover {
     background-color: #FF3E63;
+    border: 2px solid #FF3E63;
     color: #131313;
     transform: translateY(-2px);
     box-shadow: 1px 1px 16px -5px #353535;;
@@ -510,6 +512,26 @@ span.divide-pipe {
 
 .space-between {
     justify-content: space-between;
+}
+
+.pg-line-bk-green {
+    width: 100%;
+    border-bottom: 4px solid #51EFD1;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+}
+
+.pg-line-bk-blue {
+    width: 100%;
+    border-bottom: 4px solid #455FCD;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+}
+.pg-line-bk-grey {
+    width: 100%;
+    border-bottom: 4px solid #9e9e9e;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
 }
 
 /* Home page */
@@ -758,6 +780,13 @@ p.created-by {
     justify-content: space-between;
 }
 
+.admin-control-btns {
+    justify-content: space-between;
+}
+.admin-control-btns a.btn {
+    width: 32%;
+}
+
 .update-skill-form input.add-skill-input {
     background-color: #fff;
     box-shadow: 1px 1px 15px -8px #777777;
@@ -832,6 +861,11 @@ p.created-by {
         min-width: max-content;
         margin-left: 20px;
     }
+
+    .admin-control-btns a.btn {
+    width: 100%;
+    margin-bottom: 5px;
+}
 }
 
 @media screen and (max-width:1120px){
