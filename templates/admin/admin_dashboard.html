@@ -13,18 +13,23 @@
 
 <section class="main-body">
     <div class="container p-top-50">
-        
+        <div class="row mb-50">
+        <h3><strong>Manage Users & Settings</strong></h3>
+        <p>Hide users, or add skills or roles for users to select in profile or project creation.</p>
 
+<div class="d-flex admin-control-btns gutter-t flex-col-mobile">
 
         <!-- Get all user data on click -->
-        <a href="{{url_for('admin_users')}}" class="btn btn-large admin-dash-btn">Users</a>
+        <a href="{{url_for('admin_users')}}" class="btn secondary-btn admin-dash-btn">Update User Visibility</a>
 
         <!-- Get all skills data on click -->
-        <a href="{{url_for('admin_skills')}}" class="btn btn-large admin-dash-btn">Skills</a>
+        <a href="{{url_for('admin_skills')}}" class="btn secondary-btn admin-dash-btn">Update Skill Choices</a>
 
         <!-- Get all roles data on click -->
-        <a href="{{url_for('admin_roles')}}" class="btn btn-large admin-dash-btn">Roles</a>
-
+        <a href="{{url_for('admin_roles')}}" class="btn secondary-btn admin-dash-btn">Update Role Choices</a>
+</div>
+<div class="pg-line-bk-green"></div>
+</div>
         {% include "admin/admin_users.html" %}
         {% include "admin/admin_skills.html" %}
         {% include "admin/admin_roles.html" %}
