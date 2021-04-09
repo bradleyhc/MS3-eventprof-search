@@ -561,7 +561,7 @@ def admin_update_skills():
     else:
         flash("There are no skills to update!")
 
-    return redirect(url_for('admin_skills', _anchor='add_input'))
+    return redirect(url_for('admin_skills', _anchor='empty_skill_inputs'))
 
 
 @app.route("/admin/delete_skill/<id>", methods=["GET", "POST"])
@@ -624,7 +624,7 @@ def admin_update_roles():
     else:
         flash("There are no roles to update!")
 
-    return redirect(url_for('admin_roles', _anchor='add_input'))
+    return redirect(url_for('admin_roles', _anchor='empty_role_inputs'))
 
 
 @app.route("/admin/delete_role/<id>", methods=["GET", "POST"])

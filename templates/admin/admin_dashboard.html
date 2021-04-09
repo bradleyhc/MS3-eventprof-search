@@ -14,25 +14,34 @@
 <section class="main-body">
     <div class="container center-on-large p-top-50">
         <div class="row mb-50">
-        <h3><strong>Manage Users & Settings</strong></h3>
-        <p>Hide users, or add skills or roles for users to select in profile or project creation.</p>
+            <h3><strong>Manage Users & Settings</strong></h3>
+            <p>Hide users, or add skills or roles for users to select in profile or project creation.</p>
 
-<div class="d-flex admin-control-btns gutter-t flex-col-mobile">
+            <div class="d-flex admin-control-btns gutter-t flex-col-mobile">
 
-        <!-- Get all user data on click -->
-        <a href="{{url_for('admin_users')}}" class="btn secondary-btn btn-green-on-hover">Update User Visibility</a>
+                <!-- Get all user data on click -->
+                <a href="{{url_for('admin_users')}}" class="btn secondary-btn btn-green-on-hover">Update User
+                    Visibility</a>
 
-        <!-- Get all skills data on click -->
-        <a href="{{url_for('admin_skills')}}" class="btn secondary-btn btn-green-on-hover">Update Skill Choices</a>
+                <!-- Get all skills data on click -->
+                <a href="{{url_for('admin_skills')}}" class="btn secondary-btn btn-green-on-hover">Update Skill
+                    Options</a>
 
-        <!-- Get all roles data on click -->
-        <a href="{{url_for('admin_roles')}}" class="btn secondary-btn btn-green-on-hover">Update Role Choices</a>
-</div>
-<div class="pg-line-bk-green"></div>
-</div>
+                <!-- Get all roles data on click -->
+                <a href="{{url_for('admin_roles')}}" class="btn secondary-btn btn-green-on-hover">Update Role
+                    Options</a>
+            </div>
+            <div class="pg-line-bk-green"></div>
+        </div>
+        {% if users is defined %}
         {% include "admin/admin_users.html" %}
+        {% endif %}
+        {% if skills is defined %}
         {% include "admin/admin_skills.html" %}
+        {% endif %}
+        {% if roles is defined %}
         {% include "admin/admin_roles.html" %}
+        {% endif %}
 
 
 
@@ -67,24 +76,24 @@
                                 {{ project.end_date }}</p>
                         </div>
                         <!-- Skills -->
-                        <div class="row d-flex stacked-item">
-                            {% for skill in project.skills %}
-                            <div class="chip">{{skill}}</div>
-                            {% endfor %}
-                        </div>
-                        <p>{{ project.description|truncate(200, False, '...') }}</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="{{ url_for('view_project', project_id=project.slug) }}" class="btn primary-btn">View
-                            More</a>
-                        <a href="#" class="gutter-l btn secondary-btn">Edit this Project</a>
-                    </div>
-                </div>
-
-            </div> -->
+        <div class="row d-flex stacked-item">
+            {% for skill in project.skills %}
+            <div class="chip">{{skill}}</div>
             {% endfor %}
-            {% endif %}
         </div>
+        <p>{{ project.description|truncate(200, False, '...') }}</p>
+    </div>
+    <div class="card-action">
+        <a href="{{ url_for('view_project', project_id=project.slug) }}" class="btn primary-btn">View
+            More</a>
+        <a href="#" class="gutter-l btn secondary-btn">Edit this Project</a>
+    </div>
+    </div>
+
+    </div> -->
+    {% endfor %}
+    {% endif %}
+    </div>
     </div>
 
 

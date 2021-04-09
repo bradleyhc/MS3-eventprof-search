@@ -1,7 +1,7 @@
 {% block admin_skills %}
 
 
-
+<h3 class="gutter-b"><strong>Add or Delete Skill Options</strong></h3>
 
 <div id="admin_skills" class="tab">
 
@@ -15,7 +15,7 @@
         {%endfor %}
         {% if skills is defined %}
         <div class="d-flex space-between">
-            <div id="empty_skill_inputs">
+            <div id="empty_skill_inputs" class="add-input">
                 <input type="text" name="add_skill[]" class="add-skill-input">
                 
             </div>
