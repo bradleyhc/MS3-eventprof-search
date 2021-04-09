@@ -3,7 +3,6 @@
 
 <div id="admin_users" class="tab">
 
-    {% if users is defined %}
     <!-- Search bar section -->
     <form method="POST" class="col s12" action="{{ url_for('admin_search_freelancers')}}">
         <h3><strong>Search all users</strong></h3>
@@ -21,58 +20,62 @@
         </div>
     </form>
     <!-- End search bar section -->
-    {% endif %}
 
-<table class="highlight user-table">
+
+    <table class="highlight user-table">
         <thead>
-          <tr>
-              <th>User Name</th>
-              <th>Role</th>
-              <th>Location</th>
-              <th class="txt-align-c">Profile Visibility</th>
-          </tr>
+            <tr>
+                <th>User Name</th>
+                <th>Role</th>
+                <th>Location</th>
+                <th class="txt-align-c">Profile Visibility</th>
+            </tr>
         </thead>
 
 
-<tbody>
-    {% for user in users%}
+        <tbody>
+            {% for user in users%}
 
-    <tr>
-        <td class="table-item">
-            <i class="fas fa-user pr-5 hide-on-large-only"></i><p>{{ user.first_name }} {{ user.last_name }}</p>
-        </td>
-        <td class="table-item">
-            <i class="fas fa-clipboard-list pr-5 show-on-small"></i><p>{{ user.role }}</p>
-        </td>
-        <td class="table-item">
-            <i class="fas fa-map-marker-alt pr-5 show-on-small"></i><p>{{ user.location }}</p>
-        </td>
+            <tr>
+                <td class="table-item">
+                    <i class="fas fa-user pr-5 hide-on-large-only"></i>
+                    <p>{{ user.first_name }} {{ user.last_name }}</p>
+                </td>
+                <td class="table-item">
+                    <i class="fas fa-clipboard-list pr-5 show-on-small"></i>
+                    <p>{{ user.role }}</p>
+                </td>
+                <td class="table-item">
+                    <i class="fas fa-map-marker-alt pr-5 show-on-small"></i>
+                    <p>{{ user.location }}</p>
+                </td>
 
-        <td class="table-item">
-            <i class="fas fa-eye pr-5 show-on-small"></i><div class="user-hidden-switch">
-                <form action="{{url_for('admin_update_user', uid=user.name_slug)}}" method="POST"
-                    class="hide-user-form">
-                    <div class="switch">
-                        <label>
-                            Hidden
-                            {% if user.is_hidden == True %}
-                            <input type="checkbox" class="admin-hide-switch">
-                            {% else %}
-                            <input type="checkbox" checked="checked" class="admin-hide-switch">
-                            {% endif %}
-                            <span class="lever"></span>
-                            Visible
-                        </label>
+                <td class="table-item">
+                    <i class="fas fa-eye pr-5 show-on-small"></i>
+                    <div class="user-hidden-switch">
+                        <form action="{{url_for('admin_update_user', uid=user.name_slug)}}" method="POST"
+                            class="hide-user-form">
+                            <div class="switch">
+                                <label>
+                                    Hidden
+                                    {% if user.is_hidden == True %}
+                                    <input type="checkbox" class="admin-hide-switch">
+                                    {% else %}
+                                    <input type="checkbox" checked="checked" class="admin-hide-switch">
+                                    {% endif %}
+                                    <span class="lever"></span>
+                                    Visible
+                                </label>
+                            </div>
+
+                        </form>
                     </div>
+                </td>
 
-                </form>
-            </div>
-        </td>
-    
-    {%endfor %}
+                {%endfor %}
 
         </tbody>
-      </table>
+    </table>
 </div>
 
 {% endblock %}
