@@ -812,6 +812,28 @@ p.created-by {
     }
 }
 
+@media screen and (max-width: 768px){
+    .flex-col-mobile {
+        flex-direction: column;
+    }
+    .search-bar-btn-wrap {
+        margin: 0px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .search-bar-btn-wrap button {
+        width: -webkit-fill-available;
+        display: flex;
+        justify-content: center;
+    }
+    #clear_search_btn {
+        min-width: max-content;
+        margin-left: 20px;
+    }
+}
+
 @media screen and (max-width:1120px){
     #hp_user_images {
         display: none;
