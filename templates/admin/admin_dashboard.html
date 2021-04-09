@@ -4,7 +4,7 @@
 
 <header class="header-title-section">
     <div class="header-bg"></div>
-    <div class="container m-auto">
+    <div class="container center-on-large m-auto">
         <h1>Admin</h1>
     </div>
 </header>
@@ -12,7 +12,7 @@
 
 
 <section class="main-body">
-    <div class="container p-top-50">
+    <div class="container center-on-large p-top-50">
         <div class="row mb-50">
         <h3><strong>Manage Users & Settings</strong></h3>
         <p>Hide users, or add skills or roles for users to select in profile or project creation.</p>
@@ -20,13 +20,13 @@
 <div class="d-flex admin-control-btns gutter-t flex-col-mobile">
 
         <!-- Get all user data on click -->
-        <a href="{{url_for('admin_users')}}" class="btn secondary-btn admin-dash-btn">Update User Visibility</a>
+        <a href="{{url_for('admin_users')}}" class="btn secondary-btn btn-green-on-hover">Update User Visibility</a>
 
         <!-- Get all skills data on click -->
-        <a href="{{url_for('admin_skills')}}" class="btn secondary-btn admin-dash-btn">Update Skill Choices</a>
+        <a href="{{url_for('admin_skills')}}" class="btn secondary-btn btn-green-on-hover">Update Skill Choices</a>
 
         <!-- Get all roles data on click -->
-        <a href="{{url_for('admin_roles')}}" class="btn secondary-btn admin-dash-btn">Update Role Choices</a>
+        <a href="{{url_for('admin_roles')}}" class="btn secondary-btn btn-green-on-hover">Update Role Choices</a>
 </div>
 <div class="pg-line-bk-green"></div>
 </div>
@@ -36,7 +36,7 @@
 
 
 
-        Show no results if search returns 0
+        <!-- Show no results if search returns 0 -->
         {% if results == 0 %}
         <!-- <div class="card no-results-card col">
             <div class="card-content">

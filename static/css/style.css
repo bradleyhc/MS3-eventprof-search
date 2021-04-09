@@ -39,6 +39,10 @@ p {
     margin: auto 0;
 }
 
+i.fas {
+    line-height: inherit;
+}
+
 footer {
     padding: 20px 50px;
     background-color: #2F48B0;
@@ -288,6 +292,13 @@ input[type=text]:not(.browser-default).search-bar:focus {
     border: 3px solid #51f1d3;
     border-bottom: 2px solid #51f1d3!important;
     box-shadow: 1px 1px 15px -5px #353535;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: #455FCDb5;
+}
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #455FCD;
 }
 
 .search-bar-wrap {
@@ -863,9 +874,38 @@ p.created-by {
     }
 
     .admin-control-btns a.btn {
-    width: 100%;
-    margin-bottom: 5px;
-}
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .user-table {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 0px;
+    }
+
+    .user-table tbody tr {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        width: 100%;
+        flex-wrap: wrap;
+        padding: 15px 0px;
+    }
+    .user-table tbody tr td {
+        display: flex;
+        padding: 0;
+        width: 100%;
+    }
+    .user-table tbody tr td i {
+        width: 10%;
+        text-align: center;
+    }
+
+    .pg-line-bk-blue, .pg-line-bk-green, .pg-line-bk-grey {
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+    }
 }
 
 @media screen and (max-width:1120px){
@@ -875,7 +915,7 @@ p.created-by {
 }
 
 @media screen and (min-width:1200px){
-    .container {
+    .container.center-on-large {
         max-width: 75%;
     }
 
