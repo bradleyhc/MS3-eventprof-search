@@ -143,14 +143,13 @@ button.close-flash{
 nav {
     background-color: transparent;
     box-shadow: none;
-    transition: 0.3s ease-in-out;
-    height: 90px;
+    transition: 0.5s ease-in-out;
 }
 
 nav.scrolled {
     background-color: #ef516f;
     box-shadow: 1px 1px 16px -5px #3e3e3e;
-    height: 70px;
+    height: 64px;
 }
 
 .mobile-nav {
@@ -418,6 +417,7 @@ nav .brand-logo {
 .nav-wrapper {
     padding-left: 50px;
     padding-right: 50px;
+    height: 64px;
 }
 
 label {
@@ -865,6 +865,14 @@ p.created-by {
 }
 
 @media screen and (max-width: 768px){
+    .container {
+        padding: 30px;
+    }
+
+    section.main-body {
+    padding-bottom: 50px;
+    }
+
     .flex-col-mobile {
         flex-direction: column;
     }
@@ -936,6 +944,15 @@ p.created-by {
     width: 100%;
     }
 
+    /* Navbar */
+    nav .sidenav-trigger {
+        margin: 0;
+    }
+
+    .nav-wrapper {
+        padding: 0px 30px;
+    }
+
     /* Footer */
     footer {
         padding: 10px 30px;
@@ -951,6 +968,7 @@ p.created-by {
         padding-bottom: 3px;
         border-bottom: 2px solid #51EFD1;
     }
+
 
 }
 
