@@ -24,12 +24,12 @@
     {% endif %}
 
 <table class="highlight user-table">
-        <thead class="hide-on-small-only">
+        <thead>
           <tr>
               <th>User Name</th>
               <th>Role</th>
               <th>Location</th>
-              <th>Profile Visibility</th>
+              <th class="txt-align-c">Profile Visibility</th>
           </tr>
         </thead>
 
@@ -39,7 +39,7 @@
 
     <tr>
         <td class="table-item">
-            <i class="fas fa-user pr-5 show-on-small"></i><p>{{ user.first_name }} {{ user.last_name }}</p>
+            <i class="fas fa-user pr-5 hide-on-large-only"></i><p>{{ user.first_name }} {{ user.last_name }}</p>
         </td>
         <td class="table-item">
             <i class="fas fa-clipboard-list pr-5 show-on-small"></i><p>{{ user.role }}</p>

@@ -509,6 +509,14 @@ input[type=text]:not(.browser-default):disabled {
     width: 100%;
 }
 
+.txt-align-r {
+    text-align: end;
+}
+
+.txt-align-c {
+    text-align: center;
+}
+
 .d-flex {
     display: flex;
 }
@@ -844,6 +852,10 @@ p.created-by {
     background-color: #516fef;
 }
 
+.user-table > tbody > tr > .table-item:last-of-type {
+    text-align: center;
+}
+
 
 /* Custom breakpoints */
 @media screen and (max-width: 540.01px){
@@ -881,7 +893,7 @@ p.created-by {
     .user-table {
         display: flex;
         flex-direction: column;
-        padding: 30px 0px;
+        padding: 20px 0px;
     }
 
     .user-table tbody tr {
@@ -906,6 +918,23 @@ p.created-by {
         padding-bottom: 30px;
         margin-bottom: 30px;
     }
+
+    input[type=text]:not(.browser-default).search-bar {
+        font-size: 1.2rem;
+        padding: 3px 0px 3px 10px;
+    }
+    input[type=text]:not(.browser-default).search-bar:focus {
+        padding-left: 15px;
+    }
+    .user-table>thead {
+        display: none;
+    }
+}
+
+@media screen and (min-width:769px){
+.user-table tbody tr td i {
+        display: none;
+    }
 }
 
 @media screen and (max-width:1120px){
@@ -918,5 +947,4 @@ p.created-by {
     .container.center-on-large {
         max-width: 75%;
     }
-
 }
