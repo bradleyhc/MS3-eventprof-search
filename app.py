@@ -481,12 +481,10 @@ def admin_search_freelancers():
         return redirect(url_for('get_freelancers'))
 
     query = request.form.get("query")
-    freelancers = list(mongo.db.users.find({"$text": {"$search": query}}))
+    users = list(mongo.db.users.find({"$text": {"$search": query}}))
 
-    results = len(freelancers)
-
-    return render_template("admin/admin_dashboard.html", freelancers=freelancers, 
-                            query=query, results=results)
+    return render_template("admin/admin_dashboard.html", users=users, 
+                            query=query)
 
 
 @app.route("/admin/users_update/<uid>", methods=["GET", "POST"])
