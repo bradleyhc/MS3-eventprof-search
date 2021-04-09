@@ -566,11 +566,11 @@ def admin_update_skills():
 
 @app.route("/admin/delete_skill/<id>", methods=["GET", "POST"])
 def delete_skill(id):
-    
+
     # Redirect to login if user not logged in
-    if not session: 
+    if not session:
         return check_login()
-    elif session['user']['admin'] == False: 
+    elif session['user']['admin'] == False:
         flash('You must be an admin to access this page')
         return redirect(url_for('get_freelancers'))
 
