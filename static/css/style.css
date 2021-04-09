@@ -932,6 +932,26 @@ p.created-by {
     .add-to-list, .delete-from-list {
         margin: auto 0px 12px 10px;
     }
+    .full-width-btn-mobile {
+    width: 100%;
+    }
+
+    /* Footer */
+    footer {
+        padding: 10px 30px;
+    }
+    footer div {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    footer > div > div:first-of-type {
+        margin-top: 15px;
+    }
+    footer > div > div > p > a {
+        padding-bottom: 3px;
+        border-bottom: 2px solid #51EFD1;
+    }
+
 }
 
 @media screen and (min-width:769px){
