@@ -13,23 +13,25 @@
 
 <section class="main-body">
     <div class="container p-top-50">
+
+        <!-- Search bar section -->
         <form method="POST" class="col s12" action="{{ url_for('search_projects')}}">
             <h3><strong>Search for suitable projects</strong></h3>
             <div class="row valign-wrapper center-align d-flex flex-col-mobile">
-                
                 <div class="search-bar-wrap">
                     <input type="text" name="query" id="query" minlength="3" class="validate search-bar"
                         value="{{ query }}" placeholder="Search by keyword or skill">
                 </div>
-                
-                    <div class="search-bar-btn-wrap gutter-l">
-                        <button class="btn secondary-btn btn-green-on-hover">
-                            <i class="fas fa-search pr-5"></i> Search
-                        </button>
-                        <a id="clear_search_btn" href="{{ url_for('get_projects')}}" class="btn secondary-btn btn-line">Clear</a>
-                    </div>
+                <div class="search-bar-btn-wrap gutter-l">
+                    <button class="btn secondary-btn btn-green-on-hover">
+                        <i class="fas fa-search pr-5"></i> Search
+                    </button>
+                    <a id="clear_search_btn" href="{{ url_for('get_projects')}}"
+                        class="btn secondary-btn btn-line">Clear</a>
                 </div>
+            </div>
         </form>
+        <!-- End search bar section -->
 
         <!-- Show no results if search returns 0 -->
         {% if results == 0 %}

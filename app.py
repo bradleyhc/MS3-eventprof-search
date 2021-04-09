@@ -469,6 +469,26 @@ def admin_users():
     return render_template("admin/admin_dashboard.html", users=users, uid=None)
 
 
+# Search all users in admin
+@app.route("/admin_search", methods=["GET", "POST"])
+def admin_search_freelancers():
+
+    # Redirect to login if user not logged in
+    if not session:
+        return check_login()
+    elif session['user']['admin'] is False:
+        flash('You must be an admin to access this page')
+        return redirect(url_for('get_freelancers'))
+
+    query = request.form.get("query")
+    freelancers = list(mongo.db.users.find({"$text": {"$search": query}}))
+
+    results = len(freelancers)
+
+    return render_template("admin/admin_dashboard.html", freelancers=freelancers, 
+                            query=query, results=results)
+
+
 @app.route("/admin/users_update/<uid>", methods=["GET", "POST"])
 def admin_update_user(uid):
 
