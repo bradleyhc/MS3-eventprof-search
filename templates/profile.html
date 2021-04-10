@@ -5,7 +5,13 @@
 <header class="header-title-section">
     <div class="header-bg"></div>
     <div class="container m-auto">
-        <h1>My Profile</h1>
+
+        <h1>{% if data.name_slug == session['user']['slug'] %}
+            My Profile
+            {% else %}
+            {{ data[0].first_name }}'s Profile
+            {% endif %}
+        </h1>
     </div>
 </header>
 

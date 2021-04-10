@@ -1,6 +1,6 @@
 {% block widget %}
 
-<h3 class="sidebar-widget-title">Suitable Freelancers</h3>
+<h3 class="sidebar-widget-title">Similar Freelancers</h3>
 
 {% for w_freelancer in freelancers if w_freelancer.name_slug != info.name_slug %}
 {% if (w_freelancer.role == info.role) and (loop.length > 0) %}

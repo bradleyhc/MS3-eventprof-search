@@ -76,7 +76,8 @@ def register():
 
         # create full name string for profile page
         full_name = request.form.get(
-            "first_name").lower() + "_" + request.form.get("last_name").lower()
+            "first_name").strip().lower() + "_" + request.form.get(
+            "last_name").strip().lower()
 
         # check if user name slug exists, if yes append incrementing int to end
         name_slug_exists = mongo.db.users.count_documents(
@@ -87,8 +88,8 @@ def register():
             full_name += str(name_slug_exists+1)
 
         register = {
-            "first_name": request.form.get("first_name"),
-            "last_name": request.form.get("last_name"),
+            "first_name": request.form.get("first_name").strip(),
+            "last_name": request.form.get("last_name").strip(),
             "name_slug": full_name,
             "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password")),
