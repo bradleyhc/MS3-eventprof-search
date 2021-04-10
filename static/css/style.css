@@ -41,6 +41,7 @@ p {
 
 i.fas {
     line-height: inherit;
+    min-width: 20px;
 }
 
 footer {
@@ -793,6 +794,19 @@ input#profile_img {
     padding: 0px 15px 15px 15px;
 }
 
+.project-card-btns {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin-left: 20px;
+}
+.project-card-btns > a {
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    padding: 0px 15px;
+}
+
 p.created-by {
     color: #777777;
     font-size: 1.1rem;
@@ -873,6 +887,17 @@ p.created-by {
 
 
 /* Custom breakpoints */
+@media screen and (max-width: 411px){
+    .card-action {
+        flex-direction: column-reverse;
+    }
+    .project-card-btns {
+        margin: auto;
+        padding-bottom: 15px;
+    }
+
+}
+
 @media screen and (max-width: 540.01px){
     nav {
         max-height: 56px;

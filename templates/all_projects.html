@@ -55,11 +55,11 @@
                         <div class="stacked-item">
                             <h4 class="title-feat"><strong>{{ project.title }}</strong></h4>
                         </div>
-                        <div class="row d-flex stacked-item">
-                            <p><i class="fas fa-user pr-5"></i> {{ project.role }}</p><span class="divide-pipe"> |
+                        <div class="row d-flex stacked-item flex-col-mobile">
+                            <p><i class="fas fa-user pr-5"></i> {{ project.role }}</p><span class="divide-pipe hide-on-small-only"> |
                             </span>
                             <p><i class="fas fa-map-marker-alt pr-5"></i> {{ project.location }}</p><span
-                                class="divide-pipe"> | </span>
+                                class="divide-pipe hide-on-small-only"> | </span>
                             <p><i class="fas fa-calendar-alt pr-5"></i> {{ project.start_date }} -
                                 {{ project.end_date }}</p>
                         </div>
@@ -73,15 +73,16 @@
                     </div>
 
                     <div class="card-action">
-                        <div class="d-flex">
-                            <p class="created-by m-auto ml-0">Posted by: {{ project.submitted_name}} on {{ project.posted_date.strftime('%b %d, %Y') }}</p>
+                        <div class="d-flex flex-col-mobile">
+                            <p class="created-by m-auto ml-0">Posted by: {{ project.submitted_name}} 
+                                <span>on {{ project.posted_date.strftime('%b %d, %Y') }}</span></p>
                         </div>
-                        <div>
+                        <div class="project-card-btns">
                         <a href="{{ url_for('view_project', project_id=project.slug) }}" class="btn secondary-btn btn-green-on-hover">View
                             More</a>
                             <!-- Show project owner 'edit project' button -->
                             {##% if project.submitter_slug == session['user']['slug'] %##}
-                        <a href="#" class="gutter-l btn secondary-btn btn-line">Edit this Project</a>
+                        <a href="#" class="gutter-l btn secondary-btn btn-line">Edit Project</a>
                         {##% endif %##}
                         </div>
                     </div>
