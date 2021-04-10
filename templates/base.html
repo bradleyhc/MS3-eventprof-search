@@ -39,7 +39,7 @@
                 <li><a href="{{ url_for('admin_users') }}">Admin</a></li>
                 {% endif %}
                 
-                <li><a href="{{ url_for('profile', name=session['user']) }}">My Profile</a></li>
+                <li><a href="{{ url_for('profile', name=session['user']['slug']) }}">My Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
                 {% else %}
                 <li><a class="modal-trigger" href="#modal-register">Register</a></li>
@@ -73,7 +73,7 @@
                 <li><a href="{{ url_for('admin_users') }}">Admin</a></li>
                 {% endif %}
                 
-                <li><a href="{{ url_for('profile', name=session['user']) }}">My Profile</a></li>
+                <li><a href="{{ url_for('profile', name=session['user']['slug']) }}">My Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
                 {% else %}
                 <li><a class="modal-trigger" href="#modal-register">Register</a></li>
