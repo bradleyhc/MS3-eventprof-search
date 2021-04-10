@@ -401,7 +401,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
     box-shadow: 0 1px 0 0 #51efd1;
 }
 
-label.active {
+label.active,
+textarea.materialize-textarea:focus:not([readonly])+label {
     color: #455FCD;
 }
 
@@ -536,6 +537,8 @@ input[type=text]:not(.browser-default):disabled {
 
 .d-flex {
     display: flex;
+}
+.flex-wrap {
     flex-wrap: wrap;
 }
 
@@ -1019,6 +1022,22 @@ p.created-by {
     }
     .full-width-btn-mobile {
     width: 100%;
+    }
+
+    /* Edit Profile */
+    .profile-img-wrapper {
+        max-width: 150px;
+        max-height: 150px;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+
+    .profile-content-wrapper {
+        margin-left: 0;
+    }
+
+    #edit_profile > div {
+        flex-direction: column;
     }
 
     /* Navbar */

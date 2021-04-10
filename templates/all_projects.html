@@ -55,7 +55,7 @@
                         <div class="stacked-item">
                             <h4 class="title-feat"><strong>{{ project.title }}</strong></h4>
                         </div>
-                        <div class="row d-flex stacked-item flex-col-mobile">
+                        <div class="row d-flex flex-wrap stacked-item flex-col-mobile">
                             <p><i class="fas fa-user pr-5"></i> {{ project.role }}</p><span class="divide-pipe hide-768"> |
                             </span>
                             <p><i class="fas fa-map-marker-alt pr-5"></i> {{ project.location }}</p><span
@@ -64,7 +64,7 @@
                                 {{ project.end_date }}</p>
                         </div>
                         <!-- Skills -->
-                        <div class="row d-flex stacked-item">
+                        <div class="row d-flex flex-wrap stacked-item">
                             {% for skill in project.skills %}
                             <div class="chip">{{skill}}</div>
                             {% endfor %}
