@@ -4,6 +4,7 @@
 
 /* Global Properties */
 
+
 body{
     background-color: #4f6ae1;
     position: relative;
@@ -124,7 +125,7 @@ button.close-flash{
     min-height: 150px;
     position: fixed;
     height: 250px;
-    width: 100%;
+    width: 100vw;
     z-index: -1;
     top: 0;
 }
@@ -887,26 +888,45 @@ p.created-by {
 
 
 /* Custom breakpoints */
-@media screen and (max-width: 411px){
-    .card-action {
-        flex-direction: column-reverse;
+@media screen and (max-width: 280px){
+    h1 {
+        font-size: 2.1rem;
     }
-    .project-card-btns {
-        margin: auto;
-        padding-bottom: 15px;
+    h2 {
+        font-size: 1.8rem;
     }
-
+    h3 {
+        font-size: 1.6rem;
+    }
 }
 
 @media screen and (max-width: 540.01px){
     nav {
         max-height: 56px;
     }
+    .card-action {
+        flex-direction: column-reverse; 
+    }
+
+    .card-action > div p {
+        margin: auto;
+    }
+
+    .project-card-btns {
+        margin: auto;
+        padding-bottom: 15px;
+        justify-content: center;
+    }
+
 }
 
 @media screen and (max-width: 768px){
     .container {
         padding: 30px;
+    }
+
+    .header-bg {
+        background-size: 230%;
     }
 
     section.main-body {
@@ -1013,11 +1033,17 @@ p.created-by {
         border-bottom: 2px solid #51EFD1;
     }
 
+    .chip {
+        line-height: 24px;
+        height: 28px;
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
 
 }
 
 @media screen and (min-width:769px){
-.user-table tbody tr td i {
+    .user-table tbody tr td i {
         display: none;
     }
 }
