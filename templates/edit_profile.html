@@ -23,7 +23,8 @@
                         <div class="profile-img-wrapper">
                             <label for="profile_img" id="edit_profile_img_overlay">
                                 <i class="fas fa-camera"></i>
-                                <input type="file" id="profile_img" name="profile_img" value="{{ info.profile_image }}" onchange="previewImg(this);" accept="image/*">
+                                <input type="file" id="profile_img" name="profile_img" value="{{ info.profile_image }}"
+                                    onchange="previewImg(this);" accept="image/*">
                             </label>
                             <img class="profile-image"
                                 src="/static/images/user_uploads/{{ info.profile_image or 'default_avatar.png'}}"
@@ -113,15 +114,18 @@
                     </div>
 
                     <!-- Initial update button (inits modal for second confirmation) -->
-                    <button id="update_profile_button_init" href="#confirm_update" class="btn modal-trigger secondary-btn"
-                        onclick="validateDropdown();">Update Profile</button>
-                    
+                    <button id="update_profile_button_init" href="#confirm_update"
+                        class="btn modal-trigger secondary-btn" onclick="validateDropdown();">Update Profile</button>
+
                     <div class="modal" id="confirm_update">
                         <div class="modal-content">
                             <h4>Are you sure?</h4>
-                            <p>Clicking update below will overwrite any existing profile data with the new information you have provided.</p>
-                            <button class="btn confirm-update-btn" type="submit">Update Profile</button>
-                            <a class="btn cancel-btn modal-close">Cancel</a>
+                            <p class="py-20">
+                                Clicking update below will overwrite any existing profile data with the new
+                                information you have provided.
+                            </p>
+                            <button class="btn secondary-btn btn-slim" type="submit">Update Profile</button>
+                            <a class="btn modal-close secondary-btn btn-line btn-slim">Cancel</a>
                         </div>
                     </div>
                 </form>
