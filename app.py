@@ -157,13 +157,20 @@ def logout():
 
 @app.route("/edit_profile/<name>", methods=["GET", "POST"])
 def edit_profile(name):
-    
+
     # Redirect to login if user not logged in
-    if not session: 
+    if not session:
         return check_login()
 
     # get user slug
     u_slug = session["user"]["slug"]
+
+    # Redirect if user tries to edit another user's profile
+    if u_slug != name:
+        flash("""Hang on now, that profile isn't yours!
+               Edit your own profile by clicking 'My Profile'
+               in the navigation bar.""")
+        return redirect(url_for('get_freelancers'))
 
     # get user profile from DB
     profile_data = list(
@@ -172,7 +179,7 @@ def edit_profile(name):
     skills = list(mongo.db.skills.find())
     roles = list(mongo.db.roles.find())
 
-    if request.method == "POST" and u_slug == name:
+    if request.method == "POST":
         image = request.files["profile_img"]
         filename = secure_filename(image.filename)
 
@@ -201,11 +208,8 @@ def edit_profile(name):
         return redirect(url_for(
             "profile", name=u_slug))
 
-    # Redirect if user tries to edit another user's profile
-    flash("""Hang on now, that profile isn't yours!
-           Edit your own profile by clicking 'My Profile'
-           in the navigation bar.""")
-    return redirect(url_for("get_freelancers"))
+    return render_template("edit_profile.html", data=profile_data,
+                           skills=skills, roles=roles)
 
 
 @app.route("/profile/<name>", methods=["GET", "POST"])
