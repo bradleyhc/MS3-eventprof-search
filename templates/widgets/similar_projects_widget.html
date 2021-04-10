@@ -4,7 +4,7 @@
 <h3 class="sidebar-widget-title">Similar Projects</h3>
 
 {% for w_project in projects if w_project.slug != project.slug or none %}
-{% if loop.index > 3 %}
+{% if loop.index|slice(3) %}
 <!-- Do nothing -->
 {% else %}
 <div class="card sidebar">
