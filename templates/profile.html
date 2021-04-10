@@ -6,7 +6,7 @@
     <div class="header-bg"></div>
     <div class="container m-auto">
 
-        <h1>{% if data.name_slug == session['user']['slug'] %}
+        <h1>{% if data[0].name_slug == session['user']['slug'] %}
             My Profile
             {% else %}
             {{ data[0].first_name }}'s Profile

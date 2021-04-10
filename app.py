@@ -96,6 +96,7 @@ def register():
             "user_type": user_type,
             "profile_image": "default_avatar.png",
             "is_hidden": True,
+            "is_complete": False,
             "is_admin": False
         }
 
@@ -104,8 +105,8 @@ def register():
         # put user info into session
         session['user'] = {"slug": full_name,
                            "u_type": user_type, "admin": False}
-        session['logged_in'] = True                          
-        flash("Reg successful", name_slug_exists)
+        session['logged_in'] = True
+        flash("Registration successful")
         return redirect(url_for("edit_profile", name=full_name))
 
     return render_template("home.html")
@@ -171,7 +172,7 @@ def edit_profile(name):
     skills = list(mongo.db.skills.find())
     roles = list(mongo.db.roles.find())
 
-    if request.method == "POST":
+    if request.method == "POST" and u_slug == name:
         image = request.files["profile_img"]
         filename = secure_filename(image.filename)
 
@@ -190,7 +191,8 @@ def edit_profile(name):
             "skills": request.form.getlist("skills[]"),
             "profile_image": filename,
             "about": request.form.get("about_textarea"),
-            "is_hidden": False
+            "is_hidden": False,
+            "is_complete": True
         }
 
         mongo.db.users.update_one(
@@ -199,16 +201,18 @@ def edit_profile(name):
         return redirect(url_for(
             "profile", name=u_slug))
 
-    return render_template(
-        "edit_profile.html", name=u_slug,
-        data=profile_data, skills=skills, roles=roles)
+    # Redirect if user tries to edit another user's profile
+    flash("""Hang on now, that profile isn't yours!
+           Edit your own profile by clicking 'My Profile'
+           in the navigation bar.""")
+    return redirect(url_for("get_freelancers"))
 
 
 @app.route("/profile/<name>", methods=["GET", "POST"])
 def profile(name):
-    
+
     # Redirect to login if user not logged in
-    if not session: 
+    if not session:
         return check_login()
 
     # get single user profile data
@@ -221,9 +225,14 @@ def profile(name):
          "name_slug": {"$nin": [session['user']['slug']]}})
     all_projects = mongo.db.projects.find()
 
-    return render_template(
-        "profile.html", data=profile_data,
-        projects=all_projects, freelancers=all_freelancers)
+    if profile_data[0]['is_complete'] is False:
+        flash("Please complete your profile before viewing.")
+        return redirect(
+            url_for("edit_profile", name=name))
+    else:
+        return render_template(
+            "profile.html", data=profile_data,
+            projects=all_projects, freelancers=all_freelancers)
 
 
 """ Project CRUD functions """
@@ -350,15 +359,15 @@ def edit_project(project_id):
 def get_freelancers():
 
     # Redirect to login if user not logged in
-    if not session: 
+    if not session:
         return check_login()
 
     current_user = session["user"]["slug"]
 
     freelancers = mongo.db.users.find(
-        {"user_type": "freelancer", "is_hidden": False})
+        {"user_type": "freelancer", "is_hidden": False, "is_complete": True})
 
-    # get current user for email form data  
+    # get current user for email form data
     user = mongo.db.users.find_one({"name_slug": current_user})
     sender_email = user["email"]
     sender_name = user["first_name"]
