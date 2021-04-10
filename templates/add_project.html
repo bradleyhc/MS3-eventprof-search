@@ -13,46 +13,47 @@
 
 
 <section class="main-body">
-    <div class="container p-top-50">
+    <div class="container">
+        <p class="gutter-b">Complete the details below to list a new project on the Opportunities page. By doing so, other users will be
+            able to send you an email to let you know of their interest. Your profile name will also be shown on the
+            project for other users to see.</p>
         <div class="row s12">
+            <form id="add_project" action="{{ url_for('add_project') }}" method="POST">
 
-            <div class="col s8">
+                <div class="d-flex s12 m-auto">
 
-                <form class="" action="{{ url_for('add_project') }}" method="POST">
-                    
-                    <div class="d-flex s12">
-
-                        <div class="profile-content-wrapper">
-                            <div class="row">
-                                <!-- Title input -->
-                                <div class="input-field col s12">
-                                    <label for="title">Project Title</label>
-                                    <input type="text" id="title" name="title" class="validation" required>
-                                </div>
+                    <div class="profile-content-wrapper">
+                        <div class="row">
+                            <!-- Title input -->
+                            <div class="input-field s12">
+                                <label for="title">Project Title</label>
+                                <input type="text" id="title" name="title" class="validation" required>
                             </div>
-                            <div class="row">
-                                <!-- Start date input -->
-                                <div class="input-field col s6">
-                                    <label for="title">Project Start Date</label>
-                                    <input type="text" id="start_date" name="start_date" class="datepicker validation" required>
-                                </div>
-                                <!-- End date input -->
-                                <div class="input-field col s6">
-                                    <label for="title">Project End Date</label>
-                                    <input type="text" id="end_date" name="end_date" class="datepicker validation" required>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <!-- Start date input -->
+                            <div class="input-field s12 m6">
+                                <label for="title">Project Start Date</label>
+                                <input type="text" id="start_date" name="start_date" class="datepicker validation"
+                                    required>
                             </div>
-                            <div class="row">
-                                <!-- Location input -->
-                                <div class="input-field col s6">
-                                    <label for="location">Location</label>
-                                    <input type="text" id="location" name="location" class="validation" required>
-                                </div>
-                            
+                            <!-- End date input -->
+                            <div class="input-field s12 m6">
+                                <label for="title">Project End Date</label>
+                                <input type="text" id="end_date" name="end_date" class="datepicker validation" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Location input -->
+                            <div class="input-field s12 m6">
+                                <label for="location">Location</label>
+                                <input type="text" id="location" name="location" class="validation" required>
+                            </div>
+
 
 
                             <!-- Role input -->
-                            <div class="input-field col s6" id="role_dropdown">
+                            <div class="input-field s12 m6" id="role_dropdown">
                                 <select id="role" name="role">
                                     <option value="" disabled selected>Select required role</option>
                                     {% for role in roles %}
@@ -64,58 +65,55 @@
                                 <span class="helper-text-error hide" id="helper_error_role">Please select a role
                                     before continuing!</span>
                             </div>
-                            </div>
                         </div>
                     </div>
-            
-            <div class="profile-about-wrapper">
+                </div>
 
-                <div class="row">
-                    <!-- Skills input -->
-                    <div class="input-field col s12" id="skills_dropdown">
-                        <select id="skills" name="skills[]" multiple required>
-                            <option value="" disabled>Select required skills</option>
-                            {% for skill in skills %}
-                            <option value="{{ skill.skill_name }}">{{ skill.skill_name }}</option>
-                            {% endfor %}
-                        </select>
-                        <label>Which skills are you looking for?</label>
-                        <span class="helper-text-error hide" id="helper_error_skill">Please select at least one
-                            skill before continuing!</span>
+                <div class="profile-about-wrapper">
+
+                    <div class="row">
+                        <!-- Skills input -->
+                        <div class="input-field s12" id="skills_dropdown">
+                            <select id="skills" name="skills[]" multiple required>
+                                <option value="" disabled>Select required skills</option>
+                                {% for skill in skills %}
+                                <option value="{{ skill.skill_name }}">{{ skill.skill_name }}</option>
+                                {% endfor %}
+                            </select>
+                            <label>Which skills are you looking for?</label>
+                            <span class="helper-text-error hide" id="helper_error_skill">Please select at least one
+                                skill before continuing!</span>
+                        </div>
+                    </div>
+
+                    <!-- Description input -->
+                    <div class="row">
+                        <div class="input-field s12">
+                            <textarea id="description" name="description" class="materialize-textarea"
+                                required></textarea>
+                            <label for="description">Project Description</label>
+                            <span class="helper-text">Explain a little more about the project, company and the
+                                team.</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Description input -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea id="description" name="description" class="materialize-textarea" required></textarea>
-                        <label for="description">Project Description</label>
-                        <span class="helper-text">Explain a little more about the project, company and the team.</span>
+                <!-- Initial update button (inits modal for second confirmation) -->
+                <button id="update_profile_button_init" href="#confirm_update" class="btn modal-trigger secondary-btn"
+                    onclick="validateDropdown();">Add new project</button>
+
+                <div class="modal" id="confirm_update">
+                    <div class="modal-content">
+                        <h4>Are you sure?</h4>
+                        <p>Clicking update below will overwrite any existing profile data with the new information
+                            you have provided.</p>
+                        <button class="btn confirm-update-btn secondary-btn type=" submit">Add project</button>
+                        <a class="btn cancel-btn modal-close">Cancel</a>
                     </div>
                 </div>
-            </div>
-
-            <!-- Initial update button (inits modal for second confirmation) -->
-            <button id="update_profile_button_init" href="#confirm_update" class="btn modal-trigger"
-                onclick="validateDropdown();">Update Profile</button>
-
-            <div class="modal" id="confirm_update">
-                <div class="modal-content">
-                    <h4>Are you sure?</h4>
-                    <p>Clicking update below will overwrite any existing profile data with the new information
-                        you have provided.</p>
-                    <button class="btn confirm-update-btn" type="submit">Update Profile</button>
-                    <a class="btn cancel-btn modal-close">Cancel</a>
-                </div>
-            </div>
             </form>
         </div>
 
-        <!-- Nearby projects widget -->
-        <div class="col s4">
-
-        </div>
-    </div>
     </div>
 
 </section>
