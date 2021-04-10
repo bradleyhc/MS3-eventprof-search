@@ -210,24 +210,19 @@ def profile(name):
     if not session: 
         return check_login()
 
-    # create full name string for profile page
-    names = mongo.db.users.find_one({"name_slug": session["user"]["slug"]})
-
     # get single user profile data
     profile_data = list(
-        mongo.db.users.find({"name_slug": session["user"]["slug"]}))
+        mongo.db.users.find({"name_slug": name}))
 
     # get all freelancers and projects for sidebar widget
     all_freelancers = mongo.db.users.find(
-        {"user_type": "freelancer", "is_hidden": False})
+        {"user_type": "freelancer", "is_hidden": False,
+         "name_slug": {"$nin": [session['user']['slug']]}})
     all_projects = mongo.db.projects.find()
 
-    if session["user"]:
-        return render_template(
-            "profile.html", name=names, data=profile_data,
-            projects=all_projects, freelancers=all_freelancers)
-    else:
-        return render_template("home.html")
+    return render_template(
+        "profile.html", data=profile_data,
+        projects=all_projects, freelancers=all_freelancers)
 
 
 """ Project CRUD functions """
