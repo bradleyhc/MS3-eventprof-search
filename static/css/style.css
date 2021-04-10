@@ -326,6 +326,16 @@ input[type=text]:not(.browser-default).search-bar:focus {
     margin: 0;
 }
 
+.chip {
+    background-color: #fff;
+    color: #FF3E63;
+    border: 2px solid #FF3E63;
+    line-height: 28px;
+    margin: auto;
+    margin-right: 5px;
+    margin-left: 0px;
+}
+
 .datepicker-modal { 
     padding: 0;
     width: auto;
@@ -772,10 +782,15 @@ input#profile_img {
     box-shadow: 1px 1px 15px -6px #777777;    
 }
 
+.project-card > .card-content {
+    padding: 15px;
+}
+
 .project-card > .card-action:last-child {
     border-radius: 0px 0px 10px 10px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding: 0px 15px 15px 15px;
 }
 
 p.created-by {
