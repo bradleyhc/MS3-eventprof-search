@@ -8,6 +8,10 @@ $(document).ready(function () {
     $("button.close-flash").click(function () {
         $("div.flash-msg").fadeOut();
     });
+    // set timeout for flash if not closed by user
+    setTimeout(function () {
+        $("div.flash-msg").fadeOut();
+    }, 5000)
     $('.tabs').tabs();
 });
 

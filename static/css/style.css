@@ -86,7 +86,8 @@ section.main-body {
     padding: 20px;
     margin: 20px auto;
     border-radius: 3px;
-    position: absolute;
+    position: fixed;
+    z-index: 9;
     left: 25%;
     top: 90px;
 }
