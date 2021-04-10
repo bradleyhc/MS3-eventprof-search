@@ -913,6 +913,10 @@ p.created-by {
     padding-bottom: 50px;
     }
 
+    .hide-768 {
+        display: none;
+    }
+
     .flex-col-mobile {
         flex-direction: column;
     }
@@ -1015,6 +1019,13 @@ p.created-by {
 @media screen and (min-width:769px){
 .user-table tbody tr td i {
         display: none;
+    }
+}
+
+@media screen and (max-width:992px){
+    .header-title-section {
+        padding-top: 0px;
+        height: max-content;
     }
 }
 
