@@ -956,6 +956,14 @@ p.created-by {
     .flex-col-mobile {
         flex-direction: column;
     }
+
+    .modal {
+    padding: 0px;
+    width: auto;
+    max-width: 90%;
+    max-height: 80%;
+    }
+    
     .search-bar-btn-wrap {
         margin: 0px;
         display: flex;
