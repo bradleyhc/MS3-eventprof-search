@@ -1,10 +1,9 @@
 {% block widget %}
 
-
 {% if session["user"]["u_type"] == "freelancer" %}
 <h3 class="sidebar-widget-title">Similar Projects</h3>
 
-{% for w_project in projects if w_project.slug != project.slug %}
+{% for w_project in projects if w_project.slug != project.slug or none %}
 {% if loop.index > 3 %}
 <!-- Do nothing -->
 {% else %}
