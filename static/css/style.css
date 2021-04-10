@@ -70,6 +70,7 @@ footer div a {
 section.main-body {
     box-shadow: 0px -5px 12px -4px #3c3c3c;
     background-color: #efefef;
+    flex: 1 1 auto;
 }
 
 .container {
@@ -237,6 +238,10 @@ h4.title-feat {
     min-width: 50%;
 }
 
+.btn-slim {
+    padding: 0px 15px;
+}
+
 .flex-grid-thirds {
     display: flex;
     flex-flow: wrap;
@@ -310,9 +315,6 @@ input[type=text]:not(.browser-default).search-bar:focus {
     min-width: max-content;
 }
 
-
-
-
 /* Materialize components */
 .modal {
     padding: 60px;
@@ -349,11 +351,6 @@ input[type=text]:not(.browser-default).search-bar:focus {
     box-shadow: 1px 1px 10px -7px #777777;
     border-radius: 3px;
 }
-
-/* input[type=text]:not(.browser-default):focus:not([readonly]){
-    box-shadow: 1px 1px 16px -5px #777777;
-    border-bottom: 1px solid #000;
-} */
 
 [type="checkbox"]:checked+span:not(.lever):before {
     border-right: 2px solid #2F48B0;
@@ -441,6 +438,13 @@ input[type=text]:not(.browser-default):disabled {
     color: #777777;
 }
 
+.card.sidebar {
+    border-radius: 5px;
+}
+
+.card.sidebar > .card-content {
+    padding: 15px;
+}
 
 /* Utils */
 .m-top-40 {
@@ -531,6 +535,7 @@ input[type=text]:not(.browser-default):disabled {
 
 .d-flex {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .flex-col {
@@ -901,6 +906,9 @@ p.created-by {
 }
 
 @media screen and (max-width: 540.01px){
+    h1 {
+        font-size: 2.7rem;
+    }
     nav {
         max-height: 56px;
     }
@@ -916,6 +924,10 @@ p.created-by {
         margin: auto;
         padding-bottom: 15px;
         justify-content: center;
+    }
+
+    .divide-pipe {
+        display: none;
     }
 
 }
@@ -1052,6 +1064,14 @@ p.created-by {
     .header-title-section {
         padding-top: 0px;
         height: max-content;
+    }
+
+    .hide-992 {
+        display: none;
+    }
+
+    .full-width-tablet-down {
+        width: 100%!important;
     }
 }
 
