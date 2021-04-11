@@ -137,11 +137,9 @@ $(window).scroll(function () {
 (function () {
     parent_width = $('.flex-grid-thirds').width()
     child_width = $('.freelancer-card:last-of-type').width()
-    if (child_width > (parent_width / 2)) {
+    if (child_width > (parent_width / 2) && parent_width > 520) {
         $('.freelancer-card:last-of-type').addClass('last-in-grid');
     } else {
         $('.freelancer-card:last-of-type').removeClass('last-in-grid')
     }
-    console.log("this width", parent_width)
-    console.log("child width",child_width)
 })();

@@ -75,6 +75,9 @@ ssssss
 - Hash passwords
 - Emails not shown in DOM - all managed in back-end via Python / Flask-mail
 
+### Access Restrictions
+
+
 ### Bugs
 - Logged out users shown variable error - can't find session dict
 

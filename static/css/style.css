@@ -260,6 +260,25 @@ h4.title-feat {
     min-width: 250px;
 }
 
+.last-in-grid > .card-content {
+    flex-direction: row;
+    display: flex;
+}
+
+.last-in-grid > .card-action {
+    justify-content: flex-end!important;
+}
+
+.last-in-grid > .card-content div {
+    margin-left: 0;
+    width: max-content;
+}
+.last-in-grid > .card-content > .card-info {
+    flex-direction: column;
+    width: -webkit-fill-available;
+    margin-left: 20px;
+}
+
 .sidebar-widget-title {
     padding: 10px 0px;
     border-bottom: 5px solid #516fef;
@@ -324,9 +343,10 @@ input[type=text]:not(.browser-default).search-bar:focus {
 
 /* Materialize components */
 .modal {
-    padding: 60px;
-    width: 40%;
-    max-height: 80%;
+    padding: 50px;
+    width: 60%;
+    max-height: 90%;
+    border-radius: 5px;
 }
 
 .switch-label {
@@ -482,6 +502,10 @@ input[type=text]:not(.browser-default):disabled {
 
 .mr-0 {
     margin-right: 0;
+}
+
+.pt-20 {
+    padding-top: 20px;
 }
 
 .pt-50 {
