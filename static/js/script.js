@@ -12,8 +12,7 @@ $(document).ready(function () {
     // set timeout for flash if not closed by user
     setTimeout(function () {
         $("div.flash-msg").fadeOut();
-    }, 5000)
-    $('.tabs').tabs();
+    }, 5000);
 });
 
 // Preview profile image before upload without page reload
