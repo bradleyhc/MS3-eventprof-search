@@ -13,7 +13,7 @@
 
 
 <section class="main-body">
-    <div class="container center-on-large p-top-50">
+    <div class="container center-on-large wide-container">
         <!-- Search bar section -->
         <form method="POST" class="col s12" action="{{ url_for('search_freelancers')}}">
             <h3><strong>Search for relevant Freelancers</strong></h3>
@@ -53,7 +53,7 @@
 
 
             <!-- Freelancer card -->
-            <div class="card freelancer-card col">
+            <div class="card col freelancer-card">
                 <div class="card-content">
                     <div class="card-img-wrapper">
                         <img class="profile-image" src="/static/images/user_uploads/{{ freelancer.profile_image }}"
@@ -62,24 +62,24 @@
                     <div class="card-stacked-item">
                         <h4 class="title-feat">{{ freelancer.first_name }} {{ freelancer.last_name }}</h4>
                     </div>
-                    <div class="row d-flex card-stacked-item">
-                        <p><i class="fas fa-user pr-5"></i> {{ freelancer.role }}</p><span class="divide-pipe"> |
-                        </span>
-                        <p><i class="fas fa-map-marker-alt pr-5"></i> {{ freelancer.location|capitalize }}</p>
-
+                    <div class="row card-stacked-item inline-flex-gap m-auto">
+                        <p class="pr-5"><i class="fas fa-user"></i>{{ freelancer.role }}</p>
+                        <p class="pr-5"><i class="fas fa-map-marker-alt"></i>{{ freelancer.location|capitalize }}</p>
+                        
+                        
                     </div>
                     <!-- Skills -->
-                    <div class="row d-flex card-stacked-item">
+                    <div class="row card-stacked-item inline-flex-gap">
                         {% for skill in freelancer.skills %}
                         <div class="chip">{{skill}}</div>
                         {% endfor %}
                     </div>
-                    <p>{{ freelancer.about|truncate(50, False, '...') }}</p>
+                    <p class="card-stacked-item">{{ freelancer.about|truncate(50, False, '...') }}</p>
                 </div>
-                <div class="card-action">
-                    <a href="{{ url_for('profile', name=freelancer.name_slug) }}" class="btn primary-btn">View More</a>
+                <div class="card-action inline-flex-gap">
+                    <a href="{{ url_for('profile', name=freelancer.name_slug) }}" class="btn secondary-btn btn-slim">View More</a>
                     {% if freelancer.name_slug != session['user']['name_slug']%}
-                    <a href="#contact_modal" class="gutter-l btn secondary-btn modal-trigger">Send Email</a>
+                    <a href="#contact_modal" class="btn secondary-btn btn-slim modal-trigger">Send Email</a>
                     {% endif %}
                 </div>
 

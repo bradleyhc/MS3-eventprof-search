@@ -74,7 +74,6 @@ section.main-body {
 }
 
 .container {
-    width: 100%;
     padding: 50px;
     max-width: 1920px;
 }
@@ -257,8 +256,8 @@ h4.title-feat {
 
 .flex-grid-thirds .col {
     flex: 1;
-    margin: 10px;
-    min-width: 30%;
+    margin: 5px;
+    min-width: 250px;
 }
 
 .sidebar-widget-title {
@@ -549,6 +548,12 @@ input[type=text]:not(.browser-default):disabled {
     flex-wrap: wrap;
 }
 
+.inline-flex-gap {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
 .flex-col {
     flex-direction: column;
 }
@@ -831,10 +836,23 @@ p.created-by {
 
 /* Freelancer pages */
 
-.freelancer-card > .card-action:last-child {
+.freelancer-card {
+    padding: 0!important;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.freelancer-card > .card-action {
     border-radius: 0px 0px 10px 10px;
     display: flex;
     justify-content: center;
+    padding-top: 0px;
+    margin-top: auto;
+}
+
+.freelancer-card > .card-content {
+    padding-bottom: 0px;
 }
 
 /* Admin pages */
@@ -1092,6 +1110,10 @@ p.created-by {
 @media screen and (min-width:769px){
     .user-table tbody tr td i {
         display: none;
+    }
+
+    .wide-container {
+        width: 85%!important;
     }
 }
 
