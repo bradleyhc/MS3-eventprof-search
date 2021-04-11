@@ -47,7 +47,7 @@
         {% else %}
         <h3 class="py-20 gutter-t"><strong>Current Freelancers</strong></h3>
         <div class="row s12 flex-grid-thirds">
-            
+
             <!-- Show freelancer loop if search > 0 or no search query  -->
             {% for freelancer in freelancers %}
 
@@ -59,25 +59,29 @@
                         <img class="profile-image" src="/static/images/user_uploads/{{ freelancer.profile_image }}"
                             alt="">
                     </div>
-                    <div class="card-stacked-item">
-                        <h4 class="title-feat">{{ freelancer.first_name }} {{ freelancer.last_name }}</h4>
+                    <div class="card-info">
+                        <div class="card-stacked-item">
+                            <h4 class="title-feat">{{ freelancer.first_name }} {{ freelancer.last_name }}</h4>
+                        </div>
+                        <div class="row card-stacked-item inline-flex-gap m-auto">
+                            <p class="pr-5"><i class="fas fa-user"></i>{{ freelancer.role }}</p>
+                            <p class="pr-5"><i class="fas fa-map-marker-alt"></i>{{ freelancer.location|capitalize }}
+                            </p>
+
+
+                        </div>
+                        <!-- Skills -->
+                        <div class="row card-stacked-item inline-flex-gap">
+                            {% for skill in freelancer.skills %}
+                            <div class="chip">{{skill}}</div>
+                            {% endfor %}
+                        </div>
+                        <p class="card-stacked-item">{{ freelancer.about|truncate(50, False, '...') }}</p>
                     </div>
-                    <div class="row card-stacked-item inline-flex-gap m-auto">
-                        <p class="pr-5"><i class="fas fa-user"></i>{{ freelancer.role }}</p>
-                        <p class="pr-5"><i class="fas fa-map-marker-alt"></i>{{ freelancer.location|capitalize }}</p>
-                        
-                        
-                    </div>
-                    <!-- Skills -->
-                    <div class="row card-stacked-item inline-flex-gap">
-                        {% for skill in freelancer.skills %}
-                        <div class="chip">{{skill}}</div>
-                        {% endfor %}
-                    </div>
-                    <p class="card-stacked-item">{{ freelancer.about|truncate(50, False, '...') }}</p>
                 </div>
                 <div class="card-action inline-flex-gap">
-                    <a href="{{ url_for('profile', name=freelancer.name_slug) }}" class="btn secondary-btn btn-slim">View More</a>
+                    <a href="{{ url_for('profile', name=freelancer.name_slug) }}"
+                        class="btn secondary-btn btn-slim">View More</a>
                     {% if freelancer.name_slug != session['user']['name_slug']%}
                     <a href="#contact_modal" class="btn secondary-btn btn-slim modal-trigger">Send Email</a>
                     {% endif %}
@@ -86,34 +90,43 @@
                 <div class="modal" id="contact_modal">
 
                     <div class="modal-content">
+                        <h3>Send {{freelancer.first_name}} an email.</h3>
+                        <p>Your message will be sent to their email inbox, allowing them to reply back to you directly.</p>
                         <form id="contact_form" onsubmit="sendContactEmail(this);" method="POST"
                             action="{{ url_for('send_mail', slug=freelancer.name_slug) }}">
                             <!-- Hidden sender fields  -->
-                            <input type="hidden" name="reply_to" id="reply_to" value="{{ s_email }}">
                             <input type="hidden" name="from_name" id="from_name" value="{{ s_name }}">
                             <input type="hidden" name="to_name" id="to_name" value="{{freelancer.first_name}}">
                             <input type="hidden" name="email" id="email" value="bradleyh.cooney@gmail.com">
+                            <div class="row pt-20">
+                                <div class="input-field s12">
+                                    <input type="text" name="reply_to" id="reply_to" value="{{ s_email }}">
+                                    <label for="reply_to">Your Email</label>
+                                </div>
+                            </div>
                             <div class="row">
-                                <div class="input-field col s12">
+                                <div class="input-field s12">
                                     <textarea name="body" id="body" class="materialize-textarea validate"></textarea>
+                                    <label for="body">Your Message</label>
                                 </div>
                             </div>
                             <div class="row">
 
                                 <label>
-                                    <div class="input-field col s12">
+                                    <div class="input-field s12">
                                         <input type="checkbox" name="confirm_data" id="confirm_data" class="validate"
                                             required>
-                                        <span>words</span>
-
+                                        <span>By sending this message, I understand that my email address will be provided to
+                                            {{freelancer.first_name}} for them to send me a direct reply.</span>
                                     </div>
                                 </label>
 
                             </div>
                             <div class="row">
-                                <div class="input-field col s12">
-                                    <button type="submit" class="btn btn-large primary-btn">Click here to send
-                                        email</button>
+                                <div class="input-field s12 gutter-t center-align">
+                                    <button type="submit"
+                                        class="btn secondary-btn btn-slim btn-green-on-hover cta-btn">Send
+                                        Email</button>
                                 </div>
                             </div>
                         </form>
