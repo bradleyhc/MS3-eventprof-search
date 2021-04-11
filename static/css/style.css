@@ -76,7 +76,7 @@ section.main-body {
 .container {
     padding: 50px;
     max-width: 1920px;
-    width: 85%!important;
+    width: 100%;
 }
 
 .flashes {
@@ -213,7 +213,7 @@ h4.title-feat {
     text-transform: capitalize;
     padding: 10px 30px;
     height: min-content;
-    font-weight: 500;
+    font-weight: 400;
     border-radius: 5px;
     background-color: #455FCD;
     color: #fff;
@@ -564,6 +564,11 @@ input[type=text]:not(.browser-default):disabled {
     margin-bottom: 20px!important;
 }
 
+.p-break {
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
 .v-center-align {
     margin-top: auto;
     margin-bottom: auto;
@@ -639,7 +644,7 @@ span.divide-pipe {
 }
 
 .homepage-fs-slide {
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     top: 0;
     display: flex;
@@ -656,6 +661,7 @@ span.divide-pipe {
     bottom: 0!important;
     background-color: #efefef;
     box-shadow: 0px -1px 16px -3px #3e3e3e;
+    margin-bottom: 25px;
 }
 
 .homepage-header{
@@ -749,6 +755,7 @@ span.divide-pipe {
 
 .hp-project-row > .card-action{
     border-radius: 5px!important;
+    min-width: max-content;
 }
 
 .hp-section-header {
@@ -999,6 +1006,31 @@ p.created-by {
         display: none;
     }
 
+    .primary-btn {
+        padding: 5px 15px;
+    }
+
+    /* Homepage */
+
+    .homepage-header {
+        font-size: 3.1rem;
+    }
+
+    input[type=text]:not(.browser-default).hp-search-input {
+        font-size: 1.2rem;
+    }
+
+    .hp-section-header {
+        padding: 0px;
+        padding-bottom: 20px;
+    }
+
+    #hp_featured_projects {
+        width: 100%;
+    }
+
+    /* Profile */
+
     #profile_content, .profile-head-info {
         flex-direction: column;
         display: flex;
@@ -1040,6 +1072,11 @@ p.created-by {
     width: auto;
     max-width: 90%;
     max-height: 80%;
+    }
+
+    .home-bg {
+        background-size: auto 100%;
+        background-position-x: -300px;
     }
 
     .search-bar-btn-wrap {
@@ -1108,6 +1145,11 @@ p.created-by {
     }
     .full-width-btn-mobile {
     width: 100%;
+    }
+
+    .hp-project-row > .card-action {
+        padding-top: 0px;
+        justify-content: flex-end;
     }
 
     /* Profile */

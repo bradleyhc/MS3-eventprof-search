@@ -28,19 +28,18 @@
     </section>
     <section class="snap-scroll-child">
         <div class="homepage-fs-slide fixed-bottom flex-col">
-            <h2 class="hp-section-header title-feat">A few of our recent Project Opportunities</h2>
+            <div class="container">
+            <h2 class="hp-section-header title-feat gutter-b">A few of our recent Project Opportunities</h2>
             <div id="hp_featured_projects" class="col">
                 {% for project in projects %}
-                <div class="card hp-project-row d-flex">
+                <div class="card hp-project-row d-flex flex-col-mobile">
                     <div class="card-content">
                         <div class="stacked-item">
                             <h3 class="title-feat-bold">{{ project.title }}</h3>
                         </div>
-                        <div class="row d-flex stacked-item">
-                            <p><i class="fas fa-user pr-5"></i> {{ project.role }}</p><span class="divide-pipe"> |
-                            </span>
-                            <p><i class="fas fa-map-marker-alt pr-5"></i> {{ project.location }}</p><span
-                                class="divide-pipe"> | </span>
+                        <div class="row d-flex stacked-item flex-wrap">
+                            <p class="gutter-r"><i class="fas fa-user pr-5"></i> {{ project.role }}</p>
+                            <p class="gutter-r"><i class="fas fa-map-marker-alt pr-5"></i> {{ project.location }}</p>
                             <p><i class="fas fa-calendar-alt pr-5"></i> {{ project.start_date }} -
                                 {{ project.end_date }}
                             </p>
@@ -49,13 +48,14 @@
                     </div>
                     <div class="card-action d-flex">
                         <a href="{{ url_for('view_project', project_id=project.slug) }}"
-                            class="btn btn-large secondary-btn m-auto">View More</a>
+                            class="btn secondary-btn my-auto">View More</a>
                     </div>
                 </div>
                 {% endfor %}
 
             </div>
         </div>
+        
 </div>
 </section>
 </div>
