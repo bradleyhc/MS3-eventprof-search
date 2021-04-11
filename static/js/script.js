@@ -8,6 +8,7 @@ $(document).ready(function () {
     $("button.close-flash").click(function () {
         $("div.flash-msg").fadeOut();
     });
+    $('textarea').characterCounter();
     // set timeout for flash if not closed by user
     setTimeout(function () {
         $("div.flash-msg").fadeOut();
