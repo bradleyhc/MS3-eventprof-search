@@ -3,7 +3,8 @@
 <h3 class="sidebar-widget-title">Similar Freelancers</h3>
 
 {% for w_freelancer in freelancers if w_freelancer.name_slug != info.name_slug %}
-{% if (w_freelancer.role == info.role) and (loop.length > 0) %}
+
+{% if loop.length <= 3 and w_freelancer.role == info.role%}
 
 <div class="card freelancer-card col sidebar">
     <div class="card-content">
@@ -34,16 +35,20 @@
         {% endif %}
     </div>
 </div>
-{% elif loop.index > 3 %}
-<!-- Do nothing -->
-{% else %}
-<div class="card freelancer-card col sidebar">
-    <div class="card-content">
-        <p>Looks like we couldn't find any suitable Freelancers. Discover more Freelancers by clicking below!
+
+<!-- If no results show the 'search other freelancers' card -->
+{% elif loop.index == 1 %}
+
+<div class="card freelancer-card col sidebar card-muted">
+    <div class="card-content flex-col">
+        <p class="gutter-b">Looks like we couldn't find any suitable Freelancers. Discover more Freelancers by clicking below!
         </p>
-        <a href="{{url_for('get_freelancers')}}" class="btn primary-btn">Search Freelancers</a>
+        <a href="{{url_for('get_freelancers')}}" class="btn secondary-btn btn-line-blue m-auto">Search Freelancers</a>
     </div>
 </div>
+
+{% else %}
+<!-- Return nothing to frontend -->
 
 {% endif %}
 {%endfor %}

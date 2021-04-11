@@ -27,19 +27,24 @@
             {% endfor %}
         </div>
         <!-- Card footer -->
-        <a href="{{url_for('view_project', project_id=w_project.slug)}}" class="btn secondary-btn btn-slim">View Project</a>
+        <a href="{{url_for('view_project', project_id=w_project.slug)}}" class="btn secondary-btn btn-slim">View
+            Project</a>
     </div>
 </div>
 
 <!-- If there are no matching results, return 'no results' card -->
-{% elif loop.length == 0 %}
-<div class="card freelancer-card col sidebar">
+{% elif loop.index == 1 %}
+<div class="card freelancer-card col sidebar card-muted">
     <div class="card-content">
         <p>Looks like we couldn't find any suitable Freelancers. Discover more Freelancers by clicking below!
         </p>
-        <a href="{{url_for('get_freelancers')}}" class="btn primary-btn">Search Freelancers</a>
+        <a href="{{url_for('get_freelancers')}}" class="btn secondary-btn btn-line-blue m-auto">Search Freelancers</a>
     </div>
 </div>
+
+{% else %}
+<!-- Return nothing to frontend -->
+
 {% endif %}
 {%endfor %}
 
