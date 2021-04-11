@@ -125,6 +125,11 @@ button.close-flash{
     margin: auto;
 }
 
+.card-muted {
+    box-shadow: none;
+    border: 1px solid #d6d6d6;
+}
+
 .input-field {
     margin-top: 0.5rem;
 }
@@ -214,7 +219,7 @@ h4.title-feat {
     color: #fff;
 }
 
-.primary-btn.btn-green {
+.primary-btn.btn-green, .secondary-btn.btn-green {
     background-color: #51EFD1;
     color: #2F48B0;
     
@@ -233,6 +238,12 @@ h4.title-feat {
 .btn-line {
     border: 2px solid #FF3E63;
     color: #FF3E63;
+    background-color: #fff;
+}
+
+.btn-line-blue {
+    border: 2px solid #455FCD;
+    color: #455FCD;
     background-color: #fff;
 }
 
@@ -581,6 +592,7 @@ input[type=text]:not(.browser-default):disabled {
 }
 
 .flex-col {
+    display: flex;
     flex-direction: column;
 }
 
