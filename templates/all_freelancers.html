@@ -83,30 +83,30 @@
                     <a href="{{ url_for('profile', name=freelancer.name_slug) }}"
                         class="btn secondary-btn btn-slim">View More</a>
                     {% if freelancer.name_slug != session['user']['name_slug']%}
-                    <a href="#contact_modal" class="btn secondary-btn btn-slim modal-trigger">Send Email</a>
+                    <a href="#contact_modal_{{loop.index}}" class="btn secondary-btn btn-slim modal-trigger">Send Email</a>
                     {% endif %}
                 </div>
 
-                <div class="modal" id="contact_modal">
+                <div class="modal" id="contact_modal_{{loop.index}}">
 
                     <div class="modal-content">
                         <h3>Send {{freelancer.first_name}} an email.</h3>
                         <p>Your message will be sent to their email inbox, allowing them to reply back to you directly.</p>
-                        <form id="contact_form" onsubmit="sendContactEmail(this);" method="POST"
+                        <form id="contact_form_{{loop.index}}" onsubmit="sendContactEmail(this);" method="POST"
                             action="{{ url_for('send_mail', slug=freelancer.name_slug) }}">
                             <!-- Hidden sender fields  -->
-                            <input type="hidden" name="from_name" id="from_name" value="{{ s_name }}">
-                            <input type="hidden" name="to_name" id="to_name" value="{{freelancer.first_name}}">
-                            <input type="hidden" name="email" id="email" value="bradleyh.cooney@gmail.com">
+                            <input type="hidden" name="from_name" id="from_name_{{loop.index}}" value="{{ s_name }}">
+                            <input type="hidden" name="to_name" id="to_name_{{loop.index}}" value="{{freelancer.first_name}}">
+                            <input type="hidden" name="email" id="email_{{loop.index}}" value="bradleyh.cooney@gmail.com">
                             <div class="row pt-20">
                                 <div class="input-field s12">
-                                    <input type="text" name="reply_to" id="reply_to" value="{{ s_email }}">
+                                    <input type="text" name="reply_to" id="reply_to_{{loop.index}}" value="{{ s_email }}">
                                     <label for="reply_to">Your Email</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field s12">
-                                    <textarea name="body" id="body" class="materialize-textarea validate"></textarea>
+                                    <textarea name="body" id="body_{{loop.index}}" class="materialize-textarea validate"></textarea>
                                     <label for="body">Your Message</label>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
 
                                 <label>
                                     <div class="input-field s12">
-                                        <input type="checkbox" name="confirm_data" id="confirm_data" class="validate"
+                                        <input type="checkbox" name="confirm_data" id="confirm_data_{{loop.index}}" class="validate"
                                             required>
                                         <span>By sending this message, I understand that my email address will be provided to
                                             {{freelancer.first_name}} for them to send me a direct reply.</span>
