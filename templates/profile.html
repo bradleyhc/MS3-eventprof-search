@@ -18,31 +18,32 @@
 
 
 <section class="main-body">
-    <div class="container p-top-50">
-        <div class="row s12">
+    <div class="container">
+        <div class="row s12 d-flex">
             {% for info in data %}
-            <div class="col s8 ">
-                <div class="d-flex s12 gutter-b">
+            <div class="col s12">
+                <div id="profile_content" class="d-flex s12 gutter-b">
                     <div class="profile-img-wrapper">
                         <img class="profile-image" src="/static/images/user_uploads/{{ info.profile_image }}" alt="">
                     </div>
-                    <div class="profile-content-wrapper gutter-l">
-                        <div class="col">
+                    <div class="profile-content-wrapper">
+                        <div class="profile-head-info">
                             <!-- Name -->
                             <div class="row stacked-item">
                                 <h3 class="title-feat">{{ info.first_name }} {{ info.last_name }}</h3>
                             </div>
                             <!-- Rate & Location -->
                             <div class="row d-flex stacked-item">
-                                <p>{{ info.rate }}</p><span class="divide-pipe"> | </span>
-                                <p>{{ info.location }}</p>
-                            </div>
+            <p class="gutter-r"><i class="fas fa-hand-holding-usd pr-5"></i> {{ info.rate }}</p>
+            <p><i class="fas fa-map-marker-alt pr-5"></i> {{ info.location|capitalize }}</p>
+
+        </div>
                             <!-- Role -->
                             <div class="row d-flex stacked-item">
-                                <p>{{ info.role }}</p>
+                                <p><i class="fas fa-user pr-5"></i>{{ info.role }}</p>
                             </div>
                             <!-- Skills -->
-                            <div class="row d-flex stacked-item">
+                            <div class="row inline-flex-gap stacked-item">
                                 {% for skill in info.skills %}
                                 <div class="chip">{{skill}}</div>
                                 {% endfor %}
@@ -50,32 +51,32 @@
                         </div>
                     </div>
                 </div>
-                
-                    <div class="profile-about-wrapper d-flex s12">
-                        <div class="row d-flex stacked-item">
-                            <p>{{ info.about }}</p>
-                        </div>
-                    </div>
+
+                <div class="profile-about-wrapper d-flex s12">
                     <div class="row d-flex stacked-item">
-                        <a class="btn" type="button" href="{{ url_for('edit_profile', name=session['user']['slug'])}}">Edit
-                            Profile</a>
+                        <p>{{ info.about }}</p>
                     </div>
                 </div>
-            
-            
+                <div class="row d-flex stacked-item">
+                    <a class="btn" type="button" href="{{ url_for('edit_profile', name=session['user']['slug'])}}">Edit
+                        Profile</a>
+                </div>
+            </div>
+
+
             <!-- Nearby projects widget -->
-            <div class="col s4">
+            <div class="col s4 hide-992 gutter-l">
                 {% if info.name_slug == session['user']['slug']%}
                 {% include "widgets/my_profile_rec_widget.html" %}
                 {% else %}
-{% include "widgets/similar_users_widget.html" %}
-{% endif %}
+                {% include "widgets/similar_users_widget.html" %}
+                {% endif %}
             </div>
-{% endfor %}
-                    {% block widget %}
-                    {% endblock %}
-            </div>
-        
+            {% endfor %}
+            {% block widget %}
+            {% endblock %}
+        </div>
+
     </div>
 
 </section>
@@ -83,13 +84,12 @@
 {% endblock %}
 
 {% block scripts%}
-<script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
 </script>
 <script type="text/javascript">
-   (function(){
-      emailjs.init("user_kzLXPsKeCx1gBgjDlfL4H");
-   })();
+    (function () {
+        emailjs.init("user_kzLXPsKeCx1gBgjDlfL4H");
+    })();
 </script>
 <script src="{{ url_for('static', filename='js/email_js.js')}}" type="text/javascript"></script>
 
