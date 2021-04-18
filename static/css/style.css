@@ -206,6 +206,7 @@ h4.title-feat {
 
 .btn {
     transition: 0.3s ease-in-out;
+    border-radius: 5px;
 }
 
 .primary-btn {
@@ -214,7 +215,6 @@ h4.title-feat {
     padding: 10px 30px;
     height: min-content;
     font-weight: 400;
-    border-radius: 5px;
     background-color: #455FCD;
     color: #fff;
 }
@@ -224,10 +224,10 @@ h4.title-feat {
     color: #2F48B0;
     
 }
+
 .secondary-btn {
     background-color: #455FCD;
     border: 2px solid #455FCD;
-    border-radius: 5px;
     color: #fff;
     text-transform: capitalize;
     height: min-content;
@@ -382,7 +382,7 @@ input[type=text]:not(.browser-default).search-bar:focus {
 
 /* Skill input selections */
 li#select-options-2920bf48-c9ac-c6e1-c9a8-18c8e26aa51d1 {
-    
+
 }
 
 .datepicker-modal { 
