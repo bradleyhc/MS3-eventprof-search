@@ -41,7 +41,7 @@ mongo = PyMongo(app)
 
 # Global Functions
 def check_login():
-    
+
     flash("You need to be logged in to view that page!")
     return redirect(url_for('login'))
 
@@ -436,7 +436,7 @@ def search_projects():
 def send_mail(slug):
 
     # Redirect to login if user not logged in
-    if not session: 
+    if not session:
         return check_login()
 
     recipient = mongo.db.users.find_one({"name_slug": slug})
@@ -451,7 +451,8 @@ def send_mail(slug):
     body = render_template("contact_email.html",
                            name=sender_name, to_name=recipient['first_name'],
                            message=user_msg, u_link=session['user']['slug'])
-    msg = Message(subject, reply_to=testing_email, recipients=[testing_email])
+    msg = Message(subject, reply_to=reply_to,
+                  recipients=[to_email])
     msg.html = body
 
     mail.send(msg)
