@@ -100,20 +100,18 @@
                             <input type="hidden" name="from_name" id="from_name_{{loop.index}}" value="{{ s_name }}">
                             <input type="hidden" name="to_name" id="to_name_{{loop.index}}"
                                 value="{{freelancer.first_name}}">
-                            <input type="hidden" name="email" id="email_{{loop.index}}"
-                                value="bradleyh.cooney@gmail.com">
                             <div class="row pt-20">
                                 <div class="input-field s12">
                                     <input type="email" name="reply_to" id="reply_to_{{loop.index}}"
                                         value="{{ s_email }}" required>
-                                    <label for="reply_to">Your Email</label>
+                                    <label for="reply_to_{{loop.index}}">Your Email</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field s12">
                                     <textarea name="body" id="body_{{loop.index}}"
                                         class="materialize-textarea validate" maxlength="850" data-length="850" required></textarea>
-                                    <label for="body">Your Message</label>
+                                    <label for="body_{{loop.index}}">Your Message</label>
                                 </div>
                             </div>
                             <div class="row">
