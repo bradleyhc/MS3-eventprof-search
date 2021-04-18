@@ -380,6 +380,11 @@ input[type=text]:not(.browser-default).search-bar:focus {
     margin-left: 0px;
 }
 
+/* Skill input selections */
+li#select-options-2920bf48-c9ac-c6e1-c9a8-18c8e26aa51d1 {
+    
+}
+
 .datepicker-modal { 
     padding: 0;
     width: auto;
