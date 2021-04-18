@@ -990,6 +990,7 @@ p.created-by {
 
     .card-action > div p {
         margin: auto;
+        text-align: center;
     }
 
     .project-card-btns {
@@ -1086,6 +1087,7 @@ p.created-by {
         display: flex;
         justify-content: space-between;
         width: 100%;
+        margin-left: 0px!important;
     }
 
     .search-bar-btn-wrap button {
