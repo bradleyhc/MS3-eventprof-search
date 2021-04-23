@@ -243,7 +243,7 @@ def profile(name):
 
     # Redirect to 404 if user data not found
     if not profile_data:
-        return redirect(url_for("404"))
+        return not_found('404')
     # Make user edit profile if not yet completed
     elif profile_data[0]['is_complete'] is False:
         flash("Please complete your profile before viewing.")
