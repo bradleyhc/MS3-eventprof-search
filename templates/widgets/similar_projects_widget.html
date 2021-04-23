@@ -31,9 +31,9 @@
             Project</a>
     </div>
 </div>
-
+{% endif %}
 <!-- If there are no matching results, return 'no results' card -->
-{% elif loop.index == 1 %}
+{% else %}
 <div class="card freelancer-card col sidebar card-muted">
     <div class="card-content">
         <p class="gutter-b">Looks like we couldn't find any suitable Freelancers. Discover more Freelancers by clicking below!
@@ -42,10 +42,6 @@
     </div>
 </div>
 
-{% else %}
-<!-- Return nothing to frontend -->
-
-{% endif %}
 {%endfor %}
 
 {% endblock %}
