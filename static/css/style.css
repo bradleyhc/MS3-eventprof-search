@@ -334,7 +334,6 @@ h4.title-feat {
 }
 
 .no-results-card {
-    width: max-content;
     margin: 50px auto;
     border-radius: 10px;
     text-align: center;
@@ -343,7 +342,7 @@ h4.title-feat {
 
 .no-results-card div i {
     font-size: 100px;
-    margin: 20px 0px 40px 0px;
+    margin: auto;
 }
 
 .wrap-text {
@@ -887,6 +886,7 @@ input#profile_img {
 .project-card {
     border-radius: 10px;
     box-shadow: 1px 1px 15px -6px #777777;    
+    padding: 10px;
 }
 
 .project-card > .card-content {

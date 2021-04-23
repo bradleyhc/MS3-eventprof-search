@@ -33,13 +33,13 @@
 
         <!-- Show no results if search returns 0 -->
         {% if results == 0 %}
-        <div class="card no-results-card col">
+        <div class="card no-results-card col card-muted">
             <div class="card-content">
                 <i class="fas fa-search"></i>
                 <p>Looks like we couldn't find any Opportunities for that search! <br>Click below to try another
                     flavour!
                 </p>
-                <a href="{{url_for('get_projects')}}" class="btn secondary-btn btn-green-on-hover">Search all
+                <a href="{{url_for('get_projects')}}" class="btn primary-btn btn-green-on-hover gutter-t">Search all
                     Opportunities</a>
             </div>
         </div>
