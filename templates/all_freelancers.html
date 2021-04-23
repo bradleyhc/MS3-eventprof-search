@@ -73,9 +73,9 @@
                         <!-- Skills -->
                         <div class="row card-stacked-item inline-flex-gap">
                             {% for skill in freelancer.skills %}
-                                {% if loop.index <= 6 %}
-                                    <div class="chip">{{skill}}</div>    
-                                {% endif %}
+                            {% if loop.index <= 6 %}
+                            <div class="chip">{{skill}}</div>
+                            {% endif %}
                             {% endfor %}
                         </div>
                         <p class="card-stacked-item">{{ freelancer.about|truncate(50, False, '...') }}</p>
@@ -111,8 +111,8 @@
                             </div>
                             <div class="row">
                                 <div class="input-field s12">
-                                    <textarea name="body" id="body_{{loop.index}}"
-                                        class="materialize-textarea validate" maxlength="850" data-length="850" required></textarea>
+                                    <textarea name="body" id="body_{{loop.index}}" class="materialize-textarea validate"
+                                        maxlength="850" data-length="850" required></textarea>
                                     <label for="body_{{loop.index}}">Your Message</label>
                                 </div>
                             </div>
@@ -134,7 +134,7 @@
                                     <button type="submit"
                                         class="btn secondary-btn btn-slim btn-green-on-hover cta-btn">Send
                                         Email</button>
-                                        <button type="button"
+                                    <button type="button"
                                         class="btn secondary-btn btn-slim btn-line modal-close">Cancel</button>
                                 </div>
                             </div>

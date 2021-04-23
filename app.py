@@ -230,6 +230,10 @@ def profile(name):
          "name_slug": {"$nin": [session['user']['slug']]}})
     all_projects = mongo.db.projects.find()
 
+    # get current user email for reply_to
+    current_user = mongo.db.users.find_one(
+        {"name_slug": session["user"]["slug"]})
+    
     if profile_data[0]['is_complete'] is False:
         flash("Please complete your profile before viewing.")
         return redirect(
@@ -237,7 +241,8 @@ def profile(name):
     else:
         return render_template(
             "profile.html", data=profile_data,
-            projects=all_projects, freelancers=all_freelancers)
+            projects=all_projects, s_email=current_user["email"],
+            s_name=current_user["first_name"], freelancers=all_freelancers)
 
 
 """ Project CRUD functions """
