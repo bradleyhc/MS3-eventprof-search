@@ -418,6 +418,7 @@ input[type=text]:not(.browser-default).hp-search-input {
     display: flex;
     position: relative;
     width: -webkit-fill-available;
+    max-width: 800px;
     font-weight: 300;
     margin: 20px 0px;    
     transition: 0.3s ease-in-out;
@@ -1250,5 +1251,12 @@ p.created-by {
 @media screen and (min-width:1200px){
     .container.center-on-large {
         max-width: 75%;
+    }
+}
+
+
+@media screen and (min-width:1600px){
+    #hp_user_images {
+        margin: 0px 100px;
     }
 }
