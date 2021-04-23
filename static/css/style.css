@@ -6,7 +6,7 @@
 
 
 body{
-    background-color: #4f6ae1;
+    background-color: #455FCD;
     position: relative;
     min-height: 100vh;
 }
@@ -47,7 +47,7 @@ i.fas {
 
 footer {
     padding: 20px 50px;
-    background-color: #2F48B0;
+    background-color: #455FCD;
     color: #fff;
     width: 100%;
     position: absolute;
@@ -59,6 +59,35 @@ footer div a {
 }
 
 /* All page components */
+
+.preloader-overlay {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    z-index: 10;
+    background: rgb(60,81,172);
+    background: linear-gradient(135deg, rgba(60,81,172,1) 0%, rgba(67,90,190,1) 35%, rgba(69,95,205,1) 100%);
+    display: flex;
+}
+
+.preloader-wrapper {
+    position: relative;
+    z-index: 11;
+    margin: auto;
+}
+
+.preloader-wrapper.big {
+    width: 120px;
+    height: 120px;
+}
+
+.spinner-blue, .spinner-blue-only {
+    border-color: #51efd1;
+}
+
+.circle-clipper .circle {
+    border-width: 10px;
+}
 
 .main {
     padding-bottom: 50px;
@@ -175,6 +204,7 @@ nav.scrolled {
 
 .navbar-fixed {
     position: fixed;
+    z-index: 9;
 }
 
 nav ul a {
