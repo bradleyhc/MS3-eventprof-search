@@ -113,6 +113,7 @@ ssssss
 - Giudance on PyMongo $nin operator - https://stackoverflow.com/questions/18439612/mongodb-find-all-except-from-one-or-two-criteria
 - Strip method to remove whitespaces on string - https://www.journaldev.com/23763/python-remove-spaces-from-string#:~:text=Python%20String%20strip()%20function%20will%20remove%20leading%20and%20trailing%20whitespaces.&text=If%20you%20want%20to%20remove,or%20rstrip()%20function%20instead. 
 - Commit message descriptions - https://stackabuse.com/git-adding-a-commit-message/ 
+- Error Handling - https://www.geeksforgeeks.org/python-404-error-handling-in-flask/ 
 
 ### Other
 - Random name generator for users - https://www.behindthename.com/ 
