@@ -36,12 +36,12 @@
 
         <!-- Show no results if search returns 0 -->
         {% if results == 0 %}
-        <div class="card no-results-card col">
+        <div class="card no-results-card col card-muted">
             <div class="card-content">
                 <i class="fas fa-search"></i>
                 <p>Looks like we couldn't find any suitable Freelancers. <br>Reset your search and try again!
                 </p>
-                <a href="{{url_for('get_freelancers')}}" class="btn primary-btn">Search Freelancers</a>
+                <a href="{{url_for('get_freelancers')}}" class="btn primary-btn gutter-t">Search Freelancers</a>
             </div>
         </div>
         {% else %}
