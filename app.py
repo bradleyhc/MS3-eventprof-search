@@ -421,17 +421,27 @@ def sidebar_widget():
 def search_freelancers():
 
     # Redirect to login if user not logged in
-    if not session: 
+    if not session:
         return check_login()
 
+    # Create the query string
     query = request.form.get("query")
-    freelancers = list(mongo.db.users.find({"$text": {"$search": query},
+
+    # Get exact search match
+    freelancers = list(mongo.db.users.find(
+                       {"$text": {"$search": f"\"{query}\""},
+                        "user_type": "freelancer", "is_hidden": False}))
+
+    # Get partial match if exact not found
+    if not freelancers:
+        freelancers = list(mongo.db.users.find(
+                       {"$text": {"$search": query},
                         "user_type": "freelancer", "is_hidden": False}))
 
     results = len(freelancers)
 
-    return render_template("all_freelancers.html", freelancers=freelancers, 
-                            query=query, results=results)
+    return render_template("all_freelancers.html", freelancers=freelancers,
+                           query=query, results=results)
 
 
 @app.route("/search_projects", methods=["GET", "POST"])
@@ -442,7 +452,14 @@ def search_projects():
         return check_login()
 
     query = request.form.get("query")
-    projects = list(mongo.db.projects.find({"$text": {"$search": query}}))
+
+    # Search exact match from query
+    projects = list(mongo.db.projects.find(
+                    {"$text": {"$search": f"\"{query}\""}}))
+
+    # Else find partial match
+    if not projects:
+        projects = list(mongo.db.projects.find({"$text": {"$search": query}}))
 
     results = len(projects)
 
