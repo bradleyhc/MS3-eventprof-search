@@ -82,6 +82,17 @@ ssssss
 - Logged out users shown variable error - can't find session dict
 
 
+## Deployment
+
+### Setting up the Flask App
+- env.py
+    - setup the environment variables such as IP, PORT and SECRET KEY for the app to run locally
+    - Add env.py to .gitignore file to ensure variables are not published to production site or GitHub repo 
+
+- requirements.txt
+    pip freeze --local > requirements.txt
+
+
 
 ## Credits
 
