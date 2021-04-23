@@ -1,6 +1,5 @@
 import os
 import json
-import pandas as pd
 import datetime
 import csv
 from flask import (Flask, flash, redirect,
