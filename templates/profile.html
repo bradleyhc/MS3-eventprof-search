@@ -4,7 +4,7 @@
 
 <header class="header-title-section">
     <div class="header-bg"></div>
-    <div class="container m-auto">
+    <div class="container m-auto center-on-large">
 
         <h1>{% if data[0].name_slug == session['user']['slug'] %}
             My Profile
@@ -18,7 +18,7 @@
 
 
 <section class="main-body">
-    <div class="container">
+    <div class="container center-on-large">
         <div class="row s12 d-flex">
             {% for info in data %}
             <div class="col s12">
@@ -57,13 +57,12 @@
                         <p class="p-break">{{ info.about }}</p>
                     </div>
                 </div>
-                <div class="row d-flex stacked-item">
-                    {% if info.name_slug != session['user']['name_slug']%}
-                    <a href="#contact_modal" class="btn secondary-btn btn-slim modal-trigger">Send
-                        Email</a>
+                <div class="row d-flex stacked-item gutter-t">
+                    {% if info.name_slug != session['user']['slug']%}
+                    <a href="#contact_modal" class="btn secondary-btn btn-slim modal-trigger">Send Email</a>
                     {% else %}
-                    <a class="btn" type="button" href="{{ url_for('edit_profile', name=session['user']['slug'])}}">Edit
-                        Profile</a>
+                    <a class="btn secondary-btn btn-slim modal-trigger"
+                        href="{{ url_for('edit_profile', name=session['user']['slug'])}}">Edit Profile</a>
                     {% endif %}
                 </div>
             </div>
@@ -119,10 +118,10 @@
                         </div>
                         <div class="row">
                             <div class="input-field s12 gutter-t center-align">
-                                <button type="submit" class="btn secondary-btn btn-slim btn-green-on-hover cta-btn">Send
-                                    Email</button>
-                                <button type="button"
-                                    class="btn secondary-btn btn-slim btn-line modal-close">Cancel</button>
+                                <button type="submit" class="btn secondary-btn btn-slim 
+                                    btn-green-on-hover cta-btn">Send Email</button>
+                                <button type="button" class="btn secondary-btn 
+                                    btn-slim btn-line modal-close">Cancel</button>
                             </div>
                         </div>
                     </form>
