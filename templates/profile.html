@@ -34,10 +34,10 @@
                             </div>
                             <!-- Rate & Location -->
                             <div class="row d-flex stacked-item">
-            <p class="gutter-r"><i class="fas fa-hand-holding-usd pr-5"></i> {{ info.rate }}</p>
-            <p><i class="fas fa-map-marker-alt pr-5"></i> {{ info.location|capitalize }}</p>
+                                <p class="gutter-r"><i class="fas fa-hand-holding-usd pr-5"></i> {{ info.rate }}</p>
+                                <p><i class="fas fa-map-marker-alt pr-5"></i> {{ info.location|capitalize }}</p>
 
-        </div>
+                            </div>
                             <!-- Role -->
                             <div class="row d-flex stacked-item">
                                 <p><i class="fas fa-user pr-5"></i>{{ info.role }}</p>
@@ -58,8 +58,13 @@
                     </div>
                 </div>
                 <div class="row d-flex stacked-item">
+                    {% if info.name_slug != session['user']['name_slug']%}
+                    <a href="#contact_modal" class="btn secondary-btn btn-slim modal-trigger">Send
+                        Email</a>
+                    {% else %}
                     <a class="btn" type="button" href="{{ url_for('edit_profile', name=session['user']['slug'])}}">Edit
                         Profile</a>
+                    {% endif %}
                 </div>
             </div>
 
@@ -72,12 +77,69 @@
                 {% include "widgets/similar_users_widget.html" %}
                 {% endif %}
             </div>
+
+            <!-- Contact Form Modal -->
+            <div class="modal" id="contact_modal">
+                <div class="modal-content">
+                    <h3>Send {{info.first_name}} an email.</h3>
+                    <p>Your message will be sent to their email inbox, allowing them to reply back to you directly.
+                    </p>
+                    <form id="contact_form" onsubmit="sendContactEmail(this);" method="POST"
+                        action="{{ url_for('send_mail', slug=info.name_slug) }}">
+                        <!-- Hidden sender fields  -->
+                        <input type="hidden" name="from_name" id="from_name" value="{{ s_name }}">
+                        <input type="hidden" name="to_name" id="to_name"
+                            value="{{info.first_name}}">
+                        <div class="row pt-20">
+                            <div class="input-field s12">
+                                <input type="email" name="reply_to" id="reply_to" value="{{ s_email }}"
+                                    required>
+                                <label for="reply_to">Your Email</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field s12">
+                                <textarea name="body" id="body" class="materialize-textarea validate"
+                                    maxlength="850" data-length="850" required></textarea>
+                                <label for="body">Your Message</label>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <label>
+                                <div class="input-field s12">
+                                    <input type="checkbox" name="confirm_data" id="confirm_data_{{loop.index}}"
+                                        class="validate" required>
+                                    <span>By sending this message, I understand that my email address will be
+                                        provided to
+                                        {{info.first_name}} for them to send me a direct reply.</span>
+                                </div>
+                            </label>
+
+                        </div>
+                        <div class="row">
+                            <div class="input-field s12 gutter-t center-align">
+                                <button type="submit" class="btn secondary-btn btn-slim btn-green-on-hover cta-btn">Send
+                                    Email</button>
+                                <button type="button"
+                                    class="btn secondary-btn btn-slim btn-line modal-close">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
             {% endfor %}
             {% block widget %}
             {% endblock %}
         </div>
 
     </div>
+
+
+
+
 
 </section>
 
