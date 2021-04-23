@@ -1,5 +1,6 @@
 import os
 import json
+import pandas as pd
 import datetime
 import csv
 from flask import (Flask, flash, redirect,
@@ -667,6 +668,19 @@ def delete_users():
     return "done", delete
 
 
+# Import CSV of users credits by 'Perfect'
+# in this thread:
+# https://stackoverflow.com/questions/27416296/how-to-push-a-csv-data-to-mongodb-using-python/56241768
+# encoding guidance: siebz0r https://stackoverflow.com/questions/17912307/u-ufeff-in-python-string/17912811
+def view_csv(filename):
+    with open(filename, 'r', encoding='utf-8-sig') as f:
+        keys = ['first_name', 'last_name', 'email', 'name_slug', 'password', 'user_type', 'about', 'location',
+                'profile_image', 'rate', 'role', 'skills', 'is_hidden', 'is_admin', 'is_complete']
+        reader = csv.DictReader(f, fieldnames=keys)
+        print("this", reader)
+        for row in reader:
+            print("new row", row)
+            mongo.db.users.insert_one(row)
 
 
 if __name__ == "__main__":
