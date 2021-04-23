@@ -301,7 +301,7 @@ h4.title-feat {
 .flex-grid-thirds .col {
     flex: 1;
     margin: 5px;
-    min-width: 250px;
+    min-width: 300px;
 }
 
 .last-in-grid > .card-content {
@@ -321,6 +321,9 @@ h4.title-feat {
     flex-direction: column;
     width: -webkit-fill-available;
     margin-left: 20px;
+}
+.last-in-grid > .card-content > .card-info > p {
+    text-align: left;
 }
 
 .sidebar-widget-title {
@@ -1012,6 +1015,12 @@ p.created-by {
     }
     h3 {
         font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 370px){
+    .flex-grid-thirds .col {
+        min-width: auto;
     }
 }
 
