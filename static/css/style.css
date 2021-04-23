@@ -216,11 +216,13 @@ h4.title-feat {
     height: min-content;
     font-weight: 400;
     background-color: #455FCD;
+    border: 2px solid #455FCD;
     color: #fff;
 }
 
 .primary-btn.btn-green, .secondary-btn.btn-green {
     background-color: #51EFD1;
+    border: 2px solid #51efd1;
     color: #2F48B0;
     
 }

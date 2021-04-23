@@ -47,6 +47,8 @@ def check_login():
     return redirect(url_for('login'))
 
 
+
+
 @app.route("/")
 @app.route("/home")
 def homepage():
@@ -56,6 +58,11 @@ def homepage():
     
     
     return render_template("home.html", projects=projects)
+
+
+@app.errorhandler(404)
+def not_found(err):
+    return render_template("404.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -233,11 +240,16 @@ def profile(name):
     # get current user email for reply_to
     current_user = mongo.db.users.find_one(
         {"name_slug": session["user"]["slug"]})
-    
-    if profile_data[0]['is_complete'] is False:
+
+    # Redirect to 404 if user data not found
+    if not profile_data:
+        return redirect(url_for("404"))
+    # Make user edit profile if not yet completed
+    elif profile_data[0]['is_complete'] is False:
         flash("Please complete your profile before viewing.")
         return redirect(
             url_for("edit_profile", name=name))
+    # Otherwise return profile page
     else:
         return render_template(
             "profile.html", data=profile_data,
