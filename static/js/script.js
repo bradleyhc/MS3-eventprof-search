@@ -13,6 +13,7 @@ $(document).ready(function () {
     setTimeout(function () {
         $("div.flash-msg").fadeOut();
     }, 5000);
+    $(".preloader-overlay").delay(300).fadeOut() 
 });
 
 // Preview profile image before upload without page reload
