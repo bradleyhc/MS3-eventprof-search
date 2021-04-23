@@ -1,8 +1,16 @@
 {% block widget %}
 
-<h3 class="sidebar-widget-title">Recommended Projects</h3>
 
-<!-- w_project.role == info.role -->
+{% if session['user']['u_type'] == 'employer' %}
+<h3 class="sidebar-widget-title">Recommended Freelancers</h3>
+{% else %}
+<h3 class="sidebar-widget-title">Recommended Projects</h3>
+{% endif %}
+
+
+{% if session['user']['u_type'] == 'freelancer' %}
+
+<!-- FREELANCER VIEW -->
 {% for w_project in projects if w_project.role == info.role %}
     {% if loop.index <= 3 %}
 
@@ -41,5 +49,59 @@
 </div>
 
 {%endfor %}
+
+
+<!-- EMPLOYER VIEW -->
+{% else %}
+
+{% for w_freelancer in freelancers %}
+
+{% if loop.index <= 3 %}
+
+<div class="card freelancer-card col sidebar">
+    <div class="card-content">
+        <div class="card-img-wrapper">
+            <img class="profile-image" src="/static/images/user_uploads/{{ w_freelancer.profile_image }}" alt="{{w_freelancer.name_slug}}">
+        </div>
+        <div class="card-stacked-item">
+            <h4 class="title-feat">{{ w_freelancer.first_name }} {{ w_freelancer.last_name }}</h4>
+        </div>
+        <div class="row d-flex card-stacked-item">
+            <p><i class="fas fa-user pr-5"></i> {{ w_freelancer.role }}</p><span class="divide-pipe"> |
+            </span>
+            <p><i class="fas fa-map-marker-alt pr-5"></i> {{ w_freelancer.location|capitalize }}</p>
+
+        </div>
+        <!-- Skills -->
+        <div class="row d-flex card-stacked-item">
+            {% for skill in w_freelancer.skills %}
+            <div class="chip">{{skill}}</div>
+            {% endfor %}
+        </div>
+        <p>{{ w_freelancer.about|truncate(50, False, '...') }}</p>
+    </div>
+    <div class="card-action">
+        <a href="{{ url_for('profile', name=w_freelancer.name_slug) }}" class="btn primary-btn">View More</a>
+        {% if w_freelancer.name_slug != session['user']%}
+        <a href="#" class="gutter-l btn secondary-btn">Send Email</a>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+<!-- If no results show the 'search other freelancers' card -->
+{% else %}
+
+<div class="card freelancer-card col sidebar card-muted">
+    <div class="card-content flex-col">
+        <p class="gutter-b">Looks like we couldn't find any suitable Freelancers. Discover more Freelancers by clicking below!
+        </p>
+        <a href="{{url_for('get_freelancers')}}" class="btn secondary-btn btn-line-blue m-auto">Search Freelancers</a>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endif %}
 
 {% endblock %}
