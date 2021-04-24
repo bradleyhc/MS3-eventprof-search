@@ -1060,7 +1060,14 @@ p.created-by {
     .project-card-btns {
         margin: auto;
         padding-bottom: 15px;
+        padding-top: 15px;
         justify-content: center;
+    }
+    .project-card-btns > a {
+        margin: auto;
+        margin-left: 10px!important;
+        margin-right: 10px!important;
+        margin-top: 10px;
     }
 
     .divide-pipe {
