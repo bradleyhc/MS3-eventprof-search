@@ -247,11 +247,24 @@ def profile(name):
     # Redirect to 404 if user data not found
     if not profile_data:
         return not_found('404')
+
     # Make user edit profile if not yet completed
-    elif profile_data[0]['is_complete'] is False:
+    elif (profile_data[0]['is_complete'] is False) and (
+          profile_data[0] == current_user):
         flash("Please complete your profile before viewing.")
-        return redirect(
-            url_for("edit_profile", name=name))
+        return redirect(url_for("edit_profile", name=name))
+
+    # Redirect if profile is hidden
+    elif profile_data[0]['is_hidden'] is True:
+        flash("This profile is hidden, please select another!")
+        return redirect(url_for("get_freelancers"))
+
+    # Redirect if profile is employer account and is not current user
+    elif (profile_data[0]['user_type'] == 'employer') and (
+          current_user['name_slug'] != name):
+        flash("This profile isn't available, please select another!")
+        return redirect(url_for("get_freelancers"))
+
     # Otherwise return profile page
     else:
         return render_template(
