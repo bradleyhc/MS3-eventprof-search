@@ -82,7 +82,7 @@
                             More</a>
                             <!-- Show project owner 'edit project' button -->
                             {% if project.submitter_slug == session['user']['slug'] %}
-                        <a href="#" class="gutter-l btn secondary-btn btn-line">Edit Project</a>
+                        <a href="{{ url_for('edit_project', project_id=project.slug) }}" class="gutter-l btn secondary-btn btn-line">Edit Project</a>
                         {% endif %}
                         </div>
                     </div>

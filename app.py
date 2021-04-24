@@ -308,7 +308,7 @@ def get_projects():
     if not session:
         return check_login()
 
-    projects = mongo.db.projects.find()
+    projects = mongo.db.projects.find().sort("posted_date", -1)
 
     return render_template("all_projects.html", projects=projects)
 
@@ -371,6 +371,18 @@ def edit_project(project_id):
     return render_template(
         "edit_project.html", project_id=project_id,
         data=project_data, skills=skills, roles=roles)
+
+
+@app.route("/delete/<project_id>")
+def delete_project(project_id):
+
+    # Redirect to login if user not logged in
+    if not session:
+        return check_login()
+
+    mongo.db.skills.delete_one({"slug": project_id})
+    flash("The project was deleted successfully!")
+    return redirect(url_for('get_projects'))
 
 
 """ Freelancer Loop """

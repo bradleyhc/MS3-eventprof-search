@@ -26,7 +26,8 @@
                     <div class="d-flex">
                         <p class="gutter-r"><i class="fas fa-user pr-5"></i> {{ project.role }}</p>
                         <p class="gutter-r"><i class="fas fa-map-marker-alt pr-5"></i> {{ project.location }}</p>
-                        <p class="gutter-r"><i class="fas fa-calendar-alt pr-5"></i> {{ project.start_date}} - <span>{{project.end_date }}</span></p>
+                        <p class="gutter-r"><i class="fas fa-calendar-alt pr-5"></i> {{ project.start_date}} -
+                            <span>{{project.end_date }}</span></p>
                     </div>
 
                 </div>
@@ -48,15 +49,29 @@
                 </div>
                 <div class="d-flex stacked-item gutter-t">
                     <div class="mr-auto">
-                        {% if project.submitter_slug != session['user'] %}
+                        {% if project.submitter_slug != session['user']['slug'] %}
                         <a href="#" class="btn secondary-btn">Email Project Owner</a>
                         {% else %}
                         <a href="{{ url_for('edit_project', project_id=project.slug) }}"
-                            class="btn primary-btn gutter-l">Edit this Project</a>
+                            class="btn secondary-btn btn-slim">Edit this Project</a>
+                        <a href="#confirm_delete"
+                            class="btn secondary-btn btn-slim btn-line modal-trigger">Delete Project</a>
                         {% endif %}
                     </div>
                 </div>
             </div>
+
+            <!-- Delete project modal -->
+            <div class="modal" id="confirm_delete">
+                <div class="modal-content">
+                    <h4>Are you sure?</h4>
+                    <p class="py-20">Your project will be removed from the platform and cannot be restored.</p>
+                    <a href="{{ url_for('delete_project', project_id=project.slug) }}" class="btn secondary-btn btn-slim">Delete Project</a>
+                    <a class="btn modal-close  secondary-btn btn-slim btn-line">Cancel</a>
+                </div>
+            </div>
+
+
             <div class="col s4 hide-992">
                 {% include "widgets/similar_projects_widget.html" %}
                 {% block widget %}
