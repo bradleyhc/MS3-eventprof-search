@@ -412,6 +412,7 @@ input[type=text]:not(.browser-default).search-bar:focus {
     margin: auto;
     margin-right: 5px;
     margin-left: 0px;
+    margin-top: 5px;
 }
 
 /* Skill input selections */
@@ -517,10 +518,17 @@ input[type=text]:not(.browser-default):disabled {
 
 .card.sidebar {
     border-radius: 5px;
+    max-width: 300px;
+    width: 100%;
 }
 
 .card.sidebar > .card-content {
     padding: 15px;
+}
+
+.card.sidebar > .card-content > .card-img-wrapper {
+    height: 100px;
+    width: 100px;
 }
 
 /* Utils */
