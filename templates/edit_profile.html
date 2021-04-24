@@ -67,7 +67,7 @@
                                     <select id="role" name="role">
                                         <option value="" disabled selected>Choose your role</option>
                                         {% for role in roles %}
-                                        {%if role.role_name in info.role %}
+                                        {% if role.role_name in info.role %}
                                         <option value="{{ role.role_name }}" selected>{{ role.role_name }}</option>
                                         {% else %}
                                         <option value="{{ role.role_name }}">{{ role.role_name }}</option>
@@ -109,6 +109,23 @@
                                     required>{{ info.about }}</textarea>
                                 <label for="about_textarea">About Me</label>
                                 <span class="helper-text">Tell others a little about yourself.</span>
+                            </div>
+                        </div>
+
+                        <!-- Account type -->
+                        <div class="row">
+                            <div class="col s12 switch gutter-b ">
+                                <p class="gutter-b"><strong>Account Type</strong></p>
+                                <label class="switch-label">
+                                    Freelancer
+                                    {% if info.user_type == 'employer' %}
+                                    <input type="checkbox" id="user_type_emp" name="user_type" checked>
+                                    {% else %}
+                                    <input type="checkbox" id="user_type_fre" name="user_type">
+                                    {% endif%}
+                                    <span class="lever"></span>
+                                    Project Owner
+                                </label>
                             </div>
                         </div>
                     </div>

@@ -183,6 +183,9 @@ def edit_profile(name):
     profile_data = list(
         mongo.db.users.find({"name_slug": u_slug}))
 
+    u_type_input = request.form.get("user_type")
+    user_type = "freelancer" if u_type_input is None else "employer"
+
     skills = list(mongo.db.skills.find())
     roles = list(mongo.db.roles.find())
 
@@ -206,7 +209,8 @@ def edit_profile(name):
             "profile_image": filename,
             "about": request.form.get("about_textarea"),
             "is_hidden": False,
-            "is_complete": True
+            "is_complete": True,
+            "user_type": user_type
         }
 
         mongo.db.users.update_one(
