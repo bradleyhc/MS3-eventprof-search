@@ -42,14 +42,14 @@
                                 <div class="input-field col s12 m6">
                                     <label for="first_name">First Name</label>
                                     <input type="text" id="first_name" name="first_name" value="{{ info.first_name }}"
-                                        class="validation" required>
+                                        class="validation" pattern="[A-Za-z]" minlength="2" maxlength="20" required>
                                 </div>
 
                                 <!-- Last name input -->
                                 <div class="input-field col s12 m6">
                                     <label for="last_name">Last Name</label>
                                     <input type="text" id="last_name" name="last_name" value="{{ info.last_name }}"
-                                        class="validation" required>
+                                        class="validation" pattern="[A-Za-z]" minlength="2" maxlength="20" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -61,7 +61,7 @@
                                         disabled>
                                         {% else %}
                                         <input type="text" id="rate" name="rate" value="{{ info.rate }}" class="validation"
-                                        required>
+                                        required pattern="[0-9]" minlength="2" maxlength="3">
                                         {% endif %}
                                 </div>
 
@@ -69,7 +69,7 @@
                                 <div class="input-field col s12 m6">
                                     <label for="location">Location</label>
                                     <input type="text" id="location" name="location" value="{{ info.location }}"
-                                        class="validation" required>
+                                        class="validation" required pattern="[A-Za-z]" minlength="2" maxlength="20">
                                 </div>
                             </div>
                             <div class="row">
@@ -116,7 +116,7 @@
                         <!-- About input -->
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="about_textarea" name="about_textarea" class="materialize-textarea"
+                                <textarea id="about_textarea" name="about_textarea" class="materialize-textarea" minlength="5" maxlength="1000"
                                     required>{{ info.about }}</textarea>
                                 <label for="about_textarea">About Me</label>
                                 <span class="helper-text">Tell others a little about yourself.</span>
