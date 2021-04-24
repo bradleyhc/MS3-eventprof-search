@@ -81,9 +81,9 @@
                         <a href="{{ url_for('view_project', project_id=project.slug) }}" class="btn secondary-btn btn-green-on-hover">View
                             More</a>
                             <!-- Show project owner 'edit project' button -->
-                            {##% if project.submitter_slug == session['user']['slug'] %##}
+                            {% if project.submitter_slug == session['user']['slug'] %}
                         <a href="#" class="gutter-l btn secondary-btn btn-line">Edit Project</a>
-                        {##% endif %##}
+                        {% endif %}
                         </div>
                     </div>
                 </div>
