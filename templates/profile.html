@@ -20,7 +20,7 @@
 <section class="main-body">
     <div class="container center-on-large">
         {% for info in data %}
-        {% if info.user_type == 'employer' %}
+        {% if info.user_type == 'employer' and info.name_slug == session['user']['slug']%}
         <div class="note">
             <p><em>Note: your profile is only visible to you, unless you switch to a freelancer account.</em></p>
         </div>
