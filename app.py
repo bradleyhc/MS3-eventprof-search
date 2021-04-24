@@ -263,7 +263,7 @@ def profile(name):
 def add_project():
 
     # Redirect to login if user not logged in
-    if not session: 
+    if not session:
         return check_login()
 
     skills = list(mongo.db.skills.find())
@@ -296,7 +296,7 @@ def add_project():
         mongo.db.projects.insert_one(project)
 
         flash("Project successfully added!")
-        return redirect(url_for("profile", name=submitter_slug))
+        return redirect(url_for("get_projects"))
 
     return render_template("add_project.html", skills=skills, roles=roles)
 
@@ -305,7 +305,7 @@ def add_project():
 def get_projects():
 
     # Redirect to login if user not logged in
-    if not session: 
+    if not session:
         return check_login()
 
     projects = mongo.db.projects.find()
