@@ -199,6 +199,20 @@ def edit_profile(name):
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             mongo.save_file(image.filename, image)
 
+        # create full name string for profile page
+        full_name = request.form.get(
+            "first_name").strip().lower() + "_" + request.form.get(
+            "last_name").strip().lower()
+
+        # check if user name slug exists, if yes append incrementing int to end
+        name_slug_exists = mongo.db.users.count_documents(
+            {"first_name": request.form.get("first_name"),
+             "last_name": request.form.get("last_name")})
+
+        if name_slug_exists:
+            full_name += str(name_slug_exists+1)
+
+        # Update DB with below dict on form submit
         update = {
             "first_name": request.form.get("first_name"),
             "last_name": request.form.get("last_name"),
@@ -210,14 +224,19 @@ def edit_profile(name):
             "about": request.form.get("about_textarea"),
             "is_hidden": False,
             "is_complete": True,
-            "user_type": user_type
+            "user_type": user_type,
+            "name_slug": full_name
         }
 
         mongo.db.users.update_one(
             {"name_slug": u_slug}, {"$set": update})
 
+        # Update session slug with new name
+        session['user']['slug'] = full_name
+
+        flash("Your profile has been updated!")
         return redirect(url_for(
-            "profile", name=u_slug))
+            "profile", name=full_name))
 
     return render_template("edit_profile.html", data=profile_data,
                            skills=skills, roles=roles)
