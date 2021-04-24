@@ -1113,6 +1113,7 @@ p.created-by {
 
     #profile_content div {
         margin: auto;
+        justify-content: center;
     }
 
     .profile-img-wrapper {
@@ -1283,6 +1284,7 @@ p.created-by {
         height: 28px;
         font-size: 12px;
         margin-bottom: 5px;
+        margin: 0px!important;
     }
 
 }
