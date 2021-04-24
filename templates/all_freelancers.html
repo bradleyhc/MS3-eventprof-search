@@ -91,7 +91,6 @@
                 </div>
 
                 <div class="modal" id="contact_modal_{{loop.index}}">
-
                     <div class="modal-content">
                         <h3>Send {{freelancer.first_name}} an email.</h3>
                         <p>Your message will be sent to their email inbox, allowing them to reply back to you directly.
@@ -152,17 +151,5 @@
     </div>
 
 </section>
-
-{% endblock %}
-
-{% block scripts%}
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
-</script>
-<script type="text/javascript">
-    (function () {
-        emailjs.init("user_kzLXPsKeCx1gBgjDlfL4H");
-    })();
-</script>
-<script src="{{ url_for('static', filename='js/email_js.js')}}" type="text/javascript"></script>
 
 {% endblock %}

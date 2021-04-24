@@ -50,12 +50,12 @@
                 <div class="d-flex stacked-item gutter-t">
                     <div class="mr-auto">
                         {% if project.submitter_slug != session['user']['slug'] %}
-                        <a href="#" class="btn secondary-btn">Email Project Owner</a>
+                        <a href="#contact_modal" class="btn secondary-btn modal-trigger">Email Project Owner</a>
                         {% else %}
                         <a href="{{ url_for('edit_project', project_id=project.slug) }}"
                             class="btn secondary-btn btn-slim">Edit this Project</a>
-                        <a href="#confirm_delete"
-                            class="btn secondary-btn btn-slim btn-line modal-trigger">Delete Project</a>
+                        <a href="#confirm_delete" class="btn secondary-btn btn-slim btn-line modal-trigger">Delete
+                            Project</a>
                         {% endif %}
                     </div>
                 </div>
@@ -66,11 +66,61 @@
                 <div class="modal-content">
                     <h4>Are you sure?</h4>
                     <p class="py-20">Your project will be removed from the platform and cannot be restored.</p>
-                    <a href="{{ url_for('delete_project', project_id=project.slug) }}" class="btn secondary-btn btn-slim">Delete Project</a>
+                    <a href="{{ url_for('delete_project', project_id=project.slug) }}"
+                        class="btn secondary-btn btn-slim">Delete Project</a>
                     <a class="btn modal-close  secondary-btn btn-slim btn-line">Cancel</a>
                 </div>
             </div>
 
+
+            <!-- Send email modal -->
+            <div class="modal" id="contact_modal">
+                <div class="modal-content">
+                    <h3>Send {{project.submitter_name}} an email.</h3>
+                    <p>Your message will be sent to their email inbox, allowing them to reply back to you directly.
+                    </p>
+                    <form id="contact_form" onsubmit="sendContactEmail(this);" method="POST"
+                        action="{{ url_for('send_mail', slug=project.submitter_slug) }}">
+                        <!-- Hidden sender fields  -->
+                        <input type="hidden" name="from_name" id="from_name_{{loop.index}}" value="{{ s_name }}">
+                        <input type="hidden" name="to_name" id="to_name_{{loop.index}}"
+                            value="{{project.submitter_name}}">
+                        <div class="row pt-20">
+                            <div class="input-field s12">
+                                <input type="email" name="reply_to" id="reply_to_{{loop.index}}" value="{{ s_email }}"
+                                    required>
+                                <label for="reply_to_{{loop.index}}">Your Email</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field s12">
+                                <textarea name="body" id="body_{{loop.index}}" class="materialize-textarea validate"
+                                    maxlength="850" data-length="850" required></textarea>
+                                <label for="body_{{loop.index}}">Your Message</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label>
+                                <div class="input-field s12">
+                                    <input type="checkbox" name="confirm_data" id="confirm_data_{{loop.index}}"
+                                        class="validate" required>
+                                    <span>By sending this message, I understand that my email address will be
+                                        provided to
+                                        {{project.submitter_name}} for them to send me a direct reply.</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="row">
+                            <div class="input-field s12 gutter-t center-align">
+                                <button type="submit" class="btn secondary-btn btn-slim btn-green-on-hover cta-btn">Send
+                                    Email</button>
+                                <button type="button"
+                                    class="btn secondary-btn btn-slim btn-line modal-close">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
             <div class="col s4 hide-992">
                 {% include "widgets/similar_projects_widget.html" %}
@@ -81,10 +131,6 @@
 
         </div>
         {% endfor %}
-        <!-- Nearby projects widget -->
-        <div class="col s4">
-
-        </div>
     </div>
 
 

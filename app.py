@@ -328,9 +328,15 @@ def view_project(project_id):
         {"user_type": "freelancer", "is_hidden": False})
     all_projects = mongo.db.projects.find()
 
+    # Get user info for contact email
+    user = mongo.db.users.find_one({"name_slug": session['user']['slug']})
+    sender_email = user["email"]
+    sender_name = user["first_name"]
+
     return render_template(
-        "view_project.html", project_id=project_id,
-        data=project_data, freelancers=all_freelancers, projects=all_projects)
+        "view_project.html", project_id=project_id, s_email=sender_email,
+        s_name=sender_name, data=project_data,
+        freelancers=all_freelancers, projects=all_projects)
 
 
 @app.route("/edit_project/<project_id>", methods=["GET", "POST"])
@@ -503,7 +509,8 @@ def send_mail(slug):
 
     mail.send(msg)
     flash("You're message has been sent!")
-    return redirect(url_for('get_freelancers'))
+    print(request.url[3])
+    return redirect(request.referrer)
 
 
 """ Admin functions """
