@@ -255,7 +255,8 @@ def profile(name):
         return redirect(url_for("edit_profile", name=name))
 
     # Redirect if profile is hidden
-    elif profile_data[0]['is_hidden'] is True:
+    elif (profile_data[0]['is_hidden'] is True) or (
+          profile_data[0]['is_complete'] is False):
         flash("This profile is hidden, please select another!")
         return redirect(url_for("get_freelancers"))
 
