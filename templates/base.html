@@ -36,7 +36,7 @@
     <nav class="">
         <!-- Desktop -->
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo left">
+            <a href="{{url_for('homepage')}}" class="brand-logo left">
                 <img src="{{url_for('static', filename='images/brand/ep-search-white.png')}}" alt="EventProf Search Logo white">
             </a>
             <ul id="nav-desktop" class="right hide-on-med-and-down">
@@ -68,7 +68,7 @@
     <nav class="hide-on-large-only mobile-nav">
         <div class="nav-wrapper">
             <!-- Mobile -->
-            <a href="#" class="brand-logo left">
+            <a href="{{url_for('homepage')}}" class="brand-logo left">
                 <img src="{{url_for('static', filename='images/brand/ep-search-white.png')}}" alt="EventProf Search Logo white">
             </a>
             <a href="#" data-target="mobile-nav" class="sidenav-trigger hide-on-large-and-up right"><i

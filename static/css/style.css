@@ -1049,6 +1049,7 @@ p.created-by {
     }
     .card-action {
         flex-direction: column-reverse; 
+        border: none;
     }
 
     .card-action > div p {
@@ -1086,6 +1087,13 @@ p.created-by {
     }
 
     #hp_featured_projects {
+        width: 100%;
+    }
+
+    .login-form {
+        margin: auto;
+        margin-top: 20px;
+        padding: 30px 20px;
         width: 100%;
     }
 
