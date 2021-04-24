@@ -27,7 +27,7 @@
                                 <!-- Title input -->
                                 <div class="input-field col s12">
                                     <label for="title">Project Title</label>
-                                    <input type="text" id="title" name="title" class="validation"
+                                    <input type="text" id="title" name="title" class="validation" pattern="[A-Za-z]" minlength="5" maxlength="100"
                                         value="{{ project.title }}" required>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                 <!-- Location input -->
                                 <div class="input-field col s6">
                                     <label for="location">Location</label>
-                                    <input type="text" id="location" name="location" class="validation"
+                                    <input type="text" id="location" name="location" class="validation" pattern="[A-Za-z]" minlength="5" maxlength="10"
                                         value="{{ project.location }}" required>
                                 </div>
 
@@ -100,7 +100,7 @@
                         <!-- Description input -->
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="description" name="description" class="materialize-textarea"
+                                <textarea id="description" name="description" class="materialize-textarea" minlength="5" maxlength="1000"
                                     required>{{ project.description }}</textarea>
                                 <label for="description">Project Description</label>
                                 <span class="helper-text">Explain a little more about the project, company and the
