@@ -13,8 +13,14 @@
 
 <section class="main-body">
     <div class="container center-on-large">
+        {% for info in data %}
+        {% if info.user_type == 'employer' %}
+        <div class="note">
+            <p><em>Note: your profile is only visible to you, unless you switch to a freelancer account.</em></p>
+        </div>
+        {% endif %}
         <div class="row s12 d-flex">
-            {% for info in data %}
+            
             <div class="col s12 m-auto">
 
                 <form id="edit_profile" action="{{ url_for('edit_profile', name=info.name_slug) }}" method="POST"
@@ -50,8 +56,13 @@
                                 <!-- Rate input -->
                                 <div class="input-field col s12 m6">
                                     <label for="rate">Day Rate</label>
-                                    <input type="text" id="rate" name="rate" value="{{ info.rate }}" class="validation"
+                                    {% if info.user_type == 'employer' %}
+                                    <input type="text" id="rate" name="rate" value="n/a" class="validation"
+                                        disabled>
+                                        {% else %}
+                                        <input type="text" id="rate" name="rate" value="{{ info.rate }}" class="validation"
                                         required>
+                                        {% endif %}
                                 </div>
 
                                 <!-- Location input -->
@@ -147,8 +158,8 @@
                     </div>
                 </form>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
 
 </section>
