@@ -886,10 +886,6 @@ span.divide-pipe {
     color: #2d2d2d;
 }
 
-input#profile_img {
-    display: none;
-}
-
 .helper-text-error {
     color: #bf0000;
 }
