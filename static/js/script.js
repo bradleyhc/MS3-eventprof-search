@@ -22,22 +22,22 @@ $('#profile_img').on('input', function () {
     if (value == "") {
         $(".profile-image").attr("src", "../static/images/user_uploads/default_avatar.png");
     } else {
-        $(".profile-image").attr("src", value);
-        
+        $(".profile-image").attr("src", value);   
     }
 });
 
 
 // Add class 'wide' on horizontal images to fill wrapper
-function resizeImage() {
-    img_h = $(".profile-image").height();
+function resizeImage(img) {
+    img_h = $(img).height();
     img_wrap_h = $(".profile-img-wrapper").height();
-    if (img_h < img_wrap_h) {
-        $(".profile-image").addClass('wide');
+    img_card_wrap_h = $(".card-img-wrapper").height();
+    if (img_h < img_wrap_h || img_h < img_card_wrap_h) {
+        $(img).addClass('wide');
     } else {
-        $(".profile-image").removeClass('wide');
+        $(img).removeClass('wide');
     }
-    console.log(img_h, img_wrap_h)
+    console.log(img_h, img_wrap_h, img_card_wrap_h)
 }
 
 validateDropdown();
@@ -152,5 +152,3 @@ $(window).scroll(function () {
         $('.freelancer-card:last-of-type').removeClass('last-in-grid')
     }
 })();
-
-resizeImage()
