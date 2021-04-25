@@ -15,13 +15,13 @@
     {% if loop.index <= 3 %}
 
     <div class="card sidebar">
-        <div class="card-content">
+        <div class="card-content flex-col">
             <!-- Title -->
             <div class="stacked-item">
                 <h4 class="title-feat">{{ w_project.title }}</h4>
             </div>
             <!-- Role & Location -->
-            <div class="row d-flex stacked-item flex-col center-align">
+            <div class="row d-flex stacked-item flex-wrap center-align">
                 <p class="gutter-r"><i class="fas fa-user pr-5"></i> {{ w_project.role }}</p>
                 <p><i class="fas fa-map-marker-alt pr-5"></i> {{ w_project.location }}</p>
             </div>
@@ -32,7 +32,7 @@
                 {% endfor %}
             </div>
             <!-- Card footer -->
-            <a href="{{url_for('view_project', project_id=w_project.slug)}}" class="btn primary-btn">View Project</a>
+            <a href="{{url_for('view_project', project_id=w_project.slug)}}" class="btn secondary-btn btn-slim cta-btn">View Project</a>
         </div>
     </div>
     {% endif %}
