@@ -34,6 +34,7 @@ app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
 app.config['MAIL_DEFAULT_SENDER'] = os.environ.get("MAIL_DEFAULT_SENDER")
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_SUPPRESS_SEND'] = False
 
 mail = Mail(app)
 mongo = PyMongo(app)
@@ -529,14 +530,13 @@ def send_mail(slug):
     reply_to = sender["email"]
     testing_email = "bradleyh.cooney@gmail.com"
     sender_name = sender["first_name"] + " " + sender["last_name"]
-    from_email = "eventprofsearch@gmail.com"
     subject = f"You have a message from {sender_name}"
     user_msg = request.form.get("body")
     body = render_template("contact_email.html",
                            name=sender_name, to_name=recipient['first_name'],
                            message=user_msg, u_link=session['user']['slug'])
     msg = Message(subject, reply_to=reply_to,
-                  recipients=[to_email])
+                  recipients=[to_email, testing_email])
     msg.html = body
 
     mail.send(msg)
