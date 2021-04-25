@@ -1,5 +1,5 @@
 import os
-import json
+import random
 import datetime
 import csv
 from flask import (Flask, flash, redirect,
@@ -98,6 +98,8 @@ def register():
         if name_slug_exists:
             full_name += str(name_slug_exists+1)
 
+        uid = random.randint(9999, 99999)
+
         register = {
             "first_name": request.form.get("first_name").strip(),
             "last_name": request.form.get("last_name").strip(),
@@ -108,14 +110,15 @@ def register():
             "profile_image": "",
             "is_hidden": True,
             "is_complete": False,
-            "is_admin": False
+            "is_admin": False,
+            "uid": uid
         }
 
         mongo.db.users.insert_one(register)
 
         # put user info into session
         session['user'] = {"slug": full_name,
-                           "u_type": user_type, "admin": False}
+                           "u_type": user_type, "admin": False, "id": uid}
         session['logged_in'] = True
         flash("Registration successful")
         return redirect(url_for("edit_profile", name=full_name))
@@ -139,7 +142,8 @@ def login():
                 session["user"] = {
                     "slug": existing_user["name_slug"],
                     "u_type": existing_user["user_type"],
-                    "admin": existing_user["is_admin"]}
+                    "admin": existing_user["is_admin"],
+                    "id": existing_user["uid"]}
 
                 # if valid, redirect to profile page
                 return redirect(url_for(
@@ -304,9 +308,9 @@ def add_project():
 
     if request.method == "POST":
 
-        submitter_slug = session["user"]["slug"]
+        submitter_slug = session["user"]["id"]
         submitter = mongo.db.users.find_one(
-            {"name_slug": submitter_slug})
+            {"uid": submitter_slug})
         submitter_name = submitter["first_name"] + " " + submitter["last_name"]
         inc_slug = 0
         inc_slug += (mongo.db.projects.count() + 1)
@@ -386,6 +390,14 @@ def edit_project(project_id):
     # get existing project data
     project_data = list(mongo.db.projects.find({"slug": project_id}))
 
+    # get user slug
+    u_slug = session["user"]["id"]
+
+    # Redirect if user tries to edit another user's profile
+    if u_slug != project_data[0]['submitter_slug']:
+        flash("""You can only edit your own projects!""")
+        return redirect(url_for('get_projects'))
+
     if request.method == "POST":
 
         # add form data to dict
@@ -418,6 +430,16 @@ def delete_project(project_id):
     # Redirect to login if user not logged in
     if session.get("user") is None:
         return check_login()
+
+    # get user slug
+    u_slug = session["user"]["id"]
+
+    project = mongo.db.projects.find_one({"slug": project_id})
+
+    # Redirect if user tries to edit another user's profile
+    if u_slug != project['submitter_slug']:
+        flash("""You can only edit your own projects!""")
+        return redirect(url_for('get_projects'))
 
     mongo.db.projects.delete_one({"slug": project_id})
     flash("The project was deleted successfully!")
