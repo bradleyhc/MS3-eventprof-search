@@ -120,10 +120,6 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-
-    # Redirect to login if user not logged in
-    if session.get("USER"):
-        return redirect(url_for("profile", name=session["user"]['slug']))
     
     if request.method == "POST":
 
@@ -169,7 +165,7 @@ def logout():
 def edit_profile(name):
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
 
     # get user slug
@@ -249,7 +245,7 @@ def edit_profile(name):
 def profile(name):
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
 
     # get single user profile data
@@ -303,7 +299,7 @@ def profile(name):
 def add_project():
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
 
     skills = list(mongo.db.skills.find())
@@ -345,7 +341,7 @@ def add_project():
 def get_projects():
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
 
     projects = mongo.db.projects.find().sort("posted_date", -1)
@@ -357,7 +353,7 @@ def get_projects():
 def view_project(project_id):
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
 
     # get single project information
@@ -383,7 +379,7 @@ def view_project(project_id):
 def edit_project(project_id):
     
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
 
     # get all skills and roles from DB
@@ -423,7 +419,7 @@ def edit_project(project_id):
 def delete_project(project_id):
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
 
     mongo.db.skills.delete_one({"slug": project_id})
@@ -438,7 +434,7 @@ def delete_project(project_id):
 def get_freelancers():
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
 
     current_user = session["user"]["slug"]
@@ -478,7 +474,7 @@ def sidebar_widget():
 def search_freelancers():
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
 
     # Create the query string
@@ -505,7 +501,7 @@ def search_freelancers():
 def search_projects():
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
 
     query = request.form.get("query")
@@ -528,7 +524,7 @@ def search_projects():
 def send_mail(slug):
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
 
     recipient = mongo.db.users.find_one({"name_slug": slug})
@@ -561,7 +557,7 @@ def send_mail(slug):
 def admin_users():
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
     elif session['user']['admin'] == False: 
         flash('You must be an admin to access this page')
@@ -577,7 +573,7 @@ def admin_users():
 def admin_search_freelancers():
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
     elif session['user']['admin'] is False:
         flash('You must be an admin to access this page')
@@ -594,7 +590,7 @@ def admin_search_freelancers():
 def admin_update_user(uid):
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
     elif session['user']['admin'] == False: 
         flash('You must be an admin to access this page')
@@ -624,7 +620,7 @@ def admin_update_user(uid):
 def admin_skills():
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
     elif session['user']['admin'] == False: 
         flash('You must be an admin to access this page')
@@ -640,7 +636,7 @@ def admin_skills():
 def admin_update_skills():
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
     elif session['user']['admin'] == False: 
         flash('You must be an admin to access this page')
@@ -671,7 +667,7 @@ def admin_update_skills():
 def delete_skill(id):
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
     elif session['user']['admin'] == False:
         flash('You must be an admin to access this page')
@@ -687,7 +683,7 @@ def delete_skill(id):
 def admin_roles():
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
     elif session['user']['admin'] == False: 
         flash('You must be an admin to access this page')
@@ -703,7 +699,7 @@ def admin_roles():
 def admin_update_roles():
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
     elif session['user']['admin'] == False: 
         flash('You must be an admin to access this page')
@@ -734,7 +730,7 @@ def admin_update_roles():
 def delete_role(id):
 
     # Redirect to login if user not logged in
-    if not session['user']['slug']:
+    if session.get("user") is None:
         return check_login()
     elif session['user']['admin'] == False: 
         flash('You must be an admin to access this page')
