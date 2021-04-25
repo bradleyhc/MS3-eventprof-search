@@ -189,14 +189,6 @@ def edit_profile(name):
     roles = list(mongo.db.roles.find())
 
     if request.method == "POST":
-        image = request.files["profile_img"]
-        filename = secure_filename(image.filename)
-
-        if filename == "":
-            filename = profile_data[0]["profile_image"]
-        else:
-            image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            mongo.save_file(image.filename, image)
 
         # create full name string for profile page
         full_name = request.form.get(
@@ -219,7 +211,7 @@ def edit_profile(name):
             "location": request.form.get("location"),
             "role": request.form.get("role"),
             "skills": request.form.getlist("skills[]"),
-            "profile_image": filename,
+            "profile_image": request.form.get("profile_img"),
             "about": request.form.get("about_textarea"),
             "is_hidden": False,
             "is_complete": True,

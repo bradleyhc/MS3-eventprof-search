@@ -13,23 +13,14 @@ $(document).ready(function () {
     setTimeout(function () {
         $("div.flash-msg").fadeOut();
     }, 5000);
-    $(".preloader-overlay").delay(300).fadeOut() 
+    $(".preloader-overlay").delay(300).fadeOut();
 });
 
-// Preview profile image before upload without page reload
-// CREDITS: https://www.tutorialrepublic.com/faq/how-to-preview-an-image-before-it-is-uploaded-using-jquery.php
-function previewImg() {
-    let file = $("#profile_img").get(0).files[0];
-
-    if (file) {
-        let readFile = new FileReader()
-        readFile.onload = function () {
-            $(".profile-image").attr("src", readFile.result);
-        }
-        readFile.readAsDataURL(file);
-    }
-
-}
+// Edit profile image - preview image on input change
+$('#profile_img').on('input', function () {
+        value = this.value
+    $(".profile-image").attr("src", value);
+});
 
 
 validateDropdown();
