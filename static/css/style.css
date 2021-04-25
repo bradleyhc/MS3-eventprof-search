@@ -838,6 +838,8 @@ span.divide-pipe {
 .profile-img-wrapper {
     max-width: 200px;
     max-height: 200px;
+    min-width: 200px;
+    height: 200px;
     position: relative;
     overflow: hidden;
     border-radius: 50%;
