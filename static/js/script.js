@@ -32,12 +32,19 @@ function resizeImage(img) {
     img_h = $(img).height();
     img_wrap_h = $(".profile-img-wrapper").height();
     img_card_wrap_h = $(".card-img-wrapper").height();
-    if (img_h < img_wrap_h || img_h < img_card_wrap_h) {
-        $(img).addClass('wide');
+    if ($(img).hasClass('sidebar-image')) {
+        if (img_h < img_card_wrap_h) {
+            $(img).addClass('wide');
+        } else {
+            $(img).removeClass('wide');
+        }
     } else {
-        $(img).removeClass('wide');
+        if (img_h < img_wrap_h || img_h < img_card_wrap_h) {
+            $(img).addClass('wide');
+        } else {
+            $(img).removeClass('wide');
+        }
     }
-    console.log(img_h, img_wrap_h, img_card_wrap_h)
 }
 
 validateDropdown();
