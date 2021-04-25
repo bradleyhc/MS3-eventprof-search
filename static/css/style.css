@@ -851,6 +851,7 @@ span.divide-pipe {
 .card-img-wrapper {
     max-width: 150px;
     max-height: 150px;
+    height: 150px;
     position: relative;
     overflow: hidden;
     border-radius: 50%;

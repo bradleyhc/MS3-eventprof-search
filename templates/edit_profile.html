@@ -27,7 +27,7 @@
                     enctype="multipart/form-data">
                     <div class="d-flex s12 gutter-b">
                         <div class="profile-img-wrapper">
-                            <img class="profile-image" src="{{ info.profile_image or url_for('static', filename='/images/user_uploads/default_avatar.png')}}"
+                            <img onload="resizeImage(this);" class="profile-image" src="{{ info.profile_image or url_for('static', filename='/images/user_uploads/default_avatar.png')}}"
                                 alt="{{ info.first_name }}">
                         </div>
                         <div class="profile-content-wrapper gutter-l">
