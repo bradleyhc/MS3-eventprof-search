@@ -419,7 +419,7 @@ def delete_project(project_id):
     if session.get("user") is None:
         return check_login()
 
-    mongo.db.skills.delete_one({"slug": project_id})
+    mongo.db.projects.delete_one({"slug": project_id})
     flash("The project was deleted successfully!")
     return redirect(url_for('get_projects'))
 
