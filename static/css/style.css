@@ -867,6 +867,7 @@ span.divide-pipe {
 .profile-image.wide {
     width: auto;
     height: 100%;
+    transform: translateX(-25%);
 }
 
 .profile-content-wrapper {

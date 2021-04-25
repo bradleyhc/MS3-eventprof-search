@@ -23,18 +23,22 @@ $('#profile_img').on('input', function () {
         $(".profile-image").attr("src", "../static/images/user_uploads/default_avatar.png");
     } else {
         $(".profile-image").attr("src", value);
-
-        // Add class 'wide' on horizontal images to fill wrapper
-        img_h = $(".profile-image").height();
-        img_wrap_h = $(".profile-img-wrapper").height();
-        if (img_h > img_wrap_h) {
-            $(".profile-image").addClass('wide');
-        } else {
-            $(".profile-image").removeClass('wide');
-        }
+        
     }
 });
 
+
+// Add class 'wide' on horizontal images to fill wrapper
+function resizeImage() {
+    img_h = $(".profile-image").height();
+    img_wrap_h = $(".profile-img-wrapper").height();
+    if (img_h < img_wrap_h) {
+        $(".profile-image").addClass('wide');
+    } else {
+        $(".profile-image").removeClass('wide');
+    }
+    console.log(img_h, img_wrap_h)
+}
 
 validateDropdown();
 function validateDropdown() {
@@ -148,3 +152,5 @@ $(window).scroll(function () {
         $('.freelancer-card:last-of-type').removeClass('last-in-grid')
     }
 })();
+
+resizeImage()
