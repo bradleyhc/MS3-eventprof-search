@@ -63,6 +63,12 @@ def not_found(err):
     return render_template("404.html")
 
 
+@app.route("/privacy")
+def privacy():
+
+    return render_template("privacy.html")
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":

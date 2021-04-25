@@ -136,6 +136,10 @@ section.main-body {
     margin-bottom: 40px;
 }
 
+.bullet-list > li {
+    list-style-type: disc!important;
+}
+
 button.close-flash{
     border: 0px;
     background: transparent;
