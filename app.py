@@ -106,7 +106,7 @@ def register():
             "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password")),
             "user_type": user_type,
-            "profile_image": "default_avatar.png",
+            "profile_image": "",
             "is_hidden": True,
             "is_complete": False,
             "is_admin": False
