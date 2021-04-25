@@ -29,9 +29,9 @@ app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024
 # Mail config credits http://pythonbasics.org/flask-mail/
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
-app.config['MAIL_USERNAME'] = 'eventprofsearch@gmail.com'
-app.config['MAIL_PASSWORD'] = 'sycej66D!'
-app.config['MAIL_DEFAULT_SENDER'] = 'bradleyh.cooney@gmail.com'
+app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get("MAIL_DEFAULT_SENDER")
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
@@ -43,8 +43,6 @@ mongo = PyMongo(app)
 def check_login():
     flash("You need to be logged in to view that page!")
     return redirect(url_for('login'))
-
-
 
 
 @app.route("/")
@@ -543,8 +541,7 @@ def send_mail(slug):
 
     mail.send(msg)
     flash("You're message has been sent!")
-    print(request.url[3])
-    return redirect(request.referrer)
+    return redirect(url_for('get_freelancers'))
 
 
 """ Admin functions """

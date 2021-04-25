@@ -94,7 +94,7 @@
                         <h3>Send {{freelancer.first_name}} an email.</h3>
                         <p>Your message will be sent to their email inbox, allowing them to reply back to you directly.
                         </p>
-                        <form id="contact_form_{{loop.index}}" onsubmit="sendContactEmail(this);" method="POST"
+                        <form id="contact_form_{{loop.index}}" method="POST"
                             action="{{ url_for('send_mail', slug=freelancer.name_slug) }}">
                             <!-- Hidden sender fields  -->
                             <input type="hidden" name="from_name" id="from_name_{{loop.index}}" value="{{ s_name }}">
