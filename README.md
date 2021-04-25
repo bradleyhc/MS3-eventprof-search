@@ -186,9 +186,12 @@ To ensure the site continues to function when unexpected user input or action oc
     - This has been implemented using the Python 'errorhandler()' method. If a URL is inputted that returns a 404, the 404 HTML template is rendered, directing users back to the homepage. This response ensures that users experience a page similar to others they are used to, and not deterred from continuing to navigate the site.
 
 - Route / URL manipulation
-    - To prevent users from altering the URL string to edit other projects or users, the current session user 'slug' must match that of the user / or the project 'submitter_slug' they are trying to edit
+    - To prevent users from altering the URL string to edit other projects or users, the current session user 'id' must match that of the user / or the project 'submitter_slug' they are trying to edit or delete. If these do not match, the user is directed back to the project listing page, with a flash message notifying them that they must own the project to make edits to it.
+    - Similarly, if a user attempts to edit a profile which does not match their session 'slug' then they are directed back to the freelancer listing page and flash message is shown to warn the user that they can only edit their own profile.
 
-- Email validation
+- Accidental user error
+    - To prevent users inadvertantly overwriting their profile information or project details, an additional modal popup has been created on the 'edit profile' and 'edit project' pages. When a user clicks the 'update' button, a modal appears requiring secondary confirmation.
+    - The secondary confirmation will help to avoid accidental user mistakes which will in turn, allow for a better user experience. 
 
 ### Security
 > To be added
