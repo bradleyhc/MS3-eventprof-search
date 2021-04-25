@@ -27,7 +27,7 @@
                     enctype="multipart/form-data">
                     <div class="d-flex s12 gutter-b">
                         <div class="profile-img-wrapper">
-                            <img class="profile-image" src="{{ info.profile_image or 'default_avatar.png'}}"
+                            <img class="profile-image" src="{{ info.profile_image or url_for('static', filename='/images/user_uploads/default_avatar.png')}}"
                                 alt="{{ info.first_name }}">
                         </div>
                         <div class="profile-content-wrapper gutter-l">
@@ -51,7 +51,7 @@
                                 <div class="input-field col s12 m6">
                                     <label for="profile_img">Profile Image</label>
                                     <input type="text" id="profile_img" name="profile_img" value="{{ info.profile_image }}"
-                                    onchange="previewImg(this.value);" class="validation" required pattern="https://.*">
+                                    onchange="previewImg(this.value);" class="validation" pattern="https://.*" title="Please enter a valid url beginning with 'https://'" placeholder="Image URL Link">
                                 </div>
                                 <!-- Rate input -->
                                 <div class="input-field col s12 m6">

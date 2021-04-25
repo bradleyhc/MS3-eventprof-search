@@ -16,10 +16,19 @@ $(document).ready(function () {
     $(".preloader-overlay").delay(300).fadeOut();
 });
 
+
+
+    
+
+
 // Edit profile image - preview image on input change
 $('#profile_img').on('input', function () {
-        value = this.value
-    $(".profile-image").attr("src", value);
+    value = this.value
+    if (value == "") {
+        $(".profile-image").attr("src", "../static/images/user_uploads/default_avatar.png");
+    } else {
+        $(".profile-image").attr("src", value);
+    }
 });
 
 
