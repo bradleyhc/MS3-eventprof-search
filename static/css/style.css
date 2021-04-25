@@ -864,6 +864,11 @@ span.divide-pipe {
     height: auto;
 }
 
+.profile-image.wide {
+    width: auto;
+    height: 100%;
+}
+
 .profile-content-wrapper {
     width: 100%;
 }

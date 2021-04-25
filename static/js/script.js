@@ -16,11 +16,6 @@ $(document).ready(function () {
     $(".preloader-overlay").delay(300).fadeOut();
 });
 
-
-
-    
-
-
 // Edit profile image - preview image on input change
 $('#profile_img').on('input', function () {
     value = this.value
@@ -28,6 +23,15 @@ $('#profile_img').on('input', function () {
         $(".profile-image").attr("src", "../static/images/user_uploads/default_avatar.png");
     } else {
         $(".profile-image").attr("src", value);
+
+        // Add class 'wide' on horizontal images to fill wrapper
+        img_h = $(".profile-image").height();
+        img_wrap_h = $(".profile-img-wrapper").height();
+        if (img_h > img_wrap_h) {
+            $(".profile-image").addClass('wide');
+        } else {
+            $(".profile-image").removeClass('wide');
+        }
     }
 });
 
