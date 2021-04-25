@@ -864,12 +864,12 @@ span.divide-pipe {
     margin-bottom: 15px;
 }
 
-.profile-image {
+.profile-image, .sidebar-image {
     width: 100%;
     height: auto;
 }
 
-.profile-image.wide {
+.profile-image.wide, .sidebar-image.wide {
     width: auto;
     height: 100%;
     transform: translateX(-25%);
