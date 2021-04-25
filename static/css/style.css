@@ -731,7 +731,7 @@ span.divide-pipe {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    min-width: 470px;
+    min-width: 480px;
     max-width: 480px;
     margin-left: 50px;
 }
@@ -755,7 +755,7 @@ span.divide-pipe {
 }
 .hp-user-img > img {
     height: 100%;
-    width: auto;
+    width: 100%;
 }
 
 .hp-user-img-overlay {
