@@ -72,9 +72,28 @@ An outline of the data schema can be found below:
     - Basic profile fields such as name, email, role, skills, rate, about, location.
     - Profile attributes such as 'is_admin', 'is_hidden' and 'is_complete' are used for visibility controls 
     to certain pages. For example, once a user first registered, they much complete their profile for this to be visible to other users. The 'is_hidden' field can be used on the admin dashboard to toggle a user's profile to 'hidden' and hide the profile from other users.
+    - The 'name_slug' is used as the profile page slug when viewing a profile, the email send function, and to populate the 'submitter_slug' if a user submits a new project (allowing another user to email them).
 
+- #### Projects table collection
+    - Similarly to the Users table, the project table includes basic project details such as title, description, start & end date, location, role, skills (posted as an array) and posted date.
+    - These fields are used to pass the information back to the user at the frontend.
+    - Additional fields are used for function operation, such as submitter_slug and slug, which identifies the user who submitted (and which email to send a message to), and the project slug to show in the URL.
+
+- #### Skill / Role table collection
+    - These tables exist to ensure that when users select skills or roles from the 'edit profile' or 'add project' pages, they are able to select them from a predetermined dropdown. 
+    - By preventing users from free-typing into these fields ensures that the search indexing can be more accurate in finding similar results.
+    - Adding the skills / roles to a table also enables Admins to add / delete these from the Admin dashboard, without a need to update the input options within the HTML.
+
+- #### Session
+    - The session data is not included within the MongoDB collection but is created by the Flask app module and stored in the browser. 
+    Since it has a relationship with a few of the key User fields, it has been included within the data schema as a data store.
+    - If the user is registered, the 'u_type', 'is_admin' and 'slug' are pulled from the database if the email entered can be found. This information is then stored within the browser session until the user logs out.
+    - If a new user registers, the session key values are generated based on the user input on the registration form. This data is then stored in the browser session until the user logs out.
+
+<br>
 
 ---
+<br>
 
 ## Features
 ### Sitewide
