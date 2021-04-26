@@ -92,8 +92,7 @@ def register():
 
         # check if user name slug exists, if yes append incrementing int to end
         name_slug_exists = mongo.db.users.count_documents(
-            {"first_name": request.form.get("first_name"),
-                "last_name": request.form.get("last_name")})
+            {"name_slug": full_name})
 
         if name_slug_exists:
             full_name += str(name_slug_exists+1)
