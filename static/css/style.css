@@ -717,7 +717,6 @@ span.divide-pipe {
     bottom: 0!important;
     background-color: #efefef;
     box-shadow: 0px -1px 16px -3px #3e3e3e;
-    margin-bottom: 25px;
 }
 
 .homepage-header{
@@ -1089,6 +1088,11 @@ p.created-by {
 
     /* Homepage */
 
+    .home-bg {
+        background-size: auto 100%;
+        background-position-x: -300px!important;
+    }
+
     .homepage-header {
         font-size: 2.2rem;
     }
@@ -1146,6 +1150,11 @@ p.created-by {
         background-size: 230%;
     }
 
+    .home-bg {
+        background-size: auto 100%;
+        background-position-x: 0px;
+    }
+
     section.main-body {
     padding-bottom: 50px;
     }
@@ -1163,11 +1172,6 @@ p.created-by {
     width: auto;
     max-width: 90%;
     max-height: 80%;
-    }
-
-    .home-bg {
-        background-size: auto 100%;
-        background-position-x: -300px;
     }
 
     .search-bar-btn-wrap {
