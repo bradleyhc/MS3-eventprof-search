@@ -58,7 +58,21 @@ To compliment the blue shades, a brighter Teal and Pink colour have been used to
 >TO BE UPDATED
 
 ### Data Schema
->TO BE UPDATED
+MongoDB is utilised to store data for EventProf Search. Being a document based database versus table based, it enables the site to store individual, non-relational records that can easily be added, updated and deleted via frontend driven CRUD operations.
+
+In designing the data schema, it was important to capture all data for each document that would be required for users to view pages, or edit or delete records. There are a number of fields that were also added to improve user experience or functionality. 
+
+Whilst the data set for the most part can be handled independently from each other within the Flask app, with the nature of the site centered around user profiles and interaction, it was necessary to create a relationship between a minority of fields.
+
+An outline of the data schema can be found below:
+
+![Eventprof Search DB Schema](documentation/screenshots/DB_schema.png)
+
+- #### Users table collection
+    - Basic profile fields such as name, email, role, skills, rate, about, location.
+    - Profile attributes such as 'is_admin', 'is_hidden' and 'is_complete' are used for visibility controls 
+    to certain pages. For example, once a user first registered, they much complete their profile for this to be visible to other users. The 'is_hidden' field can be used on the admin dashboard to toggle a user's profile to 'hidden' and hide the profile from other users.
+
 
 ---
 
@@ -115,6 +129,7 @@ To compliment the blue shades, a brighter Teal and Pink colour have been used to
 - Jinja2 - used for frontend templating using Flask connection.
 - MongoDB - non-relational database used to store user and project data.
 - Cloudinary - media storage for demo user profile images.
+- DBdiagram.io - for database design and modelling
 
 ### Other
 - Name Generator - for generating randomised names for demo users.
