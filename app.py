@@ -322,7 +322,7 @@ def add_project():
 
     if request.method == "POST":
 
-        submitter_slug = session["user"]["slug"]
+        submitter_slug = session["user"]["id"]
         submitter = mongo.db.users.find_one(
             {"uid": submitter_slug})
         submitter_name = submitter["first_name"] + " " + submitter["last_name"]
@@ -559,9 +559,11 @@ def send_mail(slug):
     # Redirect to login if user not logged in
     if session.get("user") is None:
         return check_login()
-
-    recipient = mongo.db.users.find_one({"name_slug": slug})
-    sender = mongo.db.users.find_one({"name_slug": session['user']['slug']})
+    
+    uid = int(slug)
+    recipient = mongo.db.users.find_one({"uid": uid})
+    print(recipient)
+    sender = mongo.db.users.find_one({"uid": session['user']['id']})
     to_email = recipient["email"]
     reply_to = sender["email"]
     sender_name = sender["first_name"] + " " + sender["last_name"]
