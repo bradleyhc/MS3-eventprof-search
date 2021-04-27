@@ -333,15 +333,25 @@ h4.title-feat {
 
 .last-in-grid > .card-content div {
     margin-left: 0;
-    width: max-content;
+    flex-wrap: wrap;
+    max-width: 100%;
+    justify-content: end;
 }
+
+.last-in-grid > .card-content > .card-img-wrapper {
+    margin-top: 0px;
+    width: 150px;
+}
+
 .last-in-grid > .card-content > .card-info {
     flex-direction: column;
-    width: -webkit-fill-available;
+    width: 100%!important;
     margin-left: 20px;
 }
-.last-in-grid > .card-content > .card-info > p {
+.last-in-grid > .card-content > .card-info > p,
+.last-in-grid > .card-content > .card-info > div > h4 {
     text-align: left;
+    margin: 0px;
 }
 
 .sidebar-widget-title {
@@ -547,6 +557,7 @@ input[type=text]:not(.browser-default):disabled {
 .card.sidebar > .card-content > .card-img-wrapper {
     height: 100px;
     width: 100px;
+    min-width: 100px!important;
 }
 
 .datepicker-date-display {
@@ -873,6 +884,7 @@ span.divide-pipe {
 .card-img-wrapper {
     max-width: 150px;
     max-height: 150px;
+    min-width: 150px;
     height: 150px;
     position: relative;
     overflow: hidden;
