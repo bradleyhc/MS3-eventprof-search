@@ -58,7 +58,7 @@ To compliment the blue shades, a brighter Teal and Pink colour have been used to
 >TO BE UPDATED
 
 ### Data Schema
-MongoDB is utilised to store data for EventProf Search. Being a document based database versus table based, it enables the site to store individual, non-relational records that can easily be added, updated and deleted via frontend driven CRUD operations.
+MongoDB is utilised to store data for EventProf Search. As a document based database versus table based, it enables the site to store individual, non-relational records that can easily be added, updated and deleted via frontend driven CRUD operations.
 
 In designing the data schema, it was important to capture all data for each document that would be required for users to view pages, or edit or delete records. There are a number of fields that were also added to improve user experience or functionality. 
 
@@ -71,7 +71,7 @@ An outline of the data schema can be found below:
 - #### Users table collection
     - Basic profile fields such as name, email, role, skills, rate, about, location.
     - Profile attributes such as 'is_admin', 'is_hidden' and 'is_complete' are used for visibility controls 
-    to certain pages. For example, once a user first registered, they much complete their profile for this to be visible to other users. The 'is_hidden' field can be used on the admin dashboard to toggle a user's profile to 'hidden' and hide the profile from other users.
+    to certain pages. For example, once a user first registered, they must complete their profile for this to be visible to other users. The 'is_hidden' field can be used on the admin dashboard to toggle a user's profile to 'hidden' and hide the profile from other users.
     - The 'name_slug' is used as the profile page slug when viewing a profile, the email send function, and to populate the 'submitter_slug' if a user submits a new project (allowing another user to email them).
 
 - #### Projects table collection
@@ -130,28 +130,33 @@ An outline of the data schema can be found below:
 - Social sharing of projects. 
 - User connections, allowing users to 'refer a friend' for projects.
 
+<br>
+
 ---
+
 
 ## Technologies Used
 
 ### Frontend languages & frameworks
-- HTML5 - vanilla HTML for templates.
-- Javascript - minimal vanilla Javascript alongside JQuery to allow for modals, input manipulation and validation. 
-- Jquery
-- CSS 
-- Materialize - primary CSS & JS library for inputs and modals.
-- Bootstrap - minimal as required where Materialize classes insufficient.
+- [HTML5](https://dev.w3.org/html5/spec-LC/) - vanilla HTML for templates.
+- [Javascript](https://www.javascript.com/) - minimal vanilla Javascript alongside JQuery to allow for modals, input manipulation and validation. 
+- [Jquery](https://jquery.com/)
+- [CSS](https://www.w3.org/Style/CSS/specs.en.html)
+- [Materialize](https://materializecss.com/) - primary CSS & JS library for inputs and modals.
+- [Bootstrap](https://getbootstrap.com/docs/5.0/) - minimal as required where Materialize classes insufficient.
 
 ### Backend tools, languages & frameworks
-- Python - primary backend language.
-- Flask - used in conjunction with PyMongo and Flask-mail to create connection with database and mail server.
-- Jinja2 - used for frontend templating using Flask connection.
-- MongoDB - non-relational database used to store user and project data.
-- Cloudinary - media storage for demo user profile images.
-- DBdiagram.io - for database design and modelling
+- [Python](https://www.python.org/) - primary backend language.
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/) - used in conjunction with PyMongo and Flask-mail to create connection with database and mail server.
+- [Jinja2](https://jinja.palletsprojects.com/en/2.11.x/) - used for frontend templating using Flask connection.
+- [MongoDB](https://www.mongodb.com/2) - non-relational database used to store user and project data.
+- [Cloudinary](https://cloudinary.com/) - media storage for demo user profile images.
+- [DBdiagram.io](https://DBdiagram.io) - for database design and modelling
 
 ### Other
 - Name Generator - for generating randomised names for demo users.
+- Colour Hexa - for generating colour schemes and patterns.
+- Responsinator - user to generate and test responsiveness of application.
 
 ---
 
@@ -159,6 +164,12 @@ An outline of the data schema can be found below:
 
 ### Code Validation
 > To be added
+
+### Browser Compatability
+> To be added
+
+### Device Compatability
+
 
 ### User Story Testing
 The site has been tested against the initial user stories to ensure that it meets the minimum requirements of its users. Details of how the site fulfills these tests are outlined below:
