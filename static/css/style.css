@@ -183,7 +183,7 @@ button.close-flash{
     background-image: url('../images/brand/ms3-bg-1920x540.png');
     min-height: 150px;
     position: fixed;
-    height: 250px;
+    height: 300px;
     width: 100vw;
     z-index: -1;
     top: 0;
@@ -1156,7 +1156,7 @@ p.created-by {
     }
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 767.98px){
     .container {
         padding: 30px;
     }
