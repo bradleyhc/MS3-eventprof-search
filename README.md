@@ -165,6 +165,37 @@ An outline of the data schema can be found below:
 ### Code Validation
 > To be added
 
+### Lighthouse Testing
+As a benchmark for site performance, the EventProf Search site has had a number of Lighthouse reports performed 
+against it, using Chrome Devtools. For the most part, the four key results; Performance, Accessibility, 
+Best Practices and SEO scored highly between 90 - 100 for desktop and 50 - 89 for mobile. 
+
+Following a number of reports during testing, the demo user images and homepage image sizes have been scaled down 
+to reduce load time.
+
+At this stage, the remainder of improvement areas are predominantly due to the following reasons: 
+- Heroku requires a valid SSL certificate to ensure that server requests are completed over HTTPS not HTTP.
+- Third party JS and CSS files should be removed or reduced to improve the first contentful paint.
+
+In further releases of this website, the above issues would be addressed, however this would require removing the 
+styling codebase from Materialize to either a more lightweight library, or creating a custom library.
+
+You can see the Lighthouse report results below:
+#### Homepage (Desktop/Mobile):
+<img src="./documentation/screenshots/lh-homepage-desktop.png" alt="lighthouse homepage desktop" width="300">
+<img src="./documentation/screenshots/lh-homepage-mobile.png" alt="lighthouse homepage mobile" width="300">
+<br>
+
+#### Freelancers Page (Desktop/Mobile):
+<img src="./documentation/screenshots/lh-freelancers-desktop.png" alt="lighthouse freelancers desktop" width="300">
+<img src="./documentation/screenshots/lh-freelancers-mobile.png" alt="lighthouse freelancers mobile" width="300">
+<br>
+
+#### Projects Page (Desktop/Mobile):
+<img src="./documentation/screenshots/lh-projects-desktop.png" alt="lighthouse projects desktop" width="300">
+<img src="./documentation/screenshots/lh-projects-mobile.png" alt="lighthouse projects mobile" width="300">
+<br><br>
+
 ### Browser Compatability
 > To be added
 
@@ -285,6 +316,7 @@ To ensure the site continues to function when unexpected user input or action oc
 - Commit message descriptions - https://stackabuse.com/git-adding-a-commit-message/ 
 - Error Handling - https://www.geeksforgeeks.org/python-404-error-handling-in-flask/ 
 - Limit results in Jinja2 - Raju Sarkar https://stackoverflow.com/questions/12368475/jinja2-first-x-items-in-for-if-loop/30053006 
+- Markdown cheatsheet - https://www.markdownguide.org/cheat-sheet/ 
 
 ### Other
 - Random name generator for users - https://www.behindthename.com/ 

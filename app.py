@@ -149,7 +149,6 @@ def login():
             existing_user = mongo.db.users.find_one(
                 {"email": request.form.get("email_lg")})
 
-
         if existing_user:
             if check_password_hash(
                 existing_user["password"],
