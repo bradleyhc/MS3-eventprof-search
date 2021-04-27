@@ -70,6 +70,11 @@ def privacy():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+
+    # Redirect to profile if user logged in
+    if not session.get("user") is None:
+        return redirect(url_for("profile", name=session['user']['slug']))
+
     if request.method == "POST":
 
         # check for existing user email
@@ -128,12 +133,22 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    
+
+    # Redirect to profile if user logged in
+    if not session.get("user") is None:
+        return redirect(url_for("profile", name=session['user']['slug']))
+
     if request.method == "POST":
 
         # check if user exists
-        existing_user = mongo.db.users.find_one(
-            {"email": request.form.get("email_lg")})
+
+        if request.form.get("email_lg") is None:
+            existing_user = mongo.db.users.find_one(
+                {"email": request.form.get("email_lg_page")})
+        else:
+            existing_user = mongo.db.users.find_one(
+                {"email": request.form.get("email_lg")})
+
 
         if existing_user:
             if check_password_hash(
