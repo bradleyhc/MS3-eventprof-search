@@ -549,6 +549,19 @@ input[type=text]:not(.browser-default):disabled {
     width: 100px;
 }
 
+.datepicker-date-display {
+    background: linear-gradient(135deg, rgba(60,81,172,1) 0%, rgba(67,90,190,1) 35%, rgba(69,95,205,1) 100%);
+}
+
+.datepicker-table td.is-today, .datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done {
+    color: #ef516f;
+}
+
+.datepicker-table td.is-selected {
+    background-color: #51EFD1;
+    color: #455FCD;
+}
+
 /* Utils */
 .m-top-40 {
     margin-top: 40px;
@@ -1099,10 +1112,6 @@ p.created-by {
         background-position-x: -300px!important;
     }
 
-    .homepage-header {
-        font-size: 2.2rem;
-    }
-
     input[type=text]:not(.browser-default).hp-search-input {
         font-size: 1.2rem;
     }
@@ -1159,6 +1168,10 @@ p.created-by {
     .home-bg {
         background-size: auto 110%;
         background-position-x: 0px;
+    }
+
+    .homepage-header {
+        font-size: 2.2rem;
     }
 
     section.main-body {
@@ -1302,8 +1315,8 @@ p.created-by {
         line-height: 24px;
         height: 28px;
         font-size: 12px;
-        margin-bottom: 5px;
         margin: 0px!important;
+        margin-bottom: 3px!important;
     }
 
 }
