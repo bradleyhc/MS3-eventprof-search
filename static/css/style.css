@@ -58,6 +58,10 @@ footer div a {
     color: #fff;
 }
 
+button:focus {
+    background-color: #51efd1;
+}
+
 /* All page components */
 
 .preloader-overlay {
@@ -250,6 +254,8 @@ h4.title-feat {
     transition: 0.3s ease-in-out;
     border-radius: 5px;
 }
+
+
 
 .primary-btn {
     font-size: 1.4rem;
@@ -1151,7 +1157,7 @@ p.created-by {
     }
 
     .home-bg {
-        background-size: auto 100%;
+        background-size: auto 110%;
         background-position-x: 0px;
     }
 
