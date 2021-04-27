@@ -322,7 +322,7 @@ def add_project():
 
     if request.method == "POST":
 
-        submitter_slug = session["user"]["id"]
+        submitter_slug = session["user"]["slug"]
         submitter = mongo.db.users.find_one(
             {"uid": submitter_slug})
         submitter_name = submitter["first_name"] + " " + submitter["last_name"]
@@ -569,7 +569,7 @@ def send_mail(slug):
     user_msg = request.form.get("body")
     body = render_template("contact_email.html",
                            name=sender_name, to_name=recipient['first_name'],
-                           message=user_msg, u_link=session['user']['slug'])
+                           message=user_msg)
     msg = Message(subject, reply_to=reply_to,
                   recipients=[to_email])
     msg.html = body
