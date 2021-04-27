@@ -91,7 +91,7 @@
                     <h3>Send {{info.first_name}} an email.</h3>
                     <p>Your message will be sent to their email inbox, allowing them to reply back to you directly.
                     </p>
-                    <form id="contact_form" method="POST" action="{{ url_for('send_mail', slug=info.name_slug) }}">
+                    <form id="contact_form" method="POST" action="{{ url_for('send_mail', slug=info.uid) }}">
                         <!-- Hidden sender fields  -->
                         <input type="hidden" name="from_name" id="from_name" value="{{ s_name }}">
                         <input type="hidden" name="to_name" id="to_name" value="{{info.first_name}}">

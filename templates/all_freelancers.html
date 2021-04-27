@@ -95,7 +95,7 @@
                         <p>Your message will be sent to their email inbox, allowing them to reply back to you directly.
                         </p>
                         <form id="contact_form_{{loop.index}}" method="POST"
-                            action="{{ url_for('send_mail', slug=freelancer.name_slug) }}">
+                            action="{{ url_for('send_mail', slug=freelancer.uid) }}">
                             <!-- Hidden sender fields  -->
                             <input type="hidden" name="from_name" id="from_name_{{loop.index}}" value="{{ s_name }}">
                             <input type="hidden" name="to_name" id="to_name_{{loop.index}}"
