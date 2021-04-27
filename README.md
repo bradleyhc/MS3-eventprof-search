@@ -58,21 +58,31 @@ To compliment the blue shades, a brighter Teal and Pink colour have been used to
 >TO BE UPDATED
 
 ### Data Schema
-MongoDB is utilised to store data for EventProf Search. As a document based database versus table based, it enables the site to store individual, non-relational records that can easily be added, updated and deleted via frontend driven CRUD operations.
+MongoDB is utilised to store data for EventProf Search. As a document based database versus table based, it 
+enables the site to store individual, non-relational records that can easily be added, updated and deleted via 
+frontend driven CRUD operations.
 
-In designing the data schema, it was important to capture all data for each document that would be required for users to view pages, or edit or delete records. There are a number of fields that were also added to improve user experience or functionality. 
+In designing the data schema, it was important to capture all data for each document that would be required for 
+users to view pages, or edit or delete records. There are a number of fields that were also added to improve 
+user experience or functionality. 
 
-Whilst the data set for the most part can be handled independently from each other within the Flask app, with the nature of the site centered around user profiles and interaction, it was necessary to create a relationship between a minority of fields.
+Whilst the data set for the most part can be handled independently from each other within the Flask app, with 
+the nature of the site centered around user profiles and interaction, it was necessary to create a relationship 
+between a minority of fields.
 
 An outline of the data schema can be found below:
 
-![Eventprof Search DB Schema](documentation/screenshots/DB_schema.png)
+![Eventprof Search DB Schema](documentation/screenshots/DB-schema-v2.png)
 
 - #### Users table collection
     - Basic profile fields such as name, email, role, skills, rate, about, location.
     - Profile attributes such as 'is_admin', 'is_hidden' and 'is_complete' are used for visibility controls 
     to certain pages. For example, once a user first registered, they must complete their profile for this to be visible to other users. The 'is_hidden' field can be used on the admin dashboard to toggle a user's profile to 'hidden' and hide the profile from other users.
-    - The 'name_slug' is used as the profile page slug when viewing a profile, the email send function, and to populate the 'submitter_slug' if a user submits a new project (allowing another user to email them).
+    - The 'name_slug' is used as the profile page slug when viewing a profile.
+    - Now that the 'name_slug' can be updated when a user updates their name, the 'uid' is used to create the 
+    email send function, and to populate the 'submitter_slug' if a user submits a new project (allowing another user 
+    to email them). The UID is randomly generated upon registration to prevent users from guessing another user's UID (user 1, 2, 3 etc). 
+    This ensures that the user profile remains consistent for application functions irrespective of user updates.
 
 - #### Projects table collection
     - Similarly to the Users table, the project table includes basic project details such as title, description, start & end date, location, role, skills (posted as an array) and posted date.
@@ -87,7 +97,7 @@ An outline of the data schema can be found below:
 - #### Session
     - The session data is not included within the MongoDB collection but is created by the Flask app module and stored in the browser. 
     Since it has a relationship with a few of the key User fields, it has been included within the data schema as a data store.
-    - If the user is registered, the 'u_type', 'is_admin' and 'slug' are pulled from the database if the email entered can be found. This information is then stored within the browser session until the user logs out.
+    - If the user is registered, the 'u_type', 'is_admin', 'uid' and 'slug' are pulled from the database if the email entered can be found. This information is then stored within the browser session until the user logs out.
     - If a new user registers, the session key values are generated based on the user input on the registration form. This data is then stored in the browser session until the user logs out.
 
 <br>
