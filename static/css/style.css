@@ -1356,6 +1356,13 @@ p.created-by {
     .full-width-tablet-down {
         width: 100%!important;
     }
+
+    .login-form {
+    min-width: 100%;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    }
 }
 
 @media screen and (max-width:1120px){

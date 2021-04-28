@@ -54,8 +54,20 @@ A vibrant, but slightly pastelled colour scheme has been selected for EventProf 
 
 To compliment the blue shades, a brighter Teal and Pink colour have been used to help accent various features on the site and help them stand out, for example, under headers, the navbar, or call-to-action buttons.
 
+<br>
+
 ### Wireframes
->TO BE UPDATED
+The wireframes for the initial site design can be found below. For the most part, the site reflects the wireframes 
+as initially drawn, with a few minor styling and element positioning adjustments required during the build, as 
+UI responsiveness was tested. For example, the location of buttons and layout of card contents needed to be adjusted 
+slightly based on the data available.
+
+Wireframe links:
+- [View the Desktop wireframes here](documentation/wireframes/MS3_Wireframes_desktop.pdf)
+- [View the Tablet wireframes here]((documentation/wireframes/MS3_Wireframes_tablet.pdf))
+- [View the Mobile wireframes here]((documentation/wireframes/MS3_Wireframes_mobile.pdf))
+
+<br>
 
 ### Data Schema
 MongoDB is utilised to store data for EventProf Search. As a document based database versus table based, it 
