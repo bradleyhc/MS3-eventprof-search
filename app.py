@@ -43,9 +43,7 @@ mongo = PyMongo(app)
 # Global Functions
 def check_login():
     global testing
-    if testing:
-        return False
-    else:
+    if not testing:
         flash("You need to be logged in to view that page!")
         return redirect(url_for('login'))
 
