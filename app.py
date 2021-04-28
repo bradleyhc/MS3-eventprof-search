@@ -3,18 +3,17 @@ import random
 import datetime
 import csv
 from flask import (Flask, flash, redirect,
-                   render_template, request, url_for, session, jsonify)
+                   render_template, request, url_for, session)
 from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.utils import secure_filename
-from bson.objectid import ObjectId
+# from werkzeug.utils import secure_filename
+# from bson.objectid import ObjectId
 from flask_mail import Mail, Message
-from bson import json_util
+# from bson import json_util
 from flask_pymongo import PyMongo
 if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
-testing = True
 
 # Set user image upload config
 UPLOAD_FOLDER = './static/images/user_uploads/'
@@ -42,10 +41,8 @@ mongo = PyMongo(app)
 
 # Global Functions
 def check_login():
-    global testing
-    if not testing:
-        flash("You need to be logged in to view that page!")
-        return redirect(url_for('login'))
+    flash("You need to be logged in to view that page!")
+    return redirect(url_for('login'))
 
 
 @app.route("/")
@@ -54,8 +51,7 @@ def homepage():
 
     # Get latest 3 projects for the homepage
     projects = mongo.db.projects.find().sort("posted_date").limit(3)
-    
-    
+
     return render_template("home.html", projects=projects)
 
 
