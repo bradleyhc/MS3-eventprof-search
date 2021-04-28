@@ -165,6 +165,7 @@ An outline of the data schema can be found below:
 - [Jquery](https://jquery.com/)
 - [CSS](https://www.w3.org/Style/CSS/specs.en.html)
 - [Materialize](https://materializecss.com/) - primary CSS & JS library for inputs and modals.
+- [FontAwesome](https://fontawesom.com/) - used for freelancer and project card icons.
 - [Bootstrap](https://getbootstrap.com/docs/5.0/) - minimal as required where Materialize classes insufficient.
 
 ### Backend tools, languages & frameworks
@@ -185,7 +186,32 @@ An outline of the data schema can be found below:
 ## Testing
 
 ### Code Validation
-> To be added
+The EventProf Search codebase has been checked through W3 HTML, Jigsaw CSS, JShint and PEP8Online validation services to eliminate or mitigate any errors.
+
+You can find the results of each validation test below: 
+
+#### W3C Jigsaw CSS
+As with most builds, the majority of the errors returned in this validation are from third party libraries, in this 
+case, font-awesome and Materialize. 
+
+Whilst no errors were found in the style.css file, one error is produced from the third party Materialize. Within the style.css, there are a number of warnings relating to buttons and inputs having the same border and background colour. 
+This is a stylistic decision, to ensure that on a button hover, the border is not then added, causing the button position to shift by 1px in each direction. 
+
+In addition, the validator calls out various 'unknown vendor extensions' where browser specific attribute values are shown, e.g -webkit-fill-available. 
+Whilst these values are recognised in the browsers, the validator does return these as errors.
+
+See below an example of the W3C Jigsaw results and [the link here](https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Feventprof-search.herokuapp.com%2Ffreelancers&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en):
+
+<img src="./documentation/screenshots/validators/css-valid-1.png" alt="jigsaw results" width="450">
+
+
+#### W3 HTML Validator
+The HTML validation shows no errors or warnings for pages. You can view [the results here](https://validator.w3.org/nu/?doc=http%3A%2F%2Feventprof-search.herokuapp.com%2F).
+
+
+#### JSHint Results
+
+
 
 ### Lighthouse Testing
 As a benchmark for site performance, the EventProf Search site has had a number of Lighthouse reports performed 
@@ -339,6 +365,7 @@ To ensure the site continues to function when unexpected user input or action oc
 - Error Handling - https://www.geeksforgeeks.org/python-404-error-handling-in-flask/ 
 - Limit results in Jinja2 - Raju Sarkar https://stackoverflow.com/questions/12368475/jinja2-first-x-items-in-for-if-loop/30053006 
 - Markdown cheatsheet - https://www.markdownguide.org/cheat-sheet/ 
+- Smooth scroll to element with jQuery - Y. Joy Ch. Singha -  https://stackoverflow.com/questions/19012495/smooth-scroll-to-div-id-jquery
 
 ### Other
 - Random name generator for users - https://www.behindthename.com/ 
