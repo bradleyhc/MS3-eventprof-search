@@ -1,17 +1,14 @@
 import os
 import random
 import datetime
-import csv
 from flask import (Flask, flash, redirect,
                    render_template, request, url_for, session)
 from werkzeug.security import generate_password_hash, check_password_hash
-# from werkzeug.utils import secure_filename
-# from bson.objectid import ObjectId
 from flask_mail import Mail, Message
-# from bson import json_util
 from flask_pymongo import PyMongo
 if os.path.exists("env.py"):
     import env
+
 
 app = Flask(__name__)
 
