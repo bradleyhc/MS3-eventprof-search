@@ -62,7 +62,6 @@ def not_found(err):
 
 @app.route("/privacy")
 def privacy():
-
     return render_template("privacy.html")
 
 
@@ -139,7 +138,6 @@ def login():
     if request.method == "POST":
 
         # check if user exists
-
         if request.form.get("email_lg") is None:
             existing_user = mongo.db.users.find_one(
                 {"email": request.form.get("email_lg_page")})
@@ -390,7 +388,7 @@ def view_project(project_id):
 
 @app.route("/edit_project/<project_id>", methods=["GET", "POST"])
 def edit_project(project_id):
-    
+
     # Redirect to login if user not logged in
     if session.get("user") is None:
         return check_login()
@@ -557,7 +555,7 @@ def send_mail(slug):
     # Redirect to login if user not logged in
     if session.get("user") is None:
         return check_login()
-    
+
     uid = int(slug)
     recipient = mongo.db.users.find_one({"uid": uid})
     print(recipient)
@@ -589,7 +587,7 @@ def admin_users():
     # Redirect to login if user not logged in
     if session.get("user") is None:
         return check_login()
-    elif session['user']['admin'] == False: 
+    elif session['user']['admin'] is False:
         flash('You must be an admin to access this page')
         return redirect(url_for('get_freelancers'))
 
@@ -612,8 +610,8 @@ def admin_search_freelancers():
     query = request.form.get("query")
     users = list(mongo.db.users.find({"$text": {"$search": query}}))
 
-    return render_template("admin/admin_dashboard.html", users=users, 
-                            query=query)
+    return render_template("admin/admin_dashboard.html", users=users,
+                           query=query)
 
 
 @app.route("/admin/users_update/<uid>", methods=["GET", "POST"])
@@ -622,12 +620,11 @@ def admin_update_user(uid):
     # Redirect to login if user not logged in
     if session.get("user") is None:
         return check_login()
-    elif session['user']['admin'] == False: 
+    elif session['user']['admin'] is False:
         flash('You must be an admin to access this page')
         return redirect(url_for('get_freelancers'))
 
     user = mongo.db.users.find_one({"name_slug": uid})
-    all_users = mongo.db.users.find()
 
     # Check current 'hidden' status of user
     if user["is_hidden"] is True:
@@ -652,7 +649,7 @@ def admin_skills():
     # Redirect to login if user not logged in
     if session.get("user") is None:
         return check_login()
-    elif session['user']['admin'] == False: 
+    elif session['user']['admin'] is False:
         flash('You must be an admin to access this page')
         return redirect(url_for('get_freelancers'))
 
@@ -668,12 +665,11 @@ def admin_update_skills():
     # Redirect to login if user not logged in
     if session.get("user") is None:
         return check_login()
-    elif session['user']['admin'] == False: 
+    elif session['user']['admin'] is False:
         flash('You must be an admin to access this page')
         return redirect(url_for('get_freelancers'))
 
     skill_count = mongo.db.skills.count()
-    skills = mongo.db.skills.distinct("skill_name")
     submitted_skills = request.form.getlist("add_skill[]")
 
     if request.method == "POST":
@@ -699,7 +695,7 @@ def delete_skill(id):
     # Redirect to login if user not logged in
     if session.get("user") is None:
         return check_login()
-    elif session['user']['admin'] == False:
+    elif session['user']['admin'] is False:
         flash('You must be an admin to access this page')
         return redirect(url_for('get_freelancers'))
 
@@ -715,7 +711,7 @@ def admin_roles():
     # Redirect to login if user not logged in
     if session.get("user") is None:
         return check_login()
-    elif session['user']['admin'] == False: 
+    elif session['user']['admin'] is False:
         flash('You must be an admin to access this page')
         return redirect(url_for('get_freelancers'))
 
@@ -731,12 +727,11 @@ def admin_update_roles():
     # Redirect to login if user not logged in
     if session.get("user") is None:
         return check_login()
-    elif session['user']['admin'] == False: 
+    elif session['user']['admin'] is False:
         flash('You must be an admin to access this page')
         return redirect(url_for('get_freelancers'))
 
     role_count = mongo.db.roles.count()
-    #skills = mongo.db.skills.distinct("skill_name")
     submitted_roles = request.form.getlist("add_role[]")
 
     if request.method == "POST":
@@ -762,43 +757,13 @@ def delete_role(id):
     # Redirect to login if user not logged in
     if session.get("user") is None:
         return check_login()
-    elif session['user']['admin'] == False: 
+    elif session['user']['admin'] is False:
         flash('You must be an admin to access this page')
         return redirect(url_for('get_freelancers'))
 
     mongo.db.roles.delete_one({"role_name": id})
     flash("The role was deleted successfully!")
     return redirect(url_for('admin_roles'))
-
-
-
-
-
-# Debug delete user script
-@app.route("/delete_user", methods=["GET", "POST"])
-def delete_users():
-
-    delete = ({"skill_name": { '$exists': 1 }})
-    delete_also = {"skill_name": "AutoCAD"}
-    and_this = {"skill_name": "Adobe Illustrator"}
-
-    mongo.db.users.delete_many(delete)
-    return "done", delete
-
-
-# Import CSV of users credits by 'Perfect'
-# in this thread:
-# https://stackoverflow.com/questions/27416296/how-to-push-a-csv-data-to-mongodb-using-python/56241768
-# encoding guidance: siebz0r https://stackoverflow.com/questions/17912307/u-ufeff-in-python-string/17912811
-def view_csv(filename):
-    with open(filename, 'r', encoding='utf-8-sig') as f:
-        keys = ['first_name', 'last_name', 'email', 'name_slug', 'password', 'user_type', 'about', 'location',
-                'profile_image', 'rate', 'role', 'skills', 'is_hidden', 'is_admin', 'is_complete']
-        reader = csv.DictReader(f, fieldnames=keys)
-        print("this", reader)
-        for row in reader:
-            print("new row", row)
-            mongo.db.users.insert_one(row)
 
 
 if __name__ == "__main__":
