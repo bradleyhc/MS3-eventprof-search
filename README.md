@@ -10,11 +10,13 @@ ___
 
 ## Contents
 
-lorem
+> to do 
 
 ___
 
 ## User Experience (UX)
+> to do 
+
 ### User Stories
 - Event Freelancer
     - As an Event Freelancer, I want to be able find suitable event projects that are looking for my skillset.
@@ -139,12 +141,25 @@ An outline of the data schema can be found below:
 - Projects can be searched using the search function at the top of the page.
 - Projects show the location, type, dates and skills the project owner is looking for.
 - All projects have individual page that can be viewed by clicking 'view more'.
-- Project owners can edit or delete existing submissions by navigating to the project page.
+- Project owners can add, edit or delete existing submissions by navigating to the project page.
 - Freelancers can send project owners an email by clicking 'Email Project Owner' on the project page.
 
 ### Admin controls
 - Admin users can switch user visibility on or off in the admin control (this hides the user from the freelancer page). 
 - Admin users can add or delete roles or skills in the admin control.
+
+
+### Security
+
+Whilst hashed user passwords has been implemented from the outset as part of the Flask - Werkzeug module, it is also important that user emails remain secure. 
+
+To avoid the requirement for users to display their emails to other users without their initial permission, the email flow within the 'send_email' function has been implemented using the Flask-mail module.
+
+Using this approach, allows the user to use the form on the frontend to determine who the email should be sent to, but uses the 'send_email' function in 'app.py' to retrieve the email in the backend, versus storing the email within a hidden field in the form, as this would be accessible to the user if they inspect the DOM.
+
+To secure backend environment variables such as passwords and 'secret keys', all such variables are stored in an env.py file locally, which is included within .gitignore to ensure they are not accessible within the public domain. The environment variables are then stored within the Heroku deployed application under the 'config vars' dropdown under 'settings'. 
+
+<br>
 
 ### Features to add in future releases
 - LinkedIn integration to pull API data into profile.
@@ -174,7 +189,10 @@ An outline of the data schema can be found below:
 - [Jinja2](https://jinja.palletsprojects.com/en/2.11.x/) - used for frontend templating using Flask connection.
 - [MongoDB](https://www.mongodb.com/2) - non-relational database used to store user and project data.
 - [Cloudinary](https://cloudinary.com/) - media storage for demo user profile images.
-- [DBdiagram.io](https://DBdiagram.io) - for database design and modelling
+- [DBdiagram.io](https://DBdiagram.io) - for database design and modelling.
+- [GitHub](https://github.com) - for version control and codebase storage.
+- [GitPod](https://gitpod.oi) - Online cloud IDE for code editing and version commits.
+- [Heroku](https://heroku.com) - Used for deployment of production application.
 
 ### Other
 - Name Generator - for generating randomised names for demo users.
@@ -256,10 +274,58 @@ You can see the Lighthouse report results below:
 <br><br>
 
 ### Browser Compatability
-> To be added
+The application has been tested across Safari, Chrome and Firefox as the three most popular browsers. After refactoring a 
+small number of incompatible styling bugs, the three browsers respond to the application almost identically with regards to style, performance and functionality.  
+
+Whilst the experience remains unimpacted, one bug is evident on Firefox only, whereby the input field does not expand to the full-width of its parent, as it does on Chrome / Safari.
+
+See the screenshots below to demonstrate this: 
+
+#### Chrome
+
+<img src="./documentation/screenshots/browsers/chrome-1.png" alt="chrome 1" width="300">
+<img src="./documentation/screenshots/browsers/chrome-2.png" alt="chrome 2" width="300">
+<img src="./documentation/screenshots/browsers/chrome-3.png" alt="chrome 3" width="300">
+
+#### Safari
+
+<img src="./documentation/screenshots/browsers/safari-1.png" alt="safari 1" width="300">
+<img src="./documentation/screenshots/browsers/safari-2.png" alt="safari 2" width="300">
+<img src="./documentation/screenshots/browsers/safari-3.png" alt="safari 3" width="300">
+
+#### Firefox
+
+<img src="./documentation/screenshots/browsers/moz-1.png" alt="moz 1" width="300">
+<img src="./documentation/screenshots/browsers/moz-2.png" alt="moz 2" width="300">
+<img src="./documentation/screenshots/browsers/moz-3.png" alt="moz 3" width="300">
+
 
 ### Device Compatability
+EventProf Search has been tested across device breakpoints within Chrome Devtools, alongside a Samsung S9 and Iphone Xr. 
 
+As with browsers, a small number of styling adjustments were required, but the user experience across devices remains equal and unimpacted across devices. 
+
+As an example, see the below screenshots across Desktop, Tablet and Mobile: 
+
+#### Desktop
+<img src="./documentation/screenshots/devices/desktop-3.png" alt="desktop device 1" width="300">
+<img src="./documentation/screenshots/devices/desktop-2.png" alt="desktop device 2" width="300">
+<img src="./documentation/screenshots/devices/desktop-4.png" alt="desktop device 3" width="300">
+
+#### Tablet
+
+<img src="./documentation/screenshots/devices/ipad-2-ls.png" alt="ipad device 1" width="200">
+<img src="./documentation/screenshots/devices/ipad-3.png" alt="ipad device 2" width="200">
+<img src="./documentation/screenshots/devices/ipad-5.png" alt="ipad device 3" width="200">
+<img src="./documentation/screenshots/devices/ipad-1-ls.png" alt="ipad alt device 1" width="300">
+<img src="./documentation/screenshots/devices/ipad-2.png" alt="ipad alt device 2" width="300">
+<img src="./documentation/screenshots/devices/ipad-5-ls.png" alt="ipad alt device 3" width="300">
+
+#### Mobile
+> to do 
+
+### Accessibility
+> to do 
 
 ### User Story Testing
 The site has been tested against the initial user stories to ensure that it meets the minimum requirements of its users. Details of how the site fulfills these tests are outlined below:
@@ -311,7 +377,6 @@ The site has been tested against the initial user stories to ensure that it meet
 
 
 ### Defensive Programming
-> To be added
 
 To ensure the site continues to function when unexpected user input or action occurs, a number of defensive programming meausures have been put in place: 
 - User login check - this has been implemented to detect if the current user has a session active. 
@@ -319,7 +384,7 @@ To ensure the site continues to function when unexpected user input or action oc
     - To avoid this, each page route will determine if the session exists. If not, it will redirect the user to the login page, versus return the internal error.
 - 404 page
     - This has been implemented using the Python 'errorhandler()' method. If a URL is inputted that returns a 404, the 404 HTML template is rendered, directing users back to the homepage. This response ensures that users experience a page similar to others they are used to, and not deterred from continuing to navigate the site.
-
+>s.shot
 - Route / URL manipulation
     - To prevent users from altering the URL string to edit other projects or users, the current session user 'id' must match that of the user / or the project 'submitter_slug' they are trying to edit or delete. If these do not match, the user is directed back to the project listing page, with a flash message notifying them that they must own the project to make edits to it.
     - Similarly, if a user attempts to edit a profile which does not match their session 'slug' then they are directed back to the freelancer listing page and flash message is shown to warn the user that they can only edit their own profile.
@@ -327,18 +392,13 @@ To ensure the site continues to function when unexpected user input or action oc
 - Accidental user error
     - To prevent users inadvertantly overwriting their profile information or project details, an additional modal popup has been created on the 'edit profile' and 'edit project' pages. When a user clicks the 'update' button, a modal appears requiring secondary confirmation.
     - The secondary confirmation will help to avoid accidental user mistakes which will in turn, allow for a better user experience. 
+>s.shot
 
-### Security
-> To be added
-- Hash passwords
-- Emails not shown in DOM - all managed in back-end via Python / Flask-mail
 
-### Access Restrictions
-> To be added
 
 ### Bugs
 - Logged out users shown variable error - can't find session dict
-
+> to do 
 
 ## Deployment
 > To be added
