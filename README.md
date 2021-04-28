@@ -210,7 +210,15 @@ The HTML validation shows no errors or warnings for pages. You can view [the res
 
 
 #### JSHint Results
+The script.js file in the EventProf Search app is lightweight, initialising predominantly the Materialize functions and functions for improved styling. The file passes the JSHint validation with the expected, common warnings; 
+- Warnings that the 'let' is available in ES6
+- Missing variables created by jQuery '$' selector or function parameters. 
 
+You can see an example of the warnings below: 
+
+<img src="./documentation/screenshots/validators/jshint.png" alt="jshint results" width="650">
+
+#### PEP8Online Results
 
 
 ### Lighthouse Testing
