@@ -2,8 +2,6 @@
 {% block title %}View Project{% endblock %}
 {% block content %}
 
-
-
 {% for project in data %}
 <header class="header-title-section">
     <div class="header-bg"></div>
@@ -11,8 +9,6 @@
         <h1>{{ project.title }}</h1>
     </div>
 </header>
-
-
 
 <section class="main-body">
     <div class="container center-on-large">
@@ -72,7 +68,6 @@
                 </div>
             </div>
 
-
             <!-- Send email modal -->
             <div class="modal" id="contact_modal">
                 <div class="modal-content">
@@ -128,11 +123,9 @@
                 {% endblock %}
             </div>
 
-
         </div>
         {% endfor %}
     </div>
-
 
 </section>
 
