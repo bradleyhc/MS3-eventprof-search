@@ -14,7 +14,7 @@ if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
-
+testing = True
 
 # Set user image upload config
 UPLOAD_FOLDER = './static/images/user_uploads/'
@@ -42,8 +42,12 @@ mongo = PyMongo(app)
 
 # Global Functions
 def check_login():
-    flash("You need to be logged in to view that page!")
-    return redirect(url_for('login'))
+    global testing
+    if testing:
+        return False
+    else:
+        flash("You need to be logged in to view that page!")
+        return redirect(url_for('login'))
 
 
 @app.route("/")
