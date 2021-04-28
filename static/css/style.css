@@ -734,7 +734,6 @@ span.divide-pipe {
     width: 100%;
     top: 0;
     display: flex;
-    scroll-snap-align: start;
 }
 
 #homepage_search_section {
@@ -813,15 +812,6 @@ span.divide-pipe {
 
 .hp-user-img:hover > .hp-user-img-overlay {
     top: 0px;
-}
-
-.snap-scroll-container {
-    scroll-snap-type: y proximity;
-    scroll-snap-points-y: repeat(100vh);
-}
-
-.snap-scroll-child {
-    scroll-snap-align: start;
 }
 
 #hp_featured_projects {
