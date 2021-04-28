@@ -219,6 +219,9 @@ You can see an example of the warnings below:
 <img src="./documentation/screenshots/validators/jshint.png" alt="jshint results" width="650">
 
 #### PEP8Online Results
+The EventProf Search Python codebase successfully runs through the PEP8 validator without any issue, as shown by the results below:
+
+<img src="./documentation/screenshots/validators/pep8.png" alt="pep8 results" width="650">
 
 
 ### Lighthouse Testing
