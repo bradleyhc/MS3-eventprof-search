@@ -85,6 +85,7 @@ contact modals and profile or project pages:
 <img src="./documentation/screenshots/devices/ipad-5-ls.png" alt="ipad alt device 3" width="300">
 
 #### Mobile
+<<<<<<< HEAD
 
 <img src="./documentation/screenshots/devices/mob-1.png" alt="mobile 1" width="200">
 <img src="./documentation/screenshots/devices/mob-2.png" alt="mobile 2" width="200">
@@ -92,6 +93,9 @@ contact modals and profile or project pages:
 <img src="./documentation/screenshots/devices/mob-4.png" alt="mobile 4" width="200">
 <img src="./documentation/screenshots/devices/mob-6.png" alt="mobile 6" width="200">
 <img src="./documentation/screenshots/devices/mob-7.png" alt="mobile 7" width="200">
+=======
+> to do 
+>>>>>>> 58ebb6c6a13c2b3b9093bd1d972780c68f14a86a
 
 ### Accessibility
 > to do 
