@@ -57,7 +57,12 @@ def homepage():
 
 @app.errorhandler(404)
 def not_found(err):
-    return render_template("404.html")
+    return render_template("errors/404.html")
+
+
+@app.errorhandler(500)
+def not_found_server(err):
+    return render_template("errors/500.html")
 
 
 @app.route("/privacy")
