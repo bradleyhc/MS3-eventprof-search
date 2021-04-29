@@ -1,21 +1,18 @@
 {% extends "base.html" %}
-{% block title %}404{% endblock %}
+{% block title %}500{% endblock %}
 {% block content %}
 
 <div class="home-bg"></div>
 
 
-<section onload="redirect();" class="v-center-align">
-
+<section class="v-center-align">
     <div class="d-flex login-section container center-on-large">
         <div class="col m-auto ml-0">
-            <h1 class="homepage-header emph-text">404</h1>
-            <h4 class="homepage-header">Looks like you're a little lost! Head back home by clicking below</h4>
+            <h1 class="homepage-header emph-text">500</h1>
+            <h4 class="homepage-header">Looks like something has gone awry! Head back home by clicking below</h4>
             <a href="{{url_for('homepage')}}" class="btn primary-btn btn-green gutter-t">Go back home</a>
         </div>
     </div>
-
-
 </section>
 
 {% endblock %}
