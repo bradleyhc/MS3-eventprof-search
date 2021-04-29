@@ -9,13 +9,19 @@ Users can contact each other as required via email message from within the site 
 ___
 
 ## Contents
-
-> to do 
+[User Experience](#user experience)
 
 ___
 
 ## User Experience (UX)
-> to do 
+As the site needs to encourage user interaction and enagagement, it is important that the first user impression emits a positive 
+emotional response. With the choice of softer colours, rounder edges, simplistic UI and fast load speeds, EventProf Search 
+intends to do just that. 
+
+In designing the application, the user stories, colour scheme, typography, tone have all been considered to contribute to this positive emotion and 
+encourage repeat interaction. 
+
+The data schema and how this data is collected, edited and displayed back to the user has also played an important role in the User Experience design, as noted below.
 
 ### User Stories
 - Event Freelancer
@@ -195,6 +201,7 @@ To secure backend environment variables such as passwords and 'secret keys', all
 - [Heroku](https://heroku.com) - Used for deployment of production application.
 
 ### Other
+>link these below
 - Name Generator - for generating randomised names for demo users.
 - Colour Hexa - for generating colour schemes and patterns.
 - Responsinator - user to generate and test responsiveness of application.
@@ -202,6 +209,8 @@ To secure backend environment variables such as passwords and 'secret keys', all
 ---
 
 ## Testing
+
+For further details on device, browser, accessibility testing and error handling, go to the full testing documentation [here](Testing/md)
 
 ### Code Validation
 The EventProf Search codebase has been checked through W3 HTML, Jigsaw CSS, JShint and PEP8Online validation services to eliminate or mitigate any errors.
@@ -241,91 +250,6 @@ The EventProf Search Python codebase successfully runs through the PEP8 validato
 
 <img src="./documentation/screenshots/validators/pep8.png" alt="pep8 results" width="650">
 
-
-### Lighthouse Testing
-As a benchmark for site performance, the EventProf Search site has had a number of Lighthouse reports performed 
-against it, using Chrome Devtools. For the most part, the four key results; Performance, Accessibility, 
-Best Practices and SEO scored highly between 90 - 100 for desktop and 50 - 89 for mobile. 
-
-Following a number of reports during testing, the demo user images and homepage image sizes have been scaled down 
-to reduce load time.
-
-At this stage, the remainder of improvement areas are predominantly due to the following reasons: 
-- Heroku requires a valid SSL certificate to ensure that server requests are completed over HTTPS not HTTP.
-- Third party JS and CSS files should be removed or reduced to improve the first contentful paint.
-
-In further releases of this website, the above issues would be addressed, however this would require removing the 
-styling codebase from Materialize to either a more lightweight library, or creating a custom library.
-
-You can see the Lighthouse report results below:
-#### Homepage (Desktop/Mobile):
-<img src="./documentation/screenshots/lh-homepage-desktop.png" alt="lighthouse homepage desktop" width="300">
-<img src="./documentation/screenshots/lh-homepage-mobile.png" alt="lighthouse homepage mobile" width="300">
-<br>
-
-#### Freelancers Page (Desktop/Mobile):
-<img src="./documentation/screenshots/lh-freelancers-desktop.png" alt="lighthouse freelancers desktop" width="300">
-<img src="./documentation/screenshots/lh-freelancers-mobile.png" alt="lighthouse freelancers mobile" width="300">
-<br>
-
-#### Projects Page (Desktop/Mobile):
-<img src="./documentation/screenshots/lh-projects-desktop.png" alt="lighthouse projects desktop" width="300">
-<img src="./documentation/screenshots/lh-projects-mobile.png" alt="lighthouse projects mobile" width="300">
-<br><br>
-
-### Browser Compatability
-The application has been tested across Safari, Chrome and Firefox as the three most popular browsers. After refactoring a 
-small number of incompatible styling bugs, the three browsers respond to the application almost identically with regards to style, performance and functionality.  
-
-Whilst the experience remains unimpacted, one bug is evident on Firefox only, whereby the input field does not expand to the full-width of its parent, as it does on Chrome / Safari.
-
-See the screenshots below to demonstrate this: 
-
-#### Chrome
-
-<img src="./documentation/screenshots/browsers/chrome-1.png" alt="chrome 1" width="300">
-<img src="./documentation/screenshots/browsers/chrome-2.png" alt="chrome 2" width="300">
-<img src="./documentation/screenshots/browsers/chrome-3.png" alt="chrome 3" width="300">
-
-#### Safari
-
-<img src="./documentation/screenshots/browsers/safari-1.png" alt="safari 1" width="300">
-<img src="./documentation/screenshots/browsers/safari-2.png" alt="safari 2" width="300">
-<img src="./documentation/screenshots/browsers/safari-3.png" alt="safari 3" width="300">
-
-#### Firefox
-
-<img src="./documentation/screenshots/browsers/moz-1.png" alt="moz 1" width="300">
-<img src="./documentation/screenshots/browsers/moz-2.png" alt="moz 2" width="300">
-<img src="./documentation/screenshots/browsers/moz-3.png" alt="moz 3" width="300">
-
-
-### Device Compatability
-EventProf Search has been tested across device breakpoints within Chrome Devtools, alongside a Samsung S9 and Iphone Xr. 
-
-As with browsers, a small number of styling adjustments were required, but the user experience across devices remains equal and unimpacted across devices. 
-
-As an example, see the below screenshots across Desktop, Tablet and Mobile: 
-
-#### Desktop
-<img src="./documentation/screenshots/devices/desktop-3.png" alt="desktop device 1" width="300">
-<img src="./documentation/screenshots/devices/desktop-2.png" alt="desktop device 2" width="300">
-<img src="./documentation/screenshots/devices/desktop-4.png" alt="desktop device 3" width="300">
-
-#### Tablet
-
-<img src="./documentation/screenshots/devices/ipad-2-ls.png" alt="ipad device 1" width="200">
-<img src="./documentation/screenshots/devices/ipad-3.png" alt="ipad device 2" width="200">
-<img src="./documentation/screenshots/devices/ipad-5.png" alt="ipad device 3" width="200">
-<img src="./documentation/screenshots/devices/ipad-1-ls.png" alt="ipad alt device 1" width="300">
-<img src="./documentation/screenshots/devices/ipad-2.png" alt="ipad alt device 2" width="300">
-<img src="./documentation/screenshots/devices/ipad-5-ls.png" alt="ipad alt device 3" width="300">
-
-#### Mobile
-> to do 
-
-### Accessibility
-> to do 
 
 ### User Story Testing
 The site has been tested against the initial user stories to ensure that it meets the minimum requirements of its users. Details of how the site fulfills these tests are outlined below:
@@ -376,32 +300,16 @@ The site has been tested against the initial user stories to ensure that it meet
     - To add multiple roles/skills, the Admin clicks the blue '+' button to the right of the final input and clicks the 'save' button. 
 
 
-### Defensive Programming
+### **For further details on browser, device, accessibility testing and error handling, [click here for the full testing documentation](/Testing.md)**
 
-To ensure the site continues to function when unexpected user input or action occurs, a number of defensive programming meausures have been put in place: 
-- User login check - this has been implemented to detect if the current user has a session active. 
-    - If there is no session active, Flask will by default return an 'undefined key error' if a page looks for and requires this. 
-    - To avoid this, each page route will determine if the session exists. If not, it will redirect the user to the login page, versus return the internal error.
-- 404 page
-    - This has been implemented using the Python 'errorhandler()' method. If a URL is inputted that returns a 404, the 404 HTML template is rendered, directing users back to the homepage. This response ensures that users experience a page similar to others they are used to, and not deterred from continuing to navigate the site.
->s.shot
-- Route / URL manipulation
-    - To prevent users from altering the URL string to edit other projects or users, the current session user 'id' must match that of the user / or the project 'submitter_slug' they are trying to edit or delete. If these do not match, the user is directed back to the project listing page, with a flash message notifying them that they must own the project to make edits to it.
-    - Similarly, if a user attempts to edit a profile which does not match their session 'slug' then they are directed back to the freelancer listing page and flash message is shown to warn the user that they can only edit their own profile.
+___
 
-- Accidental user error
-    - To prevent users inadvertantly overwriting their profile information or project details, an additional modal popup has been created on the 'edit profile' and 'edit project' pages. When a user clicks the 'update' button, a modal appears requiring secondary confirmation.
-    - The secondary confirmation will help to avoid accidental user mistakes which will in turn, allow for a better user experience. 
->s.shot
-
-
-
-### Bugs
-- Logged out users shown variable error - can't find session dict
-> to do 
 
 ## Deployment
 > To be added
+
+### Version control with GitHub
+
 
 ### Setting up the Flask App
 > To be added
