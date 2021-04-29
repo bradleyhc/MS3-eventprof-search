@@ -1,3 +1,5 @@
+![eventprof search](/documentation/screenshots/header_img.png)
+
 # EventProf Search
 
 ## About this site
@@ -5,6 +7,10 @@
 The purpose of the EventProf Search site is for Freelancers in the Events Industry to find open Event Projects and for Project Owners, to find suitable Freelancers.
 
 Users can contact each other as required via email message from within the site if they would like to discuss a role further.
+
+You can view the live site [here](https://eventprof-search.herokuapp.com/).
+
+<br>
 
 ___
 
@@ -72,8 +78,8 @@ slightly based on the data available.
 
 Wireframe links:
 - [View the Desktop wireframes here](documentation/wireframes/MS3_Wireframes_desktop.pdf)
-- [View the Tablet wireframes here]((documentation/wireframes/MS3_Wireframes_tablet.pdf))
-- [View the Mobile wireframes here]((documentation/wireframes/MS3_Wireframes_mobile.pdf))
+- [View the Tablet wireframes here](documentation/wireframes/MS3_Wireframes_tablet.pdf)
+- [View the Mobile wireframes here](documentation/wireframes/MS3_Wireframes_mobile.pdf)
 
 <br>
 
@@ -210,7 +216,7 @@ To secure backend environment variables such as passwords and 'secret keys', all
 
 ## Testing
 
-For further details on device, browser, accessibility testing and error handling, go to the full testing documentation [here](Testing/md)
+For further details on device, browser, accessibility testing and error handling, go to the full testing documentation [here](/Testing.md)
 
 ### Code Validation
 The EventProf Search codebase has been checked through W3 HTML, Jigsaw CSS, JShint and PEP8Online validation services to eliminate or mitigate any errors.
@@ -257,19 +263,26 @@ The site has been tested against the initial user stories to ensure that it meet
 #### Event Freelancer
 - As an Event Freelancer, I want to be able find suitable event projects that are looking for my skillset.
     - Freelancers can view the skillset required for projects both on the project card and under the header on the 'view project' page.
-    > insert s.shot
+    
+    <img src="./documentation/screenshots/browsers/safari-4.png" alt="project results" width="450">
 - I want to be able to search the listings for projects openings at a specific location, or with keywords specific to my requirements i.e 'Producer'.
     - Freelancers can use the searchbar at the top of the project listing page to search for their specific requirements.
     - If the search returns no results, then users can click the call-to-action button or 'clear' at the searchbar to view all projects.
+
+    <img src="./documentation/screenshots/testing/no-job.png" alt="no results" width="450">
 - When I have found a suitable project, I want to be able to contact the owner of that project to inform them of my interest.
     - Users can send an email to the project owner when viewing the project page, by clicking the 'Email Project Owner' button. 
     - When this CTA button is clicked, a modal popup will appear prompting the user to input the message. 
     - The user has the opportunity to change their email in the 'Your Email' input field.
     - To send the message, the user must agree to provide their email to the recipient.
+
+    <img src="./documentation/screenshots/devices/desktop-5.png" alt="email user" width="450">    
 - As the site allows for personalised profiles, I want the ability to update this information if necessary and publicly show this information to other users.
     - Users must complete their profile upon initial registration before it will be shown to other users.
     - Once created, users can update their name, rate, location, role, skills and bio in the 'edit profile' page.
     - All freelancers, unless hidden by an Admin, will be visible to other users.
+    
+    <img src="./documentation/screenshots/testing/edit_profile.png" alt="edit profile" width="450">
 
 #### Event Project Owner & Event Recruiter
 - As a Project Owner, I want to quickly find suitable Freelancers that could fill the position I have available.
@@ -279,6 +292,8 @@ The site has been tested against the initial user stories to ensure that it meet
 - I want the ability to check if Freelancers have the necessary skills for my project, without needing to read each profile bio.
     - Users can quickly identify a freelancer's key skills by looking at the skill tags on each profile card on the 'freelancers' page.
     - The above functionality also satisfies the event recruiter's need to identify skills against a prepared set of criteria.
+
+    <img src="./documentation/screenshots/devices/desktop-2.png" alt="user skills" width="450">
 - If a suitable Freelancer is found, I want to be able to contact them easily to request more information from them. 
     - Users can send an email to freelancers directly from the 'freelancers' listing page, but clicking the 'send email' button on the profile card.
     - Upon clicking this CTA button, a modal form will appear, prompting the user to enter their message, and confirm they agree to provide their email to the recipient.
@@ -286,18 +301,24 @@ The site has been tested against the initial user stories to ensure that it meet
     - A user with the user type 'employer' will be able to add projects using the 'Add Project' link in the navbar.
     - Clicking this link will open the 'add project' form page, where users can input the key details before submitting.
     - Form validation is in place on this form to ensure users are entering sufficient and appropriate data, e.g only alphanumeric characters in text fields and minimum of 5 characters in length. 
+    
+    <img src="./documentation/screenshots/testing/add-project.png" alt="add project" width="450">
 
 #### Site Admin
 - As a Site Admin, I want to be able to hide visibility of users on the freelancer listing page, if requested.
     - This can be achieved with the Admin user navigating to the 'admin' dashboard page on the navbar and selecting 'Update User Visibility'. 
     - Once selected, the Admin will see all users of the site, and will be able to switch visibility on or off.
     - If the switch input is switched, the page will refresh and implement the change, confirming that this has been done with a flash message appearing on screen.
+    
+    <img src="./documentation/screenshots/testing/update-users.png" alt="update user" width="450">
 - I want to have the ability to create new Skills and Roles for users to select when creating their profiles. 
     - This can be achieved by clicking either 'Update Skill Options' or 'Update Role Options' on the admin dashboard.
     - Once selected, the Admin will be presented with either the list of roles or skills that can be added to, or deleted.
     - To delete a role/skill, the Admin clicks the red 'X' next to the item. 
     - To add a role/skill, the Admin begins typing in the last input of the list and clicks the 'save' button. 
     - To add multiple roles/skills, the Admin clicks the blue '+' button to the right of the final input and clicks the 'save' button. 
+    
+    <img src="./documentation/screenshots/testing/update-skills.png" alt="update skills" width="450">
 
 
 ### **For further details on browser, device, accessibility testing and error handling, [click here for the full testing documentation](/Testing.md)**
@@ -306,20 +327,16 @@ ___
 
 
 ## Deployment
-> To be added
+
 
 ### Version control with GitHub
+The EventProf Search Codebase...
 
-
-### Setting up the Flask App
+### Deploying to Heroku
 > To be added
-- env.py
-    - setup the environment variables such as IP, PORT and SECRET KEY for the app to run locally
-    - Add env.py to .gitignore file to ensure variables are not published to production site or GitHub repo 
 
-- requirements.txt
-    pip freeze --local > requirements.txt
-
+### Forking a GitHub Repo
+> To be added
 
 
 ## Credits
