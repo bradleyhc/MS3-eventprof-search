@@ -26,7 +26,6 @@ $('#profile_img').on('input', function () {
     }
 });
 
-
 // Add class 'wide' on horizontal images to fill wrapper
 function resizeImage(img) {
     img_h = $(img).height();
@@ -47,6 +46,7 @@ function resizeImage(img) {
     }
 }
 
+// Validation for Materialize dropdowns. Credit: Code Instite Python Essentials Mini Project.
 validateDropdown();
 function validateDropdown() {
     let role = $('#role_dropdown > div > .dropdown-trigger').val();
@@ -66,17 +66,10 @@ function validateDropdown() {
     });
 }
 
-
 // Submit form on change of input -Rory McCrossan https://stackoverflow.com/questions/38738034/submit-form-on-change-of-input-field 
 $('.admin-hide-switch').change(function () {
     $(this).closest('.hide-user-form').submit();
 });
-
-/*
-$('.add-skill-input').change(function () {
-    $(this).closest('form').submit()
-})*/
-
 
 // Provide user with additional form inputs when 'plus' button clicked in Admin 'skills' page
 $('#add_input_skill').click(function () {
