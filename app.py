@@ -184,7 +184,7 @@ def edit_profile(name):
         return check_login()
 
     # get user slug
-    u_slug = session["user"]["id"]
+    u_slug = session["user"]["slug"]
 
     # Redirect if user tries to edit another user's profile
     if u_slug != name:

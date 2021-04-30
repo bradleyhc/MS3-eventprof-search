@@ -19,7 +19,7 @@
         {% endif %}
         <div class="row s12 d-flex">
             <div class="col s12 m-auto">
-                <form id="edit_profile" action="{{ url_for('edit_profile', name=info.uid) }}" method="POST"
+                <form id="edit_profile" action="{{ url_for('edit_profile', name=info.name_slug) }}" method="POST"
                     enctype="multipart/form-data">
                     <div class="d-flex s12 gutter-b">
                         <div class="profile-img-wrapper">
