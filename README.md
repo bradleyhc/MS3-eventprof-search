@@ -387,13 +387,58 @@ ___
 
 
 ### Version control with GitHub
-The EventProf Search Codebase...
+The EventProf Search Codebase uses GitHub for version control, using GitPod as the cloud-based IDE and Heroku to deploy the site into production. For details on forking this repo and deploying a local and production version, see below:
+
+### Installing the Flask App and dependancies
+Whether running locally or within an IDE, you must begin by installing the dependencies contained within the 'requirements.txt' file to run the Flask application.
+1. In the terminal of your workspace, install dependancies by running `pip3 install -r requirements.txt`
+2. In MongoDB, build a data model as outlined in 'Data Schema' above.
+    - Create a cluster with the collections as above
+3. Connect the cluster to Flask 
+    - On the 'clusters' page, click 'connect' in the top right above the cluster.
+    - Select 'Connect your Application'
+    - Select the driver 'Python 3.4 or later'
+    - Copy the MongoDB URL (you'll add this to the env.py variable below, replacing "<password>" and "myFirstDatabase" with their respective values based on your cluster)
+4. Create an 'env.py' file to store your environment variables. Ensure this file is added to '.gitignore' to avoid sensitive data being pushed to the repo. Within the 'env.py' file, add the following variables: 
+    `os.environ.setdefault("IP", "0.0.0.0/0")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("SECRET_KEY", "[GENERATE A UNIQUE KEY]")
+os.environ.setdefault("MONGO_URI",
+                      "YOUR MONGODB CONNECTION URL")
+os.environ.setdefault("MONGO_DBNAME", "[YOUR DB NAME]")
+os.environ.setdefault("MAIL_USERNAME", "[YOUR MAIL USERNAME]")
+os.environ.setdefault("MAIL_PASSWORD", "[YOUR MAIL PASSWORD]")
+os.environ.setdefault("MAIL_DEFAULT_SENDER", "[DEFAULT MAIL SENDER EMAIL ADDRESS]")`
+5. Run the app by running a command in the terminal `python3 app.py` 
+
 
 ### Deploying to Heroku
-> To be added
+1. Setup a Heroku app within Heroku dashboard with your region and app name. 
+2. Run `pip3 freeze --local > requirements.txt` in your workspace terminal to collect any new dependencies.
+3. Run `python app.py > Procfile` to create a Procfile required for Heroku deployment. 
+4. In Heroku, in your app, select the 'deploy' tab and 'connect with GitHub'.
+5. Search for your repo (or signin and connect GitHub account) and select this.
+6. In the 'settings' tab, click 'Reveal Config Vars' and input your environment variable from your local build in the key/value inputs.
+7. In your local workspace, add, commit and push your requirements.txt and Procfile. 
+8. In Heroku, select 'Automatic Deploys' to automatically rebuild the app when a new Git commit is pushed.
+9. Once the inital build is complete, click 'Open App' in the top right of the screen to view the application.
 
 ### Forking a GitHub Repo
-> To be added
+If you intend to fork this repository, follow the instructions below:
+1. Navigate to the [repository here](https://github.com/bradleyhc/MS3-eventprof-search).
+2. Clone the repo by clicking the 'code' dropdown in the top right corner above the commit history. 
+3. Copy and paste the HTTPS URL into a new terminal window, once navigated to the folder you wish to clone the repo into.
+4. Run `git clone [COPIED URL]`
+5. This command will have saved the repository in the folder path you selected, enabling you to run a local server and launch the app.
+
+### Creating a GitHub Branch
+If you have edit access to this repository, you are able to create a branch of the repo:
+1. At the top left of the file list, click the 'branch' button.
+2. In the input textbox, type your branch name.
+3. Click 'enter' to create the new branch.
+4. Run `git [BRANCH NAME]` in your editor / IDE to switch to the new branch and commit here instead. 
+
+___
 
 
 ## Credits
