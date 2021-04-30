@@ -9,19 +9,20 @@
 
         {% for role in roles|sort(attribute="role_name")%}
         <div class="d-flex space-between">
-            <input type="text" name="add_role[]" value="{{role.role_name}}" class="add-skill-input" disabled>
-            <a href="{{ url_for('delete_role', id=role.role_name) }}" class="btn delete-from-list"><i
+            <input type="text" id="disabled_input_{{loop.index}}" name="add_role[]" value="{{role.role_name}}" class="add-skill-input" disabled>
+            <label for="disabled_input_{{loop.index}}" class="hidden"></label>
+            <a aria-label="delete skill" href="{{ url_for('delete_role', id=role.role_name) }}" class="btn delete-from-list"><i
                     class="fas fa-times"></i></a>
         </div>
         {%endfor %}
         {% if roles is defined %}
         <div class="d-flex space-between">
             <div id="empty_role_inputs">
-                <input type="text" name="add_role[]" class="add-skill-input" required placeholder="Enter a new Role">
-
+                <input type="text" id="add_role_{{loop.index}}" name="add_role[]" class="add-skill-input" required placeholder="Enter a new Role">
+<label for="add_role_{{loop.index}}" class="hidden"></label>
             </div>
             <div class="d-flex">
-                <button type="button" id="add_input_role" class="btn add-to-list"><i class="fas fa-plus"></i></button>
+                <button aria-label="add new input" type="button" id="add_input_role" class="btn add-to-list"><i class="fas fa-plus"></i></button>
             </div>
         </div>
 

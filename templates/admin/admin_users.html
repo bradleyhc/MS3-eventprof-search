@@ -5,11 +5,12 @@
 
     <!-- Search bar section -->
     <form method="POST" class="col s12" action="{{ url_for('admin_search_freelancers')}}">
-        <h3><strong>Search all users</strong></h3>
+        <h2><strong>Search all users</strong></h2>
         <div class="row valign-wrapper center-align d-flex flex-col-mobile">
             <div class="search-bar-wrap">
                 <input type="text" name="query" id="query" minlength="3" class="validate search-bar" value="{{ query }}"
                     placeholder="Search by keyword or skill">
+                    <label for="query" class="hidden"></label>
             </div>
             <div class="search-bar-btn-wrap gutter-l">
                 <button class="btn secondary-btn btn-green-on-hover">

@@ -184,7 +184,7 @@ button.close-flash{
     margin-top: 0.5rem;
 }
 
-.input-field>label {
+.input-field>label, label {
     color: #5d5d5d;
 }
 
@@ -223,7 +223,7 @@ nav {
 }
 
 nav.scrolled {
-    background-color: #ef516f;
+    background-color: #E9163C;
     box-shadow: 1px 1px 16px -5px #3e3e3e;
     height: 64px;
 }

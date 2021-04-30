@@ -14,7 +14,7 @@
 <section class="main-body">
     <div class="container center-on-large p-top-50">
         <div class="row mb-50">
-            <h3><strong>Manage Users & Settings</strong></h3>
+            <h2><strong>Manage Users & Settings</strong></h2>
             <p>Hide users, or add skills or roles for users to select in profile or project creation.</p>
 
             <div class="d-flex admin-control-btns gutter-t flex-col-mobile">
@@ -42,58 +42,10 @@
         {% if roles is defined %}
         {% include "admin/admin_roles.html" %}
         {% endif %}
-
-
-
-        <!-- Show no results if search returns 0 -->
-        {% if results == 0 %}
-        <!-- <div class="card no-results-card col">
-            <div class="card-content">
-                <i class="fas fa-search"></i>
-                <p>Looks like we couldn't find any Opportunities for that search! <br>Click below to try another
-                    flavour!
-                </p>
-                <a href="{{url_for('get_projects')}}" class="btn primary-btn">Search all Opportunities</a>
-            </div>
-        </div>
-        {% else %}
-        <div class="row s12">
-            {% for project in projects %}
-            <div class="row">
-
-
-                <div class="card project-card">
-                    <div class="card-content">
-                        <div class="stacked-item">
-                            <h3 class="title-feat">{{ project.title }}</h3>
-                        </div>
-                        <div class="row d-flex stacked-item">
-                            <p><i class="fas fa-user pr-5"></i> {{ project.role }}</p><span class="divide-pipe"> |
-                            </span>
-                            <p><i class="fas fa-map-marker-alt pr-5"></i> {{ project.location }}</p><span
-                                class="divide-pipe"> | </span>
-                            <p><i class="fas fa-calendar-alt pr-5"></i> {{ project.start_date }} -
-                                {{ project.end_date }}</p>
-                        </div>
-                        <!-- Skills -->
-        <div class="row d-flex stacked-item">
-            {% for skill in project.skills %}
-            <div class="chip">{{skill}}</div>
-            {% endfor %}
-        </div>
-        <p>{{ project.description|truncate(200, False, '...') }}</p>
-    </div>
-    <div class="card-action">
-        <a href="{{ url_for('view_project', project_id=project.slug) }}" class="btn primary-btn">View
-            More</a>
-        <a href="#" class="gutter-l btn secondary-btn">Edit this Project</a>
-    </div>
-    </div>
-
-    </div> -->
+      
     {% endfor %}
     {% endif %}
-    </div>
+    
     </div>
 
 
