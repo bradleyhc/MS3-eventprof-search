@@ -15,7 +15,7 @@ You can view the live site [here](https://eventprof-search.herokuapp.com/).
 ___
 
 ## Contents
-## User Experience (UX)
+### User Experience (UX)
 - [User Stories](#user-stories)   
 - [Design](#design)
 - [Typography](#typography)
@@ -23,7 +23,7 @@ ___
 - [Colour](#colour)
 - [Wireframes](#wireframes)
 - [Data Schema](#data-schema)
-## Features
+### Features
 - [Sitewide](#sitewide)
 - [Homepage](#homepage)
 - [Freelancer listing page](#freelancer-listing-page)
@@ -32,24 +32,25 @@ ___
 - [Security](#security)
 - [Error Handling](#error-handling)
 - [Features to add in Future Releases](#features-to-add-in-future-releases)   
-## Technologies & Tools Used
+### Technologies & Tools Used
 - [Frontend Frameworks](#frontend-languages-&-frameworks)
 - [Backend Frameworks](#backend-tools-languages--frameworks)
 - [Other](#other)
-## Testing
+### Testing
 - [Code Validation](#code-validation)
 - [User Story Testing](#user-story-testing)   
     - [Event Freelancer](#event-freelancer)
     - [Event Project Owner & Event Recruiter](#event-project-owner--event-recruiter)
     - [Site Admin](#site-admin)
 - For Lighthouse, Devices, Browser, Accessibility, Error Handling and Bugs testing - see [further testing documentation](./documentation/Testing.md)
-## Deployment
+### Deployment
 - [Deploying to Heroku](#deploying-to-heroku)
 - [Forking a GitHub Repo](#forking-a-github-repo)
-## Credits
+### Credits
 
 
 ___
+<br>
 
 ## User Experience (UX)
 As the site needs to encourage user interaction and enagagement, it is important that the first user impression emits a positive 
@@ -231,7 +232,7 @@ To ensure that errors, both client-side and server-side are handled gracefully f
 <br>
 
 ---
-
+<br>
 
 ## Technologies Used
 
@@ -261,6 +262,7 @@ To ensure that errors, both client-side and server-side are handled gracefully f
 - [AMI Responsive](http://ami.responsivedesign.is/) - used to generate device images and test responsiveness of application.
 
 ---
+<br>
 
 ## Testing
 
@@ -382,6 +384,7 @@ The site has been tested against the initial user stories to ensure that it meet
 
 ___
 
+<br>
 
 ## Deployment
 
@@ -439,33 +442,36 @@ If you have edit access to this repository, you are able to create a branch of t
 4. Run `git [BRANCH NAME]` in your editor / IDE to switch to the new branch and commit here instead. 
 
 ___
-
+<br>
 
 ## Credits
 
 ### Images
 
 - Avatar image - by <a href="https://pixabay.com/users/janjf93-3084263/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1699635">janjf93</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1699635">Pixabay</a>
-- User image homepage - Photo by Joshua Mcknight from Pexels - https://www.pexels.com/photo/woman-sitting-on-a-chair-3290234/
-- User image homepage - Photo by Italo Melo from Pexels - https://www.pexels.com/photo/portrait-photo-of-smiling-man-with-his-arms-crossed-standing-in-front-of-white-wall-2379004/
+- User image homepage - Photo by [Joshua Mcknight](https://www.pexels.com/photo/woman-sitting-on-a-chair-3290234/) from Pexels 
+- User image homepage - Photo by [Italo Melo](https://www.pexels.com/photo/portrait-photo-of-smiling-man-with-his-arms-crossed-standing-in-front-of-white-wall-2379004/) from Pexels 
 - User image homepage - Image by <a href="https://pixabay.com/users/pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1868750">Pexels</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1868750">Pixabay</a>
 - User image homepage - Image by <a href="https://pixabay.com/users/1866946-1866946/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1252995">Mihai Paraschiv</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1252995">Pixabay</a>
+- For a full attribution log of demo user images, [click here](documentation/image_att_log.md)
 
 ### Guides 
 
-- Flexbox - https://css-tricks.com/dont-overthink-flexbox-grids/
-- Submit on change of input for user hidden fields
-- Get all values from specific key in PyMongo - https://stackoverflow.com/questions/40282812/get-all-the-values-of-a-particular-key
-- Sorting and limited PyMongo - https://stackoverflow.com/questions/4421207/how-to-get-the-last-n-records-in-mongodb 
-- Giudance on PyMongo $nin operator - https://stackoverflow.com/questions/18439612/mongodb-find-all-except-from-one-or-two-criteria
-- Strip method to remove whitespaces on string - https://www.journaldev.com/23763/python-remove-spaces-from-string#:~:text=Python%20String%20strip()%20function%20will%20remove%20leading%20and%20trailing%20whitespaces.&text=If%20you%20want%20to%20remove,or%20rstrip()%20function%20instead. 
-- Commit message descriptions - https://stackabuse.com/git-adding-a-commit-message/ 
-- Error Handling - https://www.geeksforgeeks.org/python-404-error-handling-in-flask/ 
-- Limit results in Jinja2 - Raju Sarkar https://stackoverflow.com/questions/12368475/jinja2-first-x-items-in-for-if-loop/30053006 
-- Markdown cheatsheet - https://www.markdownguide.org/cheat-sheet/ 
-- Smooth scroll to element with jQuery - Y. Joy Ch. Singha -  https://stackoverflow.com/questions/19012495/smooth-scroll-to-div-id-jquery
-- Change placeholder colour - https://www.w3schools.com/howto/howto_css_placeholder.asp
+- [Flexbox](https://css-tricks.com/dont-overthink-flexbox-grids/)
+- [Get all values from specific key in PyMongo](https://stackoverflow.com/questions/40282812/get-all-the-values-of-a-particular-key)
+- [Sorting and limited PyMongo](https://stackoverflow.com/questions/4421207/how-to-get-the-last-n-records-in-mongodb)
+- [Guidance on PyMongo $nin operator](https://stackoverflow.com/questions/18439612/mongodb-find-all-except-from-one-or-two-criteria)
+- [Strip method to remove whitespaces on string](https://www.journaldev.com/23763/python-remove-spaces-from-string#:~:text=Python%20String%20strip()%20function%20will%20remove%20leading%20and%20trailing%20whitespaces.&text=If%20you%20want%20to%20remove,or%20rstrip()%20function%20instead)
+- [Commit message descriptions](https://stackabuse.com/git-adding-a-commit-message/)
+- [Error Handling](https://www.geeksforgeeks.org/python-404-error-handling-in-flask/)
+- [Limit results in Jinja2 - Raju Sarkar](https://stackoverflow.com/questions/12368475/jinja2-first-x-items-in-for-if-loop/30053006)
+- [Markdown cheatsheet](https://www.markdownguide.org/cheat-sheet/)
+- [Remove duplicate commits after failed rebase](https://stackoverflow.com/questions/38454532/remove-duplicate-commits-introduced-after-bad-rebases)
+- [Smooth scroll to element with jQuery - Y. Joy Ch. Singha](https://stackoverflow.com/questions/19012495/smooth-scroll-to-div-id-jquery)
+- [Change placeholder colour](https://www.w3schools.com/howto/howto_css_placeholder.asp)
 
 
-### Other
-- Random name generator for users - https://www.behindthename.com/ 
+### Acknowledgements
+Thank you to my fellow students on the Code Institute course for supporting with queries and reviewing my work.
+
+In addition, a big thank you to Aaron Sinnott, my mentor for his continuous support and guidance on this project. 
