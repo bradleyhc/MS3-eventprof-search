@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block metatitle %}Edit My Profile{% endblock %}
+{% block title %}Edit My Profile{% endblock %}
 {% block content %}
 
 
@@ -34,15 +34,15 @@
                             <div class="row">
                                 <!-- First name input -->
                                 <div class="input-field col s12 m6">
-                                    <label for="first_name">First Name</label>
-                                    <input type="text" id="first_name" name="first_name" value="{{ info.first_name }}"
+                                    <label for="first_name_pg">First Name</label>
+                                    <input type="text" id="first_name_pg" name="first_name" value="{{ info.first_name }}"
                                         class="validation" pattern="[A-Za-zÀ-ž\s-]{1,}" required>
                                 </div>
 
                                 <!-- Last name input -->
                                 <div class="input-field col s12 m6">
-                                    <label for="last_name">Last Name</label>
-                                    <input type="text" id="last_name" name="last_name" value="{{ info.last_name }}"
+                                    <label for="last_name_pg">Last Name</label>
+                                    <input type="text" id="last_name_pg" name="last_name" value="{{ info.last_name }}"
                                         class="validation" pattern="[A-Za-zÀ-ž\s-]{1,}" minlength="2" maxlength="20" required>
                                 </div>
                             </div>
@@ -141,8 +141,8 @@
                     </div>
 
                     <!-- Initial update button (inits modal for second confirmation) -->
-                    <button id="update_profile_button_init" href="#confirm_update"
-                        class="btn modal-trigger secondary-btn" onclick="validateDropdown();">Update Profile</button>
+                    <a id="update_profile_button_init" href="#confirm_update"
+                        class="btn modal-trigger secondary-btn" onclick="validateDropdown();">Update Profile</a>
 
                     <div class="modal" id="confirm_update">
                         <div class="modal-content">

@@ -31,7 +31,9 @@
             <div class="col s12">
                 <div id="profile_content" class="d-flex s12 gutter-b">
                     <div class="profile-img-wrapper">
-                        <img onload="resizeImage(this);" class="profile-image" src="{{ info.profile_image or url_for('static', filename='/images/user_uploads/default_avatar.png')}}" alt="{{ info.first_name }}">
+                        <img onload="resizeImage(this);" class="profile-image"
+                            src="{{ info.profile_image or url_for('static', filename='/images/user_uploads/default_avatar.png')}}"
+                            alt="{{ info.first_name }}">
                     </div>
                     <div class="profile-content-wrapper">
                         <div class="profile-head-info">
@@ -111,13 +113,13 @@
                         <div class="row">
 
                             <label>
-                                <div class="input-field s12">
+                                <span class="input-field s12">
                                     <input type="checkbox" name="confirm_data" id="confirm_data_{{loop.index}}"
                                         class="validate" required>
                                     <span>By sending this message, I understand that my email address will be
                                         provided to
                                         {{info.first_name}} for them to send me a direct reply.</span>
-                                </div>
+                                </span>
                             </label>
 
                         </div>
