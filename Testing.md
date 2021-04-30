@@ -96,6 +96,8 @@ contact modals and profile or project pages:
 ### Accessibility
 > to do 
 
+- Materialize not recognising dropdown input labels as hidden
+
 
 ### Defensive Programming
 

@@ -190,7 +190,7 @@ button.close-flash{
 
 .sr-only {
     position: absolute;
-    left: -999;
+    left: -999px;
     opacity: 0;
 }
 
@@ -975,7 +975,7 @@ span.divide-pipe {
 }
 
 p.created-by {
-    color: #757575;
+    color: #6B6B6B;
     font-size: 1.1rem;
 }
 
