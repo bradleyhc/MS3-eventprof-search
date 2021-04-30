@@ -33,13 +33,13 @@
                         <div class="row">
                             <!-- Start date input -->
                             <div class="input-field s12 m6">
-                                <label for="title">Project Start Date</label>
+                                <label for="start_date">Project Start Date</label>
                                 <input type="text" id="start_date" name="start_date" class="datepicker validation"
                                     required>
                             </div>
                             <!-- End date input -->
                             <div class="input-field s12 m6">
-                                <label for="title">Project End Date</label>
+                                <label for="end_date">Project End Date</label>
                                 <input type="text" id="end_date" name="end_date" class="datepicker validation" required>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                                     <option value="{{ role.role_name }}">{{ role.role_name }}</option>
                                     {% endfor %}
                                 </select>
-                                <label>Required Role</label>
+                                <label for="role">Required Role</label>
                                 <span class="helper-text">Which role are you looking for with this project?</span>
                                 <span class="helper-text-error hide" id="helper_error_role">Please select a role
                                     before continuing!</span>

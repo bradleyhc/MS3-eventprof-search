@@ -247,6 +247,7 @@ One error remains on the 'Edit Project' and 'Edit Profile' pages, whereby due to
 one option selected under a single select dropdown input. This dropdown is however wrapped in Jinja2 logic, ensuring that only one of the inputs render for the user, depending on their user type.
 
 An example of this error can be seen below:
+
 <img src="./documentation/screenshots/validators/html-valid-2.png" alt="html results" width="450">
 
 
@@ -370,6 +371,8 @@ The EventProf Search Codebase...
 - Limit results in Jinja2 - Raju Sarkar https://stackoverflow.com/questions/12368475/jinja2-first-x-items-in-for-if-loop/30053006 
 - Markdown cheatsheet - https://www.markdownguide.org/cheat-sheet/ 
 - Smooth scroll to element with jQuery - Y. Joy Ch. Singha -  https://stackoverflow.com/questions/19012495/smooth-scroll-to-div-id-jquery
+- Change placeholder colour - https://www.w3schools.com/howto/howto_css_placeholder.asp
+
 
 ### Other
 - Random name generator for users - https://www.behindthename.com/ 

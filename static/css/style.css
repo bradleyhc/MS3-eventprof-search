@@ -40,6 +40,11 @@ p {
     margin: auto 0;
 }
 
+::placeholder {
+  color: #5d5d5d;
+  opacity: 1;
+}
+
 i.fas {
     line-height: inherit;
     min-width: 20px;
@@ -179,6 +184,10 @@ button.close-flash{
     margin-top: 0.5rem;
 }
 
+.input-field>label {
+    color: #5d5d5d;
+}
+
 .header-bg {
     background-image: url('../images/brand/ms3-bg-1920x540.png');
     min-height: 150px;
@@ -187,6 +196,7 @@ button.close-flash{
     width: 100vw;
     z-index: -1;
     top: 0;
+    background-color: #4f6ae1;
 }
 
 
