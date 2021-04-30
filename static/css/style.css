@@ -188,6 +188,12 @@ button.close-flash{
     color: #5d5d5d;
 }
 
+.sr-only {
+    position: absolute;
+    left: -999;
+    opacity: 0;
+}
+
 label.hidden {
     position: absolute;
     opacity: 0;

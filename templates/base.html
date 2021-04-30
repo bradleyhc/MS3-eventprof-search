@@ -72,7 +72,7 @@
                 <img src="{{url_for('static', filename='images/brand/ep-search-white.png')}}" alt="EventProf Search Logo white">
             </a>
             <a href="#" data-target="mobile-nav" class="sidenav-trigger hide-on-large-and-up right"><i
-                    class="fas fa-bars" aria-label="mobile navbar"></i></a>
+                    class="fas fa-bars" aria-hidden="true" aria-label="mobile navbar"></i><span class="sr-only">Mobile Nav</span></a>
             <ul id="mobile-nav" class="sidenav">
                 <li><a href="{{ url_for('homepage') }}">Home</a></li>
                 {% if session['user'] %}
