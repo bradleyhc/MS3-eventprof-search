@@ -15,7 +15,7 @@ You can view the live site [here](https://eventprof-search.herokuapp.com/).
 ___
 
 ## Contents
-## [User Experience (UX)](#user-experience-ux)
+## User Experience (UX)
 - [User Stories](#user-stories)   
 - [Design](#design)
 - [Typography](#typography)
@@ -23,7 +23,7 @@ ___
 - [Colour](#colour)
 - [Wireframes](#wireframes)
 - [Data Schema](#data-schema)
-## [Features](#features)
+## Features
 - [Sitewide](#sitewide)
 - [Homepage](#homepage)
 - [Freelancer listing page](#freelancer-listing-page)
@@ -32,21 +32,21 @@ ___
 - [Security](#security)
 - [Error Handling](#error-handling)
 - [Features to add in Future Releases](#features-to-add-in-future-releases)   
-## [Technologies & Tools Used](#technologies-and-tools-used)
+## Technologies & Tools Used
 - [Frontend Frameworks](#frontend-languages-&-frameworks)
-- [Backend Frameworks](#backend-tools,-languages-&-frameworks)
+- [Backend Frameworks](#backend-tools-languages-frameworks)
 - [Other](#other)
-## [Testing](#testing)
+## Testing
 - [Code Validation](#code-validation)
 - [User Story Testing](#user-story-testing)   
     - [Event Freelancer](#event-freelancer)
-    - [Event Project Owner & Event Recruiter](#event-project-owner-&-event-recruiter)
+    - [Event Project Owner & Event Recruiter](#event-project-owner-event-recruiter)
     - [Site Admin](#site-admin)
 - For Lighthouse, Devices, Browser, Accessibility, Error Handling and Bugs testing - see [further testing documentation](./documentation/Testing.md)
-## - [Deployment](#deployment)
+## Deployment
 - [Deploying to Heroku](#deploying-to-heroku)
 - [Forking a GitHub Repo](#forking-a-github-repo)
-## - [Credits](#credits)
+## Credits
 
 
 ___
