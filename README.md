@@ -208,6 +208,7 @@ To secure backend environment variables such as passwords and 'secret keys', all
 - **Authorisation**
     - Once users are logged in, visibility can be restricted further. For example if a user amends the URL in an attempt to edit another user's profile or project, a flash message is shown indicated that they do not have permissions, and the page is redirected to the 'freelancers' page, as shown below.
     <img src="./documentation/screenshots/testing/redirect-permissions.png" alt="redirect permissions" width="450">
+    
     - If instead a user attempts to view an admin page, to avoid the user being made aware that their is a page at the URL they are attempting to access, they are instead redirected to a 404 page.    
 
 - **User Emails**
