@@ -14,11 +14,12 @@
 
         <!-- Search bar section -->
         <form method="POST" class="col s12" action="{{ url_for('search_projects')}}">
-            <h3><strong>Search for suitable projects</strong></h3>
+            <h2><strong>Search for suitable projects</strong></h2>
             <div class="row valign-wrapper center-align d-flex flex-col-mobile">
                 <div class="search-bar-wrap">
                     <input type="text" name="query" id="query" minlength="3" class="validate search-bar"
                         value="{{ query }}" placeholder="Search by keyword or skill" pattern="[A-Za-z0-9\s]{1,}">
+                        <label for="query" class="hidden"></label>
                 </div>
                 <div class="search-bar-btn-wrap gutter-l">
                     <button class="btn secondary-btn btn-green-on-hover">
@@ -47,13 +48,13 @@
 
         <!-- Begin project loop -->
         <div class="row s12">
-            <h3 class="py-20 gutter-t"><strong>Current opportunities</strong></h3>
+            <h2 class="py-20 gutter-t"><strong>Current opportunities</strong></h2>
             {% for project in projects %}
             <div class="row">
                 <div class="card project-card">
                     <div class="card-content">
                         <div class="stacked-item">
-                            <h4 class="title-feat"><strong>{{ project.title }}</strong></h4>
+                            <h3 class="title-feat"><strong>{{ project.title }}</strong></h3>
                         </div>
                         <div class="row d-flex flex-wrap stacked-item flex-col-mobile">
                             <p><i class="fas fa-user pr-5"></i> {{ project.role }}</p><span class="divide-pipe hide-768"> |

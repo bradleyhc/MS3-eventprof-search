@@ -188,6 +188,11 @@ button.close-flash{
     color: #5d5d5d;
 }
 
+label.hidden {
+    position: absolute;
+    opacity: 0;
+}
+
 .header-bg {
     background-image: url('../images/brand/ms3-bg-1920x540.png');
     min-height: 150px;
@@ -964,7 +969,7 @@ span.divide-pipe {
 }
 
 p.created-by {
-    color: #777777;
+    color: #757575;
     font-size: 1.1rem;
 }
 
