@@ -2,7 +2,6 @@
 {% block title %}Edit Project{% endblock %}
 {% block content %}
 
-
 <header class="header-title-section">
     <div class="header-bg"></div>
     <div class="container m-auto center-on-large">
@@ -11,23 +10,19 @@
 </header>
 
 {% for project in data %}
-
 <section class="main-body">
     <div class="container p-top-50 center-on-large">
         <div class="row s12">
-
             <div class="col s12">
-
                 <form class="" action="{{ url_for('edit_project', project_id=project.slug) }}" method="POST">
-
                     <div class="d-flex s12">
-
                         <div class="profile-content-wrapper">
                             <div class="row">
                                 <!-- Title input -->
                                 <div class="input-field col s12">
                                     <label for="title">Project Title</label>
-                                    <input type="text" id="title" name="title" class="validation" pattern="[A-Za-zÀ-ž!.\s,]{1,}" minlength="5" maxlength="100"
+                                    <input type="text" id="title" name="title" class="validation"
+                                        pattern="[A-Za-zÀ-ž!.\s,]{1,}" minlength="5" maxlength="100"
                                         value="{{ project.title }}" required>
                                 </div>
                             </div>
@@ -49,12 +44,10 @@
                                 <!-- Location input -->
                                 <div class="input-field col s6">
                                     <label for="location">Location</label>
-                                    <input type="text" id="location" name="location" class="validation" pattern="[A-Za-zÀ-ž\s,]{1,}" minlength="5" maxlength="30"
+                                    <input type="text" id="location" name="location" class="validation"
+                                        pattern="[A-Za-zÀ-ž\s,]{1,}" minlength="5" maxlength="30"
                                         value="{{ project.location }}" required>
                                 </div>
-
-
-
                                 <!-- Role input -->
                                 <div class="input-field col s6" id="role_dropdown">
                                     <label for="role">Required Role</label>
@@ -75,9 +68,7 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="profile-about-wrapper">
-
                         <div class="row">
                             <!-- Skills input -->
                             <div class="input-field col s12" id="skills_dropdown">
@@ -96,29 +87,30 @@
                                     skill before continuing!</span>
                             </div>
                         </div>
-
                         <!-- Description input -->
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="description" name="description" class="materialize-textarea" minlength="5" maxlength="1000"
-                                    required>{{ project.description }}</textarea>
+                                <textarea id="description" name="description" class="materialize-textarea" minlength="5"
+                                    maxlength="1000" required>{{ project.description }}</textarea>
                                 <label for="description">Project Description</label>
                                 <span class="helper-text">Explain a little more about the project, company and the
                                     team.</span>
                             </div>
                         </div>
                     </div>
-
                     <!-- Initial update button (inits modal for second confirmation) -->
-                    <a id="update_project_button_init" href="#confirm_update" class="btn modal-trigger secondary-btn btn-slim"
-                        onclick="validateDropdown();">Update Project</a>
+                    <a id="update_project_button_init" href="#confirm_update"
+                        class="btn modal-trigger secondary-btn btn-slim" onclick="validateDropdown();">Update
+                        Project</a>
 
                     <div class="modal" id="confirm_update">
                         <div class="modal-content">
                             <h2>Are you sure?</h2>
-                            <p class="py-20">Clicking update below will overwrite any existing profile data with the new information
+                            <p class="py-20">Clicking update below will overwrite any existing profile data with the new
+                                information
                                 you have provided.</p>
-                            <button class="btn confirm-update-btn secondary-btn btn-slim" type="submit">Update Profile</button>
+                            <button class="btn confirm-update-btn secondary-btn btn-slim" type="submit">Update
+                                Profile</button>
                             <a class="btn cancel-btn modal-close  secondary-btn btn-slim btn-line">Cancel</a>
                         </div>
                     </div>

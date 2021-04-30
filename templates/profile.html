@@ -15,8 +15,6 @@
     </div>
 </header>
 
-
-
 <section class="main-body">
     <div class="container center-on-large">
         {% for info in data %}
@@ -26,8 +24,6 @@
         </div>
         {% endif %}
         <div class="row s12 d-flex">
-
-
             <div class="col s12">
                 <div id="profile_content" class="d-flex s12 gutter-b">
                     <div class="profile-img-wrapper">
@@ -61,7 +57,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="profile-about-wrapper d-flex s12">
                     <div class="row d-flex stacked-item">
                         <p class="p-break">{{ info.about }}</p>
@@ -76,8 +71,6 @@
                     {% endif %}
                 </div>
             </div>
-
-
             <!-- Nearby projects widget -->
             <div class="col s4 hide-992 gutter-l">
                 {% if info.name_slug == session['user']['slug']%}
@@ -86,7 +79,6 @@
                 {% include "widgets/similar_users_widget.html" %}
                 {% endif %}
             </div>
-
             <!-- Contact Form Modal -->
             <div class="modal" id="contact_modal">
                 <div class="modal-content">
@@ -133,17 +125,10 @@
                         </div>
                     </form>
                 </div>
-
             </div>
-
-
         </div>
         {% endfor %}
     </div>
-
-
-
-
 
 </section>
 

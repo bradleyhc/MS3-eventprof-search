@@ -25,19 +25,13 @@
                         <p class="gutter-r"><i class="fas fa-calendar-alt pr-5"></i> {{ project.start_date}} -
                             <span>{{project.end_date }}</span></p>
                     </div>
-
                 </div>
-
                 <!-- Skills -->
                 <div class="row d-flex stacked-item">
                     {% for skill in project.skills %}
                     <div class="chip">{{skill}}</div>
                     {% endfor %}
                 </div>
-
-
-
-
                 <div class="profile-about-wrapper">
                     <div class="row d-flex stacked-item">
                         <p>{{ project.description }}</p>
@@ -56,7 +50,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Delete project modal -->
             <div class="modal" id="confirm_delete">
                 <div class="modal-content">
@@ -67,7 +60,6 @@
                     <a class="btn modal-close  secondary-btn btn-slim btn-line">Cancel</a>
                 </div>
             </div>
-
             <!-- Send email modal -->
             <div class="modal" id="contact_modal">
                 <div class="modal-content">
@@ -116,13 +108,11 @@
                     </form>
                 </div>
             </div>
-
             <div class="col s4 hide-992">
                 {% include "widgets/similar_projects_widget.html" %}
                 {% block widget %}
                 {% endblock %}
             </div>
-
         </div>
         {% endfor %}
     </div>

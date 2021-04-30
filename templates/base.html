@@ -12,82 +12,86 @@
         crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
 
-{% block styles %}
-{% endblock %}
-    
+    {% block styles %}
+    {% endblock %}
+
 </head>
 
 <body>
     <div class="preloader-overlay">
-    <div class="preloader-wrapper big active">
-    <div class="spinner-layer spinner-blue-only">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div><div class="gap-patch">
-        <div class="circle"></div>
-      </div><div class="circle-clipper right">
-        <div class="circle"></div>
-      </div>
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
     <div class="navbar-fixed hide-on-med-and-down">
-    <nav class="">
-        <!-- Desktop -->
-        <div class="nav-wrapper">
-            <a href="{{url_for('homepage')}}" class="brand-logo left">
-                <img src="{{url_for('static', filename='images/brand/ep-search-white.png')}}" alt="EventProf Search Logo white">
-            </a>
-            <ul id="nav-desktop" class="right hide-on-med-and-down">
-                <li><a href="{{ url_for('homepage') }}">Home</a></li>
-                {% if session['user'] %}
-                
-                <li><a href="{{ url_for('get_freelancers') }}">Freelancers</a></li>
-                <li><a href="{{ url_for('get_projects') }}">Project Opportunities</a></li>
+        <nav class="">
+            <!-- Desktop -->
+            <div class="nav-wrapper">
+                <a href="{{url_for('homepage')}}" class="brand-logo left">
+                    <img src="{{url_for('static', filename='images/brand/ep-search-white.png')}}"
+                        alt="EventProf Search Logo white">
+                </a>
+                <ul id="nav-desktop" class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for('homepage') }}">Home</a></li>
+                    {% if session['user'] %}
 
-                {% if session and (session.user.u_type == 'employer') or (session.user.admin == True) %}
-                <li><a href="{{ url_for('add_project') }}">Add a Project</a></li>
-                
-                {% endif  %}
-                {% if session.user.admin == True %}
-                <li><a href="{{ url_for('admin_users') }}">Admin</a></li>
-                {% endif %}
-                
-                <li><a href="{{ url_for('profile', name=session['user']['slug']) }}">My Profile</a></li>
-                <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                {% else %}
-                <li><a class="modal-trigger" href="#modal-register">Register</a></li>
-                <li><a class="modal-trigger" href="#modal-login">Login</a></li>
-                {% endif %}
-                
-            </ul>
-        </div>
-    </nav>
-</div>
+                    <li><a href="{{ url_for('get_freelancers') }}">Freelancers</a></li>
+                    <li><a href="{{ url_for('get_projects') }}">Project Opportunities</a></li>
+
+                    {% if session and (session.user.u_type == 'employer') or (session.user.admin == True) %}
+                    <li><a href="{{ url_for('add_project') }}">Add a Project</a></li>
+
+                    {% endif  %}
+                    {% if session.user.admin == True %}
+                    <li><a href="{{ url_for('admin_users') }}">Admin</a></li>
+                    {% endif %}
+
+                    <li><a href="{{ url_for('profile', name=session['user']['slug']) }}">My Profile</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {% else %}
+                    <li><a class="modal-trigger" href="#modal-register">Register</a></li>
+                    <li><a class="modal-trigger" href="#modal-login">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </div>
     <nav class="hide-on-large-only mobile-nav">
         <div class="nav-wrapper">
             <!-- Mobile -->
             <a href="{{url_for('homepage')}}" class="brand-logo left">
-                <img src="{{url_for('static', filename='images/brand/ep-search-white.png')}}" alt="EventProf Search Logo white">
+                <img src="{{url_for('static', filename='images/brand/ep-search-white.png')}}"
+                    alt="EventProf Search Logo white">
             </a>
             <a href="#" data-target="mobile-nav" class="sidenav-trigger hide-on-large-and-up right"><i
-                    class="fas fa-bars" aria-hidden="true" aria-label="mobile navbar"></i><span class="sr-only">Mobile Nav</span></a>
+                    class="fas fa-bars" aria-hidden="true" aria-label="mobile navbar"></i><span class="sr-only">Mobile
+                    Nav</span></a>
             <ul id="mobile-nav" class="sidenav">
                 <li><a href="{{ url_for('homepage') }}">Home</a></li>
                 {% if session['user'] %}
-                
+
                 <li><a href="{{ url_for('get_freelancers') }}">Freelancers</a></li>
                 <li><a href="{{ url_for('get_projects') }}">Project Opportunities</a></li>
 
                 {% if session and (session.user.u_type == 'employer') or (session.user.admin == True) %}
                 <li><a href="{{ url_for('add_project') }}">Add a Project</a></li>
-                
+
                 {% endif  %}
                 {% if session.user.admin == True %}
                 <li><a href="{{ url_for('admin_users') }}">Admin</a></li>
                 {% endif %}
-                
+
                 <li><a href="{{ url_for('profile', name=session['user']['slug']) }}">My Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
                 {% else %}
@@ -106,11 +110,13 @@
                 <!-- Name inputs -->
                 <div class="row">
                     <div class="input-field col s6">
-                        <input name="first_name" id="first_name" type="text" class="validate" pattern="[A-Za-zÀ-ž\s-]{1,}" required>
+                        <input name="first_name" id="first_name" type="text" class="validate"
+                            pattern="[A-Za-zÀ-ž\s-]{1,}" required>
                         <label for="first_name">First Name</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="last_name" name="last_name" type="text" class="validate" pattern="[A-Za-zÀ-ž\s-]{1,}" required>
+                        <input id="last_name" name="last_name" type="text" class="validate" pattern="[A-Za-zÀ-ž\s-]{1,}"
+                            required>
                         <label for="last_name">Last Name</label>
                     </div>
                 </div>
@@ -126,7 +132,8 @@
                 <!-- Password input -->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input type="password" id="password" name="password" class="validate" required autocomplete="on">
+                        <input type="password" id="password" name="password" class="validate" required
+                            autocomplete="on">
                         <label for="password">Password</label>
                     </div>
                 </div>
@@ -146,7 +153,6 @@
                 </div>
             </form>
         </div>
-
     </div>
 
     <!-- Login modal -->
@@ -154,7 +160,6 @@
         <div class="modal-content">
             <h4 class="center-align py-20">Login</h4>
             <form id="login_form_modal" action="{{ url_for('login') }}" method="POST" class="col s12">
-
                 <!-- Email input -->
                 <div class="row">
                     <div class="input-field col s12">
@@ -162,15 +167,14 @@
                         <label for="email_lg">Email</label>
                     </div>
                 </div>
-
                 <!-- Password input -->
                 <div class="row">
                     <div class="input-field col s12">
-                        <input type="password" id="password_lg" name="password_lg" class="validate" required autocomplete="on">
+                        <input type="password" id="password_lg" name="password_lg" class="validate" required
+                            autocomplete="on">
                         <label for="password_lg">Password</label>
                     </div>
                 </div>
-
                 <div class="row center-align m-top-40">
                     <button type="submit" class="btn-large secondary-btn cta-btn">Login</button>
                 </div>
@@ -178,12 +182,9 @@
         </div>
     </div>
 
-
-
-
     <!-- Flash messages -->
     <div class="flashes">
-    {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages%}
             <div class="flash-msg">
@@ -192,7 +193,7 @@
             </div>
             {% endfor %}
         {% endif %}
-    {% endwith %}
+        {% endwith %}
     </div>
 
     <!-- Main content -->
@@ -204,17 +205,17 @@
     <!-- Footer -->
 
     <footer>
-    <div class="d-flex space-between">
-        <div>
-        <p>EventProf Search 2021 &copy;</p>
-        </div>
         <div class="d-flex space-between">
-            <p>
-        <a href="{{url_for('privacy')}}">Privacy</a>
-        <a href="mailto:bradleyh.cooney@gmail.com" class="gutter-l">Email Us</a>
-        </p>
+            <div>
+                <p>EventProf Search 2021 &copy;</p>
+            </div>
+            <div class="d-flex space-between">
+                <p>
+                    <a href="{{url_for('privacy')}}">Privacy</a>
+                    <a href="mailto:bradleyh.cooney@gmail.com" class="gutter-l">Email Us</a>
+                </p>
+            </div>
         </div>
-    </div>
     </footer>
 
     <!-- Scripts -->

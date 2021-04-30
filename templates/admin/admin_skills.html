@@ -1,27 +1,28 @@
 {% block admin_skills %}
 
-
-<h3 class="gutter-b"><strong>Add or Delete Skill Options</strong></h3>
+<h2 class="gutter-b"><strong>Add or Delete Skill Options</strong></h2>
 
 <div id="admin_skills" class="tab">
-
     <form action="{{ url_for('admin_update_skills') }}" method="POST" class="update-skill-form">
         {% for skill in skills|sort(attribute="skill_name")%}
         <div class="d-flex space-between">
-            <input type="text" id="disabled_input_{{loop.index}}" name="add_skill[]" value="{{skill.skill_name}}" class="add-skill-input" disabled>
+            <input type="text" id="disabled_input_{{loop.index}}" name="add_skill[]" value="{{skill.skill_name}}"
+                class="add-skill-input" disabled>
             <label for="disabled_input_{{loop.index}}" class="hidden"></label>
-            <a aria-label="delete skill" href="{{ url_for('delete_skill', id=skill.skill_name) }}" class="btn delete-from-list"><i
-                    class="fas fa-times"></i></a>
+            <a aria-label="delete skill" href="{{ url_for('delete_skill', id=skill.skill_name) }}"
+                class="btn delete-from-list"><i class="fas fa-times"></i></a>
         </div>
         {%endfor %}
         {% if skills is defined %}
         <div class="d-flex space-between">
             <div id="empty_skill_inputs" class="add-input">
-                <input type="text" id="add_skill" name="add_skill[]" class="add-skill-input" placeholder="Enter a new Skill">
+                <input type="text" id="add_skill" name="add_skill[]" class="add-skill-input"
+                    placeholder="Enter a new Skill">
                 <label for="add_skill" class="hidden"></label>
             </div>
             <div class="d-flex">
-                <button aria-label="add new input" type="button" id="add_input_skill" class="btn add-to-list"><i class="fas fa-plus"></i></button>
+                <button aria-label="add new input" type="button" id="add_input_skill" class="btn add-to-list"><i
+                        class="fas fa-plus"></i></button>
             </div>
         </div>
         <div class="m-top-20">
@@ -30,8 +31,5 @@
         {% endif %}
     </form>
 </div>
-
-
-
 
 {% endblock %}

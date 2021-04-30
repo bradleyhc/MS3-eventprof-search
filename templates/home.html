@@ -4,32 +4,31 @@
 
 <div class="home-bg"></div>
 
-
-    <section>
-        <div class="homepage-fs-slide">
-            <div id="homepage_search_section" class="container s12">
-                <div class="d-flex">
-                    <div class="col" id="hp_user_search">
-                        <h1 class="homepage-header">Discover <span class="emph-text">Freelance Talent</span> for your
-                            Event
-                            Projects</h1>
-                        <form method="POST" class="col s12" action="{{ url_for('search_freelancers')}}">
-                            <input type="text" id="homepage_search" name="query" class="hp-search-input"
-                                placeholder="Search for freelancers by role, location, skill">
-                                <label for="homepage_search" class="sr-only">Homepage search</label>
-                            <button type="submit" class="btn btn-large primary-btn btn-green">Search Freelancers</button>
-                        </form>
-                    </div>
-                    <div class="col" id="hp_user_images">
-                        <!-- Data imports from JSON -->
-                    </div>
+<section>
+    <div class="homepage-fs-slide">
+        <div id="homepage_search_section" class="container s12">
+            <div class="d-flex">
+                <div class="col" id="hp_user_search">
+                    <h1 class="homepage-header">Discover <span class="emph-text">Freelance Talent</span> for your
+                        Event
+                        Projects</h1>
+                    <form method="POST" class="col s12" action="{{ url_for('search_freelancers')}}">
+                        <input type="text" id="homepage_search" name="query" class="hp-search-input"
+                            placeholder="Search for freelancers by role, location, skill">
+                        <label for="homepage_search" class="sr-only">Homepage search</label>
+                        <button type="submit" class="btn btn-large primary-btn btn-green">Search Freelancers</button>
+                    </form>
+                </div>
+                <div class="col" id="hp_user_images">
+                    <!-- Data imports from JSON -->
                 </div>
             </div>
         </div>
-    </section>
-    <section class="snap-scroll-child">
-        <div class="homepage-fs-slide fixed-bottom flex-col">
-            <div class="container">
+    </div>
+</section>
+<section class="snap-scroll-child">
+    <div class="homepage-fs-slide fixed-bottom flex-col">
+        <div class="container">
             <h2 class="hp-section-header title-feat gutter-b">A few of our recent Project Opportunities</h2>
             <div id="hp_featured_projects" class="col">
                 {% for project in projects %}
@@ -53,11 +52,10 @@
                     </div>
                 </div>
                 {% endfor %}
-
             </div>
         </div>
-        
-</div>
+
+    </div>
 </section>
 
 {% endblock %}

@@ -1,39 +1,36 @@
 {% block admin_roles %}
 
-
-<h3 class="gutter-b"><strong>Add or Delete Role Options</strong></h3>
+<h2 class="gutter-b"><strong>Add or Delete Role Options</strong></h2>
 
 <div id="admin_roles" class="tab">
-
     <form action="{{ url_for('admin_update_roles') }}" method="POST" class="update-skill-form">
 
         {% for role in roles|sort(attribute="role_name")%}
         <div class="d-flex space-between">
-            <input type="text" id="disabled_input_{{loop.index}}" name="add_role[]" value="{{role.role_name}}" class="add-skill-input" disabled>
+            <input type="text" id="disabled_input_{{loop.index}}" name="add_role[]" value="{{role.role_name}}"
+                class="add-skill-input" disabled>
             <label for="disabled_input_{{loop.index}}" class="hidden"></label>
-            <a aria-label="delete skill" href="{{ url_for('delete_role', id=role.role_name) }}" class="btn delete-from-list"><i
-                    class="fas fa-times"></i></a>
+            <a aria-label="delete skill" href="{{ url_for('delete_role', id=role.role_name) }}"
+                class="btn delete-from-list"><i class="fas fa-times"></i></a>
         </div>
         {%endfor %}
         {% if roles is defined %}
         <div class="d-flex space-between">
             <div id="empty_role_inputs">
-                <input type="text" id="add_role" name="add_role[]" class="add-skill-input" required placeholder="Enter a new Role">
-<label for="add_role" class="hidden"></label>
+                <input type="text" id="add_role" name="add_role[]" class="add-skill-input" required
+                    placeholder="Enter a new Role">
+                <label for="add_role" class="hidden"></label>
             </div>
             <div class="d-flex">
-                <button aria-label="add new input" type="button" id="add_input_role" class="btn add-to-list"><i class="fas fa-plus"></i></button>
+                <button aria-label="add new input" type="button" id="add_input_role" class="btn add-to-list"><i
+                        class="fas fa-plus"></i></button>
             </div>
         </div>
-
         <div class="m-top-20">
             <button type="submit" class="btn full-width-btn-mobile primary-btn">Save Roles</button>
         </div>
         {% endif %}
     </form>
 </div>
-
-
-
 
 {% endblock %}

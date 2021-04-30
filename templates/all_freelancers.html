@@ -9,9 +9,6 @@
     </div>
 </header>
 
-
-
-
 <section class="main-body">
     <div class="container center-on-large wide-container">
         <!-- Search bar section -->
@@ -19,9 +16,9 @@
             <h2><strong>Search for relevant Freelancers</strong></h2>
             <div class="row valign-wrapper center-align d-flex flex-col-mobile">
                 <div class="search-bar-wrap">
-                    <input type="text" name="query" id="query" minlength="3" class="validate search-bar" pattern="[A-Za-z0-9\s]{1,}"
-                        value="{{ query }}" placeholder="Search by keyword or skill">
-                        <label for="query" class="sr-only">Search Freelancers</label>
+                    <input type="text" name="query" id="query" minlength="3" class="validate search-bar"
+                        pattern="[A-Za-z0-9\s]{1,}" value="{{ query }}" placeholder="Search by keyword or skill">
+                    <label for="query" class="sr-only">Search Freelancers</label>
                 </div>
                 <div class="search-bar-btn-wrap gutter-l">
                     <button class="btn secondary-btn btn-green-on-hover">
@@ -33,7 +30,6 @@
             </div>
         </form>
         <!-- End search bar section -->
-
 
         <!-- Show no results if search returns 0 -->
         {% if results == 0 %}
@@ -51,13 +47,13 @@
 
             <!-- Show freelancer loop if search > 0 or no search query  -->
             {% for freelancer in freelancers %}
-
-
             <!-- Freelancer card -->
             <div class="card col freelancer-card">
                 <div class="card-content">
                     <div class="card-img-wrapper">
-                        <img onload="resizeImage(this);" class="profile-image loop" id="prf_img_{{loop.index}}" src="{{ freelancer.profile_image or url_for('static', filename='/images/user_uploads/default_avatar.png')}}" alt="{{ freelancer.first_name }}">
+                        <img onload="resizeImage(this);" class="profile-image loop" id="prf_img_{{loop.index}}"
+                            src="{{ freelancer.profile_image or url_for('static', filename='/images/user_uploads/default_avatar.png')}}"
+                            alt="{{ freelancer.first_name }}">
                     </div>
                     <div class="card-info">
                         <div class="card-stacked-item">
@@ -67,8 +63,6 @@
                             <p class="pr-5"><i class="fas fa-user"></i>{{ freelancer.role }}</p>
                             <p class="pr-5"><i class="fas fa-map-marker-alt"></i>{{ freelancer.location|capitalize }}
                             </p>
-
-
                         </div>
                         <!-- Skills -->
                         <div class="row card-stacked-item inline-flex-gap">
@@ -124,7 +118,7 @@
                                         <span>By sending this message, I understand that my email address will be
                                             provided to
                                             {{freelancer.first_name}} for them to send me a direct reply.</span>
-                                        </span>
+                                    </span>
                                 </label>
 
                             </div>
@@ -139,17 +133,12 @@
                             </div>
                         </form>
                     </div>
-
                 </div>
-
             </div>
-
-
             {% endfor %}
             {% endif %}
         </div>
     </div>
-
 </section>
 
 {% endblock %}

@@ -2,14 +2,12 @@
 {% block title %}Edit My Profile{% endblock %}
 {% block content %}
 
-
 <header class="header-title-section">
     <div class="header-bg"></div>
     <div class="container m-auto center-on-large">
         <h1>Edit My Profile</h1>
     </div>
 </header>
-
 
 <section class="main-body">
     <div class="container center-on-large">
@@ -20,14 +18,13 @@
         </div>
         {% endif %}
         <div class="row s12 d-flex">
-            
             <div class="col s12 m-auto">
-
                 <form id="edit_profile" action="{{ url_for('edit_profile', name=info.name_slug) }}" method="POST"
                     enctype="multipart/form-data">
                     <div class="d-flex s12 gutter-b">
                         <div class="profile-img-wrapper">
-                            <img onload="resizeImage(this);" class="profile-image" src="{{ info.profile_image or url_for('static', filename='/images/user_uploads/default_avatar.png')}}"
+                            <img onload="resizeImage(this);" class="profile-image"
+                                src="{{ info.profile_image or url_for('static', filename='/images/user_uploads/default_avatar.png')}}"
                                 alt="{{ info.first_name }}">
                         </div>
                         <div class="profile-content-wrapper gutter-l">
@@ -35,42 +32,45 @@
                                 <!-- First name input -->
                                 <div class="input-field col s12 m6">
                                     <label for="first_name_pg">First Name</label>
-                                    <input type="text" id="first_name_pg" name="first_name" value="{{ info.first_name }}"
-                                        class="validation" pattern="[A-Za-zÀ-ž\s-]{1,}" required>
+                                    <input type="text" id="first_name_pg" name="first_name"
+                                        value="{{ info.first_name }}" class="validation" pattern="[A-Za-zÀ-ž\s-]{1,}"
+                                        required>
                                 </div>
-
                                 <!-- Last name input -->
                                 <div class="input-field col s12 m6">
                                     <label for="last_name_pg">Last Name</label>
                                     <input type="text" id="last_name_pg" name="last_name" value="{{ info.last_name }}"
-                                        class="validation" pattern="[A-Za-zÀ-ž\s-]{1,}" minlength="2" maxlength="20" required>
+                                        class="validation" pattern="[A-Za-zÀ-ž\s-]{1,}" minlength="2" maxlength="20"
+                                        required>
                                 </div>
                             </div>
                             <div class="row">
                                 <!-- Image input -->
                                 <div class="input-field col s12 m6">
                                     <label for="profile_img">Profile Image</label>
-                                    <input type="text" id="profile_img" name="profile_img" value="{{ info.profile_image }}" 
-                                        class="validation" pattern="https://.*" title="Please enter a valid url beginning with 'https://'" placeholder="Image URL Link">
+                                    <input type="text" id="profile_img" name="profile_img"
+                                        value="{{ info.profile_image }}" class="validation" pattern="https://.*"
+                                        title="Please enter a valid url beginning with 'https://'"
+                                        placeholder="Image URL Link">
                                 </div>
                                 <!-- Rate input -->
                                 <div class="input-field col s12 m6">
                                     <label for="rate">Day Rate</label>
                                     {% if info.user_type == 'employer' %}
-                                    <input type="text" id="rate" name="rate" value="n/a" class="validation"
-                                        disabled>
-                                        {% else %}
-                                        <input type="text" id="rate" name="rate" value="{{ info.rate }}" class="validation"
+                                    <input type="text" id="rate" name="rate" value="n/a" class="validation" disabled>
+                                    {% else %}
+                                    <input type="text" id="rate" name="rate" value="{{ info.rate }}" class="validation"
                                         required pattern="[0-9]{1,}" minlength="2" maxlength="3">
-                                        {% endif %}
-                                </div>                                
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="row">
                                 <!-- Location input -->
                                 <div class="input-field col s12 m6">
                                     <label for="location">Location</label>
                                     <input type="text" id="location" name="location" value="{{ info.location }}"
-                                        class="validation" required pattern="[A-Za-zÀ-ž\s,]{1,}" minlength="2" maxlength="30">
+                                        class="validation" required pattern="[A-Za-zÀ-ž\s,]{1,}" minlength="2"
+                                        maxlength="30">
                                 </div>
                                 <!-- Role input -->
                                 <div class="input-field col s12 m6" id="role_dropdown">
@@ -111,17 +111,15 @@
                                     skill before continuing!</span>
                             </div>
                         </div>
-
                         <!-- About input -->
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="about_textarea" name="about_textarea" class="materialize-textarea" minlength="5" maxlength="1000"
-                                    required>{{ info.about }}</textarea>
+                                <textarea id="about_textarea" name="about_textarea" class="materialize-textarea"
+                                    minlength="5" maxlength="1000" required>{{ info.about }}</textarea>
                                 <label for="about_textarea">About Me</label>
                                 <span class="helper-text">Tell others a little about yourself.</span>
                             </div>
                         </div>
-
                         <!-- Account type -->
                         <div class="row">
                             <div class="col s12 switch gutter-b ">
@@ -141,8 +139,8 @@
                     </div>
 
                     <!-- Initial update button (inits modal for second confirmation) -->
-                    <a id="update_profile_button_init" href="#confirm_update"
-                        class="btn modal-trigger secondary-btn" onclick="validateDropdown();">Update Profile</a>
+                    <a id="update_profile_button_init" href="#confirm_update" class="btn modal-trigger secondary-btn"
+                        onclick="validateDropdown();">Update Profile</a>
 
                     <div class="modal" id="confirm_update">
                         <div class="modal-content">

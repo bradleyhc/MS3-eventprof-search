@@ -4,20 +4,16 @@
 
 <div class="home-bg"></div>
 
-
 <section class="v-center-align">
-
     <div class="d-flex login-section container center-on-large flex-wrap">
         <div class="col m-auto ml-0">
             <h1 class="homepage-header emph-text">Welcome Back!</h1>
             <h2 class="homepage-header">Come on in...</h2>
-
         </div>
         <div class="col login-form">
             <div class="modal-content">
                 <h4 class="center-align">Login</h4>
                 <form id="login_form_page" action="{{ url_for('login') }}" method="POST" class="col s12">
-
                     <!-- Email input -->
                     <div class="row">
                         <div class="input-field col s12">
@@ -25,15 +21,14 @@
                             <label for="email_lg_page">Email</label>
                         </div>
                     </div>
-
                     <!-- Password input -->
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="password" id="password_lg_page" name="password_lg" class="validate" required autocomplete="on">
+                            <input type="password" id="password_lg_page" name="password_lg" class="validate" required
+                                autocomplete="on">
                             <label for="password_lg_page">Password</label>
                         </div>
                     </div>
-
                     <div class="row center-align m-top-40">
                         <button type="submit" class="btn btn-large primary-btn btn-green cta-btn">Login</button>
                     </div>
@@ -41,7 +36,6 @@
             </div>
         </div>
     </div>
-
 
 </section>
 {% endblock %}
