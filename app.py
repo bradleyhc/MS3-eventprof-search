@@ -129,7 +129,7 @@ def login():
 
     # Redirect to profile if user logged in
     if not session.get("user") is None:
-        return redirect(url_for("profile", name=session['user']['slug']))
+        return redirect(url_for("profile", name=session['user']['id']))
 
     if request.method == "POST":
 
