@@ -98,7 +98,7 @@ between a minority of fields.
 
 An outline of the data schema can be found below:
 
-![Eventprof Search DB Schema](documentation/screenshots/DB-schema-v2.png)
+![Eventprof Search DB Schema](documentation/screenshots/db-schema-v3.png)
 
 - #### Users table collection
     - Basic profile fields such as name, email, role, skills, rate, about, location.
@@ -239,7 +239,15 @@ See below an example of the W3C Jigsaw results and [the link here](https://jigsa
 
 
 #### W3 HTML Validator
-The HTML validation shows no errors or warnings for pages. You can view [the results here](https://validator.w3.org/nu/?doc=http%3A%2F%2Feventprof-search.herokuapp.com%2F).
+Every effort has been made to eliminate HTML errors across all pages. As the W3 Validator does not recognise Jinja2 templating as valid HTML, when the codebase was copied across for validation, many of the errors upon validation were a result of the Jinja syntax.
+
+To avoid providing false errors, a further validation was made on each page by using the source code of the rendered DOM to ensure that all errors were caught.
+
+One error remains on the 'Edit Project' and 'Edit Profile' pages, whereby due to Jinja2 logic not recognised by the validator, it believes there is more than 
+one option selected under a single select dropdown input. This dropdown is however wrapped in Jinja2 logic, ensuring that only one of the inputs render for the user, depending on their user type.
+
+An example of this error can be seen below:
+<img src="./documentation/screenshots/validators/html-valid-2.png" alt="html results" width="450">
 
 
 #### JSHint Results
