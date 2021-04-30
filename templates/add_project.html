@@ -49,13 +49,14 @@
                             </div>
                             <!-- Role input -->
                             <div class="input-field s12 m6" id="role_dropdown">
-                                <label for="role">Required Role</label>
                                 <select id="role" name="role">
                                     <option value="" disabled selected>Select required role</option>
                                     {% for role in roles %}
                                     <option value="{{ role.role_name }}">{{ role.role_name }}</option>
                                     {% endfor %}
                                 </select>
+                                <label for="role" class="sr-only">Required Role</label>
+                                <label>Required Role</label>
                                 <span class="helper-text">Which role are you looking for with this project?</span>
                                 <span class="helper-text-error hide" id="helper_error_role">Please select a role
                                     before continuing!</span>
@@ -67,13 +68,14 @@
                     <div class="row">
                         <!-- Skills input -->
                         <div class="input-field s12" id="skills_dropdown">
-                            <label for="skills">Which skills are you looking for?</label>
                             <select id="skills" name="skills[]" multiple required>
                                 <option value="" disabled>Select required skills</option>
                                 {% for skill in skills %}
                                 <option value="{{ skill.skill_name }}">{{ skill.skill_name }}</option>
                                 {% endfor %}
                             </select>
+                            <label for="skills" class="sr-only">Which skills are you looking for?</label>
+                            <label>Which skills are you looking for?</label>
                             <span class="helper-text-error hide" id="helper_error_skill">Please select at least one
                                 skill before continuing!</span>
                         </div>

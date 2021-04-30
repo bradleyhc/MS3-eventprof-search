@@ -3,8 +3,6 @@
 
 
 /* Global Properties */
-
-
 body{
     background-color: #455FCD;
     position: relative;
@@ -275,8 +273,6 @@ h4.title-feat {
     transition: 0.3s ease-in-out;
     border-radius: 5px;
 }
-
-
 
 .primary-btn {
     font-size: 1.4rem;
