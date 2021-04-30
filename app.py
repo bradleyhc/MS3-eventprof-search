@@ -11,19 +11,11 @@ if os.path.exists("env.py"):
 
 
 app = Flask(__name__)
-
-# Set user image upload config
-
-# UPLOAD_FOLDER = './static/images/user_uploads/'
-# ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+session['user'] = "testing"
 
 app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-
-# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-# app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024
-
 
 # Mail config credits http://pythonbasics.org/flask-mail/
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
