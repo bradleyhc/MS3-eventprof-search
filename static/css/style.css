@@ -22,7 +22,7 @@ h1 {
 }
 
 h2 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
 }
 
 
@@ -32,7 +32,7 @@ h3 {
 }
 
 h4 {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
 }
 
 p {
@@ -297,7 +297,7 @@ h4.title-feat {
 
 .btn-line {
     border: 2px solid #FF3E63;
-    color: #FF3E63;
+    color: #E6002E;
     background-color: #fff;
 }
 
@@ -444,18 +444,13 @@ input[type=text]:not(.browser-default).search-bar:focus {
 
 .chip {
     background-color: #fff;
-    color: #FF3E63;
+    color: #E6002E;
     border: 2px solid #FF3E63;
     line-height: 28px;
     margin: auto;
     margin-right: 5px;
     margin-left: 0px;
     margin-top: 5px;
-}
-
-/* Skill input selections */
-li#select-options-2920bf48-c9ac-c6e1-c9a8-18c8e26aa51d1 {
-
 }
 
 .datepicker-modal { 
@@ -1066,7 +1061,7 @@ p.created-by {
         font-size: 2.1rem;
     }
     h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
     h3 {
         font-size: 1.6rem;
