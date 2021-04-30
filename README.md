@@ -34,13 +34,13 @@ ___
 - [Features to add in Future Releases](#features-to-add-in-future-releases)   
 ## Technologies & Tools Used
 - [Frontend Frameworks](#frontend-languages-&-frameworks)
-- [Backend Frameworks](#backend-tools-languages-frameworks)
+- [Backend Frameworks](#backend-tools-languages--frameworks)
 - [Other](#other)
 ## Testing
 - [Code Validation](#code-validation)
 - [User Story Testing](#user-story-testing)   
     - [Event Freelancer](#event-freelancer)
-    - [Event Project Owner & Event Recruiter](#event-project-owner-event-recruiter)
+    - [Event Project Owner & Event Recruiter](#event-project-owner--event-recruiter)
     - [Site Admin](#site-admin)
 - For Lighthouse, Devices, Browser, Accessibility, Error Handling and Bugs testing - see [further testing documentation](./documentation/Testing.md)
 ## Deployment
