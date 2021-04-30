@@ -1,5 +1,13 @@
 # Testing Documentation
 
+### Contents
+- [Lighthouse Testing](#lighthouse-testing)   
+- [Browser Compatability](#browser-compatability)
+- [Device Compatability](#device-compatability)
+- [Accessibility](#accessibility)
+- [Defensive Programming](#defensive-programming)
+- [Known Bugs](#known-bugs)
+
 ___
 
 
@@ -104,7 +112,7 @@ This also produces an 'empty button' error within that element that is not acces
 
 To avoid any accessibility issues caused by this, a custom label has been added to these fields, however the WAVE accessibility tool still generates the error. See below for an example of this:
 
-- Materialize not recognising dropdown input labels as hidden
+<img src="./documentation/screenshots/testing/aria-2.png" alt="aria error">
 
 
 ### Defensive Programming
@@ -129,6 +137,10 @@ To ensure the site continues to function when unexpected user input or action oc
     <img src="./documentation/screenshots/testing/confirmation.png" alt="confirmation" width="450">
 
 
-### Bugs
+### Known Bugs
 - Firefox input textbox width not responding as per Chrome / Safari - currently width is smaller.
-- 
+- Where form validation is used on a page that also has a confirmation modal, the validation prompt appears through the modal. This is a browser default response and the intention is to create an alternative validation method in future releases
+
+___
+
+### **[Return to the main README](/README.md)**

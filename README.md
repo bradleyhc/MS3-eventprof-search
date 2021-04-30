@@ -15,7 +15,39 @@ You can view the live site [here](https://eventprof-search.herokuapp.com/).
 ___
 
 ## Contents
-[User Experience](#user experience)
+## [User Experience (UX)](#user-experience-ux)
+- [User Stories](#user-stories)   
+- [Design](#design)
+- [Typography](#typography)
+- [Imagery](#imagery)
+- [Colour](#colour)
+- [Wireframes](#wireframes)
+- [Data Schema](#data-schema)
+## [Features](#features)
+- [Sitewide](#sitewide)
+- [Homepage](#homepage)
+- [Freelancer listing page](#freelancer-listing-page)
+- [Project Pages](#project-pages)
+- [Admin Controls](#admin-controls)
+- [Security](#security)
+- [Error Handling](#error-handling)
+- [Features to add in Future Releases](#features-to-add-in-future-releases)   
+## [Technologies & Tools Used](#technologies-and-tools-used)
+- [Frontend Frameworks](#frontend-languages-&-frameworks)
+- [Backend Frameworks](#backend-tools,-languages-&-frameworks)
+- [Other](#other)
+## [Testing](#testing)
+- [Code Validation](#code-validation)
+- [User Story Testing](#user-story-testing)   
+    - [Event Freelancer](#event-freelancer)
+    - [Event Project Owner & Event Recruiter](#event-project-owner-&-event-recruiter)
+    - [Site Admin](#site-admin)
+- For Lighthouse, Devices, Browser, Accessibility, Error Handling and Bugs testing - see [further testing documentation](./documentation/Testing.md)
+## - [Deployment](#deployment)
+- [Deploying to Heroku](#deploying-to-heroku)
+- [Forking a GitHub Repo](#forking-a-github-repo)
+## - [Credits](#credits)
+
 
 ___
 
@@ -163,13 +195,30 @@ An outline of the data schema can be found below:
 
 ### Security
 
-Whilst hashed user passwords has been implemented from the outset as part of the Flask - Werkzeug module, it is also important that user emails remain secure. 
-
-To avoid the requirement for users to display their emails to other users without their initial permission, the email flow within the 'send_email' function has been implemented using the Flask-mail module.
-
-Using this approach, allows the user to use the form on the frontend to determine who the email should be sent to, but uses the 'send_email' function in 'app.py' to retrieve the email in the backend, versus storing the email within a hidden field in the form, as this would be accessible to the user if they inspect the DOM.
+Whilst hashed user passwords has been implemented from the outset as part of the Flask - Werkzeug module, it is also important that user emails and data remain secure. 
 
 To secure backend environment variables such as passwords and 'secret keys', all such variables are stored in an env.py file locally, which is included within .gitignore to ensure they are not accessible within the public domain. The environment variables are then stored within the Heroku deployed application under the 'config vars' dropdown under 'settings'. 
+
+- **User authentication**
+    - Upon visiting the site, users are prompted to register or login. A 'session' is required to be generated to view the majority of the site. Having this in place ensures that users are who they say they are and can access and edit their own projects or profiles.
+    - Sessions are created when a user successfully enters an email and password in the login form. This also then adds their User ID from the database to ensure they remain unique. 
+    - If a user enters the wrong combination of email or password, or tries to register with an existing user email, they are redirected to the login page and no further access is granted. 
+
+- **Authorisation**
+    - Once users are logged in, visibility can be restricted further. For example if a user amends the URL in an attempt to edit another user's profile or project, a flash message is shown indicated that they do not have permissions, and the page is redirected to the 'freelancers' page, as shown below.
+    <img src="./documentation/screenshots/testing/redirect-permissions.png" alt="redirect permissions" width="450">
+    - If instead a user attempts to view an admin page, to avoid the user being made aware that their is a page at the URL they are attempting to access, they are instead redirected to a 404 page.    
+
+- **User Emails**
+    - To avoid the requirement for users to display their emails to other users without their initial permission, the email flow within the 'send_email' function has been implemented using the Flask-mail module.
+    - Using this approach, allows the user to use the form on the frontend to determine who the email should be sent to, but uses the 'send_email' function in 'app.py' to retrieve the email in the backend, versus storing the email within a hidden field in the form, as this would be accessible to the user if they inspect the DOM.
+
+
+### Error Handling
+To ensure that errors, both client-side and server-side are handled gracefully for the user, a custom 404 and 500 error page will be rendered if necessary. The Flask .errorhandler() method will detect the error in the production application and render the template as appropriate.
+
+<img src="./documentation/screenshots/testing/404.png" alt="404" width="450">
+
 
 <br>
 
@@ -207,16 +256,15 @@ To secure backend environment variables such as passwords and 'secret keys', all
 - [Heroku](https://heroku.com) - Used for deployment of production application.
 
 ### Other
->link these below
-- Name Generator - for generating randomised names for demo users.
-- Colour Hexa - for generating colour schemes and patterns.
-- Responsinator - user to generate and test responsiveness of application.
+- [Name Generator](https://www.name-generator.org.uk/quick/) - for generating randomised names for demo users.
+- [Colour Hexa](https://colorhexa.com) - for generating colour schemes and patterns.
+- [AMI Responsive](http://ami.responsivedesign.is/) - used to generate device images and test responsiveness of application.
 
 ---
 
 ## Testing
 
-For further details on device, browser, accessibility testing and error handling, go to the full testing documentation [here](/Testing.md)
+For further details on device, browser, accessibility testing and error handling, go to the full testing documentation [here](documentation/Testing.md)
 
 ### Code Validation
 The EventProf Search codebase has been checked through W3 HTML, Jigsaw CSS, JShint and PEP8Online validation services to eliminate or mitigate any errors.
@@ -330,7 +378,7 @@ The site has been tested against the initial user stories to ensure that it meet
     <img src="./documentation/screenshots/testing/update-skills.png" alt="update skills" width="450">
 
 
-### **For further details on browser, device, accessibility testing and error handling, [click here for the full testing documentation](/Testing.md)**
+### **For further details on browser, device, accessibility testing and error handling, [click here for the full testing documentation](documentation/Testing.md)**
 
 ___
 
